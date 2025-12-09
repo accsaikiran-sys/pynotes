@@ -2,7 +2,7 @@
 title: Simple Print
 date: 2025-12-09
 author: Your Name
-cell_count: 2
+cell_count: 3
 score: 0
 ---
 
@@ -11,6 +11,14 @@ print("Pynotes working")
 ```
 
     Pynotes working
+
+
+
+```python
+print("sample printing")
+```
+
+    sample printing
 
 
 
