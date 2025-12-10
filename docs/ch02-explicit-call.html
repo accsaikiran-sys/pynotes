@@ -4,7 +4,7 @@
     <!-- Set the viewport width to device width for mobile -->
     <meta name="viewport" content="width=device-width" />
 
-    <title>Simple Print</title>
+    <title>Ch02 Explicit-Call</title>
 
     <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/normalize.css" />
     <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/foundation.min.css" />
@@ -44,24 +44,48 @@
     <div class="large-9 columns">
 <article>
     <header>
-        <h3 class="article-title"><a href="https://accsaikiran-sys.github.io/pynotes/simple-print.html" rel="bookmark"
-        title="Permalink to Simple Print">Simple Print</a></h3>
+        <h3 class="article-title"><a href="https://accsaikiran-sys.github.io/pynotes/ch02-explicit-call.html" rel="bookmark"
+        title="Permalink to Ch02 Explicit-Call">Ch02 Explicit-Call</a></h3>
     </header>
 
 <h6 class="subheader" title="2025-12-10T00:00:00-05:00">Wed 10 December 2025
 </h6>
 
 
-    <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pynotes working&quot;</span><span class="p">)</span>
+    <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">simple_print</span>
+
+<span class="c1"># simple_print.print_numbers(50)</span>
+
+
+<span class="c1"># obj = simple_print.NumberPrinter(7)</span>
+<span class="c1"># print(obj)</span>
+<span class="c1"># obj.print_numbers()</span>
+<span class="c1"># obj.print_numbers_double()</span>
+
+<span class="c1"># Explicitly trigger the destructor</span>
+<span class="c1"># del obj</span>
+
+<span class="n">obj2</span> <span class="o">=</span> <span class="n">simple_print</span><span class="o">.</span><span class="n">NumberPrinter</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">obj2</span><span class="p">)</span>
+<span class="n">obj2</span><span class="o">.</span><span class="n">print_numbers</span><span class="p">()</span>
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code>Pynotes working
-</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="o">---------------------------------------------------------------------------</span>
 
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sample printing&quot;</span><span class="p">)</span>
-</code></pre></div>
+<span class="ne">ModuleNotFoundError</span>                       <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">)</span>
 
-<div class="highlight"><pre><span></span><code>sample printing
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="o">----&gt;</span> <span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">simple_print</span>
+      <span class="mi">3</span> <span class="c1"># simple_print.print_numbers(50)</span>
+      <span class="mi">4</span> 
+      <span class="mi">5</span> 
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+     <span class="mi">11</span> <span class="c1"># Explicitly trigger the destructor</span>
+     <span class="mi">12</span> <span class="c1"># del obj</span>
+     <span class="mi">14</span> <span class="n">obj2</span> <span class="o">=</span> <span class="n">simple_print</span><span class="o">.</span><span class="n">NumberPrinter</span>
+
+
+<span class="ne">ModuleNotFoundError</span><span class="p">:</span> <span class="n">No</span> <span class="n">module</span> <span class="n">named</span> <span class="s1">&#39;simple_print&#39;</span>
 </code></pre></div>
 
 <div class="highlight"><pre><span></span><code>

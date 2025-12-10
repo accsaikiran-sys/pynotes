@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Ch02 Python Varibles Literals</title>
+
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/normalize.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/style.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/pygments.css" />	
+    <script src="https://accsaikiran-sys.github.io/pynotes/theme/js/modernizr.js"></script>
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<nav>
+<div class="top-bar">
+<div class="row">
+    <div class="large-9 large-centered columns">
+	    <h1><a href="https://accsaikiran-sys.github.io/pynotes">My Python Notes</a></h1>
+    </div>
+</div>
+</div>
+
+<!-- Show menu items and pages -->
+<div class="row">
+<div class="large-9 columns">
+    <ul class="button-group navigation">
+
+    </ul>
+</div>
+</div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns">
+<article>
+    <header>
+        <h3 class="article-title"><a href="https://accsaikiran-sys.github.io/pynotes/ch02-python-varibles-literals.html" rel="bookmark"
+        title="Permalink to Ch02 Python Varibles Literals">Ch02 Python Varibles Literals</a></h3>
+    </header>
+
+<h6 class="subheader" title="2025-12-10T00:00:00-05:00">Wed 10 December 2025
+</h6>
+
+
+    <div class="highlight"><pre><span></span><code><span class="n">Created</span><span class="p">:</span><span class="mi">20251128</span>
+<span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">csp</span><span class="o">.</span><span class="n">gitbook</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="n">learning</span><span class="o">/</span><span class="n">basics</span><span class="o">/</span><span class="n">ch02</span><span class="o">-</span><span class="n">python</span><span class="o">-</span><span class="n">fundamentals</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="n">variables</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">literals</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Variable assignment</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">price</span> <span class="o">=</span> <span class="mf">99.99</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Python&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>   <span class="c1"># Output: 10</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">price</span><span class="p">)</span>   <span class="c1"># Output: 99.99</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>    <span class="c1"># Output: Python </span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">10</span>
+<span class="mf">99.99</span>
+<span class="n">Python</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span><span class="n">c</span>  <span class="o">=</span> <span class="mi">1</span> <span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">1</span>
+<span class="mf">2</span>
+<span class="mf">3</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">value</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;none&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="c1">#reassigned</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">100</span>
+<span class="n">none</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">integer_literal</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="n">float_literal</span> <span class="o">=</span> <span class="mf">3.14</span>
+<span class="n">complex_literal</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span><span class="n">j</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">integer_literal</span><span class="p">)</span>  <span class="c1"># Output: 42</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">float_literal</span><span class="p">)</span>    <span class="c1"># Output: 3.14</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">complex_literal</span><span class="p">)</span>  <span class="c1"># Output: (2+3j)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">42</span>
+<span class="mf">3.14</span>
+<span class="p">(</span><span class="mf">2</span><span class="o">+</span><span class="mf">3</span><span class="n">j</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">single_quote</span> <span class="o">=</span> <span class="s1">&#39;Hello&#39;</span>
+<span class="n">double_quote</span> <span class="o">=</span> <span class="s2">&quot;World&quot;</span>
+<span class="n">multi_line</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;This is</span>
+<span class="s2">a multi-line</span>
+<span class="s2">string&quot;&quot;&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">single_quote</span><span class="p">)</span>  
+<span class="nb">print</span><span class="p">(</span><span class="n">double_quote</span><span class="p">)</span>  
+<span class="nb">print</span><span class="p">(</span><span class="n">multi_line</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>Hello
+World
+This is
+a multi-line
+string
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">is_active</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">is_logged_in</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">is_active</span><span class="p">)</span>     
+<span class="nb">print</span><span class="p">(</span><span class="n">is_logged_in</span><span class="p">)</span>   
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>True
+False
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No value assigned yet&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">No</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="n">assigned</span><span class="w"> </span><span class="n">yet</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">binary</span> <span class="o">=</span> <span class="mb">0b1010</span>
+<span class="n">octal</span> <span class="o">=</span> <span class="mo">0o12</span>
+<span class="n">hexadecimal</span> <span class="o">=</span> <span class="mh">0xA</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">binary</span><span class="p">)</span>      
+<span class="nb">print</span><span class="p">(</span><span class="n">octal</span><span class="p">)</span>        
+<span class="nb">print</span><span class="p">(</span><span class="n">hexadecimal</span><span class="p">)</span>  
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">10</span>
+<span class="mf">10</span>
+<span class="mf">10</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="n">sum_result</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+<span class="n">product_result</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">sum_result</span><span class="p">)</span>      
+<span class="nb">print</span><span class="p">(</span><span class="n">product_result</span><span class="p">)</span>  
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">8</span>
+<span class="mf">15</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+
+<hr>
+<p><strong>Score: 10</strong></p>
+<p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+
+</article>
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+    <aside class="large-3 columns">
+        <h5 class="sidebar-title">Site</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/archives.html">Archives</a>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/tags.html">Tags</a>
+        </ul>
+
+		
+        <h5 class="sidebar-title">Categories</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/pandas-work.html">pandas-work</a></li>
+   
+        </ul>
+
+		
+        <h5 class="sidebar-title">Social</h5>
+        <ul class="side-nav">
+            <li><a href="https://github.com/accsaikiran-sys/">GitHub</a></li>
+            <li><a href="<linkedin handle>">LinkedIn</a></li>
+        </ul>
+
+    </aside> <!-- End Sidebar -->
+
+</div> <!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+              <!--                  <p>My Python Notes by Sai Kiran Reddy</p> -->
+            </div>
+            </div>
+    </div>
+</footer>
+</body>
+</html>

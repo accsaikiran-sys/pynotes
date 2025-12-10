@@ -47,7 +47,7 @@
 
             <article>
                 <a href="https://accsaikiran-sys.github.io/pynotes/add-a-new-column.html"><h3 class="article-title">Add-A-New-Column</h3></a>
-<h6 class="subheader" title="2025-12-09T00:00:00-05:00">Tue 09 December 2025
+<h6 class="subheader" title="2025-12-10T00:00:00-05:00">Wed 10 December 2025
 </h6>
 
 
@@ -194,7 +194,7 @@
 
             <article>
                 <a href="https://accsaikiran-sys.github.io/pynotes/age-calculator.html"><h3 class="article-title">Age-Calculator</h3></a>
-<h6 class="subheader" title="2025-12-09T00:00:00-05:00">Tue 09 December 2025
+<h6 class="subheader" title="2025-12-10T00:00:00-05:00">Wed 10 December 2025
 </h6>
 
 
@@ -236,41 +236,46 @@
 
 
             <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/python-basic-input-output.html"><h3 class="article-title">Python Basic Input Output</h3></a>
-<h6 class="subheader" title="2025-12-09T00:00:00-05:00">Tue 09 December 2025
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch02-explicit-call.html"><h3 class="article-title">Ch02 Explicit-Call</h3></a>
+<h6 class="subheader" title="2025-12-10T00:00:00-05:00">Wed 10 December 2025
 </h6>
 
 
-<div class="highlight"><pre><span></span><code><span class="n">Created</span><span class="p">:</span><span class="mi">20251128</span>
-<span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">csp</span><span class="o">.</span><span class="n">gitbook</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="n">learning</span><span class="o">/</span><span class="n">basics</span><span class="o">/</span><span class="n">ch02</span><span class="o">-</span><span class="n">python</span><span class="o">-</span><span class="n">fundamentals</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="n">basic</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">output</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">simple_print</span>
+
+<span class="c1"># simple_print.print_numbers(50)</span>
+
+
+<span class="c1"># obj = simple_print.NumberPrinter(7)</span>
+<span class="c1"># print(obj)</span>
+<span class="c1"># obj.print_numbers()</span>
+<span class="c1"># obj.print_numbers_double()</span>
+
+<span class="c1"># Explicitly trigger the destructor</span>
+<span class="c1"># del obj</span>
+
+<span class="n">obj2</span> <span class="o">=</span> <span class="n">simple_print</span><span class="o">.</span><span class="n">NumberPrinter</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">obj2</span><span class="p">)</span>
+<span class="n">obj2</span><span class="o">.</span><span class="n">print_numbers</span><span class="p">()</span>
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, Python!&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="mf">3.14</span><span class="p">)</span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="o">---------------------------------------------------------------------------</span>
 
-<div class="highlight"><pre><span></span><code><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Alice&quot;</span>
-<span class="n">age</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="ne">ModuleNotFoundError</span>                       <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">)</span>  
-<span class="c1"># Output: Alice 30</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="s2">&quot;is&quot;</span><span class="p">,</span> <span class="s2">&quot;powerful&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot; - &quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;!&quot;</span><span class="p">)</span>
-<span class="c1"># Output: Python - is - powerful!</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Bob&quot;</span>
-<span class="n">score</span> <span class="o">=</span> <span class="mi">88</span>
-
-<span class="nb">print …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="o">----&gt;</span> <span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">simple_print</span>
+      <span class="mi">3</span> <span class="c1"># simple_print.print_numbers(50)</span>
+      <span class="mi">4</span> 
+      <span class="mi">5</span> 
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+     <span class="mi">11</span> <span class="c1"># Explicitly …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
 
 </p>
 
 
 
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/python-basic-input-output.html">Read More</a>
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch02-explicit-call.html">Read More</a>
                 <hr  class="gradient"/>
             </article>
 
@@ -278,49 +283,30 @@
 
 
             <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/python-type-conversion.html"><h3 class="article-title">Python Type Conversion</h3></a>
-<h6 class="subheader" title="2025-12-09T00:00:00-05:00">Tue 09 December 2025
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch02-python-operators.html"><h3 class="article-title">Ch02 Python Operators</h3></a>
+<h6 class="subheader" title="2025-12-10T00:00:00-05:00">Wed 10 December 2025
 </h6>
 
 
 <div class="highlight"><pre><span></span><code><span class="n">Created</span><span class="p">:</span><span class="mi">20251128</span>
-<span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">csp</span><span class="o">.</span><span class="n">gitbook</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="n">learning</span><span class="o">/</span><span class="n">basics</span><span class="o">/</span><span class="n">ch02</span><span class="o">-</span><span class="n">python</span><span class="o">-</span><span class="n">fundamentals</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="nb">type</span><span class="o">-</span><span class="n">conversion</span>
+<span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">csp</span><span class="o">.</span><span class="n">gitbook</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="n">learning</span><span class="o">/</span><span class="n">basics</span><span class="o">/</span><span class="n">ch02</span><span class="o">-</span><span class="n">python</span><span class="o">-</span><span class="n">fundamentals</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="n">operators</span>
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code><span class="n">interger_value</span>  <span class="o">=</span> <span class="mi">10</span>
-<span class="n">float_value</span> <span class="o">=</span> <span class="mf">3.33</span>
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">3</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="n">interger_value</span> <span class="o">+</span> <span class="n">float_value</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="mf">13.33</span>
-<span class="o">&lt;</span><span class="n">class</span><span class="w"> </span><span class="err">&#39;</span><span class="n">float</span><span class="err">&#39;</span><span class="o">&gt;</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="n">float_value</span> <span class="o">=</span> <span class="mf">9.99</span>
-<span class="n">string_value</span> <span class="o">=</span> <span class="s2">&quot;33&quot;</span>
-
-<span class="n">iff</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">float_value</span><span class="p">)</span>
-<span class="n">ifs</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">string_value</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">iff</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ifs</span><span class="p">)</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="mf">9</span>
-<span class="mf">33</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="n">int_value …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>   <span class="c1"># Addition → 13</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span>   <span class="c1"># Subtraction → 7</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span>   <span class="c1"># Multiplication → 30</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">/</span> <span class="n">b</span><span class="p">)</span>   <span class="c1"># Division → 3.333...</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">//</span> <span class="n">b</span><span class="p">)</span>  <span class="c1"># Floor Division → 3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">%</span> <span class="n">b</span><span class="p">)</span>   <span class="c1"># Modulus → 1 …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
 
 </p>
 
 
 
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/python-type-conversion.html">Read More</a>
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch02-python-operators.html">Read More</a>
                 <hr  class="gradient"/>
             </article>
 
@@ -328,43 +314,274 @@
 
 
             <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/simple-print.html"><h3 class="article-title">Simple Print</h3></a>
-<h6 class="subheader" title="2025-12-09T00:00:00-05:00">Tue 09 December 2025
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch02-python-varibles-literals.html"><h3 class="article-title">Ch02 Python Varibles Literals</h3></a>
+<h6 class="subheader" title="2025-12-10T00:00:00-05:00">Wed 10 December 2025
 </h6>
 
 
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pynotes working&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">Created</span><span class="p">:</span><span class="mi">20251128</span>
+<span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">csp</span><span class="o">.</span><span class="n">gitbook</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="n">learning</span><span class="o">/</span><span class="n">basics</span><span class="o">/</span><span class="n">ch02</span><span class="o">-</span><span class="n">python</span><span class="o">-</span><span class="n">fundamentals</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="n">variables</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">literals</span>
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code>Pynotes working
+<div class="highlight"><pre><span></span><code><span class="c1"># Variable assignment</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">price</span> <span class="o">=</span> <span class="mf">99.99</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Python&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>   <span class="c1"># Output: 10</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">price</span><span class="p">)</span>   <span class="c1"># Output: 99.99</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>    <span class="c1"># Output: Python </span>
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sample printing&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="mf">10</span>
+<span class="mf">99.99</span>
+<span class="n">Python</span>
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code>sample printing
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code>
-</code></pre></div>
-
-<hr>
-<p><strong>Score: 0</strong></p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+<div class="highlight"><pre><span></span><code><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span><span class="n">c</span>  <span class="o">=</span> <span class="mi">1</span> <span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
 
 </p>
 
 
 
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/simple-print.html">Read More</a>
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch02-python-varibles-literals.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch02-simple-print.html"><h3 class="article-title">Ch02 Simple Print</h3></a>
+<h6 class="subheader" title="2025-12-10T00:00:00-05:00">Wed 10 December 2025
+</h6>
+
+
+<div class="highlight"><pre><span></span><code><span class="c1"># 1</span>
+<span class="c1"># print(&quot;1&quot;)</span>
+
+<span class="c1"># print(&quot;2&quot;)</span>
+
+
+<span class="c1"># print(&quot;10&quot;)</span>
+
+
+<span class="c1"># 2</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="c1"># limit = int(sys.argv[1])</span>
+
+<span class="c1"># print(limit)</span>
+
+<span class="c1"># def print_numbers(limit_x = 25):</span>
+<span class="c1">#     for index in range(limit_x):</span>
+<span class="c1">#         print(index + 1)</span>
+
+
+<span class="c1"># print_numbers(limit)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">NumberPrinter</span><span class="p">:</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">limit_y</span> <span class="o">=</span> <span class="mi">20</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;inside init&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">limit</span> <span class="o">=</span> <span class="n">limit_y</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;inside destructor …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch02-simple-print.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch03-01-python-num-math.html"><h3 class="article-title">Ch03 01 Python Num Math</h3></a>
+<h6 class="subheader" title="2025-12-10T00:00:00-05:00">Wed 10 December 2025
+</h6>
+
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Created : 20251209</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">integer_num</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">float_num</span> <span class="o">=</span> <span class="mf">3.14</span>
+<span class="n">complex_num</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">5</span><span class="n">j</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">integer_num</span><span class="p">))</span>  <span class="c1"># &lt;class &#39;int&#39;&gt;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">float_num</span><span class="p">))</span>    <span class="c1"># &lt;class &#39;float&#39;&gt;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">complex_num</span><span class="p">))</span>  <span class="c1"># &lt;class &#39;complex&#39;&gt;</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>&lt;class &#39;int&#39;&gt;
+&lt;class &#39;float&#39;&gt;
+&lt;class &#39;complex&#39;&gt;
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>   <span class="c1"># Addition → 17</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span>   <span class="c1"># Subtraction → 7</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span>   <span class="c1"># Multiplication …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch03-01-python-num-math.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch03-break-continue.html"><h3 class="article-title">Ch03 Break Continue</h3></a>
+<h6 class="subheader" title="2025-12-10T00:00:00-05:00">Wed 10 December 2025
+</h6>
+
+
+<div class="highlight"><pre><span></span><code><span class="n">Created</span><span class="p">:</span> <span class="mi">20251128</span>
+<span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">csp</span><span class="o">.</span><span class="n">gitbook</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="n">learning</span><span class="o">/</span><span class="n">basics</span><span class="o">/</span><span class="n">ch03</span><span class="o">-</span><span class="n">python</span><span class="o">-</span><span class="n">flow</span><span class="o">-</span><span class="n">control</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="k">break</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="k">continue</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">number</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">1</span>
+<span class="mf">2</span>
+<span class="mf">3</span>
+<span class="mf">4</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">number</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">continue</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">1</span>
+<span class="mf">2</span>
+<span class="mf">4</span>
+<span class="mf">5</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">count …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch03-break-continue.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch03-if-else-statements.html"><h3 class="article-title">Ch03 If Else Statements</h3></a>
+<h6 class="subheader" title="2025-12-10T00:00:00-05:00">Wed 10 December 2025
+</h6>
+
+
+<div class="highlight"><pre><span></span><code><span class="n">Created</span><span class="p">:</span><span class="mi">20251128</span>
+<span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">csp</span><span class="o">.</span><span class="n">gitbook</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="n">learning</span><span class="o">/</span><span class="n">basics</span><span class="o">/</span><span class="n">ch03</span><span class="o">-</span><span class="n">python</span><span class="o">-</span><span class="n">flow</span><span class="o">-</span><span class="n">control</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="k">if</span><span class="o">...</span><span class="k">else</span><span class="o">-</span><span class="n">statement</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">age</span> <span class="o">=</span> <span class="mi">20</span>
+
+<span class="k">if</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Eligible to vote&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>Eligible to vote
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">temperature</span> <span class="o">=</span> <span class="mi">15</span>
+
+<span class="k">if</span> <span class="n">temperature</span> <span class="o">&gt;</span> <span class="mi">25</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;It&#39;s warm outside&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;It&#39;s cold outside&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>It&#39;s cold outside
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">score …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch03-if-else-statements.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch03-python-for-loop.html"><h3 class="article-title">Ch03 Python For Loop</h3></a>
+<h6 class="subheader" title="2025-12-10T00:00:00-05:00">Wed 10 December 2025
+</h6>
+
+
+<div class="highlight"><pre><span></span><code><span class="n">Created</span><span class="p">:</span> <span class="mi">20251128</span>
+<span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">csp</span><span class="o">.</span><span class="n">gitbook</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="n">learning</span><span class="o">/</span><span class="n">basics</span><span class="o">/</span><span class="n">ch03</span><span class="o">-</span><span class="n">python</span><span class="o">-</span><span class="n">flow</span><span class="o">-</span><span class="n">control</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="k">for</span><span class="o">-</span><span class="n">loop</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;banana&quot;</span><span class="p">,</span> <span class="s2">&quot;orange&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">fruit</span> <span class="ow">in</span> <span class="n">fruits</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">fruit</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>apple
+banana
+orange
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">0</span>
+<span class="mf">1</span>
+<span class="mf">2</span>
+<span class="mf">3</span>
+<span class="mf">4</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch03-python-for-loop.html">Read More</a>
                 <hr  class="gradient"/>
             </article>
 
             <!-- /#posts-list -->
 <div class="pagination-centered">
-<h6 class="subheader">Page 1 of 1</h6>
+<h6 class="subheader">Page 1 of 2</h6>
 
 <p>
 
+        <a href="https://accsaikiran-sys.github.io/pynotes/index2.html">Next &raquo;</a>
 </p>
 </div>
 
