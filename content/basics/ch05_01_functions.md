@@ -2,8 +2,8 @@
 title: Ch05 01 Functions
 date: 2025-12-10
 author: Your Name
-cell_count: 6
-score: 5
+cell_count: 12
+score: 10
 ---
 
 ```python
@@ -60,9 +60,79 @@ greet("Bob")
 
 
 ```python
+def student_info(name, age):
+    print(f"Name: {name}, Age: {age}")
+
+student_info(age=20, name="Alice")
+```
+
+    Name: Alice, Age: 20
+
+
+
+```python
+def sum_numbers(*args):
+    return sum(args)
+
+print(sum_numbers(1, 2, 3, 4))  # Output: 10
+```
+
+    10
+
+
+
+```python
+def display_profile(**kwargs):
+    for key, value in kwargs.items():
+        print(f"{key}: {value}")
+
+display_profile(name="Alice", role="Engineer")
+```
+
+    name: Alice
+    role: Engineer
+
+
+
+```python
+def complete_profile(*args, **kwargs):
+    print("Positional:", args)
+    print("Keyword:", kwargs)
+
+complete_profile("Python", level="Advanced", year=2025)
+```
+
+    Positional: ('Python',)
+    Keyword: {'level': 'Advanced', 'year': 2025}
+
+
+
+```python
+square = lambda x: x ** 2
+print(square(5))  # Output: 25
+```
+
+    25
+
+
+
+```python
+def factorial(n):
+    if n == 0:
+        return 1
+    return n * factorial(n - 1)
+
+print(factorial(5))  # Output: 120
+```
+
+    120
+
+
+
+```python
 
 ```
 
 
 ---
-**Score: 5**
+**Score: 10**
