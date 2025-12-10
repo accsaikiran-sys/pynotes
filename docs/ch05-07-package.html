@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Ch05 07 Package</title>
+
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/normalize.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/style.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/pygments.css" />	
+    <script src="https://accsaikiran-sys.github.io/pynotes/theme/js/modernizr.js"></script>
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<nav>
+<div class="top-bar">
+<div class="row">
+    <div class="large-9 large-centered columns">
+	    <h1><a href="https://accsaikiran-sys.github.io/pynotes">My Python Notes</a></h1>
+    </div>
+</div>
+</div>
+
+<!-- Show menu items and pages -->
+<div class="row">
+<div class="large-9 columns">
+    <ul class="button-group navigation">
+
+    </ul>
+</div>
+</div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns">
+<article>
+    <header>
+        <h3 class="article-title"><a href="https://accsaikiran-sys.github.io/pynotes/ch05-07-package.html" rel="bookmark"
+        title="Permalink to Ch05 07 Package">Ch05 07 Package</a></h3>
+    </header>
+
+<h6 class="subheader" title="2025-12-10T00:00:00-05:00">Wed 10 December 2025
+</h6>
+
+
+    <div class="highlight"><pre><span></span><code><span class="c1"># Created:20251210</span>
+<span class="c1"># https://csp.gitbook.io/python-learning/basics/ch05-python-functions/python-package</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># my_package/module1.py</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">greet</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;Hello from module1&quot;</span>
+
+    <span class="c1"># main.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">my_package.module1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">my_package</span><span class="o">.</span><span class="n">module1</span><span class="o">.</span><span class="n">greet</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="o">---------------------------------------------------------------------------</span>
+
+<span class="ne">ModuleNotFoundError</span>                       <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">)</span>
+
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">6</span>
+      <span class="mi">3</span>     <span class="k">return</span> <span class="s2">&quot;Hello from module1&quot;</span>
+      <span class="mi">5</span>     <span class="c1"># main.py</span>
+<span class="o">----&gt;</span> <span class="mi">6</span> <span class="kn">import</span><span class="w"> </span><span class="nn">my_package.module1</span>
+      <span class="mi">8</span> <span class="nb">print</span><span class="p">(</span><span class="n">my_package</span><span class="o">.</span><span class="n">module1</span><span class="o">.</span><span class="n">greet</span><span class="p">())</span>
+
+
+<span class="ne">ModuleNotFoundError</span><span class="p">:</span> <span class="n">No</span> <span class="n">module</span> <span class="n">named</span> <span class="s1">&#39;my_package&#39;</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># main.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">my_package.module1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">my_package</span><span class="o">.</span><span class="n">module1</span><span class="o">.</span><span class="n">greet</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="o">---------------------------------------------------------------------------</span>
+
+<span class="ne">ModuleNotFoundError</span>                       <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">)</span>
+
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+      <span class="mi">1</span> <span class="c1"># main.py</span>
+<span class="o">----&gt;</span> <span class="mi">2</span> <span class="kn">import</span><span class="w"> </span><span class="nn">my_package.module1</span>
+      <span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="n">my_package</span><span class="o">.</span><span class="n">module1</span><span class="o">.</span><span class="n">greet</span><span class="p">())</span>
+
+
+<span class="ne">ModuleNotFoundError</span><span class="p">:</span> <span class="n">No</span> <span class="n">module</span> <span class="n">named</span> <span class="s1">&#39;my_package&#39;</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># my_package/__init__.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.module1</span><span class="w"> </span><span class="kn">import</span> <span class="n">greet</span>
+
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">my_package</span><span class="w"> </span><span class="kn">import</span> <span class="n">greet</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">greet</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">my_package.analytics.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">calculate_mean</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># analytics/stats.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">format_number</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">my_package.analytics.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">calculate_mean</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># pip install requests</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://api.example.com&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># setup.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">setuptools</span><span class="w"> </span><span class="kn">import</span> <span class="n">setup</span><span class="p">,</span> <span class="n">find_packages</span>
+
+<span class="n">setup</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;mypackage&quot;</span><span class="p">,</span>
+    <span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
+    <span class="n">packages</span><span class="o">=</span><span class="n">find_packages</span><span class="p">()</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<hr>
+<p><strong>Score: 5</strong></p>
+<p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+
+</article>
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+    <aside class="large-3 columns">
+        <h5 class="sidebar-title">Site</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/archives.html">Archives</a>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/tags.html">Tags</a>
+        </ul>
+
+		
+        <h5 class="sidebar-title">Categories</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/pandas-work.html">pandas-work</a></li>
+   
+        </ul>
+
+		
+        <h5 class="sidebar-title">Social</h5>
+        <ul class="side-nav">
+            <li><a href="https://github.com/accsaikiran-sys/">GitHub</a></li>
+            <li><a href="<linkedin handle>">LinkedIn</a></li>
+        </ul>
+
+    </aside> <!-- End Sidebar -->
+
+</div> <!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+              <!--                  <p>My Python Notes by Sai Kiran Reddy</p> -->
+            </div>
+            </div>
+    </div>
+</footer>
+</body>
+</html>

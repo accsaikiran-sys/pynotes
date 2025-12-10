@@ -97,6 +97,146 @@
 
 
             <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch05-06-modules.html"><h3 class="article-title">Ch05 06 Modules</h3></a>
+<h6 class="subheader" title="2025-12-10T00:00:00-05:00">Wed 10 December 2025
+</h6>
+
+
+<div class="highlight"><pre><span></span><code><span class="c1">#Created: 20251210</span>
+<span class="c1"># https://csp.gitbook.io/python-learning/basics/ch05-python-functions/python-modules</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># file: math_utils.py</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">25</span><span class="p">))</span>  <span class="c1"># Output: 5.0</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">5.0</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="nb">pow</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>     <span class="c1"># Output: 4.0</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>    <span class="c1"># Output: 8.0</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">4 …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch05-06-modules.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch05-07-package.html"><h3 class="article-title">Ch05 07 Package</h3></a>
+<h6 class="subheader" title="2025-12-10T00:00:00-05:00">Wed 10 December 2025
+</h6>
+
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Created:20251210</span>
+<span class="c1"># https://csp.gitbook.io/python-learning/basics/ch05-python-functions/python-package</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># my_package/module1.py</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">greet</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;Hello from module1&quot;</span>
+
+    <span class="c1"># main.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">my_package.module1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">my_package</span><span class="o">.</span><span class="n">module1</span><span class="o">.</span><span class="n">greet</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="o">---------------------------------------------------------------------------</span>
+
+<span class="ne">ModuleNotFoundError</span>                       <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">)</span>
+
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">6</span>
+      <span class="mi">3</span>     <span class="k">return</span> <span class="s2">&quot;Hello from module1&quot;</span>
+      <span class="mi">5</span>     <span class="c1"># main.py</span>
+<span class="o">----&gt;</span> <span class="mi">6</span> <span class="kn">import</span><span class="w"> </span><span class="nn">my_package …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch05-07-package.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch05-08-main-function.html"><h3 class="article-title">Ch05 08 Main Function</h3></a>
+<h6 class="subheader" title="2025-12-10T00:00:00-05:00">Wed 10 December 2025
+</h6>
+
+
+<div class="highlight"><pre><span></span><code><span class="c1">#Create: 20251210</span>
+<span class="c1"># https://csp.gitbook.io/python-learning/basics/ch05-python-functions/python-main-function</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Program started&quot;</span><span class="p">)</span>
+
+<span class="n">main</span><span class="p">()</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>Program started
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Main function executed&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>Main function executed
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>__main__
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Welcome, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">(</span><span class="s2">&quot;Alice&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>Welcome, Alice
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">process_data …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch05-08-main-function.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
                 <a href="https://accsaikiran-sys.github.io/pynotes/python-basic-input-output.html"><h3 class="article-title">Python Basic Input Output</h3></a>
 <h6 class="subheader" title="2025-12-10T00:00:00-05:00">Wed 10 December 2025
 </h6>

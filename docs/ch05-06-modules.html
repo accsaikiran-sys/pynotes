@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Ch05 06 Modules</title>
+
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/normalize.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/style.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/pygments.css" />	
+    <script src="https://accsaikiran-sys.github.io/pynotes/theme/js/modernizr.js"></script>
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<nav>
+<div class="top-bar">
+<div class="row">
+    <div class="large-9 large-centered columns">
+	    <h1><a href="https://accsaikiran-sys.github.io/pynotes">My Python Notes</a></h1>
+    </div>
+</div>
+</div>
+
+<!-- Show menu items and pages -->
+<div class="row">
+<div class="large-9 columns">
+    <ul class="button-group navigation">
+
+    </ul>
+</div>
+</div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns">
+<article>
+    <header>
+        <h3 class="article-title"><a href="https://accsaikiran-sys.github.io/pynotes/ch05-06-modules.html" rel="bookmark"
+        title="Permalink to Ch05 06 Modules">Ch05 06 Modules</a></h3>
+    </header>
+
+<h6 class="subheader" title="2025-12-10T00:00:00-05:00">Wed 10 December 2025
+</h6>
+
+
+    <div class="highlight"><pre><span></span><code><span class="c1">#Created: 20251210</span>
+<span class="c1"># https://csp.gitbook.io/python-learning/basics/ch05-python-functions/python-modules</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># file: math_utils.py</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">25</span><span class="p">))</span>  <span class="c1"># Output: 5.0</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">5.0</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="nb">pow</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>     <span class="c1"># Output: 4.0</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>    <span class="c1"># Output: 8.0</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">4.0</span>
+<span class="mf">8.0</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">m</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>     <span class="c1"># Output: 3.141592653589793</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">3.141592653589793</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># file: calculator.py</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">multiply</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># file: demo.py</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Main function executed&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>Main function executed
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span>
+
+<span class="n">today</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">today</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">2025</span><span class="o">-</span><span class="mf">12</span><span class="o">-</span><span class="mf">10</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">math</span><span class="p">))</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="s1">&#39;__doc__&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;__file__&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;__loader__&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;__name__&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;__package__&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;__spec__&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;acos&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;acosh&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;asin&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;asinh&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;atan&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;atan2&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;atanh&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;cbrt&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;ceil&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;comb&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;copysign&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;cos&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;cosh&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;degrees&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;dist&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;e&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;erf&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;erfc&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;exp&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;exp2&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;expm1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;fabs&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;factorial&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;floor&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;fmod&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;frexp&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;fsum&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;gamma&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;gcd&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;hypot&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;inf&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;isclose&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;isfinite&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;isinf&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;isnan&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;isqrt&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;lcm&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;ldexp&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;lgamma&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;log&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;log10&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;log1p&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;log2&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;modf&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;nan&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;nextafter&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;perm&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;pi&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;pow&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;prod&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;radians&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;remainder&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;sin&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;sinh&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;sqrt&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;sumprod&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;tan&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;tanh&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;tau&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;trunc&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;ulp&#39;</span><span class="p">]</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="n">help</span><span class="p">(</span><span class="n">math</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">Help</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="n">math</span><span class="p">:</span>
+
+<span class="n">NAME</span>
+<span class="w">    </span><span class="n">math</span>
+
+<span class="n">MODULE</span><span class="w"> </span><span class="n">REFERENCE</span>
+<span class="w">    </span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">docs</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mf">3.12</span><span class="o">/</span><span class="n">library</span><span class="o">/</span><span class="n">math</span><span class="o">.</span><span class="n">html</span>
+
+<span class="w">    </span><span class="n">The</span><span class="w"> </span><span class="n">following</span><span class="w"> </span><span class="n">documentation</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">automatically</span><span class="w"> </span><span class="n">generated</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">Python</span>
+<span class="w">    </span><span class="n">source</span><span class="w"> </span><span class="n">files</span><span class="o">.</span><span class="w">  </span><span class="n">It</span><span class="w"> </span><span class="n">may</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">incomplete</span><span class="p">,</span><span class="w"> </span><span class="n">incorrect</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">include</span><span class="w"> </span><span class="n">features</span><span class="w"> </span><span class="n">that</span>
+<span class="w">    </span><span class="n">are</span><span class="w"> </span><span class="n">considered</span><span class="w"> </span><span class="n">implementation</span><span class="w"> </span><span class="n">detail</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">may</span><span class="w"> </span><span class="n">vary</span><span class="w"> </span><span class="n">between</span><span class="w"> </span><span class="n">Python</span>
+<span class="w">    </span><span class="n">implementations</span><span class="o">.</span><span class="w">  </span><span class="n">When</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">doubt</span><span class="p">,</span><span class="w"> </span><span class="n">consult</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="n">reference</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="n">the</span>
+<span class="w">    </span><span class="n">location</span><span class="w"> </span><span class="n">listed</span><span class="w"> </span><span class="n">above</span><span class="o">.</span>
+
+<span class="n">DESCRIPTION</span>
+<span class="w">    </span><span class="n">This</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="n">provides</span><span class="w"> </span><span class="n">access</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">mathematical</span><span class="w"> </span><span class="n">functions</span>
+<span class="w">    </span><span class="n">defined</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="n">standard</span><span class="o">.</span>
+
+<span class="n">FUNCTIONS</span>
+<span class="w">    </span><span class="nb">acos</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Return</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">arc</span><span class="w"> </span><span class="n">cosine</span><span class="w"> </span><span class="p">(</span><span class="n">measured</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">radians</span><span class="p">)</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">x</span><span class="o">.</span>
+
+<span class="w">        </span><span class="n">The</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">between</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">pi</span><span class="o">.</span>
+
+<span class="w">    </span><span class="n">acosh</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Return</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">inverse</span><span class="w"> </span><span class="n">hyperbolic</span><span class="w"> </span><span class="n">cosine</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">x</span><span class="o">.</span>
+
+<span class="w">    </span><span class="nb">asin</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Return</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">arc</span><span class="w"> </span><span class="n">sine</span><span class="w"> </span><span class="p">(</span><span class="n">measured</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">radians</span><span class="p">)</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">x</span><span class="o">.</span>
+
+<span class="w">        </span><span class="n">The</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">between</span><span class="w"> </span><span class="o">-</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">pi</span><span class="o">/</span><span class="mf">2.</span>
+
+<span class="w">    </span><span class="n">asinh</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Return</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">inverse</span><span class="w"> </span><span class="n">hyperbolic</span><span class="w"> </span><span class="n">sine</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">x</span><span class="o">.</span>
+
+<span class="w">    </span><span class="nb">atan</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Return</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">arc</span><span class="w"> </span><span class="n">tangent</span><span class="w"> </span><span class="p">(</span><span class="n">measured</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">radians</span><span class="p">)</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">x</span><span class="o">.</span>
+
+<span class="w">        </span><span class="n">The</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">between</span><span class="w"> </span><span class="o">-</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">pi</span><span class="o">/</span><span class="mf">2.</span>
+
+<span class="w">    </span><span class="nb">atan2</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Return</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">arc</span><span class="w"> </span><span class="n">tangent</span><span class="w"> </span><span class="p">(</span><span class="n">measured</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">radians</span><span class="p">)</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">y</span><span class="o">/</span><span class="n">x</span><span class="o">.</span>
+
+<span class="w">        </span><span class="n">Unlike</span><span class="w"> </span><span class="nb">atan</span><span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">signs</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">both</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">considered</span><span class="o">.</span>
+
+<span class="w">    </span><span class="n">atanh</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Return</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">inverse</span><span class="w"> </span><span class="n">hyperbolic</span><span class="w"> </span><span class="n">tangent</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">x</span><span class="o">.</span>
+
+<span class="w">    </span><span class="n">cbrt</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Return</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">cube</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">x</span><span class="o">.</span>
+
+<span class="w">    </span><span class="nb">ceil</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Return</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">ceiling</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">Integral</span><span class="o">.</span>
+
+<span class="w">        </span><span class="n">This</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">smallest</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">x</span><span class="o">.</span>
+
+<span class="w">    </span><span class="n">comb</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Number</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">ways</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">choose</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="n">items</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="n">items</span><span class="w"> </span><span class="n">without</span><span class="w"> </span><span class="n">repetition</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">without</span><span class="w"> </span><span class="n">order</span><span class="o">.</span>
+
+<span class="w">        </span><span class="n">Evaluates</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">n</span><span class="o">!</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">k</span><span class="o">!</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="o">!</span><span class="p">)</span><span class="w"> </span><span class="n">when</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">evaluates</span>
+<span class="w">        </span><span class="n">to</span><span class="w"> </span><span class="n">zero</span><span class="w"> </span><span class="n">when</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">n</span><span class="o">.</span>
+
+<span class="w">        </span><span class="n">Also</span><span class="w"> </span><span class="n">called</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">binomial</span><span class="w"> </span><span class="n">coefficient</span><span class="w"> </span><span class="n">because</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">equivalent</span>
+<span class="w">        </span><span class="n">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">coefficient</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">k</span><span class="o">-</span><span class="n">th</span><span class="w"> </span><span class="n">term</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">polynomial</span><span class="w"> </span><span class="n">expansion</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span>
+<span class="w">        </span><span class="n">expression</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="n">n</span><span class="o">.</span>
+
+<span class="w">        </span><span class="n">Raises</span><span class="w"> </span><span class="n">TypeError</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">either</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">arguments</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">integers</span><span class="o">.</span>
+<span class="w">        </span><span class="n">Raises</span><span class="w"> </span><span class="n">ValueError</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">either</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">arguments</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">negative</span><span class="o">.</span>
+
+<span class="w">    </span><span class="n">copysign</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="nb nb-Type">float</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">magnitude</span><span class="w"> </span><span class="p">(</span><span class="n">absolute</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">but</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="nb">sign</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">y</span><span class="o">.</span>
+
+<span class="w">        </span><span class="n">On</span><span class="w"> </span><span class="n">platforms</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">support</span><span class="w"> </span><span class="n">signed</span><span class="w"> </span><span class="n">zeros</span><span class="p">,</span><span class="w"> </span><span class="n">copysign</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="w">        </span><span class="n">returns</span><span class="w"> </span><span class="o">-</span><span class="mf">1.0</span><span class="o">.</span>
+
+<span class="w">    </span><span class="nb">cos</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Return</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">cosine</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">(</span><span class="n">measured</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">radians</span><span class="p">)</span><span class="o">.</span>
+
+<span class="w">    </span><span class="nb">cosh</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Return</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">hyperbolic</span><span class="w"> </span><span class="n">cosine</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">x</span><span class="o">.</span>
+
+<span class="w">    </span><span class="n">degrees</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Convert</span><span class="w"> </span><span class="n">angle</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">radians</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">degrees</span><span class="o">.</span>
+
+<span class="w">    </span><span class="n">dist</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">q</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Return</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">Euclidean</span><span class="w"> </span><span class="n">distance</span><span class="w"> </span><span class="n">between</span><span class="w"> </span><span class="n">two</span><span class="w"> </span><span class="n">points</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">q</span><span class="o">.</span>
+
+<span class="w">        </span><span class="n">The</span><span class="w"> </span><span class="n">points</span><span class="w"> </span><span class="n">should</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">specified</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">sequences</span><span class="w"> </span><span class="p">(</span><span class="ow">or</span><span class="w"> </span><span class="n">iterables</span><span class="p">)</span><span class="w"> </span><span class="n">of</span>
+<span class="w">        </span><span class="n">coordinates</span><span class="o">.</span><span class="w">  </span><span class="n">Both</span><span class="w"> </span><span class="n">inputs</span><span class="w"> </span><span class="n">must</span><span class="w"> </span><span class="n">have</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">same</span><span class="w"> </span><span class="n">dimension</span><span class="o">.</span>
+
+<span class="w">        </span><span class="n">Roughly</span><span class="w"> </span><span class="n">equivalent</span><span class="w"> </span><span class="n">to</span><span class="p">:</span>
+<span class="w">            </span><span class="nb">sqrt</span><span class="p">(</span><span class="n">sum</span><span class="p">((</span><span class="n">px</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">qx</span><span class="p">)</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="mf">2.0</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">px</span><span class="p">,</span><span class="w"> </span><span class="n">qx</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">zip</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">q</span><span class="p">)))</span>
+
+<span class="w">    </span><span class="n">erf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Error</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="n">x</span><span class="o">.</span>
+
+<span class="w">    </span><span class="n">erfc</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Complementary</span><span class="w"> </span><span class="n">error</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="n">x</span><span class="o">.</span>
+
+<span class="w">    </span><span class="nb">exp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Return</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="n">raised</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">power</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">x</span><span class="o">.</span>
+
+<span class="w">    </span><span class="n">exp2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Return</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">raised</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">power</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">x</span><span class="o">.</span>
+
+<span class="w">    </span><span class="n">expm1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Return</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="mf">1.</span>
+
+<span class="w">        </span><span class="n">This</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="n">avoids</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">loss</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">precision</span><span class="w"> </span><span class="n">involved</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">direct</span><span class="w"> </span><span class="n">evaluation</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">small</span><span class="w"> </span><span class="n">x</span><span class="o">.</span>
+
+<span class="w">    </span><span class="n">fabs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Return</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">absolute</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="nb nb-Type">float</span><span class="w"> </span><span class="n">x</span><span class="o">.</span>
+
+<span class="w">    </span><span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Find</span><span class="w"> </span><span class="n">n</span><span class="o">!.</span>
+
+<span class="w">        </span><span class="n">Raise</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">ValueError</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">negative</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">non</span><span class="o">-</span><span class="n">integral</span><span class="o">.</span>
+
+<span class="w">    </span><span class="nb">floor</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Return</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="nb">floor</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">Integral</span><span class="o">.</span>
+
+<span class="w">        </span><span class="n">This</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">largest</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">x</span><span class="o">.</span>
+
+<span class="w">    </span><span class="nb">fmod</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Return</span><span class="w"> </span><span class="nb">fmod</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">),</span><span class="w"> </span><span class="n">according</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">platform</span><span class="w"> </span><span class="n">C</span><span class="o">.</span>
+
+<span class="w">        </span><span class="n">x</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">may</span><span class="w"> </span><span class="n">differ</span><span class="o">.</span>
+
+<span class="w">    </span><span class="n">frexp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Return</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">mantissa</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">exponent</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">pair</span><span class="w"> </span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="o">.</span>
+
+<span class="w">        </span><span class="n">m</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="nb nb-Type">float</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="nb nb-Type">int</span><span class="p">,</span><span class="w"> </span><span class="n">such</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2.</span><span class="o">**</span><span class="n">e</span><span class="o">.</span>
+<span class="w">        </span><span class="n">If</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">both</span><span class="w"> </span><span class="mf">0.</span><span class="w">  </span><span class="n">Else</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">1.0</span><span class="o">.</span>
+
+<span class="w">    </span><span class="n">fsum</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Return</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">accurate</span><span class="w"> </span><span class="n">floating</span><span class="o">-</span><span class="n">point</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">values</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">iterable</span><span class="w"> </span><span class="n">seq</span><span class="o">.</span>
+
+<span class="w">        </span><span class="n">Assumes</span><span class="w"> </span><span class="n">IEEE</span><span class="o">-</span><span class="mi">754</span><span class="w"> </span><span class="n">floating</span><span class="o">-</span><span class="n">point</span><span class="w"> </span><span class="n">arithmetic</span><span class="o">.</span>
+
+<span class="w">    </span><span class="n">gamma</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Gamma</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="n">x</span><span class="o">.</span>
+
+<span class="w">    </span><span class="n">gcd</span><span class="p">(</span><span class="o">*</span><span class="n">integers</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Greatest</span><span class="w"> </span><span class="n">Common</span><span class="w"> </span><span class="n">Divisor</span><span class="o">.</span>
+
+<span class="w">    </span><span class="n">hypot</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="w">        </span><span class="n">hypot</span><span class="p">(</span><span class="o">*</span><span class="n">coordinates</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">value</span>
+
+<span class="w">        </span><span class="n">Multidimensional</span><span class="w"> </span><span class="n">Euclidean</span><span class="w"> </span><span class="n">distance</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">origin</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">point</span><span class="o">.</span>
+
+<span class="w">        </span><span class="n">Roughly</span><span class="w"> </span><span class="n">equivalent</span><span class="w"> </span><span class="n">to</span><span class="p">:</span>
+<span class="w">            </span><span class="nb">sqrt</span><span class="p">(</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">coordinates</span><span class="p">))</span>
+
+<span class="w">        </span><span class="n">For</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">two</span><span class="w"> </span><span class="n">dimensional</span><span class="w"> </span><span class="n">point</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">),</span><span class="w"> </span><span class="n">gives</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">hypotenuse</span>
+<span class="w">        </span><span class="n">using</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">Pythagorean</span><span class="w"> </span><span class="n">theorem</span><span class="p">:</span><span class="w">  </span><span class="nb">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="o">*</span><span class="n">y</span><span class="p">)</span><span class="o">.</span>
+
+<span class="w">        </span><span class="n">For</span><span class="w"> </span><span class="n">example</span><span class="p">,</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">hypotenuse</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="mi">3</span><span class="o">/</span><span class="mi">4</span><span class="o">/</span><span class="mi">5</span><span class="w"> </span><span class="n">right</span><span class="w"> </span><span class="n">triangle</span><span class="w"> </span><span class="k">is</span><span class="p">:</span>
+
+<span class="w">            </span><span class="o">&gt;&gt;&gt;</span><span class="w"> </span><span class="n">hypot</span><span class="p">(</span><span class="mf">3.0</span><span class="p">,</span><span class="w"> </span><span class="mf">4.0</span><span class="p">)</span>
+<span class="w">            </span><span class="mf">5.0</span>
+
+<span class="w">    </span><span class="n">isclose</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">rel_tol</span><span class="o">=</span><span class="mf">1e-09</span><span class="p">,</span><span class="w"> </span><span class="n">abs_tol</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Determine</span><span class="w"> </span><span class="n">whether</span><span class="w"> </span><span class="n">two</span><span class="w"> </span><span class="n">floating</span><span class="o">-</span><span class="n">point</span><span class="w"> </span><span class="n">numbers</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">close</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">value</span><span class="o">.</span>
+
+<span class="w">          </span><span class="n">rel_tol</span>
+<span class="w">            </span><span class="n">maximum</span><span class="w"> </span><span class="n">difference</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">being</span><span class="w"> </span><span class="n">considered</span><span class="w"> </span><span class="s2">&quot;close&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">relative</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">the</span>
+<span class="w">            </span><span class="n">magnitude</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="n">values</span>
+<span class="w">          </span><span class="n">abs_tol</span>
+<span class="w">            </span><span class="n">maximum</span><span class="w"> </span><span class="n">difference</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">being</span><span class="w"> </span><span class="n">considered</span><span class="w"> </span><span class="s2">&quot;close&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">regardless</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span>
+<span class="w">            </span><span class="n">magnitude</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="n">values</span>
+
+<span class="w">        </span><span class="n">Return</span><span class="w"> </span><span class="n">True</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">close</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">False</span><span class="w"> </span><span class="n">otherwise</span><span class="o">.</span>
+
+<span class="w">        </span><span class="n">For</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">values</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">considered</span><span class="w"> </span><span class="n">close</span><span class="p">,</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">difference</span><span class="w"> </span><span class="n">between</span><span class="w"> </span><span class="n">them</span>
+<span class="w">        </span><span class="n">must</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">smaller</span><span class="w"> </span><span class="n">than</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="n">least</span><span class="w"> </span><span class="n">one</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">tolerances</span><span class="o">.</span>
+
+<span class="w">        </span><span class="o">-</span><span class="n">inf</span><span class="p">,</span><span class="w"> </span><span class="n">inf</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">NaN</span><span class="w"> </span><span class="n">behave</span><span class="w"> </span><span class="n">similarly</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">IEEE</span><span class="w"> </span><span class="mi">754</span><span class="w"> </span><span class="n">Standard</span><span class="o">.</span><span class="w">  </span><span class="n">That</span>
+<span class="w">        </span><span class="k">is</span><span class="p">,</span><span class="w"> </span><span class="n">NaN</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">close</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">anything</span><span class="p">,</span><span class="w"> </span><span class="n">even</span><span class="w"> </span><span class="n">itself</span><span class="o">.</span><span class="w">  </span><span class="n">inf</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="o">-</span><span class="n">inf</span><span class="w"> </span><span class="n">are</span>
+<span class="w">        </span><span class="n">only</span><span class="w"> </span><span class="n">close</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">themselves</span><span class="o">.</span>
+
+<span class="w">    </span><span class="n">isfinite</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Return</span><span class="w"> </span><span class="n">True</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">neither</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">infinity</span><span class="w"> </span><span class="n">nor</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">NaN</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">False</span><span class="w"> </span><span class="n">otherwise</span><span class="o">.</span>
+
+<span class="w">    </span><span class="n">isinf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Return</span><span class="w"> </span><span class="n">True</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">positive</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">negative</span><span class="w"> </span><span class="n">infinity</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">False</span><span class="w"> </span><span class="n">otherwise</span><span class="o">.</span>
+
+<span class="w">    </span><span class="n">isnan</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Return</span><span class="w"> </span><span class="n">True</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">NaN</span><span class="w"> </span><span class="p">(</span><span class="ow">not</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">number</span><span class="p">),</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">False</span><span class="w"> </span><span class="n">otherwise</span><span class="o">.</span>
+
+<span class="w">    </span><span class="n">isqrt</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Return</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="n">part</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">square</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">input</span><span class="o">.</span>
+
+<span class="w">    </span><span class="n">lcm</span><span class="p">(</span><span class="o">*</span><span class="n">integers</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Least</span><span class="w"> </span><span class="n">Common</span><span class="w"> </span><span class="n">Multiple</span><span class="o">.</span>
+
+<span class="w">    </span><span class="n">ldexp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Return</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="n">i</span><span class="p">)</span><span class="o">.</span>
+
+<span class="w">        </span><span class="n">This</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">essentially</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">inverse</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">frexp</span><span class="p">()</span><span class="o">.</span>
+
+<span class="w">    </span><span class="n">lgamma</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Natural</span><span class="w"> </span><span class="n">logarithm</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">absolute</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">Gamma</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="n">x</span><span class="o">.</span>
+
+<span class="w">    </span><span class="nb">log</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="w">        </span><span class="nb">log</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">base</span><span class="o">=</span><span class="n">math</span><span class="o">.</span><span class="n">e</span><span class="p">])</span>
+<span class="w">        </span><span class="n">Return</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">logarithm</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">given</span><span class="w"> </span><span class="n">base</span><span class="o">.</span>
+
+<span class="w">        </span><span class="n">If</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">base</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">specified</span><span class="p">,</span><span class="w"> </span><span class="n">returns</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">natural</span><span class="w"> </span><span class="n">logarithm</span><span class="w"> </span><span class="p">(</span><span class="n">base</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">x</span><span class="o">.</span>
+
+<span class="w">    </span><span class="n">log10</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Return</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">base</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="n">logarithm</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">x</span><span class="o">.</span>
+
+<span class="w">    </span><span class="n">log1p</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Return</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">natural</span><span class="w"> </span><span class="n">logarithm</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="mi">1</span><span class="o">+</span><span class="n">x</span><span class="w"> </span><span class="p">(</span><span class="n">base</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="o">.</span>
+
+<span class="w">        </span><span class="n">The</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">computed</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">way</span><span class="w"> </span><span class="n">which</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">accurate</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">near</span><span class="w"> </span><span class="n">zero</span><span class="o">.</span>
+
+<span class="w">    </span><span class="n">log2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Return</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">base</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">logarithm</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">x</span><span class="o">.</span>
+
+<span class="w">    </span><span class="n">modf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Return</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">fractional</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="n">parts</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">x</span><span class="o">.</span>
+
+<span class="w">        </span><span class="n">Both</span><span class="w"> </span><span class="n">results</span><span class="w"> </span><span class="n">carry</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="nb">sign</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">floats</span><span class="o">.</span>
+
+<span class="w">    </span><span class="n">nextafter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">steps</span><span class="o">=</span><span class="n">None</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Return</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">floating</span><span class="o">-</span><span class="n">point</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">given</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">steps</span><span class="w"> </span><span class="n">after</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">towards</span><span class="w"> </span><span class="n">y</span><span class="o">.</span>
+
+<span class="w">        </span><span class="n">If</span><span class="w"> </span><span class="n">steps</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">specified</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">None</span><span class="p">,</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="n">defaults</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="mf">1.</span>
+
+<span class="w">        </span><span class="n">Raises</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">TypeError</span><span class="p">,</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">double</span><span class="p">,</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">steps</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">integer</span><span class="o">.</span>
+<span class="w">        </span><span class="n">Raises</span><span class="w"> </span><span class="n">ValueError</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">steps</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">negative</span><span class="o">.</span>
+
+<span class="w">    </span><span class="n">perm</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="o">=</span><span class="n">None</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Number</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">ways</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">choose</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="n">items</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="n">items</span><span class="w"> </span><span class="n">without</span><span class="w"> </span><span class="n">repetition</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">order</span><span class="o">.</span>
+
+<span class="w">        </span><span class="n">Evaluates</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">n</span><span class="o">!</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="o">!</span><span class="w"> </span><span class="n">when</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">evaluates</span>
+<span class="w">        </span><span class="n">to</span><span class="w"> </span><span class="n">zero</span><span class="w"> </span><span class="n">when</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">n</span><span class="o">.</span>
+
+<span class="w">        </span><span class="n">If</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">specified</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">None</span><span class="p">,</span><span class="w"> </span><span class="n">then</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="n">defaults</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">n</span>
+<span class="w">        </span><span class="ow">and</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="n">returns</span><span class="w"> </span><span class="n">n</span><span class="o">!.</span>
+
+<span class="w">        </span><span class="n">Raises</span><span class="w"> </span><span class="n">TypeError</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">either</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">arguments</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">integers</span><span class="o">.</span>
+<span class="w">        </span><span class="n">Raises</span><span class="w"> </span><span class="n">ValueError</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">either</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">arguments</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">negative</span><span class="o">.</span>
+
+<span class="w">    </span><span class="nb">pow</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Return</span><span class="w"> </span><span class="n">x</span><span class="o">**</span><span class="n">y</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">power</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="o">.</span>
+
+<span class="w">    </span><span class="n">prod</span><span class="p">(</span><span class="n">iterable</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Calculate</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">product</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">all</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">elements</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="n">iterable</span><span class="o">.</span>
+
+<span class="w">        </span><span class="n">The</span><span class="w"> </span><span class="n">default</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">product</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="mf">1.</span>
+
+<span class="w">        </span><span class="n">When</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">iterable</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">empty</span><span class="p">,</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="n">value</span><span class="o">.</span><span class="w">  </span><span class="n">This</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="k">is</span>
+<span class="w">        </span><span class="n">intended</span><span class="w"> </span><span class="n">specifically</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">numeric</span><span class="w"> </span><span class="n">values</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">may</span><span class="w"> </span><span class="n">reject</span>
+<span class="w">        </span><span class="n">non</span><span class="o">-</span><span class="n">numeric</span><span class="w"> </span><span class="n">types</span><span class="o">.</span>
+
+<span class="w">    </span><span class="n">radians</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Convert</span><span class="w"> </span><span class="n">angle</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">degrees</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">radians</span><span class="o">.</span>
+
+<span class="w">    </span><span class="n">remainder</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Difference</span><span class="w"> </span><span class="n">between</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">closest</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="n">multiple</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">y</span><span class="o">.</span>
+
+<span class="w">        </span><span class="n">Return</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">n</span><span class="o">*</span><span class="n">y</span><span class="w"> </span><span class="n">where</span><span class="w"> </span><span class="n">n</span><span class="o">*</span><span class="n">y</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">closest</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="n">multiple</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">y</span><span class="o">.</span>
+<span class="w">        </span><span class="n">In</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">case</span><span class="w"> </span><span class="n">where</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">exactly</span><span class="w"> </span><span class="n">halfway</span><span class="w"> </span><span class="n">between</span><span class="w"> </span><span class="n">two</span><span class="w"> </span><span class="n">multiples</span><span class="w"> </span><span class="n">of</span>
+<span class="w">        </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">nearest</span><span class="w"> </span><span class="n">even</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">used</span><span class="o">.</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">always</span><span class="w"> </span><span class="n">exact</span><span class="o">.</span>
+
+<span class="w">    </span><span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Return</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">sine</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">(</span><span class="n">measured</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">radians</span><span class="p">)</span><span class="o">.</span>
+
+<span class="w">    </span><span class="nb">sinh</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Return</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">hyperbolic</span><span class="w"> </span><span class="n">sine</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">x</span><span class="o">.</span>
+
+<span class="w">    </span><span class="nb">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Return</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">square</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">x</span><span class="o">.</span>
+
+<span class="w">    </span><span class="n">sumprod</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">q</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Return</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">products</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">values</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">two</span><span class="w"> </span><span class="n">iterables</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">q</span><span class="o">.</span>
+
+<span class="w">        </span><span class="n">Roughly</span><span class="w"> </span><span class="n">equivalent</span><span class="w"> </span><span class="n">to</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">sum</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">starmap</span><span class="p">(</span><span class="n">operator</span><span class="o">.</span><span class="n">mul</span><span class="p">,</span><span class="w"> </span><span class="n">zip</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">q</span><span class="p">,</span><span class="w"> </span><span class="n">strict</span><span class="o">=</span><span class="n">True</span><span class="p">)))</span>
+
+<span class="w">        </span><span class="n">For</span><span class="w"> </span><span class="nb nb-Type">float</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">mixed</span><span class="w"> </span><span class="nb nb-Type">int</span><span class="o">/</span><span class="nb nb-Type">float</span><span class="w"> </span><span class="n">inputs</span><span class="p">,</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">intermediate</span><span class="w"> </span><span class="n">products</span>
+<span class="w">        </span><span class="ow">and</span><span class="w"> </span><span class="n">sums</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">computed</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">extended</span><span class="w"> </span><span class="n">precision</span><span class="o">.</span>
+
+<span class="w">    </span><span class="nb">tan</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Return</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">tangent</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">(</span><span class="n">measured</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">radians</span><span class="p">)</span><span class="o">.</span>
+
+<span class="w">    </span><span class="nb">tanh</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Return</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">hyperbolic</span><span class="w"> </span><span class="n">tangent</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">x</span><span class="o">.</span>
+
+<span class="w">    </span><span class="n">trunc</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Truncates</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">Real</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">nearest</span><span class="w"> </span><span class="n">Integral</span><span class="w"> </span><span class="n">toward</span><span class="w"> </span><span class="mf">0.</span>
+
+<span class="w">        </span><span class="n">Uses</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">__trunc__</span><span class="w"> </span><span class="n">magic</span><span class="w"> </span><span class="n">method</span><span class="o">.</span>
+
+<span class="w">    </span><span class="n">ulp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Return</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">least</span><span class="w"> </span><span class="n">significant</span><span class="w"> </span><span class="n">bit</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="nb nb-Type">float</span><span class="w"> </span><span class="n">x</span><span class="o">.</span>
+
+<span class="n">DATA</span>
+<span class="w">    </span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.718281828459045</span>
+<span class="w">    </span><span class="n">inf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inf</span>
+<span class="w">    </span><span class="n">nan</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nan</span>
+<span class="w">    </span><span class="n">pi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.141592653589793</span>
+<span class="w">    </span><span class="n">tau</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">6.283185307179586</span>
+
+<span class="n">FILE</span>
+<span class="w">    </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">kiran</span><span class="o">/</span><span class="n">miniconda3</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">py12</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">12</span><span class="o">/</span><span class="n">lib</span><span class="o">-</span><span class="n">dynload</span><span class="o">/</span><span class="n">math</span><span class="o">.</span><span class="n">cpython</span><span class="o">-</span><span class="mi">312</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gnu</span><span class="o">.</span><span class="n">so</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="s1">&#39;/home/kiran/miniconda3/envs/py12/lib/python312.zip&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;/home/kiran/miniconda3/envs/py12/lib/python3.12&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;/home/kiran/miniconda3/envs/py12/lib/python3.12/lib-dynload&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;/home/kiran/miniconda3/envs/py12/lib/python3.12/site-packages&#39;</span><span class="p">]</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+
+<hr>
+<p><strong>Score: 10</strong></p>
+<p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+
+</article>
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+    <aside class="large-3 columns">
+        <h5 class="sidebar-title">Site</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/archives.html">Archives</a>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/tags.html">Tags</a>
+        </ul>
+
+		
+        <h5 class="sidebar-title">Categories</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/pandas-work.html">pandas-work</a></li>
+   
+        </ul>
+
+		
+        <h5 class="sidebar-title">Social</h5>
+        <ul class="side-nav">
+            <li><a href="https://github.com/accsaikiran-sys/">GitHub</a></li>
+            <li><a href="<linkedin handle>">LinkedIn</a></li>
+        </ul>
+
+    </aside> <!-- End Sidebar -->
+
+</div> <!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+              <!--                  <p>My Python Notes by Sai Kiran Reddy</p> -->
+            </div>
+            </div>
+    </div>
+</footer>
+</body>
+</html>
