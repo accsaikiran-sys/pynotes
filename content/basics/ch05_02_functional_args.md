@@ -2,8 +2,8 @@
 title: Ch05 02 Functional Args
 date: 2025-12-10
 author: Your Name
-cell_count: 9
-score: 5
+cell_count: 12
+score: 10
 ---
 
 ```python
@@ -104,9 +104,48 @@ full_profile("Alice", "Python", "ML", age=30, city="Toronto")
 
 
 ```python
+def divide(a, b, /):
+    return a / b
+
+print(divide(10, 2))
+# divide(a=10, b=2)  # Raises TypeError
+```
+
+    5.0
+
+
+
+```python
+def configure(*, mode="light"):
+    print(f"Mode: {mode}")
+
+configure(mode="dark")
+```
+
+    Mode: dark
+
+
+
+```python
+def multiply(a, b, c):
+    return a * b * c
+
+values = (2, 3, 4)
+print(multiply(*values))  # Output: 24
+
+data = {"a": 1, "b": 2, "c": 3}
+print(multiply(**data))   # Output: 6
+```
+
+    24
+    6
+
+
+
+```python
 
 ```
 
 
 ---
-**Score: 5**
+**Score: 10**
