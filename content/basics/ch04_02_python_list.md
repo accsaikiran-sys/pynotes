@@ -2,7 +2,7 @@
 title: Ch04 02 Python List
 date: 2025-12-10
 author: Your Name
-cell_count: 11
+cell_count: 12
 score: 10
 ---
 
@@ -131,6 +131,21 @@ print(squares)  # Output: [0, 1, 4, 9, 16]
 ```
 
     [0, 1, 4, 9, 16]
+
+
+
+```python
+numbers = [4, 1, 3, 2]
+
+numbers.sort()
+print(numbers)  # Output: [1, 2, 3, 4]
+
+numbers.reverse()
+print(numbers)  # Output: [4, 3, 2, 1]
+```
+
+    [1, 2, 3, 4]
+    [4, 3, 2, 1]
 
 
 
