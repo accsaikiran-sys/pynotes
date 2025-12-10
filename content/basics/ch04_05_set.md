@@ -2,8 +2,8 @@
 title: Ch04 05 Set
 date: 2025-12-10
 author: Your Name
-cell_count: 9
-score: 5
+cell_count: 11
+score: 10
 ---
 
 ```python
@@ -100,9 +100,37 @@ for lang in languages:
 
 
 ```python
+A = {1, 2, 3}
+B = {1, 2}
+
+print(B.issubset(A))     # True
+print(A.issuperset(B))   # True
+```
+
+    True
+    True
+
+
+
+```python
+values_set = {1, 2, 3}
+
+list_version = list(values_set)
+tuple_version = tuple(values_set)
+
+print(list_version)   # [1, 2, 3]
+print(tuple_version)  # (1, 2, 3)
+```
+
+    [1, 2, 3]
+    (1, 2, 3)
+
+
+
+```python
 
 ```
 
 
 ---
-**Score: 5**
+**Score: 10**
