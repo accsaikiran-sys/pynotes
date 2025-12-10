@@ -147,6 +147,32 @@ Engineer
 <span class="k">Go</span>
 </code></pre></div>
 
+<div class="highlight"><pre><span></span><code><span class="n">values</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="n">list_version</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+<span class="n">tuple_again</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">list_version</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">list_version</span><span class="p">)</span>   <span class="c1"># [1, 2, 3]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tuple_again</span><span class="p">)</span>    <span class="c1"># (1, 2, 3)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="k">[1, 2, 3]</span>
+<span class="na">(1, 2, 3)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_coordinates</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mf">40.7128</span><span class="p">,</span> <span class="o">-</span><span class="mf">74.0060</span><span class="p">)</span>
+
+<span class="n">lat</span><span class="p">,</span> <span class="n">lon</span> <span class="o">=</span> <span class="n">get_coordinates</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lon</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">40.7128</span>
+<span class="o">-</span><span class="mf">74.006</span>
+</code></pre></div>
+
 <div class="highlight"><pre><span></span><code>
 </code></pre></div>
 

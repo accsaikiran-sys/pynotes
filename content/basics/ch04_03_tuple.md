@@ -2,7 +2,7 @@
 title: Ch04 03 Tuple
 date: 2025-12-10
 author: Your Name
-cell_count: 10
+cell_count: 12
 score: 10
 ---
 
@@ -116,6 +116,36 @@ for lang in languages:
     Python
     Java
     Go
+
+
+
+```python
+values = (1, 2, 3)
+
+list_version = list(values)
+tuple_again = tuple(list_version)
+
+print(list_version)   # [1, 2, 3]
+print(tuple_again)    # (1, 2, 3)
+```
+
+    [1, 2, 3]
+    (1, 2, 3)
+
+
+
+```python
+def get_coordinates():
+    return (40.7128, -74.0060)
+
+lat, lon = get_coordinates()
+
+print(lat)
+print(lon)
+```
+
+    40.7128
+    -74.006
 
 
 
