@@ -2,8 +2,8 @@
 title: Ch04 06 Dictionary
 date: 2025-12-10
 author: Your Name
-cell_count: 9
-score: 5
+cell_count: 13
+score: 10
 ---
 
 ```python
@@ -118,6 +118,44 @@ merged = dict1 | dict2
 print(merged)
 ```
 
+    {'a': 1, 'b': 2, 'c': 3, 'd': 4}
+
+
+
+```python
+employee = {
+    "id": 101,
+    "personal": {
+        "name": "John",
+        "email": "john@example.com"
+    }
+}
+
+print(employee["personal"]["name"])  # Output: John
+```
+
+    John
+
+
+
+```python
+squares = {x: x**2 for x in range(5)}
+print(squares)  # {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}
+```
+
+    {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}
+
+
+
+```python
+
+```
+
+
+```python
+
+```
+
 
 ---
-**Score: 5**
+**Score: 10**
