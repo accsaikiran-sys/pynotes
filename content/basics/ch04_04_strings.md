@@ -2,8 +2,8 @@
 title: Ch04 04 Strings
 date: 2025-12-10
 author: Your Name
-cell_count: 6
-score: 5
+cell_count: 12
+score: 10
 ---
 
 ```python
@@ -70,9 +70,96 @@ print(name)
 
 
 ```python
+first = "Hello"
+second = "World"
+
+print(first + " " + second)  # Hello World
+print(first * 3)             # HelloHelloHello
+```
+
+    Hello World
+    HelloHelloHello
+
+
+
+```python
+message = "Data Science"
+
+print(len(message))         # Output: 12
+print("Data" in message)    # True
+print("AI" not in message)  # True
+```
+
+    12
+    True
+    True
+
+
+
+```python
+text = "  python programming  "
+
+print(text.upper())     # PYTHON PROGRAMMING
+print(text.lower())     # python programming
+print(text.strip())     # python programming
+print(text.replace("python", "Java"))  # Java programming
+```
+
+      PYTHON PROGRAMMING  
+      python programming  
+    python programming
+      Java programming  
+
+
+
+```python
+sentence = "Python is powerful"
+
+words = sentence.split(" ")
+print(words)  # ['Python', 'is', 'powerful']
+
+joined = "-".join(words)
+print(joined)  # Python-is-powerful
+```
+
+    ['Python', 'is', 'powerful']
+    Python-is-powerful
+
+
+
+```python
+sentence = "Python is powerful"
+
+words = sentence.split(" ")
+print(words)  # ['Python', 'is', 'powerful']
+
+joined = "-".join(words)
+print(joined)  # Python-is-powerful
+```
+
+    ['Python', 'is', 'powerful']
+    Python-is-powerful
+
+
+
+```python
+word = "Code"
+
+for char in word:
+    print(char)
+```
+
+    C
+    o
+    d
+    e
+
+
+
+```python
 
 ```
 
 
 ---
-**Score: 5**
+**Score: 10**

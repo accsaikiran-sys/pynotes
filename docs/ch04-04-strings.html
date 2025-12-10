@@ -105,11 +105,86 @@ ramming
 <div class="highlight"><pre><span></span><code>Python
 </code></pre></div>
 
+<div class="highlight"><pre><span></span><code><span class="n">first</span> <span class="o">=</span> <span class="s2">&quot;Hello&quot;</span>
+<span class="n">second</span> <span class="o">=</span> <span class="s2">&quot;World&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">first</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">second</span><span class="p">)</span>  <span class="c1"># Hello World</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">first</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>             <span class="c1"># HelloHelloHello</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>Hello World
+HelloHelloHello
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;Data Science&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">message</span><span class="p">))</span>         <span class="c1"># Output: 12</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data&quot;</span> <span class="ow">in</span> <span class="n">message</span><span class="p">)</span>    <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;AI&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">message</span><span class="p">)</span>  <span class="c1"># True</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">12</span>
+<span class="n">True</span>
+<span class="n">True</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;  python programming  &quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>     <span class="c1"># PYTHON PROGRAMMING</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>     <span class="c1"># python programming</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>     <span class="c1"># python programming</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;python&quot;</span><span class="p">,</span> <span class="s2">&quot;Java&quot;</span><span class="p">))</span>  <span class="c1"># Java programming</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>  PYTHON PROGRAMMING  
+  python programming  
+python programming
+  Java programming
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">sentence</span> <span class="o">=</span> <span class="s2">&quot;Python is powerful&quot;</span>
+
+<span class="n">words</span> <span class="o">=</span> <span class="n">sentence</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>  <span class="c1"># [&#39;Python&#39;, &#39;is&#39;, &#39;powerful&#39;]</span>
+
+<span class="n">joined</span> <span class="o">=</span> <span class="s2">&quot;-&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">joined</span><span class="p">)</span>  <span class="c1"># Python-is-powerful</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="k">[&#39;Python&#39;, &#39;is&#39;, &#39;powerful&#39;]</span>
+<span class="na">Python-is-powerful</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">sentence</span> <span class="o">=</span> <span class="s2">&quot;Python is powerful&quot;</span>
+
+<span class="n">words</span> <span class="o">=</span> <span class="n">sentence</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>  <span class="c1"># [&#39;Python&#39;, &#39;is&#39;, &#39;powerful&#39;]</span>
+
+<span class="n">joined</span> <span class="o">=</span> <span class="s2">&quot;-&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">joined</span><span class="p">)</span>  <span class="c1"># Python-is-powerful</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="k">[&#39;Python&#39;, &#39;is&#39;, &#39;powerful&#39;]</span>
+<span class="na">Python-is-powerful</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">word</span> <span class="o">=</span> <span class="s2">&quot;Code&quot;</span>
+
+<span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>C
+o
+d
+e
+</code></pre></div>
+
 <div class="highlight"><pre><span></span><code>
 </code></pre></div>
 
 <hr>
-<p><strong>Score: 5</strong></p>
+<p><strong>Score: 10</strong></p>
 <p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
 
 </p>
