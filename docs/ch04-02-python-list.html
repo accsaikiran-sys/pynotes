@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Ch04 02 Python List</title>
+
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/normalize.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/style.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/pygments.css" />	
+    <script src="https://accsaikiran-sys.github.io/pynotes/theme/js/modernizr.js"></script>
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<nav>
+<div class="top-bar">
+<div class="row">
+    <div class="large-9 large-centered columns">
+	    <h1><a href="https://accsaikiran-sys.github.io/pynotes">My Python Notes</a></h1>
+    </div>
+</div>
+</div>
+
+<!-- Show menu items and pages -->
+<div class="row">
+<div class="large-9 columns">
+    <ul class="button-group navigation">
+
+    </ul>
+</div>
+</div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns">
+<article>
+    <header>
+        <h3 class="article-title"><a href="https://accsaikiran-sys.github.io/pynotes/ch04-02-python-list.html" rel="bookmark"
+        title="Permalink to Ch04 02 Python List">Ch04 02 Python List</a></h3>
+    </header>
+
+<h6 class="subheader" title="2025-12-10T00:00:00-05:00">Wed 10 December 2025
+</h6>
+
+
+    <div class="highlight"><pre><span></span><code><span class="c1"># Created: 20251210</span>
+<span class="c1"># https://csp.gitbook.io/python-learning/basics/ch04-python-data-types/python-list</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">empty_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">mixed</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="mf">5.5</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">empty_list</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mixed</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>[]
+[1, 2, 3, 4, 5]
+[10, &#39;Python&#39;, True, 5.5]
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;banana&quot;</span><span class="p">,</span> <span class="s2">&quot;orange&quot;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>   <span class="c1"># First element</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>  <span class="c1"># Last element</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>apple
+orange
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">])</span>   <span class="c1"># Output: [1, 2, 3]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>    <span class="c1"># Output: [0, 1, 2]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">[</span><span class="mi">3</span><span class="p">:])</span>    <span class="c1"># Output: [3, 4, 5]</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="k">[1, 2, 3]</span>
+<span class="k">[0, 1, 2]</span>
+<span class="k">[3, 4, 5]</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;pen&quot;</span><span class="p">,</span> <span class="s2">&quot;pencil&quot;</span><span class="p">,</span> <span class="s2">&quot;eraser&quot;</span><span class="p">]</span>
+<span class="n">items</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;marker&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>  <span class="c1"># Output: [&#39;pen&#39;, &#39;marker&#39;, &#39;eraser&#39;]</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>[&#39;pen&#39;, &#39;marker&#39;, &#39;eraser&#39;]
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+
+<span class="n">numbers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">numbers</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>  <span class="c1"># Output: [1, 10, 2, 3, 4]</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>[1, 10, 2, 3, 4]
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
+
+<span class="n">data</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="n">last</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>  <span class="c1"># Output: [10, 30]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">last</span><span class="p">)</span>  <span class="c1"># Output: 40</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="k">[10, 30, 40]</span>
+<span class="k">[10, 30]</span>
+<span class="na">40</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">))</span>       <span class="c1"># Output: 3</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">10</span> <span class="ow">in</span> <span class="n">values</span><span class="p">)</span>      <span class="c1"># Output: True</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">100</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">values</span><span class="p">)</span> <span class="c1"># Output: True</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">3</span>
+<span class="n">True</span>
+<span class="n">True</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">cities</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;New York&quot;</span><span class="p">,</span> <span class="s2">&quot;London&quot;</span><span class="p">,</span> <span class="s2">&quot;Tokyo&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">city</span> <span class="ow">in</span> <span class="n">cities</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">city</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>New York
+London
+Tokyo
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">squares</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">squares</span><span class="p">)</span>  <span class="c1"># Output: [0, 1, 4, 9, 16]</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>[0, 1, 4, 9, 16]
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+
+<hr>
+<p><strong>Score: 10</strong></p>
+<p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+
+</article>
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+    <aside class="large-3 columns">
+        <h5 class="sidebar-title">Site</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/archives.html">Archives</a>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/tags.html">Tags</a>
+        </ul>
+
+		
+        <h5 class="sidebar-title">Categories</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/pandas-work.html">pandas-work</a></li>
+   
+        </ul>
+
+		
+        <h5 class="sidebar-title">Social</h5>
+        <ul class="side-nav">
+            <li><a href="https://github.com/accsaikiran-sys/">GitHub</a></li>
+            <li><a href="<linkedin handle>">LinkedIn</a></li>
+        </ul>
+
+    </aside> <!-- End Sidebar -->
+
+</div> <!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+              <!--                  <p>My Python Notes by Sai Kiran Reddy</p> -->
+            </div>
+            </div>
+    </div>
+</footer>
+</body>
+</html>

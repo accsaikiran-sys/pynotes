@@ -1,5 +1,5 @@
 ---
-title: Ch03 01 Python Num Math
+title: Ch04 01 Python Num Math
 date: 2025-12-10
 author: Your Name
 cell_count: 12
