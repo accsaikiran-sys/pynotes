@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Ch09 06 Closures</title>
+
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/normalize.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/style.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/pygments.css" />	
+    <script src="https://accsaikiran-sys.github.io/pynotes/theme/js/modernizr.js"></script>
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<nav>
+<div class="top-bar">
+<div class="row">
+    <div class="large-9 large-centered columns">
+	    <h1><a href="https://accsaikiran-sys.github.io/pynotes">My Python Notes</a></h1>
+    </div>
+</div>
+</div>
+
+<!-- Show menu items and pages -->
+<div class="row">
+<div class="large-9 columns">
+    <ul class="button-group navigation">
+
+    </ul>
+</div>
+</div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns">
+<article>
+    <header>
+        <h3 class="article-title"><a href="https://accsaikiran-sys.github.io/pynotes/ch09-06-closures.html" rel="bookmark"
+        title="Permalink to Ch09 06 Closures">Ch09 06 Closures</a></h3>
+    </header>
+
+<h6 class="subheader" title="2025-12-10T00:00:00-05:00">Wed 10 December 2025
+</h6>
+
+
+    <h1>Chapter 9.2: Closures in Python</h1>
+<p>This notebook covers Python closures - functions that remember and have access to variables from their enclosing scope even after the outer function has finished execution.</p>
+<h2>1. What is a Closure</h2>
+<p>A closure is a function that remembers and has access to variables from its enclosing scope even after the outer function has finished execution.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Basic closure example</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">outer</span><span class="p">():</span>
+    <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;Hello&quot;</span>  <span class="c1"># Variable in enclosing scope</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">inner</span><span class="p">():</span>
+        <span class="k">return</span> <span class="n">message</span>  <span class="c1"># Access to enclosing variable</span>
+
+    <span class="k">return</span> <span class="n">inner</span>
+
+<span class="c1"># Create closure</span>
+<span class="n">func</span> <span class="o">=</span> <span class="n">outer</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">func</span><span class="p">())</span>  <span class="c1"># Output: Hello</span>
+
+<span class="c1"># Demonstrate that outer() has finished but inner() still has access</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Function name: </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Has closure: </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__closure__</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="kc">None</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Multiple calls to outer() create different closures</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_greeter</span><span class="p">(</span><span class="n">greeting</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">greet</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">greeting</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">!&quot;</span>
+    <span class="k">return</span> <span class="n">greet</span>
+
+<span class="n">hello_greeter</span> <span class="o">=</span> <span class="n">create_greeter</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
+<span class="n">hi_greeter</span> <span class="o">=</span> <span class="n">create_greeter</span><span class="p">(</span><span class="s2">&quot;Hi&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Different greetings:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">hello_greeter</span><span class="p">(</span><span class="s2">&quot;Alice&quot;</span><span class="p">))</span>  <span class="c1"># Hello, Alice!</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">hi_greeter</span><span class="p">(</span><span class="s2">&quot;Bob&quot;</span><span class="p">))</span>       <span class="c1"># Hi, Bob!</span>
+</code></pre></div>
+
+<p>The inner function retains access to <code>message</code>.</p>
+<h2>2. Basic Closure Structure</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Closure with parameter</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">multiplier</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">multiply</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span>  <span class="c1"># x is captured from enclosing scope</span>
+    <span class="k">return</span> <span class="n">multiply</span>
+
+<span class="c1"># Create different multipliers</span>
+<span class="n">times2</span> <span class="o">=</span> <span class="n">multiplier</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">times3</span> <span class="o">=</span> <span class="n">multiplier</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">times10</span> <span class="o">=</span> <span class="n">multiplier</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Multiplier closures:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;times2(5) = </span><span class="si">{</span><span class="n">times2</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>    <span class="c1"># 10</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;times3(5) = </span><span class="si">{</span><span class="n">times3</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>    <span class="c1"># 15</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;times10(5) = </span><span class="si">{</span><span class="n">times10</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># 50</span>
+
+<span class="c1"># Power function closure</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">power_function</span><span class="p">(</span><span class="n">exponent</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">power</span><span class="p">(</span><span class="n">base</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">base</span> <span class="o">**</span> <span class="n">exponent</span>
+    <span class="k">return</span> <span class="n">power</span>
+
+<span class="n">square</span> <span class="o">=</span> <span class="n">power_function</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">cube</span> <span class="o">=</span> <span class="n">power_function</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Power function closures:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;square(4) = </span><span class="si">{</span><span class="n">square</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># 16</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;cube(3) = </span><span class="si">{</span><span class="n">cube</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>      <span class="c1"># 27</span>
+
+<span class="c1"># String formatter closure</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_formatter</span><span class="p">(</span><span class="n">template</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">format_string</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">format_string</span>
+
+<span class="n">currency_formatter</span> <span class="o">=</span> <span class="n">create_formatter</span><span class="p">(</span><span class="s2">&quot;$</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">percentage_formatter</span> <span class="o">=</span> <span class="n">create_formatter</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:.1f}</span><span class="s2">%&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Formatter closures:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">currency_formatter</span><span class="p">(</span><span class="mf">123.456</span><span class="p">))</span>    <span class="c1"># $123.46</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">percentage_formatter</span><span class="p">(</span><span class="mf">0.789</span><span class="p">))</span>    <span class="c1"># 0.8%</span>
+</code></pre></div>
+
+<p>Functions carry state without using global variables.</p>
+<h2>3. Closure Retaining State</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Counter closure with persistent state</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">counter</span><span class="p">():</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Enclosing variable</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">increment</span><span class="p">():</span>
+        <span class="k">nonlocal</span> <span class="n">count</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">count</span>
+
+    <span class="k">return</span> <span class="n">increment</span>
+
+<span class="c1"># Create independent counters</span>
+<span class="n">c1</span> <span class="o">=</span> <span class="n">counter</span><span class="p">()</span>
+<span class="n">c2</span> <span class="o">=</span> <span class="n">counter</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Independent counters:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;c1(): </span><span class="si">{</span><span class="n">c1</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># 1</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;c1(): </span><span class="si">{</span><span class="n">c1</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># 2</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;c2(): </span><span class="si">{</span><span class="n">c2</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># 1 (independent state)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;c1(): </span><span class="si">{</span><span class="n">c1</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># 3</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;c2(): </span><span class="si">{</span><span class="n">c2</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># 2</span>
+
+<span class="c1"># Bank account closure</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_account</span><span class="p">(</span><span class="n">initial_balance</span><span class="p">):</span>
+    <span class="n">balance</span> <span class="o">=</span> <span class="n">initial_balance</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">deposit</span><span class="p">(</span><span class="n">amount</span><span class="p">):</span>
+        <span class="k">nonlocal</span> <span class="n">balance</span>
+        <span class="n">balance</span> <span class="o">+=</span> <span class="n">amount</span>
+        <span class="k">return</span> <span class="n">balance</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">withdraw</span><span class="p">(</span><span class="n">amount</span><span class="p">):</span>
+        <span class="k">nonlocal</span> <span class="n">balance</span>
+        <span class="k">if</span> <span class="n">balance</span> <span class="o">&gt;=</span> <span class="n">amount</span><span class="p">:</span>
+            <span class="n">balance</span> <span class="o">-=</span> <span class="n">amount</span>
+            <span class="k">return</span> <span class="n">balance</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Insufficient funds. Balance: </span><span class="si">{</span><span class="n">balance</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_balance</span><span class="p">():</span>
+        <span class="k">return</span> <span class="n">balance</span>
+
+    <span class="c1"># Return multiple functions</span>
+    <span class="k">return</span> <span class="n">deposit</span><span class="p">,</span> <span class="n">withdraw</span><span class="p">,</span> <span class="n">get_balance</span>
+
+<span class="c1"># Create account</span>
+<span class="n">deposit</span><span class="p">,</span> <span class="n">withdraw</span><span class="p">,</span> <span class="n">get_balance</span> <span class="o">=</span> <span class="n">create_account</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Bank account closure:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Initial balance: </span><span class="si">{</span><span class="n">get_balance</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;After deposit(200): </span><span class="si">{</span><span class="n">deposit</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;After withdraw(150): </span><span class="si">{</span><span class="n">withdraw</span><span class="p">(</span><span class="mi">150</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Try withdraw(2000): </span><span class="si">{</span><span class="n">withdraw</span><span class="p">(</span><span class="mi">2000</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Final balance: </span><span class="si">{</span><span class="n">get_balance</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Statistics accumulator</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_stats_accumulator</span><span class="p">():</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_value</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+        <span class="n">values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_stats</span><span class="p">():</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">values</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;sum&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;avg&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">),</span>
+            <span class="s2">&quot;sum&quot;</span><span class="p">:</span> <span class="nb">sum</span><span class="p">(</span><span class="n">values</span><span class="p">),</span>
+            <span class="s2">&quot;avg&quot;</span><span class="p">:</span> <span class="nb">sum</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">),</span>
+            <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="nb">min</span><span class="p">(</span><span class="n">values</span><span class="p">),</span>
+            <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="nb">max</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+        <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">add_value</span><span class="p">,</span> <span class="n">get_stats</span>
+
+<span class="n">add_value</span><span class="p">,</span> <span class="n">get_stats</span> <span class="o">=</span> <span class="n">create_stats_accumulator</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Stats accumulator:&quot;</span><span class="p">)</span>
+<span class="n">add_value</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">add_value</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">add_value</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Stats: </span><span class="si">{</span><span class="n">get_stats</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Closure maintains persistent state across calls.</p>
+<h2>4. nonlocal in Closures</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Power with incrementing exponent</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">power</span><span class="p">(</span><span class="n">base</span><span class="p">):</span>
+    <span class="n">exponent</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># Initial exponent</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">calculate</span><span class="p">():</span>
+        <span class="k">nonlocal</span> <span class="n">exponent</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">base</span> <span class="o">**</span> <span class="n">exponent</span>
+        <span class="n">exponent</span> <span class="o">+=</span> <span class="mi">1</span>  <span class="c1"># Increment for next call</span>
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="k">return</span> <span class="n">calculate</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">power</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Power with incrementing exponent:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;First call: 2^2 = </span><span class="si">{</span><span class="n">p</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>   <span class="c1"># 4</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Second call: 2^3 = </span><span class="si">{</span><span class="n">p</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># 8</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Third call: 2^4 = </span><span class="si">{</span><span class="n">p</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>   <span class="c1"># 16</span>
+
+<span class="c1"># Configuration manager</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_config_manager</span><span class="p">(</span><span class="n">initial_config</span><span class="p">):</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">initial_config</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_config</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">default</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_config</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">nonlocal</span> <span class="n">config</span>
+        <span class="n">config</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">update_config</span><span class="p">(</span><span class="n">updates</span><span class="p">):</span>
+        <span class="k">nonlocal</span> <span class="n">config</span>
+        <span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">updates</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_all_config</span><span class="p">():</span>
+        <span class="k">return</span> <span class="n">config</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">get_config</span><span class="p">,</span> <span class="n">set_config</span><span class="p">,</span> <span class="n">update_config</span><span class="p">,</span> <span class="n">get_all_config</span>
+
+<span class="c1"># Create config manager</span>
+<span class="n">get_config</span><span class="p">,</span> <span class="n">set_config</span><span class="p">,</span> <span class="n">update_config</span><span class="p">,</span> <span class="n">get_all_config</span> <span class="o">=</span> <span class="n">create_config_manager</span><span class="p">({</span>
+    <span class="s1">&#39;debug&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s1">&#39;max_connections&#39;</span><span class="p">:</span> <span class="mi">100</span>
+<span class="p">})</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Configuration manager:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Initial config: </span><span class="si">{</span><span class="n">get_all_config</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Debug setting: </span><span class="si">{</span><span class="n">get_config</span><span class="p">(</span><span class="s1">&#39;debug&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">set_config</span><span class="p">(</span><span class="s1">&#39;timeout&#39;</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">update_config</span><span class="p">({</span><span class="s1">&#39;debug&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;max_connections&#39;</span><span class="p">:</span> <span class="mi">200</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Updated config: </span><span class="si">{</span><span class="n">get_all_config</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Rate limiter</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">create_rate_limiter</span><span class="p">(</span><span class="n">max_calls</span><span class="p">,</span> <span class="n">time_window</span><span class="p">):</span>
+    <span class="n">calls</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_allowed</span><span class="p">():</span>
+        <span class="k">nonlocal</span> <span class="n">calls</span>
+        <span class="n">current_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+        <span class="c1"># Remove old calls outside the time window</span>
+        <span class="n">calls</span> <span class="o">=</span> <span class="p">[</span><span class="n">call_time</span> <span class="k">for</span> <span class="n">call_time</span> <span class="ow">in</span> <span class="n">calls</span> 
+                <span class="k">if</span> <span class="n">current_time</span> <span class="o">-</span> <span class="n">call_time</span> <span class="o">&lt;</span> <span class="n">time_window</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">calls</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">max_calls</span><span class="p">:</span>
+            <span class="n">calls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_time</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_status</span><span class="p">():</span>
+        <span class="n">current_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">recent_calls</span> <span class="o">=</span> <span class="p">[</span><span class="n">call_time</span> <span class="k">for</span> <span class="n">call_time</span> <span class="ow">in</span> <span class="n">calls</span> 
+                       <span class="k">if</span> <span class="n">current_time</span> <span class="o">-</span> <span class="n">call_time</span> <span class="o">&lt;</span> <span class="n">time_window</span><span class="p">]</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s1">&#39;calls_made&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">recent_calls</span><span class="p">),</span>
+            <span class="s1">&#39;calls_remaining&#39;</span><span class="p">:</span> <span class="n">max_calls</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">recent_calls</span><span class="p">),</span>
+            <span class="s1">&#39;window_seconds&#39;</span><span class="p">:</span> <span class="n">time_window</span>
+        <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">is_allowed</span><span class="p">,</span> <span class="n">get_status</span>
+
+<span class="c1"># Create rate limiter (3 calls per 5 seconds)</span>
+<span class="n">is_allowed</span><span class="p">,</span> <span class="n">get_status</span> <span class="o">=</span> <span class="n">create_rate_limiter</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Rate limiter demo:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">is_allowed</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Call </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">: Allowed&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Call </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">: Rate limited&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Status: </span><span class="si">{</span><span class="n">get_status</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p><code>nonlocal</code> allows modification of enclosed variables.</p>
+<h2>5. Closure vs Global Variable</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Global variable approach (problematic)</span>
+<span class="n">factor</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">using_global</span><span class="p">():</span>
+    <span class="k">return</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="n">factor</span>
+
+<span class="c1"># Closure approach (better)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">using_closure</span><span class="p">():</span>
+    <span class="n">factor</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># Encapsulated in closure</span>
+    <span class="k">return</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="n">factor</span>
+
+<span class="c1"># Create functions</span>
+<span class="n">global_func</span> <span class="o">=</span> <span class="n">using_global</span><span class="p">()</span>
+<span class="n">closure_func</span> <span class="o">=</span> <span class="n">using_closure</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Initial results:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Global function: </span><span class="si">{</span><span class="n">global_func</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>   <span class="c1"># 50</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Closure function: </span><span class="si">{</span><span class="n">closure_func</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1"># 50</span>
+
+<span class="c1"># Modify global variable</span>
+<span class="n">factor</span> <span class="o">=</span> <span class="mi">20</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">After changing global factor to 20:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Global function: </span><span class="si">{</span><span class="n">global_func</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>   <span class="c1"># 100 (affected!)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Closure function: </span><span class="si">{</span><span class="n">closure_func</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1"># 50 (unaffected)</span>
+
+<span class="c1"># Demonstrate isolation with multiple closures</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_isolated_multiplier</span><span class="p">(</span><span class="n">factor</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">multiply</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">factor</span>
+    <span class="k">return</span> <span class="n">multiply</span>
+
+<span class="n">mult_by_2</span> <span class="o">=</span> <span class="n">create_isolated_multiplier</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">mult_by_5</span> <span class="o">=</span> <span class="n">create_isolated_multiplier</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">mult_by_10</span> <span class="o">=</span> <span class="n">create_isolated_multiplier</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Isolated multipliers:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;mult_by_2(3) = </span><span class="si">{</span><span class="n">mult_by_2</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>   <span class="c1"># 6</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;mult_by_5(3) = </span><span class="si">{</span><span class="n">mult_by_5</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>   <span class="c1"># 15</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;mult_by_10(3) = </span><span class="si">{</span><span class="n">mult_by_10</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1"># 30</span>
+
+<span class="c1"># Problem with shared mutable state</span>
+<span class="n">shared_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">bad_list_appender</span><span class="p">():</span>
+    <span class="k">return</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">shared_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">good_list_appender</span><span class="p">():</span>
+    <span class="n">my_list</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Private to this closure</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">append_and_return</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="n">my_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">my_list</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">append_and_return</span>
+
+<span class="n">bad_append</span> <span class="o">=</span> <span class="n">bad_list_appender</span><span class="p">()</span>
+<span class="n">good_append1</span> <span class="o">=</span> <span class="n">good_list_appender</span><span class="p">()</span>
+<span class="n">good_append2</span> <span class="o">=</span> <span class="n">good_list_appender</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">List appender comparison:&quot;</span><span class="p">)</span>
+<span class="n">bad_append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">bad_append</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Shared list after bad_append: </span><span class="si">{</span><span class="n">shared_list</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;good_append1(1): </span><span class="si">{</span><span class="n">good_append1</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;good_append1(2): </span><span class="si">{</span><span class="n">good_append1</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;good_append2(10): </span><span class="si">{</span><span class="n">good_append2</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;good_append2(20): </span><span class="si">{</span><span class="n">good_append2</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Closures prevent unintended side-effects on global state.</p>
+<h2>6. Multiple Closures from Same Function</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Basic adder function</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">make_adder</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">adder</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+    <span class="k">return</span> <span class="n">adder</span>
+
+<span class="c1"># Create multiple independent adders</span>
+<span class="n">add5</span> <span class="o">=</span> <span class="n">make_adder</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">add10</span> <span class="o">=</span> <span class="n">make_adder</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">add100</span> <span class="o">=</span> <span class="n">make_adder</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Multiple adders:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;add5(3) = </span><span class="si">{</span><span class="n">add5</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>     <span class="c1"># 8</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;add10(3) = </span><span class="si">{</span><span class="n">add10</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>   <span class="c1"># 13</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;add100(3) = </span><span class="si">{</span><span class="n">add100</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1"># 103</span>
+
+<span class="c1"># Validator factory</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_validator</span><span class="p">(</span><span class="n">min_val</span><span class="p">,</span> <span class="n">max_val</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">validate</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="n">min_val</span><span class="p">:</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Value </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2"> is below minimum </span><span class="si">{</span><span class="n">min_val</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">elif</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="n">max_val</span><span class="p">:</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Value </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2"> is above maximum </span><span class="si">{</span><span class="n">max_val</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Value </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2"> is valid&quot;</span>
+    <span class="k">return</span> <span class="n">validate</span>
+
+<span class="c1"># Create different validators</span>
+<span class="n">age_validator</span> <span class="o">=</span> <span class="n">create_validator</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">120</span><span class="p">)</span>
+<span class="n">percentage_validator</span> <span class="o">=</span> <span class="n">create_validator</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">temperature_validator</span> <span class="o">=</span> <span class="n">create_validator</span><span class="p">(</span><span class="o">-</span><span class="mi">273</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Validators:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">age_validator</span><span class="p">(</span><span class="mi">25</span><span class="p">))</span>        <span class="c1"># Valid</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">age_validator</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">))</span>        <span class="c1"># Below minimum</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">percentage_validator</span><span class="p">(</span><span class="mi">150</span><span class="p">))</span> <span class="c1"># Above maximum</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">temperature_validator</span><span class="p">(</span><span class="mi">25</span><span class="p">))</span> <span class="c1"># Valid</span>
+
+<span class="c1"># Timer factory</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_timer</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="n">start_time</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">start</span><span class="p">():</span>
+        <span class="k">nonlocal</span> <span class="n">start_time</span>
+        <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Timer &#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39; started&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">stop</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">start_time</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Timer &#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39; was not started&quot;</span>
+        <span class="n">elapsed</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Timer &#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39; elapsed: </span><span class="si">{</span><span class="n">elapsed</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> seconds&quot;</span>
+
+    <span class="k">return</span> <span class="n">start</span><span class="p">,</span> <span class="n">stop</span>
+
+<span class="c1"># Create multiple timers</span>
+<span class="n">start_timer1</span><span class="p">,</span> <span class="n">stop_timer1</span> <span class="o">=</span> <span class="n">create_timer</span><span class="p">(</span><span class="s2">&quot;Process A&quot;</span><span class="p">)</span>
+<span class="n">start_timer2</span><span class="p">,</span> <span class="n">stop_timer2</span> <span class="o">=</span> <span class="n">create_timer</span><span class="p">(</span><span class="s2">&quot;Process B&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Timer example:&quot;</span><span class="p">)</span>
+<span class="n">start_timer1</span><span class="p">()</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>  <span class="c1"># Simulate work</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stop_timer1</span><span class="p">())</span>
+
+<span class="n">start_timer2</span><span class="p">()</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>  <span class="c1"># Different work duration</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stop_timer2</span><span class="p">())</span>
+
+<span class="c1"># Cache factory</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_cache</span><span class="p">(</span><span class="n">max_size</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">cache</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">access_order</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">cache</span><span class="p">:</span>
+            <span class="c1"># Move to end (most recently used)</span>
+            <span class="n">access_order</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+            <span class="n">access_order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">put</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">nonlocal</span> <span class="n">cache</span><span class="p">,</span> <span class="n">access_order</span>
+
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">cache</span><span class="p">:</span>
+            <span class="n">access_order</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">cache</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">max_size</span><span class="p">:</span>
+            <span class="c1"># Remove least recently used</span>
+            <span class="n">oldest</span> <span class="o">=</span> <span class="n">access_order</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="k">del</span> <span class="n">cache</span><span class="p">[</span><span class="n">oldest</span><span class="p">]</span>
+
+        <span class="n">cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="n">access_order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">stats</span><span class="p">():</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">cache</span><span class="p">),</span>
+            <span class="s1">&#39;max_size&#39;</span><span class="p">:</span> <span class="n">max_size</span><span class="p">,</span>
+            <span class="s1">&#39;keys&#39;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">cache</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+        <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">get</span><span class="p">,</span> <span class="n">put</span><span class="p">,</span> <span class="n">stats</span>
+
+<span class="c1"># Create independent caches</span>
+<span class="n">get1</span><span class="p">,</span> <span class="n">put1</span><span class="p">,</span> <span class="n">stats1</span> <span class="o">=</span> <span class="n">create_cache</span><span class="p">(</span><span class="n">max_size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">get2</span><span class="p">,</span> <span class="n">put2</span><span class="p">,</span> <span class="n">stats2</span> <span class="o">=</span> <span class="n">create_cache</span><span class="p">(</span><span class="n">max_size</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Cache example:&quot;</span><span class="p">)</span>
+<span class="n">put1</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">put1</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cache 1 stats: </span><span class="si">{</span><span class="n">stats1</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">put2</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">put2</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">put2</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cache 2 stats: </span><span class="si">{</span><span class="n">stats2</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cache 1 get &#39;a&#39;: </span><span class="si">{</span><span class="n">get1</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cache 2 get &#39;y&#39;: </span><span class="si">{</span><span class="n">get2</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Each closure holds its own independent environment.</p>
+<h2>7. Inspecting Closure Variables</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Basic closure inspection</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">outer</span><span class="p">():</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="mi">42</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;closure&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">inner</span><span class="p">():</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="k">return</span> <span class="n">inner</span>
+
+<span class="n">func</span> <span class="o">=</span> <span class="n">outer</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Closure inspection:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Function name: </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Has closure: </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__closure__</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="kc">None</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">func</span><span class="o">.</span><span class="vm">__closure__</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of closure variables: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="vm">__closure__</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">cell</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="vm">__closure__</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Variable </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">cell</span><span class="o">.</span><span class="n">cell_contents</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># More detailed inspection</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_complex_closure</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="mi">2</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">10</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">c</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">compute</span><span class="p">():</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">+</span> <span class="n">z</span>
+
+    <span class="k">return</span> <span class="n">compute</span>
+
+<span class="n">complex_func</span> <span class="o">=</span> <span class="n">create_complex_closure</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Complex closure inspection:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Result: </span><span class="si">{</span><span class="n">complex_func</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Closure variables:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">cell</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">complex_func</span><span class="o">.</span><span class="vm">__closure__</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Cell </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">cell</span><span class="o">.</span><span class="n">cell_contents</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Inspect closure with code object</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Code object info:&quot;</span><span class="p">)</span>
+<span class="n">code</span> <span class="o">=</span> <span class="n">complex_func</span><span class="o">.</span><span class="vm">__code__</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Free variables: </span><span class="si">{</span><span class="n">code</span><span class="o">.</span><span class="n">co_freevars</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Variable names: </span><span class="si">{</span><span class="n">code</span><span class="o">.</span><span class="n">co_varnames</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Utility function for closure inspection</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">inspect_closure</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Utility to inspect closure details&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Inspecting function: </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">func</span><span class="o">.</span><span class="vm">__closure__</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  No closure (not a closure function)&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Closure variables: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="vm">__closure__</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Get variable names from code object</span>
+    <span class="n">free_vars</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="vm">__code__</span><span class="o">.</span><span class="n">co_freevars</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">cell</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">free_vars</span><span class="p">,</span> <span class="n">func</span><span class="o">.</span><span class="vm">__closure__</span><span class="p">)):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">cell</span><span class="o">.</span><span class="n">cell_contents</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2"> (type: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">: &lt;empty cell&gt;&quot;</span><span class="p">)</span>
+
+<span class="c1"># Test the inspection utility</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_closure</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">count</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">repeat</span><span class="p">():</span>
+        <span class="k">return</span> <span class="n">message</span> <span class="o">*</span> <span class="n">count</span>
+    <span class="k">return</span> <span class="n">repeat</span>
+
+<span class="n">test_func</span> <span class="o">=</span> <span class="n">test_closure</span><span class="p">(</span><span class="s2">&quot;Hello &quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">inspect_closure</span><span class="p">(</span><span class="n">test_func</span><span class="p">)</span>
+
+<span class="c1"># Regular function (no closure)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">regular_function</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;I&#39;m not a closure&quot;</span>
+
+<span class="n">inspect_closure</span><span class="p">(</span><span class="n">regular_function</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Shows internal structure of closure data.</p>
+<h2>8. Closures as Function Factories</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Logger factory</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">logger</span><span class="p">(</span><span class="n">prefix</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">log</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+        <span class="n">timestamp</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M:%S&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">timestamp</span><span class="si">}</span><span class="s2">] </span><span class="si">{</span><span class="n">prefix</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">message</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">log</span>
+
+<span class="c1"># Create specialized loggers</span>
+<span class="n">info_logger</span> <span class="o">=</span> <span class="n">logger</span><span class="p">(</span><span class="s2">&quot;INFO&quot;</span><span class="p">)</span>
+<span class="n">error_logger</span> <span class="o">=</span> <span class="n">logger</span><span class="p">(</span><span class="s2">&quot;ERROR&quot;</span><span class="p">)</span>
+<span class="n">debug_logger</span> <span class="o">=</span> <span class="n">logger</span><span class="p">(</span><span class="s2">&quot;DEBUG&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Logger factory example:&quot;</span><span class="p">)</span>
+<span class="n">info_logger</span><span class="p">(</span><span class="s2">&quot;System started&quot;</span><span class="p">)</span>
+<span class="n">error_logger</span><span class="p">(</span><span class="s2">&quot;Database connection failed&quot;</span><span class="p">)</span>
+<span class="n">debug_logger</span><span class="p">(</span><span class="s2">&quot;Processing user request&quot;</span><span class="p">)</span>
+
+<span class="c1"># HTTP client factory</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_http_client</span><span class="p">(</span><span class="n">base_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">default_headers</span> <span class="o">=</span> <span class="n">headers</span> <span class="ow">or</span> <span class="p">{}</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="n">endpoint</span><span class="p">):</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">endpoint</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;GET </span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2"> with headers </span><span class="si">{</span><span class="n">default_headers</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">post</span><span class="p">(</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">endpoint</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;POST </span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2"> with data </span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s2"> and headers </span><span class="si">{</span><span class="n">default_headers</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="k">return</span> <span class="n">get</span><span class="p">,</span> <span class="n">post</span>
+
+<span class="c1"># Create API clients</span>
+<span class="n">api_get</span><span class="p">,</span> <span class="n">api_post</span> <span class="o">=</span> <span class="n">create_http_client</span><span class="p">(</span>
+    <span class="s2">&quot;https://api.example.com&quot;</span><span class="p">,</span>
+    <span class="p">{</span><span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="s2">&quot;Bearer token123&quot;</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">HTTP client factory:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">api_get</span><span class="p">(</span><span class="s2">&quot;users&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">api_post</span><span class="p">(</span><span class="s2">&quot;users&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Alice&quot;</span><span class="p">}))</span>
+
+<span class="c1"># Database query builder factory</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_query_builder</span><span class="p">(</span><span class="n">table_name</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">select</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;SELECT </span><span class="si">{</span><span class="n">columns</span><span class="si">}</span><span class="s2"> FROM </span><span class="si">{</span><span class="n">table_name</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">if</span> <span class="n">where</span><span class="p">:</span>
+            <span class="n">query</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot; WHERE </span><span class="si">{</span><span class="n">where</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">return</span> <span class="n">query</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">insert</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+        <span class="n">columns</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2">&#39;&quot;</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;INSERT INTO </span><span class="si">{</span><span class="n">table_name</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">columns</span><span class="si">}</span><span class="s2">) VALUES (</span><span class="si">{</span><span class="n">values</span><span class="si">}</span><span class="s2">)&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">where</span><span class="p">):</span>
+        <span class="n">set_clause</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">=&#39;</span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2">&#39;&quot;</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">()])</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;UPDATE </span><span class="si">{</span><span class="n">table_name</span><span class="si">}</span><span class="s2"> SET </span><span class="si">{</span><span class="n">set_clause</span><span class="si">}</span><span class="s2"> WHERE </span><span class="si">{</span><span class="n">where</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">delete</span><span class="p">(</span><span class="n">where</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;DELETE FROM </span><span class="si">{</span><span class="n">table_name</span><span class="si">}</span><span class="s2"> WHERE </span><span class="si">{</span><span class="n">where</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="k">return</span> <span class="n">select</span><span class="p">,</span> <span class="n">insert</span><span class="p">,</span> <span class="n">update</span><span class="p">,</span> <span class="n">delete</span>
+
+<span class="c1"># Create table-specific query builders</span>
+<span class="n">user_select</span><span class="p">,</span> <span class="n">user_insert</span><span class="p">,</span> <span class="n">user_update</span><span class="p">,</span> <span class="n">user_delete</span> <span class="o">=</span> <span class="n">create_query_builder</span><span class="p">(</span><span class="s2">&quot;users&quot;</span><span class="p">)</span>
+<span class="n">product_select</span><span class="p">,</span> <span class="n">product_insert</span><span class="p">,</span> <span class="n">product_update</span><span class="p">,</span> <span class="n">product_delete</span> <span class="o">=</span> <span class="n">create_query_builder</span><span class="p">(</span><span class="s2">&quot;products&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Query builder factory:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">user_select</span><span class="p">(</span><span class="s2">&quot;name, email&quot;</span><span class="p">,</span> <span class="s2">&quot;age &gt; 18&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">user_insert</span><span class="p">({</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;alice@example.com&quot;</span><span class="p">}))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">product_select</span><span class="p">(</span><span class="n">where</span><span class="o">=</span><span class="s2">&quot;price &lt; 100&quot;</span><span class="p">))</span>
+
+<span class="c1"># Event handler factory</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_event_handler</span><span class="p">(</span><span class="n">event_type</span><span class="p">,</span> <span class="n">callback</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">handle_event</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Handling </span><span class="si">{</span><span class="n">event_type</span><span class="si">}</span><span class="s2"> event&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">callback</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="c1"># Add metadata</span>
+    <span class="n">handle_event</span><span class="o">.</span><span class="n">event_type</span> <span class="o">=</span> <span class="n">event_type</span>
+    <span class="n">handle_event</span><span class="o">.</span><span class="n">callback</span> <span class="o">=</span> <span class="n">callback</span>
+
+    <span class="k">return</span> <span class="n">handle_event</span>
+
+<span class="c1"># Create event handlers</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">user_created_callback</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Welcome </span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;User&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">!&quot;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">order_placed_callback</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Order #</span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2"> for $</span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;amount&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2"> placed&quot;</span>
+
+<span class="n">user_handler</span> <span class="o">=</span> <span class="n">create_event_handler</span><span class="p">(</span><span class="s2">&quot;user_created&quot;</span><span class="p">,</span> <span class="n">user_created_callback</span><span class="p">)</span>
+<span class="n">order_handler</span> <span class="o">=</span> <span class="n">create_event_handler</span><span class="p">(</span><span class="s2">&quot;order_placed&quot;</span><span class="p">,</span> <span class="n">order_placed_callback</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Event handler factory:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">user_handler</span><span class="p">({</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Alice&quot;</span><span class="p">}))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">order_handler</span><span class="p">({</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;12345&quot;</span><span class="p">,</span> <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mf">99.99</span><span class="p">}))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;User handler type: </span><span class="si">{</span><span class="n">user_handler</span><span class="o">.</span><span class="n">event_type</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Order handler type: </span><span class="si">{</span><span class="n">order_handler</span><span class="o">.</span><span class="n">event_type</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Closures generate specialized functions dynamically.</p>
+<h2>9. Closure in Decorators (Foundation Pattern)</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Basic decorator using closure</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">my_decorator</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Before execution&quot;</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;After execution&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
+
+<span class="nd">@my_decorator</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">greet</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Hello, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">!&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Basic decorator:&quot;</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">greet</span><span class="p">(</span><span class="s2">&quot;Alice&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Result: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Timing decorator</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">timing_decorator</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> took </span><span class="si">{</span><span class="n">end_time</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start_time</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
+
+<span class="nd">@timing_decorator</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">slow_function</span><span class="p">():</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">&quot;Done&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Timing decorator:&quot;</span><span class="p">)</span>
+<span class="n">slow_function</span><span class="p">()</span>
+
+<span class="c1"># Parameterized decorator (decorator factory)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">retry_decorator</span><span class="p">(</span><span class="n">max_attempts</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">decorator</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">attempt</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_attempts</span><span class="p">):</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">attempt</span> <span class="o">==</span> <span class="n">max_attempts</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="n">e</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Attempt </span><span class="si">{</span><span class="n">attempt</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2"> failed: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">. Retrying in </span><span class="si">{</span><span class="n">delay</span><span class="si">}</span><span class="s2">s...&quot;</span><span class="p">)</span>
+                    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">delay</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">wrapper</span>
+    <span class="k">return</span> <span class="n">decorator</span>
+
+<span class="nd">@retry_decorator</span><span class="p">(</span><span class="n">max_attempts</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">unreliable_function</span><span class="p">(</span><span class="n">should_fail</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">should_fail</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Something went wrong&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">&quot;Success!&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Retry decorator:&quot;</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">unreliable_function</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Final failure: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Caching decorator</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">cache_decorator</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="n">cache</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># Closure variable</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="c1"># Create cache key</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span>
+
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">cache</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cache hit for </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cache miss for </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">result</span>
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="c1"># Add cache inspection methods</span>
+    <span class="n">wrapper</span><span class="o">.</span><span class="n">cache</span> <span class="o">=</span> <span class="n">cache</span>
+    <span class="n">wrapper</span><span class="o">.</span><span class="n">cache_info</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">cache</span><span class="p">),</span> <span class="s2">&quot;keys&quot;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">cache</span><span class="o">.</span><span class="n">keys</span><span class="p">())}</span>
+    <span class="n">wrapper</span><span class="o">.</span><span class="n">cache_clear</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">cache</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">wrapper</span>
+
+<span class="nd">@cache_decorator</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">expensive_calculation</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>  <span class="c1"># Simulate expensive operation</span>
+    <span class="k">return</span> <span class="n">n</span> <span class="o">**</span> <span class="mi">2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Caching decorator:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Result: </span><span class="si">{</span><span class="n">expensive_calculation</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Result: </span><span class="si">{</span><span class="n">expensive_calculation</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># Should be cached</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cache info: </span><span class="si">{</span><span class="n">expensive_calculation</span><span class="o">.</span><span class="n">cache_info</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Access control decorator</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">require_permission</span><span class="p">(</span><span class="n">permission</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">decorator</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="c1"># Simulate user context (in real app, get from session/token)</span>
+            <span class="n">user_permissions</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">wrapper</span><span class="p">,</span> <span class="s1">&#39;_user_permissions&#39;</span><span class="p">,</span> <span class="p">[])</span>
+
+            <span class="k">if</span> <span class="n">permission</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">user_permissions</span><span class="p">:</span>
+                <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Access denied: </span><span class="si">{</span><span class="n">permission</span><span class="si">}</span><span class="s2"> permission required&quot;</span>
+
+            <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="n">wrapper</span><span class="o">.</span><span class="n">required_permission</span> <span class="o">=</span> <span class="n">permission</span>
+        <span class="n">wrapper</span><span class="o">.</span><span class="n">_user_permissions</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Default empty permissions</span>
+        <span class="k">return</span> <span class="n">wrapper</span>
+    <span class="k">return</span> <span class="n">decorator</span>
+
+<span class="nd">@require_permission</span><span class="p">(</span><span class="s2">&quot;admin&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">delete_user</span><span class="p">(</span><span class="n">user_id</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;User </span><span class="si">{</span><span class="n">user_id</span><span class="si">}</span><span class="s2"> deleted&quot;</span>
+
+<span class="nd">@require_permission</span><span class="p">(</span><span class="s2">&quot;read&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_user</span><span class="p">(</span><span class="n">user_id</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;User </span><span class="si">{</span><span class="n">user_id</span><span class="si">}</span><span class="s2"> data&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Access control decorator:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">delete_user</span><span class="p">(</span><span class="mi">123</span><span class="p">))</span>  <span class="c1"># Should fail</span>
+
+<span class="c1"># Grant permissions</span>
+<span class="n">delete_user</span><span class="o">.</span><span class="n">_user_permissions</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;admin&quot;</span><span class="p">]</span>
+<span class="n">get_user</span><span class="o">.</span><span class="n">_user_permissions</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;read&quot;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">delete_user</span><span class="p">(</span><span class="mi">123</span><span class="p">))</span>  <span class="c1"># Should succeed</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">get_user</span><span class="p">(</span><span class="mi">456</span><span class="p">))</span>     <span class="c1"># Should succeed</span>
+</code></pre></div>
+
+<p>Decorators rely on closures to extend function behaviour.</p>
+<h2>10. Real-World Closure Example (Configuration)</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Threshold checker</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">threshold_checker</span><span class="p">(</span><span class="n">threshold</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">check</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="n">threshold</span>
+    <span class="k">return</span> <span class="n">check</span>
+
+<span class="c1"># Create different threshold checkers</span>
+<span class="n">high_temp</span> <span class="o">=</span> <span class="n">threshold_checker</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+<span class="n">low_temp</span> <span class="o">=</span> <span class="n">threshold_checker</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">high_score</span> <span class="o">=</span> <span class="n">threshold_checker</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Threshold checkers:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;high_temp(35): </span><span class="si">{</span><span class="n">high_temp</span><span class="p">(</span><span class="mi">35</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>   <span class="c1"># False</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;high_temp(45): </span><span class="si">{</span><span class="n">high_temp</span><span class="p">(</span><span class="mi">45</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>   <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;low_temp(-5): </span><span class="si">{</span><span class="n">low_temp</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>     <span class="c1"># False</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;high_score(95): </span><span class="si">{</span><span class="n">high_score</span><span class="p">(</span><span class="mi">95</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1"># True</span>
+
+<span class="c1"># Configuration-based service factory</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_service</span><span class="p">(</span><span class="n">config</span><span class="p">):</span>
+    <span class="n">base_url</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;base_url&#39;</span><span class="p">,</span> <span class="s1">&#39;http://localhost&#39;</span><span class="p">)</span>
+    <span class="n">timeout</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;timeout&#39;</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+    <span class="n">retry_count</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;retry_count&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">api_key</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;api_key&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">make_request</span><span class="p">(</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;Bearer </span><span class="si">{</span><span class="n">api_key</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">}</span> <span class="k">if</span> <span class="n">api_key</span> <span class="k">else</span> <span class="p">{}</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">endpoint</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+
+        <span class="k">for</span> <span class="n">attempt</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">retry_count</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="c1"># Simulate API call</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Attempt </span><span class="si">{</span><span class="n">attempt</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Headers: </span><span class="si">{</span><span class="n">headers</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Timeout: </span><span class="si">{</span><span class="n">timeout</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">data</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Data: </span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+                <span class="c1"># Simulate success after first attempt</span>
+                <span class="k">if</span> <span class="n">attempt</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Response from </span><span class="si">{</span><span class="n">endpoint</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
+
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">attempt</span> <span class="o">==</span> <span class="n">retry_count</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">e</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Retry </span><span class="si">{</span><span class="n">attempt</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2"> failed, retrying...&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;error&quot;</span><span class="p">,</span> <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Max retries exceeded&quot;</span><span class="p">}</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_config</span><span class="p">():</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s1">&#39;base_url&#39;</span><span class="p">:</span> <span class="n">base_url</span><span class="p">,</span>
+            <span class="s1">&#39;timeout&#39;</span><span class="p">:</span> <span class="n">timeout</span><span class="p">,</span>
+            <span class="s1">&#39;retry_count&#39;</span><span class="p">:</span> <span class="n">retry_count</span><span class="p">,</span>
+            <span class="s1">&#39;has_api_key&#39;</span><span class="p">:</span> <span class="nb">bool</span><span class="p">(</span><span class="n">api_key</span><span class="p">)</span>
+        <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">make_request</span><span class="p">,</span> <span class="n">get_config</span>
+
+<span class="c1"># Create different service instances</span>
+<span class="n">dev_config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;base_url&#39;</span><span class="p">:</span> <span class="s1">&#39;http://dev-api.example.com&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;timeout&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="s1">&#39;retry_count&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s1">&#39;api_key&#39;</span><span class="p">:</span> <span class="s1">&#39;dev-key-123&#39;</span>
+<span class="p">}</span>
+
+<span class="n">prod_config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;base_url&#39;</span><span class="p">:</span> <span class="s1">&#39;https://api.example.com&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;timeout&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+    <span class="s1">&#39;retry_count&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="s1">&#39;api_key&#39;</span><span class="p">:</span> <span class="s1">&#39;prod-key-xyz&#39;</span>
+<span class="p">}</span>
+
+<span class="n">dev_request</span><span class="p">,</span> <span class="n">dev_get_config</span> <span class="o">=</span> <span class="n">create_service</span><span class="p">(</span><span class="n">dev_config</span><span class="p">)</span>
+<span class="n">prod_request</span><span class="p">,</span> <span class="n">prod_get_config</span> <span class="o">=</span> <span class="n">create_service</span><span class="p">(</span><span class="n">prod_config</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Service configuration:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dev config: </span><span class="si">{</span><span class="n">dev_get_config</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Prod config: </span><span class="si">{</span><span class="n">prod_get_config</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Dev service request:&quot;</span><span class="p">)</span>
+<span class="n">dev_response</span> <span class="o">=</span> <span class="n">dev_request</span><span class="p">(</span><span class="s1">&#39;users/123&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Response: </span><span class="si">{</span><span class="n">dev_response</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Feature flag system</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_feature_flag_checker</span><span class="p">(</span><span class="n">flags</span><span class="p">):</span>
+    <span class="n">enabled_flags</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">flags</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_enabled</span><span class="p">(</span><span class="n">flag_name</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">flag_name</span> <span class="ow">in</span> <span class="n">enabled_flags</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">enable_flag</span><span class="p">(</span><span class="n">flag_name</span><span class="p">):</span>
+        <span class="k">nonlocal</span> <span class="n">enabled_flags</span>
+        <span class="n">enabled_flags</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">flag_name</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">disable_flag</span><span class="p">(</span><span class="n">flag_name</span><span class="p">):</span>
+        <span class="k">nonlocal</span> <span class="n">enabled_flags</span>
+        <span class="n">enabled_flags</span><span class="o">.</span><span class="n">discard</span><span class="p">(</span><span class="n">flag_name</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_enabled_flags</span><span class="p">():</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">enabled_flags</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">is_enabled</span><span class="p">,</span> <span class="n">enable_flag</span><span class="p">,</span> <span class="n">disable_flag</span><span class="p">,</span> <span class="n">get_enabled_flags</span>
+
+<span class="c1"># Create feature flag checker</span>
+<span class="n">is_enabled</span><span class="p">,</span> <span class="n">enable_flag</span><span class="p">,</span> <span class="n">disable_flag</span><span class="p">,</span> <span class="n">get_enabled_flags</span> <span class="o">=</span> <span class="n">create_feature_flag_checker</span><span class="p">([</span>
+    <span class="s1">&#39;new_ui&#39;</span><span class="p">,</span> <span class="s1">&#39;beta_features&#39;</span>
+<span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Feature flag system:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Enabled flags: </span><span class="si">{</span><span class="n">get_enabled_flags</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;new_ui enabled: </span><span class="si">{</span><span class="n">is_enabled</span><span class="p">(</span><span class="s1">&#39;new_ui&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;experimental enabled: </span><span class="si">{</span><span class="n">is_enabled</span><span class="p">(</span><span class="s1">&#39;experimental&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">enable_flag</span><span class="p">(</span><span class="s1">&#39;experimental&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;After enabling experimental: </span><span class="si">{</span><span class="n">get_enabled_flags</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">disable_flag</span><span class="p">(</span><span class="s1">&#39;beta_features&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;After disabling beta_features: </span><span class="si">{</span><span class="n">get_enabled_flags</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Closures encapsulate configuration logic cleanly.</p>
+<h2>Summary</h2>
+<p>Python closures provide:
+- <strong>State encapsulation</strong> without global variables
+- <strong>Function factories</strong> for creating specialized functions
+- <strong>Data privacy</strong> through lexical scoping
+- <strong>Persistent state</strong> across function calls
+- <strong>Foundation for decorators</strong> and advanced patterns</p>
+<p><strong>Key concepts:</strong>
+- <strong>Closure</strong>: Function + enclosing environment
+- <strong>Free variables</strong>: Variables from enclosing scope
+- <strong>Cell objects</strong>: Internal storage for closure variables
+- <strong>nonlocal</strong>: Keyword to modify enclosing variables
+- <strong>Function factory</strong>: Function that returns customized functions</p>
+<p><strong>Common use cases:</strong>
+- Configuration management
+- Event handlers and callbacks
+- Decorators and middleware
+- State machines and counters
+- Caching and memoization
+- API clients and service factories</p>
+<p><strong>Best practices:</strong>
+- Use closures to avoid global state
+- Keep closure logic simple and focused
+- Document closure behavior clearly
+- Consider memory implications of long-lived closures
+- Use <code>nonlocal</code> judiciously for state modification</p>
+<hr>
+<p><strong>Score: 30</strong></p>
+<p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+
+</article>
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+    <aside class="large-3 columns">
+        <h5 class="sidebar-title">Site</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/archives.html">Archives</a>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/tags.html">Tags</a>
+        </ul>
+
+		
+        <h5 class="sidebar-title">Categories</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/pandas-work.html">pandas-work</a></li>
+   
+        </ul>
+
+		
+        <h5 class="sidebar-title">Social</h5>
+        <ul class="side-nav">
+            <li><a href="https://github.com/accsaikiran-sys/">GitHub</a></li>
+            <li><a href="<linkedin handle>">LinkedIn</a></li>
+        </ul>
+
+    </aside> <!-- End Sidebar -->
+
+</div> <!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+              <!--                  <p>My Python Notes by Sai Kiran Reddy</p> -->
+            </div>
+            </div>
+    </div>
+</footer>
+</body>
+</html>
