@@ -58,6 +58,9 @@ with open("data.csv", "r") as file:
 ```python
 import csv
 
+#Each row is read as an ordered dictionary mapped to column headers.
+
+
 with open("data.csv", "r") as file:
     reader = csv.DictReader(file)
     for row in reader:
@@ -67,6 +70,8 @@ with open("data.csv", "r") as file:
 
 ```python
 import csv
+# Creates and writes rows to a CSV file.
+
 
 with open("output.csv", "w", newline="") as file:
     writer = csv.writer(file)
@@ -78,6 +83,8 @@ with open("output.csv", "w", newline="") as file:
 
 ```python
 import csv
+# Efficient for bulk data writing.
+
 
 data = [
     ["John", 28, "Toronto"],
@@ -92,6 +99,8 @@ with open("people.csv", "w", newline="") as file:
 
 ```python
 import csv
+# Ensures structured column mapping.
+
 
 fieldnames = ["name", "age", "city"]
 
