@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Ch11 02 Keywords Identifiers</title>
+
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/normalize.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/style.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/pygments.css" />	
+    <script src="https://accsaikiran-sys.github.io/pynotes/theme/js/modernizr.js"></script>
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<nav>
+<div class="top-bar">
+<div class="row">
+    <div class="large-9 large-centered columns">
+	    <h1><a href="https://accsaikiran-sys.github.io/pynotes">My Python Notes</a></h1>
+    </div>
+</div>
+</div>
+
+<!-- Show menu items and pages -->
+<div class="row">
+<div class="large-9 columns">
+    <ul class="button-group navigation">
+
+    </ul>
+</div>
+</div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns">
+<article>
+    <header>
+        <h3 class="article-title"><a href="https://accsaikiran-sys.github.io/pynotes/ch11-02-keywords-identifiers.html" rel="bookmark"
+        title="Permalink to Ch11 02 Keywords Identifiers">Ch11 02 Keywords Identifiers</a></h3>
+    </header>
+
+<h6 class="subheader" title="2025-12-10T00:00:00-05:00">Wed 10 December 2025
+</h6>
+
+
+    <h1>Python Keywords and Identifiers</h1>
+<p>Overview of reserved keywords and how to name identifiers in Python.</p>
+<h2>1. What are Python Keywords</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">keyword</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">keyword</span><span class="o">.</span><span class="n">kwlist</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Keywords are reserved words that define Python syntax and cannot be used as identifiers.
+Examples: if, else, while, class, def, return, try, except, True, False, None</p>
+<h2>2. List of Python Keywords (Core Examples)</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">keyword</span>
+
+<span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">keyword</span><span class="o">.</span><span class="n">kwlist</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Common categories:
+- Control Flow: if, elif, else, for, while, break, continue
+- Function &amp; Class: def, return, class, lambda
+- Exception Handling: try, except, finally, raise
+- Logical: and, or, not, is, in</p>
+<h2>3. What are Identifiers</h2>
+<div class="highlight"><pre><span></span><code><span class="n">total</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_sum</span><span class="p">():</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">User</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">,</span> <span class="n">calculate_sum</span><span class="p">,</span> <span class="n">User</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Identifiers name variables, functions, classes, modules, or objects.</p>
+<h2>4. Rules for Identifiers</h2>
+<div class="highlight"><pre><span></span><code><span class="n">valid_name</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">_invalid</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="c1"># 1value = 30  # Invalid: starts with digit</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">valid_name</span><span class="p">,</span> <span class="n">_invalid</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Identifier rules:
+- Start with a letter (a-z, A-Z) or underscore (_).
+- Do not start with a digit.
+- Only letters, digits, and underscores are allowed.
+- Cannot be a Python keyword.</p>
+<h2>5. Case Sensitivity in Identifiers</h2>
+<div class="highlight"><pre><span></span><code><span class="n">value</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">Value</span> <span class="o">=</span> <span class="mi">20</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>  <span class="c1"># 10</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Value</span><span class="p">)</span>  <span class="c1"># 20</span>
+</code></pre></div>
+
+<p><code>value</code> and <code>Value</code> are different identifiers.</p>
+<h2>6. Invalid Identifier Examples</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># 2data = 100      # Starts with digit (Invalid)</span>
+<span class="c1"># class = 10       # Keyword (Invalid)</span>
+<span class="c1"># my-name = 5      # Special character (Invalid)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Invalid examples are commented out to keep code runnable&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Python enforces strict syntax rules for naming identifiers.</p>
+<h2>7. Naming Conventions (PEP 8 Standard)</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Variable</span>
+<span class="n">total_price</span> <span class="o">=</span> <span class="mi">500</span>
+
+<span class="c1"># Function</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_total</span><span class="p">():</span>
+    <span class="k">pass</span>
+
+<span class="c1"># Class</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">UserAccount</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">total_price</span><span class="p">,</span> <span class="n">calculate_total</span><span class="p">,</span> <span class="n">UserAccount</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Conventions: variables/functions → snake_case, classes → PascalCase, constants → UPPER_CASE.</p>
+<h2>8. Difference Between Keywords and Identifiers</h2>
+<ul>
+<li>Keywords: reserved words that control Python syntax (e.g., <code>if</code>, <code>class</code>).</li>
+<li>Identifiers: user-defined names for variables, functions, classes (e.g., <code>count</code>, <code>UserData</code>).</li>
+<li>Keywords cannot be customized; identifiers are user-chosen within naming rules.</li>
+</ul>
+<h2>9. Checking if a Word is a Keyword</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">keyword</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">keyword</span><span class="o">.</span><span class="n">iskeyword</span><span class="p">(</span><span class="s2">&quot;if&quot;</span><span class="p">))</span>      <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">keyword</span><span class="o">.</span><span class="n">iskeyword</span><span class="p">(</span><span class="s2">&quot;value&quot;</span><span class="p">))</span>   <span class="c1"># False</span>
+</code></pre></div>
+
+<p>Useful for compilers, linters, and code validators.</p>
+<h2>10. Real-World Naming Example</h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">OrderProcessor</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">calculate_tax</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>
+        <span class="n">tax_rate</span> <span class="o">=</span> <span class="mf">0.18</span>
+        <span class="k">return</span> <span class="n">amount</span> <span class="o">*</span> <span class="n">tax_rate</span>
+
+<span class="n">processor</span> <span class="o">=</span> <span class="n">OrderProcessor</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">processor</span><span class="o">.</span><span class="n">calculate_tax</span><span class="p">(</span><span class="mi">1000</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Demonstrates professional, readable identifiers in practice.</p>
+<h2>Summary</h2>
+<ul>
+<li>Keyword: reserved word in Python.</li>
+<li>Identifier: user-defined name for entities.</li>
+<li>Naming rules: start with letter/underscore, no keywords, case-sensitive.</li>
+<li>Conventions: follow PEP 8 for clarity.</li>
+</ul>
+<h2>Best Practices</h2>
+<ul>
+<li>Never use keywords as identifiers.</li>
+<li>Use meaningful, descriptive names.</li>
+<li>Keep naming consistent and follow PEP 8.</li>
+<li>Avoid single-character names in production code.</li>
+</ul>
+<h2>Enterprise Importance</h2>
+<ul>
+<li>Improves readability and maintainability.</li>
+<li>Lowers bug rates via clear intent.</li>
+<li>Supports scalable architectures and team standards in APIs, AI/ML pipelines, and large systems.</li>
+</ul>
+<hr>
+<p><strong>Score: 30</strong></p>
+<p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+
+</article>
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+    <aside class="large-3 columns">
+        <h5 class="sidebar-title">Site</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/archives.html">Archives</a>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/tags.html">Tags</a>
+        </ul>
+
+		
+        <h5 class="sidebar-title">Categories</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/pandas-work.html">pandas-work</a></li>
+   
+        </ul>
+
+		
+        <h5 class="sidebar-title">Social</h5>
+        <ul class="side-nav">
+            <li><a href="https://github.com/accsaikiran-sys/">GitHub</a></li>
+            <li><a href="<linkedin handle>">LinkedIn</a></li>
+        </ul>
+
+    </aside> <!-- End Sidebar -->
+
+</div> <!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+              <!--                  <p>My Python Notes by Sai Kiran Reddy</p> -->
+            </div>
+            </div>
+    </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Ch11 05 Pip</title>
+
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/normalize.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/style.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/pygments.css" />	
+    <script src="https://accsaikiran-sys.github.io/pynotes/theme/js/modernizr.js"></script>
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<nav>
+<div class="top-bar">
+<div class="row">
+    <div class="large-9 large-centered columns">
+	    <h1><a href="https://accsaikiran-sys.github.io/pynotes">My Python Notes</a></h1>
+    </div>
+</div>
+</div>
+
+<!-- Show menu items and pages -->
+<div class="row">
+<div class="large-9 columns">
+    <ul class="button-group navigation">
+
+    </ul>
+</div>
+</div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns">
+<article>
+    <header>
+        <h3 class="article-title"><a href="https://accsaikiran-sys.github.io/pynotes/ch11-05-pip.html" rel="bookmark"
+        title="Permalink to Ch11 05 Pip">Ch11 05 Pip</a></h3>
+    </header>
+
+<h6 class="subheader" title="2025-12-10T00:00:00-05:00">Wed 10 December 2025
+</h6>
+
+
+    <h1>Python pip</h1>
+<p>Package management with Python's official installer, <code>pip</code>.</p>
+<h2>1. What is pip</h2>
+<div class="highlight"><pre><span></span><code><span class="n">pip</span> <span class="o">--</span><span class="n">version</span>
+</code></pre></div>
+
+<p><code>pip</code> installs, upgrades, and manages packages from PyPI.</p>
+<h2>2. Installing a Package</h2>
+<div class="highlight"><pre><span></span><code><span class="n">pip</span> <span class="n">install</span> <span class="n">requests</span>
+</code></pre></div>
+
+<p>Downloads and installs a package and its dependencies.</p>
+<h2>3. Upgrading a Package</h2>
+<div class="highlight"><pre><span></span><code><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">upgrade</span> <span class="n">requests</span>
+</code></pre></div>
+
+<p>Ensures the latest stable version is installed.</p>
+<h2>4. Uninstalling a Package</h2>
+<div class="highlight"><pre><span></span><code><span class="n">pip</span> <span class="n">uninstall</span> <span class="n">requests</span>
+</code></pre></div>
+
+<p>Removes the package and related files.</p>
+<h2>5. Listing Installed Packages</h2>
+<div class="highlight"><pre><span></span><code><span class="n">pip</span> <span class="nb">list</span>
+</code></pre></div>
+
+<p>Displays all packages in the environment.</p>
+<h2>6. Viewing Package Information</h2>
+<div class="highlight"><pre><span></span><code><span class="n">pip</span> <span class="n">show</span> <span class="n">requests</span>
+</code></pre></div>
+
+<p>Shows version, location, and dependencies.</p>
+<h2>7. Installing Specific Package Version</h2>
+<div class="highlight"><pre><span></span><code><span class="n">pip</span> <span class="n">install</span> <span class="n">numpy</span><span class="o">==</span><span class="mf">1.24.0</span>
+</code></pre></div>
+
+<p>Locks installation to an exact version for reproducibility.</p>
+<h2>8. Using requirements.txt</h2>
+<div class="highlight"><pre><span></span><code><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+</code></pre></div>
+
+<p>Example <code>requirements.txt</code>:</p>
+<div class="highlight"><pre><span></span><code>flask==2.2.3
+requests&gt;=2.25
+numpy
+</code></pre></div>
+
+<p>Essential for dependency management in team environments.</p>
+<h2>9. Freezing Dependencies</h2>
+<div class="highlight"><pre><span></span><code><span class="n">pip</span> <span class="n">freeze</span> <span class="o">&gt;</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+</code></pre></div>
+
+<p>Exports exact versions for deployment or CI/CD.</p>
+<h2>10. Enterprise Deployment Example</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Step 1: Create virtual environment</span>
+<span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="n">venv</span>
+
+<span class="c1"># Step 2: Activate environment</span>
+<span class="n">source</span> <span class="n">venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>   <span class="c1"># macOS/Linux</span>
+<span class="n">venv</span>\<span class="n">Scripts</span>\<span class="n">activate</span>      <span class="c1"># Windows</span>
+
+<span class="c1"># Step 3: Install dependencies</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+</code></pre></div>
+
+<p>Ensures isolated, repeatable, production-grade deployments.</p>
+<h2>Common pip Commands Reference</h2>
+<ul>
+<li><code>pip install package</code> → install package</li>
+<li><code>pip uninstall package</code> → remove package</li>
+<li><code>pip list</code> → show installed packages</li>
+<li><code>pip show package</code> → package details</li>
+<li><code>pip freeze</code> → output dependency list</li>
+<li><code>pip install --upgrade package</code> → update package</li>
+</ul>
+<h2>pip vs Conda</h2>
+<ul>
+<li><code>pip</code>: Python-only, PyPI-based, lightweight package manager.</li>
+<li><code>conda</code>: Environment + package manager for multi-language stacks, data-science focused.</li>
+</ul>
+<h2>Best Practices</h2>
+<ul>
+<li>Always use virtual environments.</li>
+<li>Lock versions for production.</li>
+<li>Keep <code>requirements.txt</code> updated.</li>
+<li>Avoid global installs; use virtual envs or <code>--user</code>.</li>
+<li>Integrate pip steps into CI/CD.</li>
+</ul>
+<h2>Common Issues &amp; Solutions</h2>
+<ul>
+<li>Permission denied → use virtual env or <code>pip install --user</code>.</li>
+<li>Version conflicts → isolate environments.</li>
+<li>Slow installs → use cached wheels or mirrors.</li>
+<li>Dependency hell → define strict version constraints.</li>
+</ul>
+<hr>
+<p><strong>Score: 35</strong></p>
+<p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+
+</article>
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+    <aside class="large-3 columns">
+        <h5 class="sidebar-title">Site</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/archives.html">Archives</a>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/tags.html">Tags</a>
+        </ul>
+
+		
+        <h5 class="sidebar-title">Categories</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/pandas-work.html">pandas-work</a></li>
+   
+        </ul>
+
+		
+        <h5 class="sidebar-title">Social</h5>
+        <ul class="side-nav">
+            <li><a href="https://github.com/accsaikiran-sys/">GitHub</a></li>
+            <li><a href="<linkedin handle>">LinkedIn</a></li>
+        </ul>
+
+    </aside> <!-- End Sidebar -->
+
+</div> <!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+              <!--                  <p>My Python Notes by Sai Kiran Reddy</p> -->
+            </div>
+            </div>
+    </div>
+</footer>
+</body>
+</html>

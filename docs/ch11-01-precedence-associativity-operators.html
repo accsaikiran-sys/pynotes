@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Ch11 01 Precedence Associativity Operators</title>
+
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/normalize.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/style.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/pygments.css" />	
+    <script src="https://accsaikiran-sys.github.io/pynotes/theme/js/modernizr.js"></script>
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<nav>
+<div class="top-bar">
+<div class="row">
+    <div class="large-9 large-centered columns">
+	    <h1><a href="https://accsaikiran-sys.github.io/pynotes">My Python Notes</a></h1>
+    </div>
+</div>
+</div>
+
+<!-- Show menu items and pages -->
+<div class="row">
+<div class="large-9 columns">
+    <ul class="button-group navigation">
+
+    </ul>
+</div>
+</div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns">
+<article>
+    <header>
+        <h3 class="article-title"><a href="https://accsaikiran-sys.github.io/pynotes/ch11-01-precedence-associativity-operators.html" rel="bookmark"
+        title="Permalink to Ch11 01 Precedence Associativity Operators">Ch11 01 Precedence Associativity Operators</a></h3>
+    </header>
+
+<h6 class="subheader" title="2025-12-10T00:00:00-05:00">Wed 10 December 2025
+</h6>
+
+
+    <h1>Precedence and Associativity of Operators in Python</h1>
+<p>Understand how Python decides the order of evaluation in expressions and how associativity resolves ties.</p>
+<h2>1. What is Operator Precedence</h2>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">+</span> <span class="mi">5</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># 20, not 30</span>
+</code></pre></div>
+
+<p>Multiplication (*) has higher precedence than addition (+).</p>
+<h2>2. What is Operator Associativity</h2>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">/</span> <span class="mi">10</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># 5.0</span>
+<span class="c1"># Division is left-to-right associative: (100 / 10) / 2</span>
+</code></pre></div>
+
+<p>Associativity determines the direction of evaluation for operators with the same precedence.</p>
+<h2>3. Using Parentheses to Override Precedence</h2>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span> <span class="o">+</span> <span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># 30</span>
+</code></pre></div>
+
+<p>Parentheses explicitly control evaluation order.</p>
+<h2>4. Arithmetic Operator Precedence</h2>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">-</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># 9</span>
+<span class="c1"># Order: * then + then -</span>
+</code></pre></div>
+
+<p>Arithmetic operators follow a defined priority where multiplication/division come before addition/subtraction.</p>
+<h2>5. Comparison and Logical Precedence</h2>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">&gt;</span> <span class="mi">5</span> <span class="ow">and</span> <span class="mi">5</span> <span class="o">&gt;</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># True</span>
+<span class="c1"># Order: comparisons first, then logical AND</span>
+</code></pre></div>
+
+<p>Comparisons are evaluated before logical operators like <code>and</code> and <code>or</code>.</p>
+<h2>6. Logical Operator Hierarchy</h2>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="kc">True</span> <span class="ow">or</span> <span class="kc">False</span> <span class="ow">and</span> <span class="kc">False</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># True</span>
+<span class="c1"># not &gt; and &gt; or, so it becomes True or (False and False)</span>
+</code></pre></div>
+
+<p>Logical NOT binds tighter than AND, which binds tighter than OR.</p>
+<h2>7. Assignment Precedence</h2>
+<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">+</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>  <span class="c1"># 15 15</span>
+<span class="c1"># Assignment happens after arithmetic</span>
+</code></pre></div>
+
+<p>Assignment (=) has lower precedence than arithmetic operators.</p>
+<h2>8. Exponentiation Associativity (Right to Left)</h2>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">3</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># 512</span>
+<span class="c1"># Evaluated as 2 ** (3 ** 2)</span>
+</code></pre></div>
+
+<p>Exponentiation is right-associative, so it groups from the right.</p>
+<h2>9. Bitwise Operator Precedence</h2>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">&amp;</span> <span class="mi">3</span> <span class="o">|</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># 3</span>
+<span class="c1"># Order: &amp; then |</span>
+</code></pre></div>
+
+<p>Bitwise AND evaluates before bitwise OR for predictable results.</p>
+<h2>10. Complex Expression Evaluation Example</h2>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">&gt;</span> <span class="mi">20</span> <span class="ow">and</span> <span class="ow">not</span> <span class="kc">False</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># True</span>
+</code></pre></div>
+
+<p>Step-by-step:
+- Exponentiation → 2 ** 3 = 8
+- Multiplication → 8 * 4 = 32
+- Addition → 5 + 32 = 37
+- Comparison → 37 &gt; 20 → True
+- Logical NOT → not False → True
+- AND → True and True → True</p>
+<h2>Operator Precedence Table (High → Low)</h2>
+<ol>
+<li>()</li>
+<li>**</li>
+<li>+x, -x, ~x</li>
+<li>*, /, //, %</li>
+<li>+, -</li>
+<li>&lt;&lt;, &gt;&gt;</li>
+<li>&amp;</li>
+<li>^</li>
+<li>|</li>
+<li>Comparisons (==, !=, &gt;, &lt;, &gt;=, &lt;=)</li>
+<li>not</li>
+<li>and</li>
+<li>or</li>
+</ol>
+<h2>Associativity Summary</h2>
+<ul>
+<li>Most operators: Left → Right</li>
+<li>Exponentiation (**): Right → Left</li>
+<li>Assignment (=): Right → Left</li>
+</ul>
+<h2>Best Practices</h2>
+<ul>
+<li>Use parentheses for readability and predictability.</li>
+<li>Avoid overly complex expressions.</li>
+<li>Break logic across lines if needed.</li>
+<li>Do not rely on memory for precedence in critical logic.</li>
+</ul>
+<h2>Enterprise Relevance</h2>
+<ul>
+<li>Accurate business rule logic.</li>
+<li>Correct financial calculations.</li>
+<li>Reliable conditional flows.</li>
+<li>Bug-free algorithm design (quant systems, validation engines, rule-based logic, workflow automation).</li>
+</ul>
+<hr>
+<p><strong>Score: 35</strong></p>
+<p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+
+</article>
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+    <aside class="large-3 columns">
+        <h5 class="sidebar-title">Site</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/archives.html">Archives</a>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/tags.html">Tags</a>
+        </ul>
+
+		
+        <h5 class="sidebar-title">Categories</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/pandas-work.html">pandas-work</a></li>
+   
+        </ul>
+
+		
+        <h5 class="sidebar-title">Social</h5>
+        <ul class="side-nav">
+            <li><a href="https://github.com/accsaikiran-sys/">GitHub</a></li>
+            <li><a href="<linkedin handle>">LinkedIn</a></li>
+        </ul>
+
+    </aside> <!-- End Sidebar -->
+
+</div> <!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+              <!--                  <p>My Python Notes by Sai Kiran Reddy</p> -->
+            </div>
+            </div>
+    </div>
+</footer>
+</body>
+</html>

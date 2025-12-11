@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Ch11 03 Asserts</title>
+
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/normalize.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/style.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/pygments.css" />	
+    <script src="https://accsaikiran-sys.github.io/pynotes/theme/js/modernizr.js"></script>
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<nav>
+<div class="top-bar">
+<div class="row">
+    <div class="large-9 large-centered columns">
+	    <h1><a href="https://accsaikiran-sys.github.io/pynotes">My Python Notes</a></h1>
+    </div>
+</div>
+</div>
+
+<!-- Show menu items and pages -->
+<div class="row">
+<div class="large-9 columns">
+    <ul class="button-group navigation">
+
+    </ul>
+</div>
+</div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns">
+<article>
+    <header>
+        <h3 class="article-title"><a href="https://accsaikiran-sys.github.io/pynotes/ch11-03-asserts.html" rel="bookmark"
+        title="Permalink to Ch11 03 Asserts">Ch11 03 Asserts</a></h3>
+    </header>
+
+<h6 class="subheader" title="2025-12-10T00:00:00-05:00">Wed 10 December 2025
+</h6>
+
+
+    <h1>Python Asserts</h1>
+<p>Using assertions to validate internal logic and invariants during development and testing.</p>
+<h2>1. What is an Assertion</h2>
+<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="k">assert</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Assertion passed for x &gt; 0&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>An assertion tests a condition and raises <code>AssertionError</code> if it is False.</p>
+<h2>2. Basic Assertion Syntax</h2>
+<div class="highlight"><pre><span></span><code><span class="n">age</span> <span class="o">=</span> <span class="mi">18</span>
+<span class="k">assert</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">18</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Age is valid&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Program continues only if the condition is true.</p>
+<h2>3. Assertion with Custom Message</h2>
+<div class="highlight"><pre><span></span><code><span class="n">score</span> <span class="o">=</span> <span class="mi">40</span>
+<span class="k">assert</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">50</span><span class="p">,</span> <span class="s1">&#39;Score must be at least 50 to pass&#39;</span>
+</code></pre></div>
+
+<p>Custom messages provide clear context on failure.</p>
+<h2>4. Assertion Failure Example</h2>
+<div class="highlight"><pre><span></span><code><span class="n">value</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span>
+<span class="k">assert</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Value must be positive&#39;</span>
+</code></pre></div>
+
+<p>When the condition fails, Python raises <code>AssertionError: Value must be positive</code>. Useful during validation and debugging.</p>
+<h2>5. Using Assertions in Functions</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">calculate_square</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="nb">int</span><span class="p">),</span> <span class="s1">&#39;Input must be an integer&#39;</span>
+    <span class="k">return</span> <span class="n">num</span> <span class="o">*</span> <span class="n">num</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">calculate_square</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Ensures correct parameter usage before proceeding.</p>
+<h2>6. Assertions for Invariant Checks</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">withdraw</span><span class="p">(</span><span class="n">balance</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">amount</span> <span class="o">&lt;=</span> <span class="n">balance</span><span class="p">,</span> <span class="s1">&#39;Insufficient balance&#39;</span>
+    <span class="k">return</span> <span class="n">balance</span> <span class="o">-</span> <span class="n">amount</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">withdraw</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">600</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Guarantees logical consistency during execution.</p>
+<h2>7. Assertions vs Exception Handling</h2>
+<ul>
+<li>Assertion: <code>assert x != 0, 'x must not be zero'</code> (debugging aid, can be disabled).</li>
+<li>Exception: </li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;x must not be zero&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Use assertions for internal logic; use exceptions for user-input validation and production safety.</p>
+<h2>8. Disabling Assertions in Production</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Run Python with -O to remove assertions at runtime</span>
+<span class="c1"># python -O script.py</span>
+</code></pre></div>
+
+<p>Assertions are stripped when running with optimization (-O). Do not rely on them for critical runtime checks.</p>
+<h2>9. Advanced Assertion with Complex Logic</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">process_data</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Data cannot be empty&#39;</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">process_data</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]))</span>
+</code></pre></div>
+
+<p>Combines multiple conditions to enforce data validity.</p>
+<h2>10. Enterprise Use Case: Defensive Programming</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">process_order</span><span class="p">(</span><span class="n">order</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="s1">&#39;id&#39;</span> <span class="ow">in</span> <span class="n">order</span><span class="p">,</span> <span class="s1">&#39;Order must contain ID&#39;</span>
+    <span class="k">assert</span> <span class="n">order</span><span class="p">[</span><span class="s1">&#39;amount&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Order amount must be positive&#39;</span>
+    <span class="k">return</span> <span class="s1">&#39;Order Processed&#39;</span>
+
+<span class="n">order</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">101</span><span class="p">,</span> <span class="s1">&#39;amount&#39;</span><span class="p">:</span> <span class="mi">250</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">process_order</span><span class="p">(</span><span class="n">order</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Keeps internal system contracts valid. Replace with exceptions for user-facing validation in production.</p>
+<h2>Assertion Lifecycle</h2>
+<ul>
+<li>Development: detect logical errors early.</li>
+<li>Testing: enforce internal rules.</li>
+<li>Production: typically disabled or replaced by explicit exceptions.</li>
+</ul>
+<h2>Best Practices</h2>
+<ul>
+<li>Use assertions for internal logic validation.</li>
+<li>Avoid using them for user-input validation.</li>
+<li>Keep conditions simple and side-effect free.</li>
+<li>Combine with logging for traceability.</li>
+</ul>
+<h2>Common Mistakes</h2>
+<ul>
+<li>Using asserts for runtime error handling.</li>
+<li>Relying on asserts in production logic (they can be disabled).</li>
+<li>Overly complex assertion expressions.</li>
+<li>Forgetting that assertions vanish under -O.</li>
+</ul>
+<h2>Enterprise Importance</h2>
+<ul>
+<li>Detect programming errors early and preserve invariants.</li>
+<li>Improve reliability in AI pipelines, financial computations, workflow engines, and backend services.</li>
+</ul>
+<hr>
+<p><strong>Score: 30</strong></p>
+<p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+
+</article>
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+    <aside class="large-3 columns">
+        <h5 class="sidebar-title">Site</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/archives.html">Archives</a>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/tags.html">Tags</a>
+        </ul>
+
+		
+        <h5 class="sidebar-title">Categories</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/pandas-work.html">pandas-work</a></li>
+   
+        </ul>
+
+		
+        <h5 class="sidebar-title">Social</h5>
+        <ul class="side-nav">
+            <li><a href="https://github.com/accsaikiran-sys/">GitHub</a></li>
+            <li><a href="<linkedin handle>">LinkedIn</a></li>
+        </ul>
+
+    </aside> <!-- End Sidebar -->
+
+</div> <!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+              <!--                  <p>My Python Notes by Sai Kiran Reddy</p> -->
+            </div>
+            </div>
+    </div>
+</footer>
+</body>
+</html>
