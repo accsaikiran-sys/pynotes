@@ -2,8 +2,8 @@
 title: Ch06 04 Write Cav Files
 date: 2025-12-10
 author: Your Name
-cell_count: 8
-score: 5
+cell_count: 11
+score: 10
 ---
 
 ```python
@@ -95,5 +95,44 @@ with open("validated.csv", "w", newline="") as file:
 ```
 
 
+```python
+import csv
+
+with open("unicode.csv", "w", encoding="utf-8", newline="") as file:
+    writer = csv.writer(file)
+    writer.writerow(["Name", "City"])
+    writer.writerow(["José", "München"])
+```
+
+
+```python
+import csv
+
+records = [
+    {"name": "Alice", "age": 25, "city": "Rome"},
+    {"name": "Bob", "age": 30, "city": "Madrid"}
+]
+
+with open("records.csv", "w", newline="") as file:
+    writer = csv.DictWriter(file, fieldnames=records[0].keys())
+    writer.writeheader()
+    writer.writerows(records)
+```
+
+
+```python
+import pandas as pd
+
+data = {
+    "name": ["Alice", "Bob"],
+    "age": [25, 30],
+    "city": ["Paris", "London"]
+}
+
+df = pd.DataFrame(data)
+df.to_csv("data.csv", index=False)
+```
+
+
 ---
-**Score: 5**
+**Score: 10**
