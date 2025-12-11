@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Ch09 02 Lambda Functions</title>
+
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/normalize.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/style.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/pygments.css" />	
+    <script src="https://accsaikiran-sys.github.io/pynotes/theme/js/modernizr.js"></script>
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<nav>
+<div class="top-bar">
+<div class="row">
+    <div class="large-9 large-centered columns">
+	    <h1><a href="https://accsaikiran-sys.github.io/pynotes">My Python Notes</a></h1>
+    </div>
+</div>
+</div>
+
+<!-- Show menu items and pages -->
+<div class="row">
+<div class="large-9 columns">
+    <ul class="button-group navigation">
+
+    </ul>
+</div>
+</div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns">
+<article>
+    <header>
+        <h3 class="article-title"><a href="https://accsaikiran-sys.github.io/pynotes/ch09-02-lambda-functions.html" rel="bookmark"
+        title="Permalink to Ch09 02 Lambda Functions">Ch09 02 Lambda Functions</a></h3>
+    </header>
+
+<h6 class="subheader" title="2025-12-10T00:00:00-05:00">Wed 10 December 2025
+</h6>
+
+
+    <h1>Chapter 9.2: Lambda / Anonymous Functions in Python</h1>
+<p>This notebook covers Python lambda functions - small, anonymous functions that can be defined inline for concise operations.</p>
+<h2>1. What is a Lambda Function</h2>
+<p>A lambda function is a small anonymous function defined using the lambda keyword. It can have any number of arguments but only one expression.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Basic lambda function</span>
+<span class="n">square</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">square</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>  <span class="c1"># Output: 25</span>
+
+<span class="c1"># Lambda for simple calculations</span>
+<span class="n">double</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">double</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>  <span class="c1"># Output: 14</span>
+</code></pre></div>
+
+<p>Lambda functions are used for concise, one-line operations.</p>
+<h2>2. Lambda with Multiple Arguments</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Lambda with two arguments</span>
+<span class="n">add</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>  <span class="c1"># Output: 15</span>
+
+<span class="c1"># Lambda with three arguments</span>
+<span class="n">multiply_three</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span> <span class="o">*</span> <span class="n">z</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">multiply_three</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>  <span class="c1"># Output: 24</span>
+
+<span class="c1"># Lambda with default arguments</span>
+<span class="n">power</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">:</span> <span class="n">x</span> <span class="o">**</span> <span class="n">n</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">power</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>     <span class="c1"># Output: 9 (3^2)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">power</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>  <span class="c1"># Output: 27 (3^3)</span>
+</code></pre></div>
+
+<p>Supports multiple inputs with a single return expression.</p>
+<h2>3. Lambda Without Assignment (Inline Usage)</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Immediate execution</span>
+<span class="nb">print</span><span class="p">((</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">)(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>  <span class="c1"># Output: 20</span>
+
+<span class="c1"># Complex inline calculation</span>
+<span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">:</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">*</span> <span class="n">c</span><span class="p">)(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># Output: 20</span>
+
+<span class="c1"># Conditional lambda</span>
+<span class="n">max_value</span> <span class="o">=</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span> <span class="k">else</span> <span class="n">y</span><span class="p">)(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">max_value</span><span class="p">)</span>  <span class="c1"># Output: 15</span>
+</code></pre></div>
+
+<p>Lambda can be defined and executed immediately.</p>
+<h2>4. Lambda with map()</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Apply function to each element</span>
+<span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">squares</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="n">numbers</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">squares</span><span class="p">)</span>  <span class="c1"># Output: [1, 4, 9, 16]</span>
+
+<span class="c1"># Convert temperatures</span>
+<span class="n">celsius</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
+<span class="n">fahrenheit</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">c</span><span class="p">:</span> <span class="p">(</span><span class="n">c</span> <span class="o">*</span> <span class="mi">9</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="mi">32</span><span class="p">,</span> <span class="n">celsius</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fahrenheit</span><span class="p">)</span>  <span class="c1"># Output: [32.0, 68.0, 86.0, 104.0]</span>
+
+<span class="c1"># String operations</span>
+<span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="s2">&quot;world&quot;</span><span class="p">,</span> <span class="s2">&quot;python&quot;</span><span class="p">]</span>
+<span class="n">capitalized</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">capitalize</span><span class="p">(),</span> <span class="n">words</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">capitalized</span><span class="p">)</span>  <span class="c1"># Output: [&#39;Hello&#39;, &#39;World&#39;, &#39;Python&#39;]</span>
+</code></pre></div>
+
+<p>Used to apply a function to each item in an iterable.</p>
+<h2>5. Lambda with filter()</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Filter even numbers</span>
+<span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="n">even_numbers</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="n">numbers</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">even_numbers</span><span class="p">)</span>  <span class="c1"># Output: [2, 4, 6]</span>
+
+<span class="c1"># Filter positive numbers</span>
+<span class="n">mixed_numbers</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">positive</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">mixed_numbers</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">positive</span><span class="p">)</span>  <span class="c1"># Output: [2, 5]</span>
+
+<span class="c1"># Filter strings by length</span>
+<span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="s2">&quot;elephant&quot;</span><span class="p">,</span> <span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="s2">&quot;butterfly&quot;</span><span class="p">]</span>
+<span class="n">long_words</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">w</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">,</span> <span class="n">words</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">long_words</span><span class="p">)</span>  <span class="c1"># Output: [&#39;elephant&#39;, &#39;butterfly&#39;]</span>
+</code></pre></div>
+
+<p>Filters elements based on a condition.</p>
+<h2>6. Lambda with reduce()</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">reduce</span>
+
+<span class="c1"># Sum all numbers</span>
+<span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">total</span> <span class="o">=</span> <span class="n">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">,</span> <span class="n">numbers</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>  <span class="c1"># Output: 10</span>
+
+<span class="c1"># Find maximum</span>
+<span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">maximum</span> <span class="o">=</span> <span class="n">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span> <span class="k">else</span> <span class="n">y</span><span class="p">,</span> <span class="n">numbers</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">maximum</span><span class="p">)</span>  <span class="c1"># Output: 9</span>
+
+<span class="c1"># Multiply all numbers</span>
+<span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">product</span> <span class="o">=</span> <span class="n">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">,</span> <span class="n">numbers</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">product</span><span class="p">)</span>  <span class="c1"># Output: 24</span>
+</code></pre></div>
+
+<p>Reduces an iterable to a single result.</p>
+<h2>7. Lambda for Sorting Key</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Sort by second element (grade)</span>
+<span class="n">students</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="mi">85</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="mi">72</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Charlie&quot;</span><span class="p">,</span> <span class="mi">90</span><span class="p">)]</span>
+<span class="n">students</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sorted by grade:&quot;</span><span class="p">,</span> <span class="n">students</span><span class="p">)</span>
+
+<span class="c1"># Sort by name length</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="s2">&quot;Charlie&quot;</span><span class="p">,</span> <span class="s2">&quot;David&quot;</span><span class="p">]</span>
+<span class="n">names</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">name</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sorted by length:&quot;</span><span class="p">,</span> <span class="n">names</span><span class="p">)</span>
+
+<span class="c1"># Sort dictionaries</span>
+<span class="n">people</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">25</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Charlie&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">35</span><span class="p">}</span>
+<span class="p">]</span>
+<span class="n">people</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">person</span><span class="p">:</span> <span class="n">person</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sorted by age:&quot;</span><span class="p">,</span> <span class="n">people</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Lambda is commonly used as a custom sorting key.</p>
+<h2>8. Lambda in List Comprehension Context</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Create list of lambda functions</span>
+<span class="n">multipliers</span> <span class="o">=</span> <span class="p">[(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">multipliers</span><span class="p">[</span><span class="mi">0</span><span class="p">](</span><span class="mi">5</span><span class="p">))</span>  <span class="c1"># Output: 5 (5 * 1)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">multipliers</span><span class="p">[</span><span class="mi">1</span><span class="p">](</span><span class="mi">5</span><span class="p">))</span>  <span class="c1"># Output: 10 (5 * 2)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">multipliers</span><span class="p">[</span><span class="mi">2</span><span class="p">](</span><span class="mi">5</span><span class="p">))</span>  <span class="c1"># Output: 15 (5 * 3)</span>
+
+<span class="c1"># Apply different operations</span>
+<span class="n">operations</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="p">]</span>
+
+<span class="n">number</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">op</span><span class="p">(</span><span class="n">number</span><span class="p">)</span> <span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">operations</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Results for </span><span class="si">{</span><span class="n">number</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">,</span> <span class="n">results</span><span class="p">)</span>  <span class="c1"># [6, 10, 25]</span>
+</code></pre></div>
+
+<p>Demonstrates functional programming patterns.</p>
+<h2>9. Lambda vs Normal Function</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Normal function</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">square_func</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span>
+
+<span class="c1"># Lambda function</span>
+<span class="n">square_lambda</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span>
+
+<span class="c1"># Both produce same result</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">square_func</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>     <span class="c1"># 16</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">square_lambda</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>   <span class="c1"># 16</span>
+
+<span class="c1"># Performance comparison</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="c1"># Test with large dataset</span>
+<span class="n">numbers</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100000</span><span class="p">))</span>
+
+<span class="c1"># Normal function timing</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">result1</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">square_func</span><span class="p">,</span> <span class="n">numbers</span><span class="p">))</span>
+<span class="n">func_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+
+<span class="c1"># Lambda timing</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">result2</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">square_lambda</span><span class="p">,</span> <span class="n">numbers</span><span class="p">))</span>
+<span class="n">lambda_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Function time: </span><span class="si">{</span><span class="n">func_time</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Lambda time: </span><span class="si">{</span><span class="n">lambda_time</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Results equal: </span><span class="si">{</span><span class="n">result1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">result2</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Lambda is more concise but less suitable for complex logic.</p>
+<h2>10. Real-World Lambda Example</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Employee data processing</span>
+<span class="n">employees</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="s2">&quot;salary&quot;</span><span class="p">:</span> <span class="mi">5000</span><span class="p">,</span> <span class="s2">&quot;department&quot;</span><span class="p">:</span> <span class="s2">&quot;Engineering&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="s2">&quot;salary&quot;</span><span class="p">:</span> <span class="mi">3000</span><span class="p">,</span> <span class="s2">&quot;department&quot;</span><span class="p">:</span> <span class="s2">&quot;Marketing&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Charlie&quot;</span><span class="p">,</span> <span class="s2">&quot;salary&quot;</span><span class="p">:</span> <span class="mi">7000</span><span class="p">,</span> <span class="s2">&quot;department&quot;</span><span class="p">:</span> <span class="s2">&quot;Engineering&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Diana&quot;</span><span class="p">,</span> <span class="s2">&quot;salary&quot;</span><span class="p">:</span> <span class="mi">4500</span><span class="p">,</span> <span class="s2">&quot;department&quot;</span><span class="p">:</span> <span class="s2">&quot;Sales&quot;</span><span class="p">}</span>
+<span class="p">]</span>
+
+<span class="c1"># Find highest paid employee</span>
+<span class="n">highest_paid</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">employees</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">emp</span><span class="p">:</span> <span class="n">emp</span><span class="p">[</span><span class="s2">&quot;salary&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Highest paid:&quot;</span><span class="p">,</span> <span class="n">highest_paid</span><span class="p">)</span>
+
+<span class="c1"># Filter high earners</span>
+<span class="n">high_earners</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">emp</span><span class="p">:</span> <span class="n">emp</span><span class="p">[</span><span class="s2">&quot;salary&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">4000</span><span class="p">,</span> <span class="n">employees</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;High earners:&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">emp</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">emp</span> <span class="ow">in</span> <span class="n">high_earners</span><span class="p">])</span>
+
+<span class="c1"># Calculate total salary by department</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">defaultdict</span>
+
+<span class="n">dept_salaries</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">emp</span> <span class="ow">in</span> <span class="n">employees</span><span class="p">:</span>
+    <span class="n">dept_salaries</span><span class="p">[</span><span class="n">emp</span><span class="p">[</span><span class="s2">&quot;department&quot;</span><span class="p">]]</span> <span class="o">+=</span> <span class="n">emp</span><span class="p">[</span><span class="s2">&quot;salary&quot;</span><span class="p">]</span>
+
+<span class="c1"># Sort departments by total salary</span>
+<span class="n">sorted_depts</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">dept_salaries</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Departments by total salary:&quot;</span><span class="p">,</span> <span class="n">sorted_depts</span><span class="p">)</span>
+
+<span class="c1"># Apply salary increase</span>
+<span class="n">updated_salaries</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">emp</span><span class="p">:</span> <span class="p">{</span><span class="o">**</span><span class="n">emp</span><span class="p">,</span> <span class="s2">&quot;salary&quot;</span><span class="p">:</span> <span class="n">emp</span><span class="p">[</span><span class="s2">&quot;salary&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">1.1</span><span class="p">},</span> <span class="n">employees</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;After 10</span><span class="si">% i</span><span class="s2">ncrease:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">emp</span> <span class="ow">in</span> <span class="n">updated_salaries</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">emp</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">: $</span><span class="si">{</span><span class="n">emp</span><span class="p">[</span><span class="s1">&#39;salary&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Lambda enables expressive data processing in analytics and business logic.</p>
+<h2>Additional Examples: Advanced Lambda Usage</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Lambda with conditional expressions</span>
+<span class="n">abs_value</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="k">else</span> <span class="o">-</span><span class="n">x</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">abs_value</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">))</span>  <span class="c1"># Output: 5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">abs_value</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>   <span class="c1"># Output: 3</span>
+
+<span class="c1"># Lambda for data validation</span>
+<span class="n">is_valid_email</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">email</span><span class="p">:</span> <span class="s2">&quot;@&quot;</span> <span class="ow">in</span> <span class="n">email</span> <span class="ow">and</span> <span class="s2">&quot;.&quot;</span> <span class="ow">in</span> <span class="n">email</span>
+<span class="n">emails</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;user@example.com&quot;</span><span class="p">,</span> <span class="s2">&quot;invalid-email&quot;</span><span class="p">,</span> <span class="s2">&quot;test@domain.org&quot;</span><span class="p">]</span>
+<span class="n">valid_emails</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="n">is_valid_email</span><span class="p">,</span> <span class="n">emails</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Valid emails:&quot;</span><span class="p">,</span> <span class="n">valid_emails</span><span class="p">)</span>
+
+<span class="c1"># Lambda for string processing</span>
+<span class="n">clean_text</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">text</span><span class="p">:</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">)</span>
+<span class="n">titles</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;  Hello World  &quot;</span><span class="p">,</span> <span class="s2">&quot;Python Programming&quot;</span><span class="p">,</span> <span class="s2">&quot;  Data Science &quot;</span><span class="p">]</span>
+<span class="n">cleaned</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">clean_text</span><span class="p">,</span> <span class="n">titles</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cleaned titles:&quot;</span><span class="p">,</span> <span class="n">cleaned</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>Lambda Best Practices</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># ✅ Good: Simple, readable lambda</span>
+<span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">doubled</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="n">numbers</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Doubled:&quot;</span><span class="p">,</span> <span class="n">doubled</span><span class="p">)</span>
+
+<span class="c1"># ✅ Good: Lambda for sorting</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;banana&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;cherry&quot;</span><span class="p">,</span> <span class="mi">8</span><span class="p">)]</span>
+<span class="n">sorted_data</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sorted by count:&quot;</span><span class="p">,</span> <span class="n">sorted_data</span><span class="p">)</span>
+
+<span class="c1"># ❌ Avoid: Complex logic in lambda (use regular function instead)</span>
+<span class="c1"># complex_lambda = lambda x: x * 2 if x &gt; 0 else x / 2 if x &lt; 0 else 0</span>
+
+<span class="c1"># ✅ Better: Use regular function for complex logic</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">process_number</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span>
+    <span class="k">elif</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+
+<span class="n">test_numbers</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">processed</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">process_number</span><span class="p">,</span> <span class="n">test_numbers</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Processed:&quot;</span><span class="p">,</span> <span class="n">processed</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>Summary</h2>
+<p>Lambda functions in Python provide:
+- <strong>Concise syntax</strong> for simple operations
+- <strong>Functional programming</strong> capabilities
+- <strong>Inline usage</strong> with map(), filter(), reduce()
+- <strong>Custom sorting</strong> and data processing
+- <strong>Readable code</strong> for simple transformations</p>
+<p><strong>When to use lambda:</strong>
+- Simple, one-line operations
+- Sorting keys
+- Map/filter operations
+- Callback functions</p>
+<p><strong>When to avoid lambda:</strong>
+- Complex logic
+- Multiple statements
+- Reusable functions
+- Functions needing documentation</p>
+<hr>
+<p><strong>Score: 35</strong></p>
+<p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+
+</article>
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+    <aside class="large-3 columns">
+        <h5 class="sidebar-title">Site</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/archives.html">Archives</a>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/tags.html">Tags</a>
+        </ul>
+
+		
+        <h5 class="sidebar-title">Categories</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/pandas-work.html">pandas-work</a></li>
+   
+        </ul>
+
+		
+        <h5 class="sidebar-title">Social</h5>
+        <ul class="side-nav">
+            <li><a href="https://github.com/accsaikiran-sys/">GitHub</a></li>
+            <li><a href="<linkedin handle>">LinkedIn</a></li>
+        </ul>
+
+    </aside> <!-- End Sidebar -->
+
+</div> <!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+              <!--                  <p>My Python Notes by Sai Kiran Reddy</p> -->
+            </div>
+            </div>
+    </div>
+</footer>
+</body>
+</html>

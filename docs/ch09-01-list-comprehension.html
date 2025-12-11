@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Ch09 01 List Comprehension</title>
+
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/normalize.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/style.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/pygments.css" />	
+    <script src="https://accsaikiran-sys.github.io/pynotes/theme/js/modernizr.js"></script>
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<nav>
+<div class="top-bar">
+<div class="row">
+    <div class="large-9 large-centered columns">
+	    <h1><a href="https://accsaikiran-sys.github.io/pynotes">My Python Notes</a></h1>
+    </div>
+</div>
+</div>
+
+<!-- Show menu items and pages -->
+<div class="row">
+<div class="large-9 columns">
+    <ul class="button-group navigation">
+
+    </ul>
+</div>
+</div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns">
+<article>
+    <header>
+        <h3 class="article-title"><a href="https://accsaikiran-sys.github.io/pynotes/ch09-01-list-comprehension.html" rel="bookmark"
+        title="Permalink to Ch09 01 List Comprehension">Ch09 01 List Comprehension</a></h3>
+    </header>
+
+<h6 class="subheader" title="2025-12-10T00:00:00-05:00">Wed 10 December 2025
+</h6>
+
+
+    <h1>Chapter 9.1: List Comprehension in Python</h1>
+<p>This notebook covers Python list comprehensions - a powerful, concise way to create lists through declarative expressions.</p>
+<h2>1. Strategic Overview</h2>
+<p>Python List Comprehension is a high-performance, declarative construct for generating lists through compact expressions. It replaces verbose iterative patterns with expressive, memory-efficient, and semantically rich syntax.</p>
+<p><strong>It enables:</strong>
+- Concise data transformation
+- Declarative iteration logic
+- Higher performance than traditional loops
+- Functional-style programming paradigms
+- Readable, maintainable data workflows</p>
+<h2>2. Enterprise Significance</h2>
+<p><strong>Poor iteration strategies result in:</strong>
+- Bloated code
+- Reduced performance
+- Error-prone loop logic
+- Unreadable transformation steps
+- Maintenance complexity</p>
+<p><strong>Strategic list comprehension usage ensures:</strong>
+- Clean data pipelines
+- Optimized performance
+- Predictable transformation logic
+- Reduced boilerplate
+- Improved developer productivity</p>
+<h2>3. Conceptual Execution Model</h2>
+<div class="highlight"><pre><span></span><code>Source Iterable → Expression → Optional Condition → Result List
+</code></pre></div>
+
+<p><strong>Formal structure:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="n">expression</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">iterable</span> <span class="k">if</span> <span class="n">condition</span><span class="p">]</span>
+</code></pre></div>
+
+<h2>4. Basic List Comprehension</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># List comprehension</span>
+<span class="n">squares</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Squares:&quot;</span><span class="p">,</span> <span class="n">squares</span><span class="p">)</span>
+
+<span class="c1"># Equivalent traditional loop</span>
+<span class="n">squares_loop</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">squares_loop</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Squares (loop):&quot;</span><span class="p">,</span> <span class="n">squares_loop</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>5. Conditional Filtering</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Filter even numbers</span>
+<span class="n">even_numbers</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Even numbers:&quot;</span><span class="p">,</span> <span class="n">even_numbers</span><span class="p">)</span>
+
+<span class="c1"># Filter positive numbers</span>
+<span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">positive</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">numbers</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Positive numbers:&quot;</span><span class="p">,</span> <span class="n">positive</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>6. Nested List Comprehensions</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Create a 3x3 matrix</span>
+<span class="n">matrix</span> <span class="o">=</span> <span class="p">[[</span><span class="n">i</span> <span class="o">*</span> <span class="n">j</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Matrix:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">matrix</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+
+<span class="c1"># Multiplication table</span>
+<span class="n">mult_table</span> <span class="o">=</span> <span class="p">[[</span><span class="n">i</span> <span class="o">*</span> <span class="n">j</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Multiplication table:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">mult_table</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>7. List Comprehension with Function Calls</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">transform</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">10</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">is_valid</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">2</span>
+
+<span class="c1"># Apply function transformation</span>
+<span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="n">transform</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Transformed:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+
+<span class="c1"># Combine function calls</span>
+<span class="n">filtered_transformed</span> <span class="o">=</span> <span class="p">[</span><span class="n">transform</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="k">if</span> <span class="n">is_valid</span><span class="p">(</span><span class="n">x</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Filtered &amp; Transformed:&quot;</span><span class="p">,</span> <span class="n">filtered_transformed</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>8. Multiple Conditions</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Multiple conditions with &#39;if&#39;</span>
+<span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">5</span> <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Numbers &gt; 5 and even:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+
+<span class="c1"># Alternative with &#39;and&#39;</span>
+<span class="n">result_and</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">5</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Same with &#39;and&#39;:&quot;</span><span class="p">,</span> <span class="n">result_and</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>9. If-Else Expressions</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Conditional value assignment</span>
+<span class="n">status</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;even&quot;</span> <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">&quot;odd&quot;</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Status:&quot;</span><span class="p">,</span> <span class="n">status</span><span class="p">)</span>
+
+<span class="c1"># Grade assignment</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="mi">85</span><span class="p">,</span> <span class="mi">92</span><span class="p">,</span> <span class="mi">78</span><span class="p">,</span> <span class="mi">96</span><span class="p">,</span> <span class="mi">88</span><span class="p">]</span>
+<span class="n">grades</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span> <span class="k">if</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">90</span> <span class="k">else</span> <span class="s2">&quot;B&quot;</span> <span class="k">if</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">80</span> <span class="k">else</span> <span class="s2">&quot;C&quot;</span> <span class="k">for</span> <span class="n">score</span> <span class="ow">in</span> <span class="n">scores</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Grades:&quot;</span><span class="p">,</span> <span class="n">grades</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>10. Performance Advantage</h2>
+<p>List comprehensions are implemented in C and typically outperform equivalent loops by 20–40% for moderate workloads.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="c1"># Performance comparison</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">100000</span>
+
+<span class="c1"># List comprehension timing</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">comp_result</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+<span class="n">comp_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+
+<span class="c1"># Traditional loop timing</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">loop_result</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">loop_result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">loop_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;List comprehension: </span><span class="si">{</span><span class="n">comp_time</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Traditional loop: </span><span class="si">{</span><span class="n">loop_time</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Speedup: </span><span class="si">{</span><span class="n">loop_time</span><span class="o">/</span><span class="n">comp_time</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">x&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>11. Memory Considerations</h2>
+<p>List comprehensions allocate full memory upfront. For large datasets, generator expressions are preferred:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># List comprehension (allocates all memory)</span>
+<span class="n">squares_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;List:&quot;</span><span class="p">,</span> <span class="n">squares_list</span><span class="p">)</span>
+
+<span class="c1"># Generator expression (lazy evaluation)</span>
+<span class="n">squares_gen</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Generator:&quot;</span><span class="p">,</span> <span class="n">squares_gen</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Generator values:&quot;</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">squares_gen</span><span class="p">))</span>
+</code></pre></div>
+
+<h2>12. Readability vs Complexity</h2>
+<p><strong>Best practice threshold:</strong>
+- ✅ Single transformation + condition
+- ✅ Clear business logic
+- ❌ Deep nested logic
+- ❌ Multi-branch complexity</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Good: Simple and readable</span>
+<span class="n">good_example</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Good example:&quot;</span><span class="p">,</span> <span class="n">good_example</span><span class="p">)</span>
+
+<span class="c1"># Avoid: Too complex</span>
+<span class="c1"># bad_example = [complex_func(x, y) for x in data1 for y in data2 if condition1(x) and condition2(y) and x &gt; y]</span>
+
+<span class="c1"># Better: Break into steps</span>
+<span class="n">data</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">filtered_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span> <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">filtered_data</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Better approach:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>13. Advanced Pattern: Flattening Lists</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Flatten nested lists</span>
+<span class="n">nested</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">]]</span>
+<span class="n">flat</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span> <span class="k">for</span> <span class="n">sublist</span> <span class="ow">in</span> <span class="n">nested</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">sublist</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Flattened:&quot;</span><span class="p">,</span> <span class="n">flat</span><span class="p">)</span>
+
+<span class="c1"># Flatten with condition</span>
+<span class="n">nested_mixed</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]]</span>
+<span class="n">flat_even</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span> <span class="k">for</span> <span class="n">sublist</span> <span class="ow">in</span> <span class="n">nested_mixed</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">sublist</span> <span class="k">if</span> <span class="n">item</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Flattened even numbers:&quot;</span><span class="p">,</span> <span class="n">flat_even</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>14. Data Cleaning Pipeline Example</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># ETL and preprocessing</span>
+<span class="n">raw</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;  apple &quot;</span><span class="p">,</span> <span class="s2">&quot; Banana&quot;</span><span class="p">,</span> <span class="s2">&quot;cherry &quot;</span><span class="p">,</span> <span class="s2">&quot;  ORANGE  &quot;</span><span class="p">]</span>
+<span class="n">cleaned</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">raw</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Raw data:&quot;</span><span class="p">,</span> <span class="n">raw</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cleaned data:&quot;</span><span class="p">,</span> <span class="n">cleaned</span><span class="p">)</span>
+
+<span class="c1"># Filter and clean</span>
+<span class="n">raw_numbers</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot; 123 &quot;</span><span class="p">,</span> <span class="s2">&quot;abc&quot;</span><span class="p">,</span> <span class="s2">&quot;456&quot;</span><span class="p">,</span> <span class="s2">&quot;  789  &quot;</span><span class="p">,</span> <span class="s2">&quot;xyz&quot;</span><span class="p">]</span>
+<span class="n">clean_numbers</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">raw_numbers</span> <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Clean numbers:&quot;</span><span class="p">,</span> <span class="n">clean_numbers</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>15. Combining with zip()</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Structured mapping pattern</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="s2">&quot;Charlie&quot;</span><span class="p">]</span>
+<span class="n">ages</span> <span class="o">=</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">35</span><span class="p">]</span>
+<span class="n">pairs</span> <span class="o">=</span> <span class="p">[(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">ages</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Name-Age pairs:&quot;</span><span class="p">,</span> <span class="n">pairs</span><span class="p">)</span>
+
+<span class="c1"># Calculate with zip</span>
+<span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">list2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
+<span class="n">products</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">list1</span><span class="p">,</span> <span class="n">list2</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Products:&quot;</span><span class="p">,</span> <span class="n">products</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>16. Dictionary Creation via List Comprehension</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Dictionary comprehension (related pattern)</span>
+<span class="n">keys</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">]</span>
+<span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span> <span class="n">values</span><span class="p">)}</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dictionary:&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Square mapping</span>
+<span class="n">squares_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)}</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Squares dict:&quot;</span><span class="p">,</span> <span class="n">squares_dict</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>17. Filtering Objects</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Simulate user objects</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">User</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">is_active</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_active</span> <span class="o">=</span> <span class="n">is_active</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;User(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">, active=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">is_active</span><span class="si">}</span><span class="s2">)&quot;</span>
+
+<span class="n">users</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">User</span><span class="p">(</span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">),</span>
+    <span class="n">User</span><span class="p">(</span><span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+    <span class="n">User</span><span class="p">(</span><span class="s2">&quot;Charlie&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="c1"># Entity filtering in domain systems</span>
+<span class="n">active_users</span> <span class="o">=</span> <span class="p">[</span><span class="n">u</span> <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">users</span> <span class="k">if</span> <span class="n">u</span><span class="o">.</span><span class="n">is_active</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Active users:&quot;</span><span class="p">,</span> <span class="n">active_users</span><span class="p">)</span>
+
+<span class="c1"># Extract names</span>
+<span class="n">active_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">u</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">users</span> <span class="k">if</span> <span class="n">u</span><span class="o">.</span><span class="n">is_active</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Active user names:&quot;</span><span class="p">,</span> <span class="n">active_names</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>18. List Comprehension with Enumerate</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Index-aware processing</span>
+<span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;banana&quot;</span><span class="p">,</span> <span class="s2">&quot;cherry&quot;</span><span class="p">]</span>
+<span class="n">indexed</span> <span class="o">=</span> <span class="p">[(</span><span class="n">i</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">items</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Indexed items:&quot;</span><span class="p">,</span> <span class="n">indexed</span><span class="p">)</span>
+
+<span class="c1"># Filter by index</span>
+<span class="n">even_indexed</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">items</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Even indexed items:&quot;</span><span class="p">,</span> <span class="n">even_indexed</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>19. Set and Dict Comprehensions</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Set comprehension (unified paradigm)</span>
+<span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">unique</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unique set:&quot;</span><span class="p">,</span> <span class="n">unique</span><span class="p">)</span>
+
+<span class="c1"># Dictionary comprehension</span>
+<span class="n">mapped</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)}</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mapped dict:&quot;</span><span class="p">,</span> <span class="n">mapped</span><span class="p">)</span>
+
+<span class="c1"># Conditional dict comprehension</span>
+<span class="n">even_squares</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Even squares:&quot;</span><span class="p">,</span> <span class="n">even_squares</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>20. Comprehensions in Functional Pipelines</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Efficient transformation layer</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+
+<span class="c1"># Multi-step pipeline</span>
+<span class="n">pipeline</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pipeline result:&quot;</span><span class="p">,</span> <span class="n">pipeline</span><span class="p">)</span>
+
+<span class="c1"># Chained transformations</span>
+<span class="n">step1</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>  <span class="c1"># Filter positive</span>
+<span class="n">step2</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">step1</span><span class="p">]</span>      <span class="c1"># Double values</span>
+<span class="n">step3</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">step2</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">]</span> <span class="c1"># Filter &lt; 10</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Chained result:&quot;</span><span class="p">,</span> <span class="n">step3</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>21. Best Practices Summary</h2>
+<p><strong>✅ Do:</strong>
+- Keep logic simple
+- Prefer readability over compactness
+- Use generator for large data
+- Comment complex comprehensions</p>
+<p><strong>❌ Avoid:</strong>
+- Deep nested comprehensions
+- Heavy logic inside comprehensions
+- Side effects
+- Multi-step expressions</p>
+<h2>22. Real-World Business Scenario</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Simulate order objects</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Order</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">status</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">amount</span> <span class="o">=</span> <span class="n">amount</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="n">status</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Order(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">, $</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">amount</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">status</span><span class="si">}</span><span class="s2">)&quot;</span>
+
+<span class="n">orders</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">Order</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1500</span><span class="p">,</span> <span class="s2">&quot;completed&quot;</span><span class="p">),</span>
+    <span class="n">Order</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="s2">&quot;completed&quot;</span><span class="p">),</span>
+    <span class="n">Order</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="s2">&quot;pending&quot;</span><span class="p">),</span>
+    <span class="n">Order</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1200</span><span class="p">,</span> <span class="s2">&quot;completed&quot;</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="c1"># Analytics and financial systems</span>
+<span class="n">high_value_orders</span> <span class="o">=</span> <span class="p">[</span><span class="n">o</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">orders</span> <span class="k">if</span> <span class="n">o</span><span class="o">.</span><span class="n">amount</span> <span class="o">&gt;</span> <span class="mi">1000</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;High value orders:&quot;</span><span class="p">,</span> <span class="n">high_value_orders</span><span class="p">)</span>
+
+<span class="c1"># Completed high-value orders</span>
+<span class="n">completed_high_value</span> <span class="o">=</span> <span class="p">[</span><span class="n">o</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">orders</span> <span class="k">if</span> <span class="n">o</span><span class="o">.</span><span class="n">amount</span> <span class="o">&gt;</span> <span class="mi">1000</span> <span class="ow">and</span> <span class="n">o</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="s2">&quot;completed&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Completed high-value:&quot;</span><span class="p">,</span> <span class="n">completed_high_value</span><span class="p">)</span>
+
+<span class="c1"># Revenue calculation</span>
+<span class="n">completed_revenue</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">o</span><span class="o">.</span><span class="n">amount</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">orders</span> <span class="k">if</span> <span class="n">o</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="s2">&quot;completed&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total completed revenue: $</span><span class="si">{</span><span class="n">completed_revenue</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>23. Performance Comparison Summary</h2>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Speed</th>
+<th>Readability</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>For-loop</td>
+<td>Moderate</td>
+<td>High</td>
+</tr>
+<tr>
+<td>List Comprehension</td>
+<td>Fast</td>
+<td>High</td>
+</tr>
+<tr>
+<td>Map/Filter</td>
+<td>Fast</td>
+<td>Moderate</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="c1"># Comparison of different approaches</span>
+<span class="n">data</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># List comprehension</span>
+<span class="n">comp_result</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span> <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Map and filter</span>
+<span class="n">map_result</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="n">data</span><span class="p">)))</span>
+
+<span class="c1"># Traditional loop</span>
+<span class="n">loop_result</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">loop_result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All methods produce same result:&quot;</span><span class="p">,</span> <span class="n">comp_result</span> <span class="o">==</span> <span class="n">map_result</span> <span class="o">==</span> <span class="n">loop_result</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;First 10 elements:&quot;</span><span class="p">,</span> <span class="n">comp_result</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
+</code></pre></div>
+
+<h2>Summary</h2>
+<p>Python List Comprehension enables:
+- <strong>Concise and expressive iteration</strong>
+- <strong>High-performance data transformation</strong>
+- <strong>Declarative code architecture</strong>
+- <strong>Maintainable transformation logic</strong>
+- <strong>Enterprise-grade data processing workflows</strong></p>
+<p>When used strategically, list comprehensions become a cornerstone of scalable, readable, and optimized Python systems — turning data iteration into clean, structured transformation pipelines.</p>
+<hr>
+<p><strong>Score: 40</strong></p>
+<p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+
+</article>
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+    <aside class="large-3 columns">
+        <h5 class="sidebar-title">Site</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/archives.html">Archives</a>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/tags.html">Tags</a>
+        </ul>
+
+		
+        <h5 class="sidebar-title">Categories</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/pandas-work.html">pandas-work</a></li>
+   
+        </ul>
+
+		
+        <h5 class="sidebar-title">Social</h5>
+        <ul class="side-nav">
+            <li><a href="https://github.com/accsaikiran-sys/">GitHub</a></li>
+            <li><a href="<linkedin handle>">LinkedIn</a></li>
+        </ul>
+
+    </aside> <!-- End Sidebar -->
+
+</div> <!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+              <!--                  <p>My Python Notes by Sai Kiran Reddy</p> -->
+            </div>
+            </div>
+    </div>
+</footer>
+</body>
+</html>
