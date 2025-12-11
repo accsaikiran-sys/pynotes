@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Ch01 Variable Scope</title>
+
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/normalize.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/style.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/pygments.css" />	
+    <script src="https://accsaikiran-sys.github.io/pynotes/theme/js/modernizr.js"></script>
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<nav>
+<div class="top-bar">
+<div class="row">
+    <div class="large-9 large-centered columns">
+	    <h1><a href="https://accsaikiran-sys.github.io/pynotes">My Python Notes</a></h1>
+    </div>
+</div>
+</div>
+
+<!-- Show menu items and pages -->
+<div class="row">
+<div class="large-9 columns">
+    <ul class="button-group navigation">
+
+    </ul>
+</div>
+</div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns">
+<article>
+    <header>
+        <h3 class="article-title"><a href="https://accsaikiran-sys.github.io/pynotes/ch01-variable-scope.html" rel="bookmark"
+        title="Permalink to Ch01 Variable Scope">Ch01 Variable Scope</a></h3>
+    </header>
+
+<h6 class="subheader" title="2025-12-11T00:00:00-05:00">Thu 11 December 2025
+</h6>
+
+
+    <h1>Python Variable Scope (Local, Global, Nonlocal)Variable scope defines where a name is accessible and modifiable. Python resolves names using LEGB: Local → Enclosing → Global → Built-in.</h1>
+<h2>1. Local Scope</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">show_value</span><span class="p">():</span>    <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># Local variable    print(x)show_value()# print(x)  # NameError: x is not defined</span>
+</code></pre></div>
+
+<p>Local variables exist only within the function where they are declared.</p>
+<h2>2. Global Scope</h2>
+<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="mi">20</span>  <span class="c1"># Global variabledef display():    print(x)display()print(x)</span>
+</code></pre></div>
+
+<p>Global variables are accessible throughout the module.</p>
+<h2>3. Local vs Global Variable Conflict</h2>
+<div class="highlight"><pre><span></span><code><span class="n">value</span> <span class="o">=</span> <span class="mi">50</span><span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">():</span>    <span class="n">value</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># Local variable shadows global    print(&quot;Inside function:&quot;, value)update()print(&quot;Outside function:&quot;, value)</span>
+</code></pre></div>
+
+<p>Local variables override global variables within function scope.</p>
+<h2>4. Using the global Keyword</h2>
+<div class="highlight"><pre><span></span><code><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="k">def</span><span class="w"> </span><span class="nf">increment</span><span class="p">():</span>    <span class="k">global</span> <span class="n">count</span>    <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span><span class="n">increment</span><span class="p">()</span><span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>  <span class="c1"># Output: 1</span>
+</code></pre></div>
+
+<p>The global keyword allows modification of global variables inside functions.</p>
+<h2>5. Enclosing Scope (Nested Functions)</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">outer</span><span class="p">():</span>    <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;Hello&quot;</span>    <span class="k">def</span><span class="w"> </span><span class="nf">inner</span><span class="p">():</span>        <span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>  <span class="c1"># Accessing enclosing variable    inner()outer()</span>
+</code></pre></div>
+
+<p>Nested functions can access variables from their enclosing scope.</p>
+<h2>6. Using the nonlocal Keyword</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">outer_nonlocal</span><span class="p">():</span>    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>    <span class="k">def</span><span class="w"> </span><span class="nf">inner</span><span class="p">():</span>        <span class="k">nonlocal</span> <span class="n">count</span>        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>        <span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>    <span class="n">inner</span><span class="p">()</span>    <span class="n">inner</span><span class="p">()</span><span class="n">outer_nonlocal</span><span class="p">()</span>
+</code></pre></div>
+
+<p>nonlocal allows modification of variables from the enclosing (but not global) scope.</p>
+<h2>7. LEGB Rule (Scope Resolution Order)</h2>
+<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;Global&quot;</span><span class="k">def</span><span class="w"> </span><span class="nf">outer_legb</span><span class="p">():</span>    <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;Enclosing&quot;</span>    <span class="k">def</span><span class="w"> </span><span class="nf">inner</span><span class="p">():</span>        <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;Local&quot;</span>        <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>    <span class="n">inner</span><span class="p">()</span><span class="n">outer_legb</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Python resolves variables using LEGB: Local → Enclosing → Global → Built-in.</p>
+<h2>8. Built-in Scope</h2>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>  <span class="c1"># Built-in function</span>
+</code></pre></div>
+
+<p>Built-in functions and exceptions reside in the built-in scope.</p>
+<h2>9. Scope Inside Loops</h2>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>    <span class="n">loop_var</span> <span class="o">=</span> <span class="n">iprint</span><span class="p">(</span><span class="n">loop_var</span><span class="p">)</span>  <span class="c1"># Accessible outside loop</span>
+</code></pre></div>
+
+<p>Python loop variables are function-scoped, not block-scoped.</p>
+<h2>10. Practical Example of Scope Management</h2>
+<div class="highlight"><pre><span></span><code><span class="n">total</span> <span class="o">=</span> <span class="mi">100</span><span class="k">def</span><span class="w"> </span><span class="nf">calculate</span><span class="p">():</span>    <span class="n">total</span> <span class="o">=</span> <span class="mi">50</span>    <span class="k">def</span><span class="w"> </span><span class="nf">adjust</span><span class="p">():</span>        <span class="k">nonlocal</span> <span class="n">total</span>        <span class="n">total</span> <span class="o">+=</span> <span class="mi">10</span>    <span class="n">adjust</span><span class="p">()</span>    <span class="k">return</span> <span class="n">totalprint</span><span class="p">(</span><span class="n">calculate</span><span class="p">())</span>  <span class="c1"># Output: 60print(total)        # Output: 100</span>
+</code></pre></div>
+
+<p>Demonstrates coordinated use of local, enclosing, and global scopes.</p>
+<h2>Comprehensive Guide Overview</h2>
+<p>Scope controls visibility and lifetime:- Local: inside current function.- Enclosing: outer function variables for nested functions.- Global: module-level.- Built-in: provided by Python runtime.Understanding scope prevents subtle bugs and unpredictable behavior.</p>
+<h2>Additional Examples and Best Practices</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Shadowing variablesvalue = 10def display():    value = 5    print(value)display()print(value)# Scope in conditionals (function-level)def test_block():    if True:        x = 50    print(x)test_block()</span>
+</code></pre></div>
+
+<p>Best practices:- Prefer locals; minimize globals.- Use nonlocal only when maintaining closure state.- Avoid shadowing built-ins (e.g., <code>len</code>).- Pass data via parameters instead of mutating globals.- Keep naming consistent to reduce confusion.</p>
+<p>Enterprise value: Correct scope handling yields predictable behavior, thread-safe design, clean modular architecture, and debug-friendly systems across distributed services, AI pipelines, and financial platforms.</p>
+<hr>
+<p><strong>Score: 35</strong></p>
+<p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
+
+</p>
+
+
+
+
+</article>
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+    <aside class="large-3 columns">
+        <h5 class="sidebar-title">Site</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/archives.html">Archives</a>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/tags.html">Tags</a>
+        </ul>
+
+		
+        <h5 class="sidebar-title">Categories</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/pandas-work.html">pandas-work</a></li>
+   
+        </ul>
+
+		
+        <h5 class="sidebar-title">Social</h5>
+        <ul class="side-nav">
+            <li><a href="https://github.com/accsaikiran-sys/">GitHub</a></li>
+            <li><a href="<linkedin handle>">LinkedIn</a></li>
+        </ul>
+
+    </aside> <!-- End Sidebar -->
+
+</div> <!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+              <!--                  <p>My Python Notes by Sai Kiran Reddy</p> -->
+            </div>
+            </div>
+    </div>
+</footer>
+</body>
+</html>

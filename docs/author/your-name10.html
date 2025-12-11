@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>My Python Notes - Your Name</title>
+
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/normalize.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/style.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/pygments.css" />	
+    <script src="https://accsaikiran-sys.github.io/pynotes/theme/js/modernizr.js"></script>
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<nav>
+<div class="top-bar">
+<div class="row">
+    <div class="large-9 large-centered columns">
+	    <h1><a href="https://accsaikiran-sys.github.io/pynotes">My Python Notes</a></h1>
+    </div>
+</div>
+</div>
+
+<!-- Show menu items and pages -->
+<div class="row">
+<div class="large-9 columns">
+    <ul class="button-group navigation">
+
+    </ul>
+</div>
+</div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns">
+        
+        
+
+
+            <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch11-01-precedence-associativity-operators.html"><h3 class="article-title">Ch11 01 Precedence Associativity Operators</h3></a>
+<h6 class="subheader" title="2025-12-11T00:00:00-05:00">Thu 11 December 2025
+</h6>
+
+
+<h1>Precedence and Associativity of Operators in Python</h1>
+<p>Understand how Python decides the order of evaluation in expressions and how associativity resolves ties.</p>
+<h2>1. What is Operator Precedence</h2>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">+</span> <span class="mi">5</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># 20, not 30</span>
+</code></pre></div>
+
+<p>Multiplication (*) has higher precedence than addition (+).</p>
+<h2>2. What is Operator Associativity</h2>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">/</span> <span class="mi">10 …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch11-01-precedence-associativity-operators.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch11-02-keywords-identifiers.html"><h3 class="article-title">Ch11 02 Keywords Identifiers</h3></a>
+<h6 class="subheader" title="2025-12-11T00:00:00-05:00">Thu 11 December 2025
+</h6>
+
+
+<h1>Python Keywords and Identifiers</h1>
+<p>Overview of reserved keywords and how to name identifiers in Python.</p>
+<h2>1. What are Python Keywords</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">keyword</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">keyword</span><span class="o">.</span><span class="n">kwlist</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Keywords are reserved words that define Python syntax and cannot be used as identifiers.
+Examples: if, else, while, class, def, return, try, except, True, False …</p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch11-02-keywords-identifiers.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch11-03-asserts.html"><h3 class="article-title">Ch11 03 Asserts</h3></a>
+<h6 class="subheader" title="2025-12-11T00:00:00-05:00">Thu 11 December 2025
+</h6>
+
+
+<h1>Python Asserts</h1>
+<p>Using assertions to validate internal logic and invariants during development and testing.</p>
+<h2>1. What is an Assertion</h2>
+<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="k">assert</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Assertion passed for x &gt; 0&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>An assertion tests a condition and raises <code>AssertionError</code> if it is False.</p>
+<h2>2. Basic Assertion Syntax</h2>
+<div class="highlight"><pre><span></span><code><span class="n">age</span> <span class="o">=</span> <span class="mi">18</span>
+<span class="k">assert</span> <span class="n">age …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch11-03-asserts.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch11-04-json.html"><h3 class="article-title">Ch11 04 Json</h3></a>
+<h6 class="subheader" title="2025-12-11T00:00:00-05:00">Thu 11 December 2025
+</h6>
+
+
+<h1>Python JSON</h1>
+<p>Working with JSON for data interchange using Python's built-in <code>json</code> module.</p>
+<h2>1. What is JSON</h2>
+<div class="highlight"><pre><span></span><code><span class="n">example</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Alice&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;age&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+    <span class="s1">&#39;active&#39;</span><span class="p">:</span> <span class="kc">True</span>
+<span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">example</span><span class="p">)</span>
+</code></pre></div>
+
+<p>JSON (JavaScript Object Notation) is a lightweight format for storing and exchanging structured data. In Python, use the built-in <code>json</code> module.</p>
+<h2>2. Importing the …</h2><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch11-04-json.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch11-05-pip.html"><h3 class="article-title">Ch11 05 Pip</h3></a>
+<h6 class="subheader" title="2025-12-11T00:00:00-05:00">Thu 11 December 2025
+</h6>
+
+
+<h1>Python pip</h1>
+<p>Package management with Python's official installer, <code>pip</code>.</p>
+<h2>1. What is pip</h2>
+<div class="highlight"><pre><span></span><code><span class="n">pip</span> <span class="o">--</span><span class="n">version</span>
+</code></pre></div>
+
+<p><code>pip</code> installs, upgrades, and manages packages from PyPI.</p>
+<h2>2. Installing a Package</h2>
+<div class="highlight"><pre><span></span><code><span class="n">pip</span> <span class="n">install</span> <span class="n">requests</span>
+</code></pre></div>
+
+<p>Downloads and installs a package and its dependencies.</p>
+<h2>3. Upgrading a Package</h2>
+<div class="highlight"><pre><span></span><code><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">upgrade</span> <span class="n">requests</span>
+</code></pre></div>
+
+<p>Ensures the latest stable …</p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch11-05-pip.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch11-06-args-kwargs.html"><h3 class="article-title">Ch11 06 Args Kwargs</h3></a>
+<h6 class="subheader" title="2025-12-11T00:00:00-05:00">Thu 11 December 2025
+</h6>
+
+
+<h1>Python <em>args and </em>*kwargs</h1>
+<p>Using variable positional (<em>args) and variable keyword (</em>*kwargs) arguments for flexible function signatures.</p>
+<h2>1. What are <em>args and </em>*kwargs</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">demo</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="n">demo</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+</code></pre></div>
+
+<p><em>args captures positional arguments as a tuple; </em>*kwargs captures keyword arguments …</p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch11-06-args-kwargs.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/python-basic-input-output.html"><h3 class="article-title">Python Basic Input Output</h3></a>
+<h6 class="subheader" title="2025-12-11T00:00:00-05:00">Thu 11 December 2025
+</h6>
+
+
+<div class="highlight"><pre><span></span><code><span class="n">Created</span><span class="p">:</span><span class="mi">20251128</span>
+<span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">csp</span><span class="o">.</span><span class="n">gitbook</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="n">learning</span><span class="o">/</span><span class="n">basics</span><span class="o">/</span><span class="n">ch02</span><span class="o">-</span><span class="n">python</span><span class="o">-</span><span class="n">fundamentals</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="n">basic</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">output</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, Python!&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mf">3.14</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Alice&quot;</span>
+<span class="n">age</span> <span class="o">=</span> <span class="mi">30</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">)</span>  
+<span class="c1"># Output: Alice 30</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="s2">&quot;is&quot;</span><span class="p">,</span> <span class="s2">&quot;powerful&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot; - &quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;!&quot;</span><span class="p">)</span>
+<span class="c1"># Output: Python - is - powerful!</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Bob&quot;</span>
+<span class="n">score</span> <span class="o">=</span> <span class="mi">88</span>
+
+<span class="nb">print …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/python-basic-input-output.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/python-type-conversion.html"><h3 class="article-title">Python Type Conversion</h3></a>
+<h6 class="subheader" title="2025-12-11T00:00:00-05:00">Thu 11 December 2025
+</h6>
+
+
+<div class="highlight"><pre><span></span><code><span class="n">Created</span><span class="p">:</span><span class="mi">20251128</span>
+<span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">csp</span><span class="o">.</span><span class="n">gitbook</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="n">learning</span><span class="o">/</span><span class="n">basics</span><span class="o">/</span><span class="n">ch02</span><span class="o">-</span><span class="n">python</span><span class="o">-</span><span class="n">fundamentals</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="nb">type</span><span class="o">-</span><span class="n">conversion</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">interger_value</span>  <span class="o">=</span> <span class="mi">10</span>
+<span class="n">float_value</span> <span class="o">=</span> <span class="mf">3.33</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">interger_value</span> <span class="o">+</span> <span class="n">float_value</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">13.33</span>
+<span class="o">&lt;</span><span class="n">class</span><span class="w"> </span><span class="err">&#39;</span><span class="n">float</span><span class="err">&#39;</span><span class="o">&gt;</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">float_value</span> <span class="o">=</span> <span class="mf">9.99</span>
+<span class="n">string_value</span> <span class="o">=</span> <span class="s2">&quot;33&quot;</span>
+
+<span class="n">iff</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">float_value</span><span class="p">)</span>
+<span class="n">ifs</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">string_value</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">iff</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ifs</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">9</span>
+<span class="mf">33</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">int_value …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/python-type-conversion.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/simple-print.html"><h3 class="article-title">Simple Print</h3></a>
+<h6 class="subheader" title="2025-12-11T00:00:00-05:00">Thu 11 December 2025
+</h6>
+
+
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pynotes working&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>Pynotes working
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sample printing&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>sample printing
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+
+<hr>
+<p><strong>Score: 0</strong></p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/simple-print.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+            <!-- /#posts-list -->
+<div class="pagination-centered">
+<h6 class="subheader">Page 10 of 10</h6>
+
+<p>
+            <a href="https://accsaikiran-sys.github.io/pynotes/author/your-name9.html">&laquo; Prev</a>
+
+</p>
+</div>
+
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+    <aside class="large-3 columns">
+        <h5 class="sidebar-title">Site</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/archives.html">Archives</a>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/tags.html">Tags</a>
+        </ul>
+
+		
+        <h5 class="sidebar-title">Categories</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/pandas-work.html">pandas-work</a></li>
+   
+        </ul>
+
+		
+        <h5 class="sidebar-title">Social</h5>
+        <ul class="side-nav">
+            <li><a href="https://github.com/accsaikiran-sys/">GitHub</a></li>
+            <li><a href="<linkedin handle>">LinkedIn</a></li>
+        </ul>
+
+    </aside> <!-- End Sidebar -->
+
+</div> <!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+              <!--                  <p>My Python Notes by Sai Kiran Reddy</p> -->
+            </div>
+            </div>
+    </div>
+</footer>
+</body>
+</html>

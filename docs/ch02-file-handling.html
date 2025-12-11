@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Ch02 File Handling</title>
+
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/normalize.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/style.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/pygments.css" />	
+    <script src="https://accsaikiran-sys.github.io/pynotes/theme/js/modernizr.js"></script>
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<nav>
+<div class="top-bar">
+<div class="row">
+    <div class="large-9 large-centered columns">
+	    <h1><a href="https://accsaikiran-sys.github.io/pynotes">My Python Notes</a></h1>
+    </div>
+</div>
+</div>
+
+<!-- Show menu items and pages -->
+<div class="row">
+<div class="large-9 columns">
+    <ul class="button-group navigation">
+
+    </ul>
+</div>
+</div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns">
+<article>
+    <header>
+        <h3 class="article-title"><a href="https://accsaikiran-sys.github.io/pynotes/ch02-file-handling.html" rel="bookmark"
+        title="Permalink to Ch02 File Handling">Ch02 File Handling</a></h3>
+    </header>
+
+<h6 class="subheader" title="2025-12-11T00:00:00-05:00">Thu 11 December 2025
+</h6>
+
+
+    <h1>Python File HandlingFile handling lets Python programs read, write, update, and manage files on disk for persistence, exchange, logging, and configuration.</h1>
+<h2>1. Introduction to File Handling</h2>
+<p>Persistent storage, log management, data exchange, and configuration.</p>
+<div class="highlight"><pre><span></span><code><span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;sample.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="nb">print</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">())</span><span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div>
+
+<h2>2. File Opening Modes</h2>
+<p>Modes: r (read), w (overwrite), a (append), x (create), b (binary), t (text), + (read &amp; write).</p>
+<div class="highlight"><pre><span></span><code><span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;log.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>3. Using with Statement (Best Practice)</h2>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>    <span class="n">content</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>    <span class="nb">print</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>4. Reading Files</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Read entire filewith open(&#39;file.txt&#39;) as f:    print(f.read())# Line by linewith open(&#39;file.txt&#39;) as f:    for line in f:        print(line.strip())# Read specific characterswith open(&#39;file.txt&#39;) as f:    print(f.read(5))</span>
+</code></pre></div>
+
+<h2>5. Writing Files</h2>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;output.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Hello Python&#39;</span><span class="p">)</span>    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;File Handling Example&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>6. Appending Data</h2>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;log.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;New entry added&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>7. Working with Binary Files</h2>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;image.png&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>    <span class="n">binary_data</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Used for images, PDFs, audio, and other binary assets.</p>
+<h2>8. File Pointer and seek()</h2>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>    <span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+</code></pre></div>
+
+<h2>9. File Attributes</h2>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;file.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">closed</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>10. Enterprise Example: Log File Processor</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">log_reader</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>            <span class="k">if</span> <span class="s1">&#39;ERROR&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>                <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span><span class="n">log_reader</span><span class="p">(</span><span class="s1">&#39;application.log&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>Advanced File Operations</h2>
+<h3>11. Checking File Existence</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">osif</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;report.txt&#39;</span><span class="p">):</span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;File exists&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>12. Deleting Files</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">osos.remove</span><span class="p">(</span><span class="s1">&#39;old_data.txt&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>13. Renaming Files</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">osos.rename</span><span class="p">(</span><span class="s1">&#39;old.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;new.txt&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>14. Directory Operations</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">osos.mkdir</span><span class="p">(</span><span class="s1">&#39;reports&#39;</span><span class="p">)</span><span class="n">os</span><span class="o">.</span><span class="n">rmdir</span><span class="p">(</span><span class="s1">&#39;reports&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>Handling Large Files Efficiently</h3>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;bigfile.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>        <span class="n">process</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Prefer streaming to avoid loading entire files into memory.</p>
+<h2>File Handling Best Practices</h2>
+<p>Use context managers, handle exceptions, avoid hardcoded paths, prefer streaming for large files.</p>
+<h2>Common Errors</h2>
+<p>FileNotFoundError, PermissionError, IOError, IsADirectoryError</p>
+<h2>Enterprise Applications</h2>
+<p>Essential for ETL pipelines, AI datasets, configuration systems, backups, and log aggregation.</p>
+<h2>Performance Considerations</h2>
+<p>Read in chunks for large files, use buffering, avoid repeated open/close cycles, handle exceptions gracefully.</p>
+<hr>
+<h1>Python File Handling — Deep Dive &amp; Enterprise Guide</h1>
+<h2>1. Concept Overview</h2>
+<p>Foundational for persistence, ETL, logs, configs, backups; high-level and low-level APIs with OS integration.</p>
+<h2>2. File Operation Lifecycle</h2>
+<div class="highlight"><pre><span></span><code><span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="n">content</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Context managers replace manual close for safety.</p>
+<h2>3. Context Manager (with) – Enterprise Standard</h2>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>    <span class="n">content</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Automatic cleanup, exception safety, cleaner flow.</p>
+<h2>4. File Modes Deep Dive</h2>
+<p>r, w, a, x, b, t, r+ (read/write)</p>
+<div class="highlight"><pre><span></span><code><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;log.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;image.png&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;a+&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>5. Reading Files at Scale</h2>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;file.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>    <span class="n">data</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;file.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>        <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+</code></pre></div>
+
+<p>Streaming prevents memory overflow on large files.</p>
+<h2>6. Writing and Appending Strategies</h2>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;report.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Annual Report&#39;</span><span class="p">)</span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;log.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;New log entry&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>7. Binary File Handling</h2>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;photo.jpg&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>    <span class="n">binary_data</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</code></pre></div>
+
+<h2>8. File Pointer Management</h2>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;file.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>    <span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+</code></pre></div>
+
+<h2>9. Chunk-Based File Processing (Performance Pattern)</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">read_large_file</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>        <span class="k">while</span> <span class="n">chunk</span> <span class="o">:=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1024</span><span class="p">):</span>            <span class="n">process</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Prevents memory saturation.</p>
+<h2>10. File Attributes and Metadata</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">osprint</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getsize</span><span class="p">(</span><span class="s1">&#39;file.txt&#39;</span><span class="p">))</span><span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getmtime</span><span class="p">(</span><span class="s1">&#39;file.txt&#39;</span><span class="p">))</span>
+</code></pre></div>
+
+<h2>11. Directory Handling</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">osos.mkdir</span><span class="p">(</span><span class="s1">&#39;reports&#39;</span><span class="p">)</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span><span class="n">os</span><span class="o">.</span><span class="n">rmdir</span><span class="p">(</span><span class="s1">&#39;reports&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>12. Recursive File Traversal</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">osfor</span> <span class="n">root</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="s1">&#39;project&#39;</span><span class="p">):</span>    <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>        <span class="nb">print</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>13. File Security and Permissions</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">osos.chmod</span><span class="p">(</span><span class="s1">&#39;secure.txt&#39;</span><span class="p">,</span> <span class="mo">0o644</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>14. Exception Handling in File Operations</h2>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>        <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span><span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;File missing&#39;</span><span class="p">)</span><span class="k">finally</span><span class="p">:</span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Execution finished&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>15. File Locking (Concurrency Control)</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">fcntl</span><span class="c1"># fcntl.flock(file, fcntl.LOCK_EX)  # example usage on Unix</span>
+</code></pre></div>
+
+<h2>16. Enterprise Use Case: Log Processing Engine</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">error_scanner</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>            <span class="k">if</span> <span class="s1">&#39;ERROR&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>                <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span><span class="n">error_scanner</span><span class="p">(</span><span class="s1">&#39;server.log&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>17. Python File Handling vs Database</h2>
+<p>Files: lightweight, great for logs/archives. Databases: structured, transactional, relational.</p>
+<h2>18. Performance Optimization Techniques</h2>
+<p>Streaming, buffering, chunk reads, context managers.</p>
+<h2>19. Common Pitfalls</h2>
+<p>Leaving files open, loading huge files into memory, hardcoded paths, ignoring errors, parallel write conflicts.</p>
+<h2>20. Best Practices</h2>
+<p>Always use with; stream large files; handle exceptions; avoid path confusion; separate logic from I/O.</p>
+<h2>21. Enterprise Importance</h2>
+<p>Critical for distributed logging, ETL, backups, AI datasets, and automation—delivers persistence, fault tolerance, scalability, and resilience.</p>
+<hr>
+<p><strong>Score: 90</strong></p>
+<p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
+
+</p>
+
+
+
+
+</article>
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+    <aside class="large-3 columns">
+        <h5 class="sidebar-title">Site</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/archives.html">Archives</a>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/tags.html">Tags</a>
+        </ul>
+
+		
+        <h5 class="sidebar-title">Categories</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/pandas-work.html">pandas-work</a></li>
+   
+        </ul>
+
+		
+        <h5 class="sidebar-title">Social</h5>
+        <ul class="side-nav">
+            <li><a href="https://github.com/accsaikiran-sys/">GitHub</a></li>
+            <li><a href="<linkedin handle>">LinkedIn</a></li>
+        </ul>
+
+    </aside> <!-- End Sidebar -->
+
+</div> <!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+              <!--                  <p>My Python Notes by Sai Kiran Reddy</p> -->
+            </div>
+            </div>
+    </div>
+</footer>
+</body>
+</html>

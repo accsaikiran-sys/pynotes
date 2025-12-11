@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Ch02 File Io Exception Handling</title>
+
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/normalize.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/style.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/pygments.css" />	
+    <script src="https://accsaikiran-sys.github.io/pynotes/theme/js/modernizr.js"></script>
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<nav>
+<div class="top-bar">
+<div class="row">
+    <div class="large-9 large-centered columns">
+	    <h1><a href="https://accsaikiran-sys.github.io/pynotes">My Python Notes</a></h1>
+    </div>
+</div>
+</div>
+
+<!-- Show menu items and pages -->
+<div class="row">
+<div class="large-9 columns">
+    <ul class="button-group navigation">
+
+    </ul>
+</div>
+</div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns">
+<article>
+    <header>
+        <h3 class="article-title"><a href="https://accsaikiran-sys.github.io/pynotes/ch02-file-io-exception-handling.html" rel="bookmark"
+        title="Permalink to Ch02 File Io Exception Handling">Ch02 File Io Exception Handling</a></h3>
+    </header>
+
+<h6 class="subheader" title="2025-12-11T00:00:00-05:00">Thu 11 December 2025
+</h6>
+
+
+    <h1>Python Exception Handling for File I/OException handling for file operations ensures stability, recovery, and safe error propagation in production systems.</h1>
+<h2>1. Concept Overview</h2>
+<p>File I/O failures (missing files, permissions, disk faults, corruption, concurrent conflicts) must be handled to maintain stability and resilience.</p>
+<h2>2. Why File I/O Requires Special Handling</h2>
+<p>File ops depend on external state (OS perms, hardware, network volumes); defensive handling is mandatory.</p>
+<h2>3. Core File I/O Exception Types</h2>
+<p>FileNotFoundError, PermissionError, IsADirectoryError, IOError/OSError.</p>
+<h2>4. Basic File I/O Exception Handling Pattern</h2>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>        <span class="n">content</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;File not found&#39;</span><span class="p">)</span><span class="k">except</span> <span class="ne">PermissionError</span><span class="p">:</span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Permission denied&#39;</span><span class="p">)</span><span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Unexpected error:&#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>5. Handling Missing Files Gracefully</h2>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;config.json&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>        <span class="n">config</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>    <span class="n">config</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span>  <span class="c1"># fallback</span>
+</code></pre></div>
+
+<h2>6. Handling Permission Errors</h2>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/secure/data.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Sensitive data&#39;</span><span class="p">)</span><span class="k">except</span> <span class="ne">PermissionError</span><span class="p">:</span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Write access blocked&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>7. Robust File Write Error Handling</h2>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;output.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Exported data&#39;</span><span class="p">)</span><span class="k">except</span> <span class="ne">IOError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;File write failed:&#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>8. Using finally for Guaranteed Cleanup</h2>
+<div class="highlight"><pre><span></span><code><span class="n">file</span> <span class="o">=</span> <span class="n">Nonetry</span><span class="p">:</span>    <span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data.txt&#39;</span><span class="p">)</span>    <span class="n">process</span><span class="p">(</span><span class="n">file</span><span class="p">)</span><span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="k">finally</span><span class="p">:</span>    <span class="k">if</span> <span class="n">file</span><span class="p">:</span>        <span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div>
+
+<h2>9. Preferred Pattern: Context Manager + Exception Handling</h2>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>        <span class="n">content</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>    <span class="n">handle_error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>10. Differentiating File Errors</h2>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;file.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>        <span class="n">data</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Missing file&#39;</span><span class="p">)</span><span class="k">except</span> <span class="ne">PermissionError</span><span class="p">:</span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Access denied&#39;</span><span class="p">)</span><span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;System-level file error&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>11. Enterprise Example: Safe File Reader Utility</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">safe_read_file</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>    <span class="k">try</span><span class="p">:</span>        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>            <span class="k">return</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>    <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>        <span class="k">return</span> <span class="kc">None</span>    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>        <span class="n">log_error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>        <span class="k">return</span> <span class="kc">None</span>
+</code></pre></div>
+
+<h2>12. Logging File I/O Exceptions</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">loggingtry</span><span class="p">:</span>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>        <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>    <span class="n">logging</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s1">&#39;File I/O failure detected&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>13. Automatic Retry Pattern</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">read_with_retry</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">retries</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">retries</span><span class="p">):</span>        <span class="k">try</span><span class="p">:</span>            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>                <span class="k">return</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>        <span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>            <span class="k">continue</span>    <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s1">&#39;Max retries exceeded&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>14. Handling Corrupted Files</h2>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;corrupt.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>        <span class="n">data</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="k">except</span> <span class="ne">UnicodeDecodeError</span><span class="p">:</span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;File encoding error detected&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>15. Defensive File Handling Strategy</h2>
+<p>Open → Validate → Process → Handle Exception → Log → Recover.</p>
+<h2>16. File Locking and Concurrent Access Protection</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">fcntlwith</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;a+&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>    <span class="k">try</span><span class="p">:</span>        <span class="n">fcntl</span><span class="o">.</span><span class="n">flock</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">fcntl</span><span class="o">.</span><span class="n">LOCK_EX</span><span class="p">)</span>        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;secured write&#39;</span><span class="p">)</span>    <span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;File locked by another process&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>17. File I/O Exception Handling in ETL Pipelines</h2>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>    <span class="k">try</span><span class="p">:</span>        <span class="n">process_file</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>        <span class="n">log_failed_file</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>18. Common Mistakes</h2>
+<p>Catching broad exceptions without logging; silent suppression; ignoring cleanup; infinite retries; hardcoded paths.</p>
+<h2>19. Best Practices</h2>
+<p>Catch specific exceptions first, log all failures, clean up resources, validate integrity, avoid silent failures.</p>
+<h2>20. Production Strategy: Fail-Fast vs Fail-Gracefully</h2>
+<p>Fail fast for critical resources; fail gracefully for optional files.</p>
+<h2>21. Security Implications</h2>
+<p>Sanitize paths, prevent traversal, avoid unauthorized exposure/overwrite, handle corrupt inputs.</p>
+<h2>22. Enterprise Use Cases</h2>
+<p>Backups, config services, upload APIs, logging subsystems, data migration platforms.</p>
+<h2>23. Architectural Value</h2>
+<p>Enables resilient systems, predictable failure handling, observability, reduced downtime, and safe automation.</p>
+<h1>Python Exception Hierarchy — Deep Dive &amp; Enterprise GuideUnderstanding the exception tree enables precise handling, recovery, and fault tolerance.</h1>
+<h2>1. Concept Overview</h2>
+<p>All exceptions inherit from BaseException; hierarchy informs categorization and propagation.</p>
+<h2>2. Why Exception Hierarchy Matters</h2>
+<p>Poorly scoped handling causes silent failures, masked errors, and crashes; hierarchy knowledge preserves integrity.</p>
+<h2>3. High-Level Exception Hierarchy Structure</h2>
+<p>BaseException ├── SystemExit ├── KeyboardInterrupt ├── GeneratorExit └── Exception      ├── ArithmeticError      │     ├── ZeroDivisionError      │     └── OverflowError      ├── LookupError      │     ├── IndexError      │     └── KeyError      ├── OSError      ├── ValueError      ├── TypeError      ├── FileNotFoundError      └── RuntimeError</p>
+<h2>4. BaseException: Root of All Exceptions</h2>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>    <span class="k">raise</span> <span class="ne">BaseException</span><span class="p">(</span><span class="s1">&#39;Critical system failure&#39;</span><span class="p">)</span><span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</code></pre></div>
+
+<p>⚠ Avoid catching BaseException in production; includes system interrupts.</p>
+<h2>5. Exception: Standard Application Error Base</h2>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Application-level error&#39;</span><span class="p">)</span><span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>6. System-Level Exceptions (Do Not Catch)</h2>
+<p>SystemExit, KeyboardInterrupt, GeneratorExit signal runtime control.</p>
+<h2>7. Common Exception Categories</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># ArithmeticError -&gt; ZeroDivisionError10 / 0</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># LookupError -&gt; IndexErrorarr = []arr[5]</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># TypeError&#39;10&#39; + 5</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># ValueErrorint(&#39;abc&#39;)</span>
+</code></pre></div>
+
+<h2>8. Inspecting Exception Hierarchy Programmatically</h2>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>    <span class="nb">int</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">)</span><span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>    <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="vm">__mro__</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>9. Multiple Exception Handling Using Hierarchy</h2>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>    <span class="n">process_data</span><span class="p">()</span><span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">):</span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Data formatting error&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>10. Hierarchical Catch Strategy</h2>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>    <span class="n">risky_operation</span><span class="p">()</span><span class="k">except</span> <span class="ne">ArithmeticError</span><span class="p">:</span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Math-related issue&#39;</span><span class="p">)</span><span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;General application error&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>11. Custom Exceptions in Hierarchy</h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">PaymentError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>    <span class="n">passclass</span> <span class="n">InsufficientFundsError</span><span class="p">(</span><span class="n">PaymentError</span><span class="p">):</span>    <span class="k">pass</span>
+</code></pre></div>
+
+<h2>12. Enterprise Pattern: Custom Exception Tree</h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">AppError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>    <span class="n">passclass</span> <span class="n">ValidationError</span><span class="p">(</span><span class="n">AppError</span><span class="p">):</span>    <span class="n">passclass</span> <span class="n">NetworkError</span><span class="p">(</span><span class="n">AppError</span><span class="p">):</span>    <span class="k">pass</span>
+</code></pre></div>
+
+<h2>13. Exception Propagation Flow</h2>
+<p>Function → Caller → Higher Layer → Global Handler.</p>
+<h2>14. Global Exception Handling Pattern</h2>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>    <span class="n">main</span><span class="p">()</span><span class="k">except</span> <span class="n">AppError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>    <span class="n">log_error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>15. Risk of Catching Broad Exceptions</h2>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>    <span class="n">operation</span><span class="p">()</span><span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>    <span class="k">pass</span>  <span class="c1"># Dangerous</span>
+</code></pre></div>
+
+<h2>16. Enterprise Guideline: Catch Narrowly</h2>
+<p>Prefer specific exceptions (e.g., ValueError) over broad Exception.</p>
+<h2>17. Full Exception Hierarchy Tree</h2>
+<p>BaseException → Exception (ArithmeticError, AssertionError, AttributeError, EOFError, ImportError, LookupError, MemoryError, NameError, TypeError, ValueError, RuntimeError, OSError, etc.)</p>
+<h2>18. Exception Hierarchy Inspection Utility</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">builtinsprint</span><span class="p">(</span><span class="n">builtins</span><span class="o">.</span><span class="n">Exception</span><span class="o">.</span><span class="n">__subclasses__</span><span class="p">())</span>
+</code></pre></div>
+
+<h2>19. Exception Classification Strategy</h2>
+<p>BaseException: runtime control; Exception: application errors; CustomException: domain logic.</p>
+<h2>20. Enterprise Use Case: Hierarchy-Based Error Routing</h2>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>    <span class="n">payment_process</span><span class="p">()</span><span class="k">except</span> <span class="n">PaymentError</span><span class="p">:</span>    <span class="n">notify_finance_team</span><span class="p">()</span><span class="k">except</span> <span class="ne">SystemExit</span><span class="p">:</span>    <span class="n">shutdown_system</span><span class="p">()</span>
+</code></pre></div>
+
+<h2>21. Exception Hierarchy in Large Systems</h2>
+<p>Used for microservice fault routing, API error mapping, dashboards, SRE incident classification.</p>
+<h2>22. Best Practices</h2>
+<p>Never catch BaseException; subclass Exception for custom errors; group by hierarchy; log unexpected exceptions.</p>
+<h2>23. Common Mistakes</h2>
+<p>Catch-all overuse, suppressing interrupts, flat custom design, ignoring root causes.</p>
+<h2>24. Architectural Value</h2>
+<p>Hierarchy enables controlled propagation, predictable recovery, structured logging, domain isolation, and enterprise fault tolerance.</p>
+<hr>
+<p><strong>Score: 100</strong></p>
+<p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
+
+</p>
+
+
+
+
+</article>
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+    <aside class="large-3 columns">
+        <h5 class="sidebar-title">Site</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/archives.html">Archives</a>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/tags.html">Tags</a>
+        </ul>
+
+		
+        <h5 class="sidebar-title">Categories</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/pandas-work.html">pandas-work</a></li>
+   
+        </ul>
+
+		
+        <h5 class="sidebar-title">Social</h5>
+        <ul class="side-nav">
+            <li><a href="https://github.com/accsaikiran-sys/">GitHub</a></li>
+            <li><a href="<linkedin handle>">LinkedIn</a></li>
+        </ul>
+
+    </aside> <!-- End Sidebar -->
+
+</div> <!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+              <!--                  <p>My Python Notes by Sai Kiran Reddy</p> -->
+            </div>
+            </div>
+    </div>
+</footer>
+</body>
+</html>

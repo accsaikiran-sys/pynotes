@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Ch02 Io Best Practices</title>
+
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/normalize.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/style.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/pygments.css" />	
+    <script src="https://accsaikiran-sys.github.io/pynotes/theme/js/modernizr.js"></script>
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<nav>
+<div class="top-bar">
+<div class="row">
+    <div class="large-9 large-centered columns">
+	    <h1><a href="https://accsaikiran-sys.github.io/pynotes">My Python Notes</a></h1>
+    </div>
+</div>
+</div>
+
+<!-- Show menu items and pages -->
+<div class="row">
+<div class="large-9 columns">
+    <ul class="button-group navigation">
+
+    </ul>
+</div>
+</div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns">
+<article>
+    <header>
+        <h3 class="article-title"><a href="https://accsaikiran-sys.github.io/pynotes/ch02-io-best-practices.html" rel="bookmark"
+        title="Permalink to Ch02 Io Best Practices">Ch02 Io Best Practices</a></h3>
+    </header>
+
+<h6 class="subheader" title="2025-12-11T00:00:00-05:00">Thu 11 December 2025
+</h6>
+
+
+    <h1>I/O Best Practices for Production-Grade Python ApplicationsI/O is where your application meets external failure domains—filesystems, consoles, networks, queues, and databases. Treat it as a risk boundary.</h1>
+<h2>1. Strategic Overview</h2>
+<p>I/O spans files, consoles, networks, queues, DBs. Poor discipline causes latency, data loss, deadlocks, and blind spots.</p>
+<h2>2. Enterprise Significance</h2>
+<p>Robust I/O yields predictable latency, safe failure modes, clean integration contracts, and observable behavior.</p>
+<h2>3. Core I/O Principles</h2>
+<p>Explicitness, boundedness, failure-awareness, resource discipline, observability.</p>
+<h2>4. Synchronous vs Asynchronous I/O</h2>
+<p>Use sync by default; adopt async for high-concurrency I/O-bound workloads with proper framework support.</p>
+<h2>5. Timeouts: Non-Negotiable</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">requestsresponse</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://api.example.com/data&#39;</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mf">5.0</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Always set timeouts for all external I/O (files on network FS, HTTP, DB, queues).</p>
+<h2>6. Idempotency and Retry Strategy</h2>
+<p>Design idempotent operations; use bounded retries with backoff and jitter for transient failures.</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">attempt</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">MAX_RETRIES</span><span class="p">):</span>    <span class="k">try</span><span class="p">:</span>        <span class="n">result</span> <span class="o">=</span> <span class="n">perform_io</span><span class="p">()</span>        <span class="k">break</span>    <span class="k">except</span> <span class="n">TransientError</span><span class="p">:</span>        <span class="n">sleep</span><span class="p">(</span><span class="n">backoff</span><span class="p">(</span><span class="n">attempt</span><span class="p">))</span><span class="k">else</span><span class="p">:</span>    <span class="k">raise</span> <span class="n">FinalFailure</span>
+</code></pre></div>
+
+<h2>7. Streaming vs Bulk I/O</h2>
+<p>Stream when size is large/unknown; bulk only for small bounded data.</p>
+<h2>8. Buffering Strategy</h2>
+<p>Tune buffering per use case: low/flush for interactive logs; higher for throughput on pipelines.</p>
+<h2>9. Encoding and Text Handling</h2>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>        <span class="n">process</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Standardize on UTF-8; never rely on platform defaults.</p>
+<h2>10. Resource Lifecycle and Context Managers</h2>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>    <span class="n">data</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Open late, close early; use context managers for files, sockets, sessions.</p>
+<h2>11. Error Handling and Classification</h2>
+<p>Separate transient (retryable) vs permanent; never silently ignore I/O failures.</p>
+<h2>12. Logging and Observability for I/O</h2>
+<p>Log target, latency, outcome, size; use structured logs for correlation.</p>
+<h2>13. Console I/O: Production Discipline</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">syssys.stdout.write</span><span class="p">(</span><span class="s1">&#39;result-json-here&#39;</span><span class="p">)</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;INFO: job completed&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>stdout for data, stderr for diagnostics; control buffering for real-time output.</p>
+<h2>14. File I/O Best Practices</h2>
+<p>Use context managers, explicit modes/encodings, streaming for large files, atomic writes via temp+replace, pathlib for paths.</p>
+<h2>15. Network I/O Best Practices</h2>
+<p>Set timeouts, pool connections, validate responses, handle partial responses/auth errors distinctly.</p>
+<h2>16. Database and Persistent Store I/O</h2>
+<p>Configure timeouts/pools, use transactions, retry transient DB errors, log slow/IO-heavy ops.</p>
+<h2>17. Asynchronous I/O Patterns</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span><span class="o">,</span><span class="w"> </span><span class="nn">aiohttpasync</span> <span class="k">def</span><span class="w"> </span><span class="nf">fetch</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">url</span><span class="p">):</span>    <span class="k">async</span> <span class="k">with</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span> <span class="k">as</span> <span class="n">resp</span><span class="p">:</span>        <span class="k">return</span> <span class="k">await</span> <span class="n">resp</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
+</code></pre></div>
+
+<p>In async, avoid blocking calls; use cancellation/timeouts and task management.</p>
+<h2>18. Backpressure and Flow Control</h2>
+<p>Use bounded queues/windowing; avoid reading faster than you can write.</p>
+<h2>19. Security Considerations in I/O</h2>
+<p>Sanitize paths, restrict perms, use TLS/cert validation, never log secrets, validate untrusted input.</p>
+<h2>20. Configuration-Driven I/O</h2>
+<p>Externalize paths/endpoints/timeouts/retries/buffer sizes; adapt per environment.</p>
+<h2>21. Testing I/O</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">io</span><span class="w"> </span><span class="kn">import</span> <span class="n">StringIOdef</span> <span class="n">transform</span><span class="p">(</span><span class="n">inp</span><span class="p">,</span> <span class="n">out</span><span class="p">):</span>    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">inp</span><span class="p">:</span>        <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span><span class="n">inp</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">)</span><span class="n">out</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">()</span><span class="n">transform</span><span class="p">(</span><span class="n">inp</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span><span class="k">assert</span> <span class="n">out</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;HELLO&#39;</span>
+</code></pre></div>
+
+<p>Inject streams/clients; use tempfile or in-memory buffers; mock network.</p>
+<h2>22. Metrics and Rate Limiting</h2>
+<p>Track RPS, errors, latency percentiles, payload sizes; apply rate limits to protect downstreams.</p>
+<h2>23. Common I/O Anti-Patterns</h2>
+<ul>
+<li>No timeouts.- Unbounded reads into memory.- Mixing logs/data on stdout.- Silent failure handling.- Blocking calls inside async loop.- Hardcoded endpoints/paths.</li>
+</ul>
+<h2>24. I/O Governance Framework</h2>
+<p>Intent → Interface → Configuration → Safety (timeouts/retries) → Observability (logs/metrics) → Performance (buffering/streaming) → Resilience (backoff/fallback) → Security (validation/encryption).</p>
+<h2>25. Enterprise Impact</h2>
+<p>Strong I/O practices deliver predictable performance, controlled failures, observability, safe integrations, and maintainable infrastructure behavior.</p>
+<hr>
+<p><strong>Score: 55</strong></p>
+<p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
+
+</p>
+
+
+
+
+</article>
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+    <aside class="large-3 columns">
+        <h5 class="sidebar-title">Site</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/archives.html">Archives</a>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/tags.html">Tags</a>
+        </ul>
+
+		
+        <h5 class="sidebar-title">Categories</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/pandas-work.html">pandas-work</a></li>
+   
+        </ul>
+
+		
+        <h5 class="sidebar-title">Social</h5>
+        <ul class="side-nav">
+            <li><a href="https://github.com/accsaikiran-sys/">GitHub</a></li>
+            <li><a href="<linkedin handle>">LinkedIn</a></li>
+        </ul>
+
+    </aside> <!-- End Sidebar -->
+
+</div> <!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+              <!--                  <p>My Python Notes by Sai Kiran Reddy</p> -->
+            </div>
+            </div>
+    </div>
+</footer>
+</body>
+</html>

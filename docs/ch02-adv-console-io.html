@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Ch02 Adv Console Io</title>
+
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/normalize.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/style.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/pygments.css" />	
+    <script src="https://accsaikiran-sys.github.io/pynotes/theme/js/modernizr.js"></script>
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<nav>
+<div class="top-bar">
+<div class="row">
+    <div class="large-9 large-centered columns">
+	    <h1><a href="https://accsaikiran-sys.github.io/pynotes">My Python Notes</a></h1>
+    </div>
+</div>
+</div>
+
+<!-- Show menu items and pages -->
+<div class="row">
+<div class="large-9 columns">
+    <ul class="button-group navigation">
+
+    </ul>
+</div>
+</div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns">
+<article>
+    <header>
+        <h3 class="article-title"><a href="https://accsaikiran-sys.github.io/pynotes/ch02-adv-console-io.html" rel="bookmark"
+        title="Permalink to Ch02 Adv Console Io">Ch02 Adv Console Io</a></h3>
+    </header>
+
+<h6 class="subheader" title="2025-12-11T00:00:00-05:00">Thu 11 December 2025
+</h6>
+
+
+    <h1>Advanced Console I/O (sys.stdin, sys.stdout, buffering)Low-level console streams (sys.stdin/stdout/stderr) with buffering, encoding, and piping considerations for production-grade CLI tools and services.</h1>
+<h2>1. Strategic Overview</h2>
+<p>Control data flow, buffering, and encoding for predictable integration with shells, CI, containers, and logging pipelines.</p>
+<h2>2. Enterprise Significance</h2>
+<p>Mismanaged I/O causes hangs, buffer overflows, interleaved logs, encoding errors, and broken pipelines. Discipline enables predictable CLIs, robust IPC, and reliable logs.</p>
+<h2>3. Python I/O Model: High-Level vs Low-Level</h2>
+<p>High-level: print()/input().Low-level: sys.stdin/sys.stdout/sys.stderr file-like streams supporting read()/write()/flush().</p>
+<h2>4. sys.stdin, sys.stdout, sys.stderr Fundamentals</h2>
+<div class="highlight"><pre><span></span><code>        <span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>        <span class="n">data</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>      <span class="c1"># read all        sys.stdout.write(&quot;Hello&quot;)  # write to stdout        sys.stderr.write(&quot;Error&quot;)  # diagnostics</span>
+</code></pre></div>
+
+<p>Streams are text wrappers over buffered binaries; they are redirectable/replacable.</p>
+<h2>5. Input Patterns with sys.stdin</h2>
+<div class="highlight"><pre><span></span><code>        <span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>        <span class="c1"># 5.1 Read full input (bounded content)        content = sys.stdin.read()        # 5.2 Line-by-line streaming (large/streaming)        for line in sys.stdin:            process(line.rstrip(&quot;&quot;))</span>
+</code></pre></div>
+
+<p>Use full read for bounded data; streaming for large/unknown inputs and Unix filters.</p>
+<h2>6. Output Patterns with sys.stdout</h2>
+<div class="highlight"><pre><span></span><code>        <span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>        <span class="c1"># Direct writes with manual flush        sys.stdout.write(&quot;Processing...&quot;)        sys.stdout.flush()        # print targeting stdout        print(&quot;Hello&quot;, file=sys.stdout, flush=True)</span>
+</code></pre></div>
+
+<p>Direct writes give precise control; print offers convenience.</p>
+<h2>7. Separation of Concerns: stdout vs stderr</h2>
+<div class="highlight"><pre><span></span><code>        <span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>        <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="p">:</span>                <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>  <span class="c1"># data            sys.stderr.write(&quot;Processing complete&quot;)  # diagnostics        main()</span>
+</code></pre></div>
+
+<p>Keep data on stdout and diagnostics on stderr for composable pipelines.</p>
+<h2>8. Buffering: Conceptual Model</h2>
+<p>Unbuffered writes immediately; line-buffered flushes on newline/size; block-buffered flushes on full/explicit flush. Buffering reduces syscalls but may delay output.</p>
+<h2>9. Buffering in Practice: Console vs Pipe</h2>
+<p>TTY stdout is often line-buffered; pipes/files often block-buffered, explaining interactive vs piped timing differences.</p>
+<h2>10. Controlling Buffering at Interpreter Start</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Unbuffered/line-buffered startup# python -u script.py# PYTHONUNBUFFERED=1 python script.py</span>
+</code></pre></div>
+
+<p>Use -u or PYTHONUNBUFFERED for real-time logs in CI/containers.</p>
+<h2>11. Manual Flushing</h2>
+<div class="highlight"><pre><span></span><code>        <span class="kn">import</span><span class="w"> </span><span class="nn">sys</span><span class="o">,</span><span class="w"> </span><span class="nn">time</span>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>            <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Step </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>            <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Flush when streaming progress/logs or interacting with processes waiting on your output.</p>
+<h2>12. Replacing and Wrapping sys.stdout/sys.stdin</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">sysfrom</span> <span class="n">io</span> <span class="kn">import</span><span class="w"> </span><span class="nn">TextIOBaseclass</span> <span class="n">PrefixWriter</span><span class="p">(</span><span class="n">TextIOBase</span><span class="p">):</span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">original</span><span class="p">,</span> <span class="n">prefix</span><span class="p">):</span>        <span class="bp">self</span><span class="o">.</span><span class="n">original</span> <span class="o">=</span> <span class="n">original</span>        <span class="bp">self</span><span class="o">.</span><span class="n">prefix</span> <span class="o">=</span> <span class="n">prefix</span>    <span class="k">def</span><span class="w"> </span><span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">original</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">prefix</span> <span class="o">+</span> <span class="n">s</span><span class="p">)</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">PrefixWriter</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span> <span class="s2">&quot;[APP] &quot;</span><span class="p">)</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Started&quot;</span><span class="p">)</span>  <span class="c1"># -&gt; [APP] Started</span>
+</code></pre></div>
+
+<p>Wrap streams for prefixes, filtering, or redaction.</p>
+<h2>13. Text vs Binary Console I/O</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">sysraw</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">buffer</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>          <span class="c1"># bytessys.stdout.buffer.write(raw.upper())   # binary write</span>
+</code></pre></div>
+
+<p>Use binary buffers for raw bytes (images, compressed data, binary protocols).</p>
+<h2>14. Encoding and Decoding</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">sysraw</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">buffer</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="n">text</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;replace&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Prefer UTF-8; be explicit and handle errors when decoding/encoding.</p>
+<h2>15. Handling Blocking and Deadlocks</h2>
+<p>read()/readline() block; consuming stdin is required to avoid stalls in pipelines. Use streaming reads for unknown sizes and document blocking behavior.</p>
+<h2>16. Integration with subprocess and Pipes</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span><span class="o">,</span><span class="w"> </span><span class="nn">sysproc</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span>    <span class="p">[</span><span class="s2">&quot;some_command&quot;</span><span class="p">],</span>    <span class="n">stdin</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>    <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>    <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>    <span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">,)</span><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">proc</span><span class="o">.</span><span class="n">stdout</span><span class="p">:</span>    <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Always consume child stdout/stderr to avoid deadlocks; decide explicit forwarding; use text=True for text mode.</p>
+<h2>17. Logging vs Console Output</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span><span class="o">,</span><span class="w"> </span><span class="nn">syslogging.basicConfig</span><span class="p">(</span><span class="n">stream</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span><span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Starting job&quot;</span><span class="p">)</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;result-data-json-here&quot;</span><span class="p">)</span>  <span class="c1"># data to stdout</span>
+</code></pre></div>
+
+<p>Use logging for diagnostics; reserve stdout for data and stderr for supplemental info.</p>
+<h2>18. Progress Bars and Interactive Output</h2>
+<div class="highlight"><pre><span></span><code>        <span class="kn">import</span><span class="w"> </span><span class="nn">sys</span><span class="o">,</span><span class="w"> </span><span class="nn">time</span>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">101</span><span class="p">):</span>            <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Progress: </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>            <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>        <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Flush or disable interactive UI when not on a TTY (CI/logs).</p>
+<h2>19. Testing Console I/O</h2>
+<div class="highlight"><pre><span></span><code>        <span class="kn">from</span><span class="w"> </span><span class="nn">io</span><span class="w"> </span><span class="kn">import</span> <span class="n">StringIO</span>        <span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>        <span class="k">def</span><span class="w"> </span><span class="nf">process_stream</span><span class="p">(</span><span class="n">inp</span><span class="p">,</span> <span class="n">out</span><span class="p">):</span>            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">inp</span><span class="p">:</span>                <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>        <span class="c1"># production        process_stream(sys.stdin, sys.stdout)        # tests        inp = StringIO(&quot;helloworld&quot;)        out = StringIO()        process_stream(inp, out)        assert out.getvalue() == &quot;HELLOWORLD&quot;</span>
+</code></pre></div>
+
+<p>Inject streams for deterministic tests; avoid hardwired input()/print() deep in logic.</p>
+<h2>20. Console I/O Governance in Enterprise Systems</h2>
+<p>Define stdout/stderr conventions, buffering strategy, encoding expectations, and validate behavior under pipes, redirection, CI, and containers.</p>
+<h2>21. Common Anti-Patterns</h2>
+<ul>
+<li>Mixing data and logs on stdout.- Unflushed output in long-running jobs.- Assuming interactive TTY (input()) in automation.- Reading all stdin blindly (memory/blocking).- Hardcoded encodings without error handling.</li>
+</ul>
+<hr>
+<p><strong>Score: 55</strong></p>
+<p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
+
+</p>
+
+
+
+
+</article>
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+    <aside class="large-3 columns">
+        <h5 class="sidebar-title">Site</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/archives.html">Archives</a>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/tags.html">Tags</a>
+        </ul>
+
+		
+        <h5 class="sidebar-title">Categories</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/pandas-work.html">pandas-work</a></li>
+   
+        </ul>
+
+		
+        <h5 class="sidebar-title">Social</h5>
+        <ul class="side-nav">
+            <li><a href="https://github.com/accsaikiran-sys/">GitHub</a></li>
+            <li><a href="<linkedin handle>">LinkedIn</a></li>
+        </ul>
+
+    </aside> <!-- End Sidebar -->
+
+</div> <!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+              <!--                  <p>My Python Notes by Sai Kiran Reddy</p> -->
+            </div>
+            </div>
+    </div>
+</footer>
+</body>
+</html>

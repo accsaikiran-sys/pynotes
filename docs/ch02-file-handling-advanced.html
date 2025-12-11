@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Ch02 File Handling Advanced</title>
+
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/normalize.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/style.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/pygments.css" />	
+    <script src="https://accsaikiran-sys.github.io/pynotes/theme/js/modernizr.js"></script>
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<nav>
+<div class="top-bar">
+<div class="row">
+    <div class="large-9 large-centered columns">
+	    <h1><a href="https://accsaikiran-sys.github.io/pynotes">My Python Notes</a></h1>
+    </div>
+</div>
+</div>
+
+<!-- Show menu items and pages -->
+<div class="row">
+<div class="large-9 columns">
+    <ul class="button-group navigation">
+
+    </ul>
+</div>
+</div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns">
+<article>
+    <header>
+        <h3 class="article-title"><a href="https://accsaikiran-sys.github.io/pynotes/ch02-file-handling-advanced.html" rel="bookmark"
+        title="Permalink to Ch02 File Handling Advanced">Ch02 File Handling Advanced</a></h3>
+    </header>
+
+<h6 class="subheader" title="2025-12-11T00:00:00-05:00">Thu 11 December 2025
+</h6>
+
+
+    <h1>Python File Handling (Advanced)High-performance, fault-tolerant, and secure file operations across local and distributed filesystems.</h1>
+<h2>1. Strategic Overview</h2>
+<p>Advanced file handling enables high-throughput ingestion, fault-tolerant persistence, secure manipulation, concurrency control, and ETL at scale.</p>
+<h2>2. Enterprise Importance</h2>
+<p>Critical for big data processing, backups, secure docs, streaming pipelines, and microservice exchange; poor handling causes corruption, locks, inconsistent writes, leaks, and performance loss.</p>
+<h2>3. File Handling Architecture Layers</h2>
+<p>Application → File Abstraction → Filesystem Interface → OS Kernel I/O → Storage Hardware.</p>
+<h2>4. Advanced File Opening Modes</h2>
+<p>Modes: r+, w+, a+, rb, wb, x. Binary for non-text formats.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r+&#39;</span><span class="p">)</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w+&#39;</span><span class="p">)</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;a+&#39;</span><span class="p">)</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;image.png&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data.bin&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;newfile.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>5. Buffered vs Unbuffered I/O</h2>
+<div class="highlight"><pre><span></span><code><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;file.txt&#39;</span><span class="p">,</span> <span class="n">buffering</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># line buffered (text)open(&#39;file.txt&#39;, buffering=0)  # unbuffered (binary only)</span>
+</code></pre></div>
+
+<p>Buffered optimizes throughput; unbuffered for real-time streams.</p>
+<h2>6. High-Performance Streaming Reads</h2>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;large.log&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>    <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="nb">iter</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">4096</span><span class="p">),</span> <span class="s1">&#39;&#39;</span><span class="p">):</span>        <span class="n">process</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>7. Memory-Efficient File Processing</h2>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data.csv&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>        <span class="n">process</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>8. Context Manager Pattern</h2>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>    <span class="n">content</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</code></pre></div>
+
+<h2>9. Atomic File Writing Strategy</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span><span class="o">,</span><span class="w"> </span><span class="nn">tempfilewith</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">NamedTemporaryFile</span><span class="p">(</span><span class="n">delete</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="k">as</span> <span class="n">tmp</span><span class="p">:</span>    <span class="n">tmp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="n">os</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">tmp</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;target.txt&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>10. File Locking Mechanisms</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">fcntl</span><span class="c1"># with open(&#39;shared.txt&#39;, &#39;a&#39;) as file:#     fcntl.flock(file, fcntl.LOCK_EX)</span>
+</code></pre></div>
+
+<p>Windows: use msvcrt.locking().</p>
+<h2>11. Handling Concurrent File Access</h2>
+<p>Use locks, queued writing, write serialization, and thread coordination to avoid conflicts.</p>
+<h2>12. File Pointer Manipulation</h2>
+<div class="highlight"><pre><span></span><code><span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;file.txt&#39;</span><span class="p">)</span><span class="n">file</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="n">position</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">tell</span><span class="p">()</span><span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div>
+
+<h2>13. Binary File Handling</h2>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;image.png&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>    <span class="n">data</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</code></pre></div>
+
+<h2>14. Chunked File Upload Processing</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">stream_file</span><span class="p">(</span><span class="n">file_obj</span><span class="p">):</span>    <span class="k">while</span> <span class="n">data</span> <span class="o">:=</span> <span class="n">file_obj</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">8192</span><span class="p">):</span>        <span class="k">yield</span> <span class="n">data</span>
+</code></pre></div>
+
+<h2>15. File Compression Integration</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">gzipwith</span> <span class="n">gzip</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;data.gz&#39;</span><span class="p">,</span> <span class="s1">&#39;wt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Compressed content&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>16. File Format Encapsulation</h2>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data.txt&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>    <span class="n">content</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</code></pre></div>
+
+<h2>17. Error Handling in File Operations</h2>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;file.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>        <span class="n">passexcept</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>    <span class="n">handle_missing_file</span><span class="p">()</span>
+</code></pre></div>
+
+<h2>18. File Metadata Management</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">osos.path.getsize</span><span class="p">(</span><span class="s1">&#39;file.txt&#39;</span><span class="p">)</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getmtime</span><span class="p">(</span><span class="s1">&#39;file.txt&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>19. File Rotation Strategies</h2>
+<p>Use logging.handlers.RotatingFileHandler or external schedulers (log.txt → log.1 → log.2 → archive).</p>
+<h2>20. File System Monitoring</h2>
+<p>watchdog observers can trigger workflows for real-time ingestion or sync.</p>
+<h2>21. Virtual File Systems</h2>
+<p>Abstract interfaces for S3/FTP/HDFS/network shares enable cloud-native file access.</p>
+<h2>22. File-Based ETL Pipeline</h2>
+<p>File Source → Parser → Validator → Transformer → Storage.</p>
+<h2>23. Secure File Handling</h2>
+<p>Sanitize paths, prevent traversal, encrypt sensitive content, enforce permissions.</p>
+<h2>24. Temporary Files Management</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">tempfilewith</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryFile</span><span class="p">()</span> <span class="k">as</span> <span class="n">tf</span><span class="p">:</span>    <span class="n">tf</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;temp data&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>25. Handling Large File Systems</h2>
+<p>Use async IO, chunked reads, indexes, and streaming APIs for data lakes/media servers/backups.</p>
+<h2>26. Performance Optimization Techniques</h2>
+<p>Use buffering effectively; avoid tiny I/O calls; leverage generators; offload I/O; profile FS operations.</p>
+<h2>27. Observability for File Operations</h2>
+<p>Track I/O latency, throughput, errors, storage utilization with monitoring tools.</p>
+<h2>28. File Handling Anti-Patterns</h2>
+<ul>
+<li>Leaving files open → leaks- Reading whole files into memory → overflow- Hardcoded paths → portability issues- No error handling → failures</li>
+</ul>
+<h2>29. Enterprise Use Cases</h2>
+<p>Document systems, cloud storage, high-volume loaders, backup/restoration, CI pipelines.</p>
+<h2>30. Architectural Value</h2>
+<p>Advanced file handling delivers controlled I/O, reliable persistence, high performance, secure management, and predictable resource use for data engineering and cloud-native platforms.</p>
+<hr>
+<p><strong>Score: 60</strong></p>
+<p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
+
+</p>
+
+
+
+
+</article>
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+    <aside class="large-3 columns">
+        <h5 class="sidebar-title">Site</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/archives.html">Archives</a>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/tags.html">Tags</a>
+        </ul>
+
+		
+        <h5 class="sidebar-title">Categories</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/pandas-work.html">pandas-work</a></li>
+   
+        </ul>
+
+		
+        <h5 class="sidebar-title">Social</h5>
+        <ul class="side-nav">
+            <li><a href="https://github.com/accsaikiran-sys/">GitHub</a></li>
+            <li><a href="<linkedin handle>">LinkedIn</a></li>
+        </ul>
+
+    </aside> <!-- End Sidebar -->
+
+</div> <!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+              <!--                  <p>My Python Notes by Sai Kiran Reddy</p> -->
+            </div>
+            </div>
+    </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Ch02 File Parsing Techniques</title>
+
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/normalize.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/style.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/pygments.css" />	
+    <script src="https://accsaikiran-sys.github.io/pynotes/theme/js/modernizr.js"></script>
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<nav>
+<div class="top-bar">
+<div class="row">
+    <div class="large-9 large-centered columns">
+	    <h1><a href="https://accsaikiran-sys.github.io/pynotes">My Python Notes</a></h1>
+    </div>
+</div>
+</div>
+
+<!-- Show menu items and pages -->
+<div class="row">
+<div class="large-9 columns">
+    <ul class="button-group navigation">
+
+    </ul>
+</div>
+</div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns">
+<article>
+    <header>
+        <h3 class="article-title"><a href="https://accsaikiran-sys.github.io/pynotes/ch02-file-parsing-techniques.html" rel="bookmark"
+        title="Permalink to Ch02 File Parsing Techniques">Ch02 File Parsing Techniques</a></h3>
+    </header>
+
+<h6 class="subheader" title="2025-12-11T00:00:00-05:00">Thu 11 December 2025
+</h6>
+
+
+    <h1>Python File Parsing TechniquesParsing transforms raw file content into validated, structured data for reliable pipelines and ETL workflows.</h1>
+<h2>1. Strategic Overview</h2>
+<p>Effective parsing enables reliable pipelines, structured ingestion, validation/cleansing, and high-throughput ETL.</p>
+<h2>2. Enterprise Importance of File Parsing</h2>
+<p>Robust parsing prevents corruption, pipeline failures, inconsistencies, performance hits, and compliance risk; ensures integrity and predictable transformation.</p>
+<h2>3. Core File Parsing Categories</h2>
+<p>Line-based, structured (JSON/XML/CSV/YAML), binary, stream, regex/pattern-based.</p>
+<h2>4. Line-by-Line Parsing Pattern</h2>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">file</span><span class="p">:</span>        <span class="n">parse</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+</code></pre></div>
+
+<p>Low memory, stream-safe, scalable.</p>
+<h2>5. Chunk-Based Parsing</h2>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>    <span class="k">while</span> <span class="n">chunk</span> <span class="o">:=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1024</span><span class="p">):</span>        <span class="n">process</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Controls memory, improves throughput for large files.</p>
+<h2>6. CSV Parsing Techniques</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">csvwith</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data.csv&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>    <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>        <span class="n">process</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Common in finance, reporting, and ETL.</p>
+<h2>7. JSON Parsing Techniques</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">jsonwith</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data.json&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span><span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">data</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="k">else</span> <span class="p">[</span><span class="n">data</span><span class="p">]:</span>    <span class="n">process</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Used for APIs, configs, document stores.</p>
+<h2>8. XML Parsing Patterns</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">xml.etree.ElementTree</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ETtree</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s1">&#39;file.xml&#39;</span><span class="p">)</span><span class="n">root</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">getroot</span><span class="p">()</span>
+</code></pre></div>
+
+<h2>9. Streaming XML Parsing (Efficient)</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">xml.etree.ElementTree</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ETfor</span> <span class="n">event</span><span class="p">,</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">ET</span><span class="o">.</span><span class="n">iterparse</span><span class="p">(</span><span class="s1">&#39;file.xml&#39;</span><span class="p">):</span>    <span class="n">handle</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Iterative parsing avoids memory blowups on large XML.</p>
+<h2>10. YAML File Parsing</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">yamlwith</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;config.yaml&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>    <span class="n">data</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Great for configuration/deployment specs.</p>
+<h2>11. Regex-Based Parsing</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">repattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d+&quot;</span><span class="p">)</span><span class="n">matches</span> <span class="o">=</span> <span class="n">pattern</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Useful for log analysis, cleanup, text mining.</p>
+<h2>12. Delimiter-Driven Parsing</h2>
+<div class="highlight"><pre><span></span><code><span class="n">line</span> <span class="o">=</span> <span class="s1">&#39;A|B|C&#39;</span><span class="n">fields</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Frequent in legacy/POS/export feeds.</p>
+<h2>13. Binary File Parsing</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">struct</span><span class="c1"># example unpack 32-bit intvalue, = struct.unpack(&#39;i&#39;, binary_data)</span>
+</code></pre></div>
+
+<p>Protocol decoding and system-level formats.</p>
+<h2>14. Fixed-Width File Parsing</h2>
+<div class="highlight"><pre><span></span><code><span class="n">line</span> <span class="o">=</span> <span class="s1">&#39;12345John     030&#39;</span><span class="nb">id</span> <span class="o">=</span> <span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span><span class="n">name</span> <span class="o">=</span> <span class="n">line</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">15</span><span class="p">]</span><span class="n">age</span> <span class="o">=</span> <span class="n">line</span><span class="p">[</span><span class="mi">15</span><span class="p">:</span><span class="mi">18</span><span class="p">]</span>
+</code></pre></div>
+
+<p>Critical in banking/government/insurance.</p>
+<h2>15. Custom Parser Pipeline Pattern</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">parse_file</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">parser</span><span class="p">):</span>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>            <span class="k">yield</span> <span class="n">parser</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Decouples ingestion from transformation logic.</p>
+<h2>16. Advanced Stream Parsing Pattern</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">stream_parser</span><span class="p">(</span><span class="n">file_obj</span><span class="p">):</span>    <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="nb">iter</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">file_obj</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">2048</span><span class="p">),</span> <span class="s1">&#39;&#39;</span><span class="p">):</span>        <span class="k">yield</span> <span class="n">process_chunk</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+</code></pre></div>
+
+<p>For realtime feeds and high-frequency data.</p>
+<h2>17. Parsing with Validation Layer</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">validate</span><span class="p">(</span><span class="n">record</span><span class="p">):</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">record</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Invalid record&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Validate at ingestion for integrity.</p>
+<h2>18. Error-Tolerant Parsing Pattern</h2>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>    <span class="n">parse</span><span class="p">(</span><span class="n">line</span><span class="p">)</span><span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>    <span class="n">log_error</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Keeps pipelines alive while tracking bad records.</p>
+<h2>19. Incremental File Parsing</h2>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;file.log&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>    <span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="n">last_position</span><span class="p">)</span>    <span class="n">new_data</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Supports log tailing/stream monitoring.</p>
+<h2>20. Parallel File Parsing</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">multiprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Poolwith</span> <span class="n">Pool</span><span class="p">()</span> <span class="k">as</span> <span class="n">p</span><span class="p">:</span>    <span class="n">p</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">parse_file</span><span class="p">,</span> <span class="n">file_list</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Accelerates large dataset ingestion.</p>
+<h2>21. Multi-Format Parsing Architecture</h2>
+<p>Input → Detector → Parser Selector → Formatter → Validator → Output.</p>
+<h2>22. Performance Optimization Techniques</h2>
+<p>Use streaming over load-all, chunk large files, avoid heavy regex, cache patterns, parallelize when needed.</p>
+<h2>23. Parsing Pipeline Workflow</h2>
+<p>File → Reader → Tokenizer → Validator → Transformer → Output.</p>
+<h2>24. Common Parsing Anti-Patterns</h2>
+<ul>
+<li>Reading full files into memory.- Ignoring malformed data.- Hardcoded parsing logic.- Mixing formats in one pass without detection.</li>
+</ul>
+<h2>25. Enterprise Parsing Use Cases</h2>
+<p>Data lakes, ETL frameworks, log aggregators, financial/compliance reporting.</p>
+<h2>26. Parsing Observability</h2>
+<p>Track parse errors, latency, malformed rate, throughput via Prometheus/ELK/Datadog.</p>
+<h2>27. Secure File Parsing</h2>
+<p>Validate content, sanitize inputs, avoid dynamic execution, enforce schema rules to prevent injection.</p>
+<h2>28. Schema-Based Parsing</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModelclass</span> <span class="n">Record</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>    <span class="n">age</span><span class="p">:</span> <span class="nb">int</span>
+</code></pre></div>
+
+<p>Enforce schemas for integrity and validation.</p>
+<h2>29. Parsing Automation Strategy</h2>
+<p>Trigger → File Detection → Parser Assignment → Validation → Storage.</p>
+<h2>30. Architectural Value</h2>
+<p>Parsing is foundational for reliable ingestion, transformation, and normalization across big data, ML pipelines, log processing, monitoring, and analytics.</p>
+<hr>
+<p><strong>Score: 75</strong></p>
+<p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
+
+</p>
+
+
+
+
+</article>
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+    <aside class="large-3 columns">
+        <h5 class="sidebar-title">Site</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/archives.html">Archives</a>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/tags.html">Tags</a>
+        </ul>
+
+		
+        <h5 class="sidebar-title">Categories</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/pandas-work.html">pandas-work</a></li>
+   
+        </ul>
+
+		
+        <h5 class="sidebar-title">Social</h5>
+        <ul class="side-nav">
+            <li><a href="https://github.com/accsaikiran-sys/">GitHub</a></li>
+            <li><a href="<linkedin handle>">LinkedIn</a></li>
+        </ul>
+
+    </aside> <!-- End Sidebar -->
+
+</div> <!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+              <!--                  <p>My Python Notes by Sai Kiran Reddy</p> -->
+            </div>
+            </div>
+    </div>
+</footer>
+</body>
+</html>

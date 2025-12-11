@@ -4,7 +4,7 @@
     <!-- Set the viewport width to device width for mobile -->
     <meta name="viewport" content="width=device-width" />
 
-    <title>My Python Notes - advanced</title>
+    <title>Ch01 Memory Management</title>
 
     <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/normalize.css" />
     <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/foundation.min.css" />
@@ -42,16 +42,17 @@
 
     <!-- Main Blog Content -->
     <div class="large-9 columns">
-        
-        
+<article>
+    <header>
+        <h3 class="article-title"><a href="https://accsaikiran-sys.github.io/pynotes/ch01-memory-management.html" rel="bookmark"
+        title="Permalink to Ch01 Memory Management">Ch01 Memory Management</a></h3>
+    </header>
 
-            <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch01-memory-management.html"><h3 class="article-title">Ch01 Memory Management</h3></a>
 <h6 class="subheader" title="2025-12-11T00:00:00-05:00">Thu 11 December 2025
 </h6>
 
 
-<h1>Python Memory ManagementPython manages memory through automatic allocation, reference counting, and garbage collection layered over arenas/pools/blocks for efficiency.</h1>
+    <h1>Python Memory ManagementPython manages memory through automatic allocation, reference counting, and garbage collection layered over arenas/pools/blocks for efficiency.</h1>
 <h2>1. Concept Overview</h2>
 <p>Python memory management defines how memory is allocated, tracked, reused, and released. Key elements: automatic allocation, garbage collection, reference counting, object pooling, memory arenas/blocks, and heap/stack coordination.</p>
 <h2>2. Why Memory Management Matters in Enterprise Systems</h2>
@@ -152,234 +153,15 @@
 <h2>30. Architectural Value</h2>
 <p>Proper memory management delivers stable runtimes, controlled resources, scalability, and predictable performance for high-frequency services, data pipelines, AI platforms, real-time systems, and long-lived applications.</p>
 <hr>
-<p><strong>Score: 65</strong></p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
+<p><strong>Score: 65</strong></p>
+<p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
 
 </p>
 
 
 
-            </article>
 
-
-                <hr  class="gradient"/>
-
-
-        
-
-
-            <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch01-scope-lifetime.html"><h3 class="article-title">Ch01 Scope Lifetime</h3></a>
-<h6 class="subheader" title="2025-12-11T00:00:00-05:00">Thu 11 December 2025
-</h6>
-
-
-<h1>Python Scope and LifetimeScope defines where variables are visible; lifetime defines how long they exist in memory. Python resolves names with LEGB: Local → Enclosing → Global → Built-in.</h1>
-<h2>1. What is Scope in Python</h2>
-<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># Globaldef show():    y = 5  # Local    print(x, y)show()</span>
-</code></pre></div>
-
-<p>Determines where Python searches for a variable …</p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
-
-</p>
-
-
-
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch01-scope-lifetime.html">Read More</a>
-                <hr  class="gradient"/>
-            </article>
-
-        
-
-
-            <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch01-scope-references-mutability.html"><h3 class="article-title">Ch01 Scope References Mutability</h3></a>
-<h6 class="subheader" title="2025-12-11T00:00:00-05:00">Thu 11 December 2025
-</h6>
-
-
-<h1>Scope, References, and MutabilityPython scope, references, and mutability shape how variables are resolved, how objects are shared, and how state changes propagate across a codebase.They underpin stable state management, memory behavior, and predictable execution.</h1>
-<h2>1. Strategic OverviewThese mechanics enable controlled data visibility, predictable mutation, memory efficiency, and safe lifecycles …</h2><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
-
-</p>
-
-
-
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch01-scope-references-mutability.html">Read More</a>
-                <hr  class="gradient"/>
-            </article>
-
-        
-
-
-            <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch01-variable-management-best-practices.html"><h3 class="article-title">Ch01 Variable Management Best Practices</h3></a>
-<h6 class="subheader" title="2025-12-11T00:00:00-05:00">Thu 11 December 2025
-</h6>
-
-
-<h1>Best Practices for Variable Management in Production CodeDisciplined handling of variables ensures predictable behavior, stability, and resilience in high-scale systems.</h1>
-<h2>1. Strategic Overview</h2>
-<p>Effective variable governance drives deterministic behavior, state consistency, reduced side effects, clear lifecycle ownership, and predictable semantics. In production, variables are state contracts, not throwaway placeholders.</p>
-<h2>2 …</h2><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
-
-</p>
-
-
-
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch01-variable-management-best-practices.html">Read More</a>
-                <hr  class="gradient"/>
-            </article>
-
-        
-
-
-            <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch01-variable-scope.html"><h3 class="article-title">Ch01 Variable Scope</h3></a>
-<h6 class="subheader" title="2025-12-11T00:00:00-05:00">Thu 11 December 2025
-</h6>
-
-
-<h1>Python Variable Scope (Local, Global, Nonlocal)Variable scope defines where a name is accessible and modifiable. Python resolves names using LEGB: Local → Enclosing → Global → Built-in.</h1>
-<h2>1. Local Scope</h2>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">show_value</span><span class="p">():</span>    <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># Local variable    print(x)show_value()# print(x)  # NameError: x is not defined</span>
-</code></pre></div>
-
-<p>Local variables exist only within the …</p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
-
-</p>
-
-
-
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch01-variable-scope.html">Read More</a>
-                <hr  class="gradient"/>
-            </article>
-
-        
-
-
-            <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch02-adv-console-io.html"><h3 class="article-title">Ch02 Adv Console Io</h3></a>
-<h6 class="subheader" title="2025-12-11T00:00:00-05:00">Thu 11 December 2025
-</h6>
-
-
-<h1>Advanced Console I/O (sys.stdin, sys.stdout, buffering)Low-level console streams (sys.stdin/stdout/stderr) with buffering, encoding, and piping considerations for production-grade CLI tools and services.</h1>
-<h2>1. Strategic Overview</h2>
-<p>Control data flow, buffering, and encoding for predictable integration with shells, CI, containers, and logging pipelines.</p>
-<h2>2. Enterprise Significance …</h2><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
-
-</p>
-
-
-
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch02-adv-console-io.html">Read More</a>
-                <hr  class="gradient"/>
-            </article>
-
-        
-
-
-            <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch02-file-based-io-handling.html"><h3 class="article-title">Ch02 File Based Io Handling</h3></a>
-<h6 class="subheader" title="2025-12-11T00:00:00-05:00">Thu 11 December 2025
-</h6>
-
-
-<h1>File-based Input/Output HandlingHow to persist, read, and stream data safely and efficiently using Python's file I/O primitives.</h1>
-<h2>1. Strategic Overview</h2>
-<p>File I/O is a performance boundary and persistence contract: enabling controlled persistence, predictable disk interaction, safe concurrency, and data integrity.</p>
-<h2>2. Enterprise Significance</h2>
-<p>Poor practices cause corruption …</p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
-
-</p>
-
-
-
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch02-file-based-io-handling.html">Read More</a>
-                <hr  class="gradient"/>
-            </article>
-
-        
-
-
-            <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch02-file-handling.html"><h3 class="article-title">Ch02 File Handling</h3></a>
-<h6 class="subheader" title="2025-12-11T00:00:00-05:00">Thu 11 December 2025
-</h6>
-
-
-<h1>Python File HandlingFile handling lets Python programs read, write, update, and manage files on disk for persistence, exchange, logging, and configuration.</h1>
-<h2>1. Introduction to File Handling</h2>
-<p>Persistent storage, log management, data exchange, and configuration.</p>
-<div class="highlight"><pre><span></span><code><span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;sample.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="nb">print</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">())</span><span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</code></pre></div>
-
-<h2>2. File Opening Modes</h2>
-<p>Modes: r …</p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
-
-</p>
-
-
-
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch02-file-handling.html">Read More</a>
-                <hr  class="gradient"/>
-            </article>
-
-        
-
-
-            <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch02-file-handling-advanced.html"><h3 class="article-title">Ch02 File Handling Advanced</h3></a>
-<h6 class="subheader" title="2025-12-11T00:00:00-05:00">Thu 11 December 2025
-</h6>
-
-
-<h1>Python File Handling (Advanced)High-performance, fault-tolerant, and secure file operations across local and distributed filesystems.</h1>
-<h2>1. Strategic Overview</h2>
-<p>Advanced file handling enables high-throughput ingestion, fault-tolerant persistence, secure manipulation, concurrency control, and ETL at scale.</p>
-<h2>2. Enterprise Importance</h2>
-<p>Critical for big data processing, backups, secure docs, streaming pipelines, and microservice exchange …</p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
-
-</p>
-
-
-
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch02-file-handling-advanced.html">Read More</a>
-                <hr  class="gradient"/>
-            </article>
-
-        
-
-
-            <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch02-file-io-exception-handling.html"><h3 class="article-title">Ch02 File Io Exception Handling</h3></a>
-<h6 class="subheader" title="2025-12-11T00:00:00-05:00">Thu 11 December 2025
-</h6>
-
-
-<h1>Python Exception Handling for File I/OException handling for file operations ensures stability, recovery, and safe error propagation in production systems.</h1>
-<h2>1. Concept Overview</h2>
-<p>File I/O failures (missing files, permissions, disk faults, corruption, concurrent conflicts) must be handled to maintain stability and resilience.</p>
-<h2>2. Why File I/O Requires …</h2><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
-
-</p>
-
-
-
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch02-file-io-exception-handling.html">Read More</a>
-                <hr  class="gradient"/>
-            </article>
-
-            <!-- /#posts-list -->
-<div class="pagination-centered">
-<h6 class="subheader">Page 1 of 2</h6>
-
-<p>
-
-        <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced2.html">Next &raquo;</a>
-</p>
-</div>
-
+</article>
     </div>
     <!-- End Main Content -->
 

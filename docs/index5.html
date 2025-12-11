@@ -47,20 +47,94 @@
 
 
             <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-2-convert-input-interger.html"><h3 class="article-title">Ch07 2 Convert Input Interger</h3></a>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch06-04-write-cav-files.html"><h3 class="article-title">Ch06 04 Write Cav Files</h3></a>
 <h6 class="subheader" title="2025-12-11T00:00:00-05:00">Thu 11 December 2025
 </h6>
 
 
-<h1>ch07_2_convert_input_interger</h1>
+<div class="highlight"><pre><span></span><code><span class="c1"># Created: 20251210</span>
+<span class="c1"># https://csp.gitbook.io/python-learning/basics/ch06-python-files/writing-csv-files-in-python</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;output.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+    <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="s2">&quot;city&quot;</span><span class="p">])</span>
+    <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="s2">&quot;New York&quot;</span><span class="p">])</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="s2">&quot;London&quot;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;Emma&quot;</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="s2">&quot;Berlin&quot;</span><span class="p">],</span>
+<span class="p">]</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;people.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">newline …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch06-04-write-cav-files.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-1-divide-two-numbers-safely.html"><h3 class="article-title">Ch07 1 Divide Two Numbers Safely</h3></a>
+<h6 class="subheader" title="2025-12-11T00:00:00-05:00">Thu 11 December 2025
+</h6>
+
+
+<h1>ch07_1_divide_two_numbers_safely</h1>
 <p>Created: 20251121</p>
 <div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
-    <span class="n">value</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter a value:&quot;</span> <span class="p">)</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
-    <span class="nb">print</span> <span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="n">num1</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;enter first number: &quot;</span><span class="p">))</span>
+    <span class="n">num2</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;enter second number: &quot;</span><span class="p">))</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Result: &quot;</span><span class="p">,</span> <span class="n">num1</span> <span class="o">/</span> <span class="n">num2</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cannot divide by zero!&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr>
+<p><strong>Score: 0</strong></p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-1-divide-two-numbers-safely.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-10-multiple-except-blocks.html"><h3 class="article-title">Ch07 10 Multiple Except Blocks</h3></a>
+<h6 class="subheader" title="2025-12-11T00:00:00-05:00">Thu 11 December 2025
+</h6>
+
+
+<h1>ch07_10_multiple_except_blocks</h1>
+<p>Created: 20251121</p>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+    <span class="n">num1</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter first number: &quot;</span><span class="p">))</span>
+    <span class="n">num2</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter second number: &quot;</span><span class="p">))</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">/</span> <span class="n">num2</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Result: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error: Cannot divide by zero! Please enter a non-zero divisor.&quot;</span><span class="p">)</span>
 
 <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter a valid value&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error: Invalid input! Please enter valid numbers only.&quot;</span><span class="p">)</span>
 </code></pre></div>
 
 <hr>
@@ -70,7 +144,7 @@
 
 
 
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-2-convert-input-interger.html">Read More</a>
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-10-multiple-except-blocks.html">Read More</a>
                 <hr  class="gradient"/>
             </article>
 
@@ -78,20 +152,21 @@
 
 
             <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-20-no-internet-exception.html"><h3 class="article-title">Ch07 20 No Internet Exception</h3></a>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-11-input-util-correct.html"><h3 class="article-title">Ch07 11 Input Util Correct</h3></a>
 <h6 class="subheader" title="2025-12-11T00:00:00-05:00">Thu 11 December 2025
 </h6>
 
 
-<h1>ch07_20_no_internet_exception</h1>
-<p>Created:20251121</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">connect_to_internet</span><span class="p">():</span>
-    <span class="k">raise</span> <span class="ne">ConnectionError</span><span class="p">(</span><span class="s2">&quot;No internet connection&quot;</span><span class="p">)</span>
+<h1>ch07_11_input_util_correct</h1>
+<p>Created: 20251121</p>
+<div class="highlight"><pre><span></span><code><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">number</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter a number: &quot;</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Success! You entered: </span><span class="si">{</span><span class="n">number</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">break</span>
 
-<span class="k">try</span><span class="p">:</span>
-    <span class="n">connect_to_internet</span><span class="p">()</span>
-<span class="k">except</span> <span class="ne">ConnectionError</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Please check your network&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Invalid input! Please enter a valid integer.&quot;</span><span class="p">)</span>
 </code></pre></div>
 
 <hr>
@@ -101,7 +176,7 @@
 
 
 
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-20-no-internet-exception.html">Read More</a>
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-11-input-util-correct.html">Read More</a>
                 <hr  class="gradient"/>
             </article>
 
@@ -109,50 +184,17 @@
 
 
             <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-21-temp-validator.html"><h3 class="article-title">Ch07 21 Temp Validator</h3></a>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-12-assert-positive-number.html"><h3 class="article-title">Ch07 12 Assert Positive Number</h3></a>
 <h6 class="subheader" title="2025-12-11T00:00:00-05:00">Thu 11 December 2025
 </h6>
 
 
-<h1>ch07_21_temp_validator</h1>
-<p>Created:20251121</p>
-<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
-    <span class="n">user_input</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter temperature: &quot;</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">user_input</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">273</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Temperature below absolute zero&quot;</span><span class="p">)</span>
-<span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Invalid temperature value&quot;</span><span class="p">)</span>
-</code></pre></div>
-
-<hr>
-<p><strong>Score: 0</strong></p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
-
-</p>
-
-
-
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-21-temp-validator.html">Read More</a>
-                <hr  class="gradient"/>
-            </article>
-
-        
-
-
-            <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-22-password-checker.html"><h3 class="article-title">Ch07 22 Password Checker</h3></a>
-<h6 class="subheader" title="2025-12-11T00:00:00-05:00">Thu 11 December 2025
-</h6>
-
-
-<h1>ch07_22_password_checker</h1>
-<p>Created:20251121</p>
-<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
-    <span class="n">password</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter password: &quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">password</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">6</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Password too short&quot;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Password is valid&quot;</span><span class="p">)</span>
-<span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<h1>ch07_12_assert_positive_number</h1>
+<p>Created: 20251121</p>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span> 
+    <span class="n">num</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter number: &quot;</span><span class="p">))</span>
+    <span class="k">assert</span> <span class="n">num</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Number should be positive&quot;</span>
+<span class="k">except</span> <span class="ne">AssertionError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
 </code></pre></div>
 
@@ -163,7 +205,7 @@
 
 
 
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-22-password-checker.html">Read More</a>
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-12-assert-positive-number.html">Read More</a>
                 <hr  class="gradient"/>
             </article>
 
@@ -171,65 +213,97 @@
 
 
             <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-23-calc-with-try-finally.html"><h3 class="article-title">Ch07 23 Calc With Try Finally</h3></a>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-13-exception-in-a-function.html"><h3 class="article-title">Ch07 13 Exception In A Function</h3></a>
 <h6 class="subheader" title="2025-12-11T00:00:00-05:00">Thu 11 December 2025
 </h6>
 
 
-<h1>ch07_23_calc_with_try_finally</h1>
-<p>Created:20251122</p>
+<h1>ch07_13_exception_in_a_function</h1>
+<p>Created: 20251121</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_item</span><span class="p">(</span><span class="n">lst</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">lst</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+    <span class="k">except</span> <span class="p">(</span><span class="ne">IndexError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Error occurred&quot;</span>
+</code></pre></div>
+
+<hr>
+<p><strong>Score: 0</strong></p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-13-exception-in-a-function.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-14-simple-exception-chaining.html"><h3 class="article-title">Ch07 14 Simple Exception Chaining</h3></a>
+<h6 class="subheader" title="2025-12-11T00:00:00-05:00">Thu 11 December 2025
+</h6>
+
+
+<h1>ch07_14_simple_exception_chaining</h1>
+<p>Created:20251121</p>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+    <span class="c1"># Try converting a string to int</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="s2">&quot;abc&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">original_exception</span><span class="p">:</span>
+    <span class="c1"># If it fails, raise a new Exception with a custom message from the original exception</span>
+    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Custom error message&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">original_exception</span>
+</code></pre></div>
+
+<hr>
+<p><strong>Score: 0</strong></p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-14-simple-exception-chaining.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-15-safe-calculator.html"><h3 class="article-title">Ch07 15 Safe Calculator</h3></a>
+<h6 class="subheader" title="2025-12-11T00:00:00-05:00">Thu 11 December 2025
+</h6>
+
+
+<h1>ch07_15_safe_calculator</h1>
+<p>Created:20251121</p>
 <div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
     <span class="n">num1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter first number: &quot;</span><span class="p">))</span>
+    <span class="n">operator</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter operator (+, -, *, /): &quot;</span><span class="p">)</span>
     <span class="n">num2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter second number: &quot;</span><span class="p">))</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">/</span> <span class="n">num2</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Result:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
-<span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error: Cannot divide by zero&quot;</span><span class="p">)</span>
-<span class="k">finally</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This will always execute&quot;</span><span class="p">)</span>
-</code></pre></div>
 
-<hr>
-<p><strong>Score: 0</strong></p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
-
-</p>
-
-
-
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-23-calc-with-try-finally.html">Read More</a>
-                <hr  class="gradient"/>
-            </article>
-
-        
-
-
-            <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-24-simple-age-group-checker.html"><h3 class="article-title">Ch07 24 Simple Age Group Checker</h3></a>
-<h6 class="subheader" title="2025-12-11T00:00:00-05:00">Thu 11 December 2025
-</h6>
-
-
-<h1>Ch07 24 Simple Age Group Checker</h1>
-<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
-    <span class="n">age</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span> <span class="p">(</span><span class="s2">&quot;Enter age: &quot;</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">age</span> <span class="o">&lt;</span><span class="mi">13</span><span class="p">:</span>
-        <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Child&quot;</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">age</span> <span class="o">&lt;</span><span class="mi">18</span><span class="p">:</span>
-        <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Teenager&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">operator</span> <span class="o">==</span> <span class="s1">&#39;+&#39;</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">+</span> <span class="n">num2</span>
+    <span class="k">elif</span> <span class="n">operator</span> <span class="o">==</span> <span class="s1">&#39;-&#39;</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">-</span> <span class="n">num2</span>
+    <span class="k">elif</span> <span class="n">operator</span> <span class="o">==</span> <span class="s1">&#39;*&#39;</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">*</span> <span class="n">num2</span>
+    <span class="k">elif</span> <span class="n">operator</span> <span class="o">==</span> <span class="s1">&#39;/&#39;</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">/</span> <span class="n">num2</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Adult&quot;</span><span class="p">)</span>
-<span class="k">except</span> <span class="ne">ValueError</span> <span class="p">:</span>
-    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Invalid age&quot;</span><span class="p">)</span>
-</code></pre></div>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unsupported operator&quot;</span><span class="p">)</span>
 
-<hr>
-<p><strong>Score: 0</strong></p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Result:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">ZeroDivisionError …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
 
 </p>
 
 
 
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-24-simple-age-group-checker.html">Read More</a>
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-15-safe-calculator.html">Read More</a>
                 <hr  class="gradient"/>
             </article>
 
@@ -237,85 +311,19 @@
 
 
             <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-25-safee-dictionary-update.html"><h3 class="article-title">Ch07 25 Safee Dictionary Update</h3></a>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-16-string-to-float-conversion.html"><h3 class="article-title">Ch07 16 String To Float Conversion</h3></a>
 <h6 class="subheader" title="2025-12-11T00:00:00-05:00">Thu 11 December 2025
 </h6>
 
 
-<h1>ch07_25_safee_dictionary_update</h1>
-<p>Created:20251122</p>
-<div class="highlight"><pre><span></span><code><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Jerin&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">22</span><span class="p">}</span>
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="n">key</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter key to update: &quot;</span><span class="p">)</span>
-    <span class="c1"># Accessing the key to trigger KeyError if it doesn&#39;t exist</span>
-    <span class="n">_</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
-
-    <span class="c1"># If key exists, update it (using 25 as per previous context)</span>
-    <span class="n">key_data</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter value to update: &quot;</span><span class="p">)</span>
-    <span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">key_data</span>
-    <span class="nb">print …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
-
-</p>
-
-
-
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-25-safee-dictionary-update.html">Read More</a>
-                <hr  class="gradient"/>
-            </article>
-
-        
-
-
-            <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-3-list-index-access.html"><h3 class="article-title">Ch07 3 List Index Access</h3></a>
-<h6 class="subheader" title="2025-12-11T00:00:00-05:00">Thu 11 December 2025
-</h6>
-
-
-<h1>ch07_3_list_index_access</h1>
-<p>Created: 20251121</p>
-<div class="highlight"><pre><span></span><code><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;banana&quot;</span><span class="p">,</span> <span class="s2">&quot;cherry&quot;</span><span class="p">]</span>
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="n">index</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter an index to access: &quot;</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Item at index </span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">my_list</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Index out of range!&quot;</span><span class="p">)</span>
-<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Please enter a valid integer!&quot;</span><span class="p">)</span>
-</code></pre></div>
-
-<hr>
-<p><strong>Score: 0</strong></p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
-
-</p>
-
-
-
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-3-list-index-access.html">Read More</a>
-                <hr  class="gradient"/>
-            </article>
-
-        
-
-
-            <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-4-file-not-found-message.html"><h3 class="article-title">Ch07 4 File Not Found Message</h3></a>
-<h6 class="subheader" title="2025-12-11T00:00:00-05:00">Thu 11 December 2025
-</h6>
-
-
-<h1>ch07_4_file_not_found_message</h1>
-<p>Created: 20251121</p>
+<h1>ch07_16_string_to_float_conversion</h1>
+<p>Created:20251121</p>
 <div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;data.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
-        <span class="n">content</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
-
-<span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;File not found.&quot;</span><span class="p">)</span>
+    <span class="n">user_input</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter a number: &quot;</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">user_input</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Converted number: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Please enter a valid decimal number.&quot;</span><span class="p">)</span>
 </code></pre></div>
 
 <hr>
@@ -325,7 +333,7 @@
 
 
 
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-4-file-not-found-message.html">Read More</a>
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-16-string-to-float-conversion.html">Read More</a>
                 <hr  class="gradient"/>
             </article>
 
@@ -333,26 +341,19 @@
 
 
             <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-5-finally-block-usage.html"><h3 class="article-title">Ch07 5 Finally Block Usage</h3></a>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-17-square-root-calc.html"><h3 class="article-title">Ch07 17 Square Root Calc</h3></a>
 <h6 class="subheader" title="2025-12-11T00:00:00-05:00">Thu 11 December 2025
 </h6>
 
 
-<h1>ch07_5_finally_block_usage</h1>
-<p>Created: 20251121</p>
+<h1>ch07_17_square_root_calc</h1>
+<p>Created:20251121</p>
 <div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
-    <span class="n">num1</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter first number: &quot;</span><span class="p">))</span>
-    <span class="n">num2</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter second number: &quot;</span><span class="p">))</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">/</span> <span class="n">num2</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Result: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cannot divide by zero!&quot;</span><span class="p">)</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter a number: &quot;</span><span class="p">))</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">num</span> <span class="o">**</span> <span class="mf">0.5</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Square root of </span><span class="si">{</span><span class="n">num</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Please enter valid numbers!&quot;</span><span class="p">)</span>
-
-<span class="k">finally</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This block always runs&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Please enter a valid decimal number.&quot;</span><span class="p">)</span>
 </code></pre></div>
 
 <hr>
@@ -362,13 +363,13 @@
 
 
 
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-5-finally-block-usage.html">Read More</a>
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-17-square-root-calc.html">Read More</a>
                 <hr  class="gradient"/>
             </article>
 
             <!-- /#posts-list -->
 <div class="pagination-centered">
-<h6 class="subheader">Page 5 of 9</h6>
+<h6 class="subheader">Page 5 of 10</h6>
 
 <p>
             <a href="https://accsaikiran-sys.github.io/pynotes/index4.html">&laquo; Prev</a>

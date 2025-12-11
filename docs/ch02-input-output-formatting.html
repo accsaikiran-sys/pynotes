@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Ch02 Input Output Formatting</title>
+
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/normalize.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/style.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/pygments.css" />	
+    <script src="https://accsaikiran-sys.github.io/pynotes/theme/js/modernizr.js"></script>
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<nav>
+<div class="top-bar">
+<div class="row">
+    <div class="large-9 large-centered columns">
+	    <h1><a href="https://accsaikiran-sys.github.io/pynotes">My Python Notes</a></h1>
+    </div>
+</div>
+</div>
+
+<!-- Show menu items and pages -->
+<div class="row">
+<div class="large-9 columns">
+    <ul class="button-group navigation">
+
+    </ul>
+</div>
+</div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns">
+<article>
+    <header>
+        <h3 class="article-title"><a href="https://accsaikiran-sys.github.io/pynotes/ch02-input-output-formatting.html" rel="bookmark"
+        title="Permalink to Ch02 Input Output Formatting">Ch02 Input Output Formatting</a></h3>
+    </header>
+
+<h6 class="subheader" title="2025-12-11T00:00:00-05:00">Thu 11 December 2025
+</h6>
+
+
+    <h1>Python Input and Output FormattingFormatting governs how data is captured, validated, and rendered for humans, machines, APIs, and logs—turning raw data into clear, standardized representations.</h1>
+<h2>1. Strategic Overview</h2>
+<p>Formatting enables human-readable output, machine compatibility, predictable standards, precision control, and consistent interaction models.</p>
+<h2>2. Enterprise Significance</h2>
+<p>Good formatting prevents confusion, misinterpretation, logging inconsistencies, and integration failures; it delivers professional presentation and structured interchange.</p>
+<h2>3. Input/Output Formatting Architecture</h2>
+<p>Raw Data → Formatting Engine → Structured Representation → Consumer (User/System)</p>
+<h2>4. Core Input Methods</h2>
+<p>input(), sys.stdin, file input, API ingestion</p>
+<h2>5. Basic Input Handling</h2>
+<div class="highlight"><pre><span></span><code><span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Enter your name: &#39;</span><span class="p">)</span><span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>6. Type-Safe Input Formatting</h2>
+<div class="highlight"><pre><span></span><code><span class="n">age</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Enter age: &#39;</span><span class="p">))</span>
+</code></pre></div>
+
+<h2>7. Classic Output with print()</h2>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Welcome to Python&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>8. Separator and End Formatting</h2>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39; | &#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>  <span class="c1"># A | B | C.</span>
+</code></pre></div>
+
+<h2>9. String Formatting with f-Strings (Recommended)</h2>
+<div class="highlight"><pre><span></span><code><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Alice&#39;</span><span class="n">score</span> <span class="o">=</span> <span class="mi">95</span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1"> scored </span><span class="si">{</span><span class="n">score</span><span class="si">}</span><span class="s1"> marks&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>10. Format Method (.format)</h2>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello </span><span class="si">{}</span><span class="s1">, your score is </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">score</span><span class="p">))</span>
+</code></pre></div>
+
+<h2>11. Old-Style Formatting (%)</h2>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Score: </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">score</span><span class="p">)</span>  <span class="c1"># Legacy</span>
+</code></pre></div>
+
+<h2>12. Precision Formatting</h2>
+<div class="highlight"><pre><span></span><code><span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14159265</span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">pi</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>  <span class="c1"># 3.14</span>
+</code></pre></div>
+
+<h2>13. Alignment and Padding</h2>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">name</span><span class="si">:</span><span class="s1">&gt;10</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>  <span class="c1"># rightprint(f&#39;{name:&lt;10}&#39;)  # leftprint(f&#39;{name:^10}&#39;)  # center</span>
+</code></pre></div>
+
+<h2>14. Width Control</h2>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">score</span><span class="si">:</span><span class="s1">05</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>  <span class="c1"># zero padded</span>
+</code></pre></div>
+
+<h2>15. Numeric Base Formatting</h2>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="mi">255</span><span class="si">:</span><span class="s1">b</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>  <span class="c1"># binaryprint(f&#39;{255:x}&#39;)  # hex</span>
+</code></pre></div>
+
+<h2>16. Percentage Formatting</h2>
+<div class="highlight"><pre><span></span><code><span class="n">ratio</span> <span class="o">=</span> <span class="mf">0.78</span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">ratio</span><span class="si">:</span><span class="s1">.2%</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>17. Locale-Aware Formatting</h2>
+<p>Use locale for currency/region-specific output; ensure Unicode and timezone correctness.</p>
+<h2>18. Input Validation Formatting</h2>
+<div class="highlight"><pre><span></span><code><span class="n">value</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Enter value: &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Normalize input to improve consistency.</p>
+<h2>19. Structured Output Formatting</h2>
+<div class="highlight"><pre><span></span><code><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Alice&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="mi">95</span><span class="p">}</span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Name: </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> | Score: </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>20. Tabular Output Formatting</h2>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="s2">&quot;Name&quot;</span><span class="si">:</span><span class="s1">&lt;10</span><span class="si">}{</span><span class="s2">&quot;Score&quot;</span><span class="si">:</span><span class="s1">&gt;10</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="s2">&quot;Alice&quot;</span><span class="si">:</span><span class="s1">&lt;10</span><span class="si">}{</span><span class="mi">95</span><span class="si">:</span><span class="s1">&gt;10</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>21. Multiline Formatting</h2>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">User: </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="se">\n</span><span class="s1">Score: </span><span class="si">{</span><span class="n">score</span><span class="si">}</span><span class="se">\n</span><span class="s1">Status: Passed</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>22. File Output Formatting</h2>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;report.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>    <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">,</span><span class="si">{</span><span class="n">score</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>23. Logging Output Formatting</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">logginglogging.basicConfig</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%(asctime)s</span><span class="s1"> - </span><span class="si">%(levelname)s</span><span class="s1"> - </span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>24. JSON Output Formatting</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">jsonprint</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+</code></pre></div>
+
+<h2>25. CSV Formatting</h2>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">,</span><span class="si">{</span><span class="n">score</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>26. Output Buffering Control</h2>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Processing...&#39;</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>27. Handling Large Output Streams</h2>
+<p>Use chunked formatting or generators to limit memory footprint.</p>
+<h2>28. Formatting for Internationalization (i18n)</h2>
+<p>Ensure Unicode compatibility, locale/timezone correctness, and regional formats for dates/currency.</p>
+<h2>29. Common Anti-Patterns</h2>
+<ul>
+<li>Hard-coded formatting → inflexible.- Inconsistent spacing → poor readability.- Mixed output methods → maintenance risk.- Unescaped user input → security risk.</li>
+</ul>
+<h2>30. Best Practices</h2>
+<p>Prefer f-strings; standardize formats; validate input; use structured outputs (JSON/CSV); keep spacing/alignment consistent.</p>
+<h2>31. Formatting Pipeline in Enterprise Systems</h2>
+<p>User Input → Validation → Formatting → Processing → Output Rendering</p>
+<h2>32. Advanced Input Formatting</h2>
+<p>Use regex/pattern constraints for emails, dates, numeric ranges, and structured IDs.</p>
+<h2>33. Output Styling for Dashboards</h2>
+<p>Use colors/ANSI codes and structured rendering for CLI dashboards; disable or adjust in non-TTY contexts.</p>
+<h2>34. Enterprise Use Cases</h2>
+<p>CLI tools, financial reports, monitoring dashboards, user interaction systems, and API output generation.</p>
+<h2>35. Architectural Value</h2>
+<p>Formatting delivers standardized presentation, reliable communication, structured data flow, and scalable output models across DevOps, reporting, interactive apps, and monitoring tools.</p>
+<hr>
+<p><strong>Score: 70</strong></p>
+<p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
+
+</p>
+
+
+
+
+</article>
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+    <aside class="large-3 columns">
+        <h5 class="sidebar-title">Site</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/archives.html">Archives</a>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/tags.html">Tags</a>
+        </ul>
+
+		
+        <h5 class="sidebar-title">Categories</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/pandas-work.html">pandas-work</a></li>
+   
+        </ul>
+
+		
+        <h5 class="sidebar-title">Social</h5>
+        <ul class="side-nav">
+            <li><a href="https://github.com/accsaikiran-sys/">GitHub</a></li>
+            <li><a href="<linkedin handle>">LinkedIn</a></li>
+        </ul>
+
+    </aside> <!-- End Sidebar -->
+
+</div> <!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+              <!--                  <p>My Python Notes by Sai Kiran Reddy</p> -->
+            </div>
+            </div>
+    </div>
+</footer>
+</body>
+</html>
