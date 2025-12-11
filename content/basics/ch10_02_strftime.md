@@ -1,6 +1,6 @@
 ---
 title: Ch10 02 Strftime
-date: 2025-12-10
+date: 2025-12-11
 author: Your Name
 cell_count: 31
 score: 30

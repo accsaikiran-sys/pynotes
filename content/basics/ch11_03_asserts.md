@@ -1,6 +1,6 @@
 ---
 title: Ch11 03 Asserts
-date: 2025-12-10
+date: 2025-12-11
 author: Your Name
 cell_count: 34
 score: 30

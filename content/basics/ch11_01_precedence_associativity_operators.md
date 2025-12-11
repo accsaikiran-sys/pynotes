@@ -1,6 +1,6 @@
 ---
 title: Ch11 01 Precedence Associativity Operators
-date: 2025-12-10
+date: 2025-12-11
 author: Your Name
 cell_count: 35
 score: 35

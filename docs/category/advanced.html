@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>My Python Notes - advanced</title>
+
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/normalize.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/style.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/pygments.css" />	
+    <script src="https://accsaikiran-sys.github.io/pynotes/theme/js/modernizr.js"></script>
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<nav>
+<div class="top-bar">
+<div class="row">
+    <div class="large-9 large-centered columns">
+	    <h1><a href="https://accsaikiran-sys.github.io/pynotes">My Python Notes</a></h1>
+    </div>
+</div>
+</div>
+
+<!-- Show menu items and pages -->
+<div class="row">
+<div class="large-9 columns">
+    <ul class="button-group navigation">
+
+    </ul>
+</div>
+</div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns">
+        
+        
+
+            <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch01-scope-references-mutability.html"><h3 class="article-title">Ch01 Scope References Mutability</h3></a>
+<h6 class="subheader" title="2025-12-11T00:00:00-05:00">Thu 11 December 2025
+</h6>
+
+
+<h1>Scope, References, and MutabilityPython scope, references, and mutability shape how variables are resolved, how objects are shared, and how state changes propagate across a codebase.They underpin stable state management, memory behavior, and predictable execution.</h1>
+<h2>1. Strategic OverviewThese mechanics enable controlled data visibility, predictable mutation, memory efficiency, and safe lifecycles. They determine whether systems behave deterministically or unpredictably.</h2>
+<h2>2. Enterprise SignificanceMisuse can cause hidden side effects, data corruption, race conditions, and leaks. Mastery yields stable state management, controlled flow, concurrency safety, and reliable behavior.</h2>
+<h2>3. Foundational Relationship- Scope: determines visibility.- Reference: determines sharing.- Mutability: determines change behavior.Together they govern how data moves and evolves.</h2>
+<h2>4. Python Scope Model (LEGB)Resolution order: Local → Enclosing → Global → Built-in.</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Local scopedef func():    x = 10  # Local    return xprint(func())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Global scopex = 100def show():    print(x)show()</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Enclosing scopedef outer():    x = 5    def inner():        print(x)    inner()outer()</span>
+</code></pre></div>
+
+<p>Built-in scope contains identifiers like <code>len</code>, <code>print</code>, and <code>range</code>.</p>
+<h2>5. The global Keyword</h2>
+<div class="highlight"><pre><span></span><code><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="k">def</span><span class="w"> </span><span class="nf">increment</span><span class="p">():</span>    <span class="k">global</span> <span class="n">count</span>    <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span><span class="n">increment</span><span class="p">()</span><span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>6. The nonlocal Keyword</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">outer_total</span><span class="p">():</span>    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>    <span class="k">def</span><span class="w"> </span><span class="nf">inner</span><span class="p">():</span>        <span class="k">nonlocal</span> <span class="n">total</span>        <span class="n">total</span> <span class="o">+=</span> <span class="mi">1</span>        <span class="k">return</span> <span class="n">total</span>    <span class="k">return</span> <span class="n">inner</span><span class="p">()</span><span class="nb">print</span><span class="p">(</span><span class="n">outer_total</span><span class="p">())</span>
+</code></pre></div>
+
+<h2>7. Reference Mechanics</h2>
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span>  <span class="c1"># shared referenceprint(a is b)  # Truex = [1, 2]y = x          # sharedz = x.copy()   # new objecty.append(3)print(x, y, z)</span>
+</code></pre></div>
+
+<h2>8. Mutability DefinedMutable: list, dict, set. Immutable: int, tuple, str.</h2>
+<div class="highlight"><pre><span></span><code><span class="n">lst</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span><span class="n">lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="nb">print</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span>  <span class="c1"># mutation in placename = &#39;Alex&#39;name += &#39; Smith&#39;print(name)  # new object</span>
+</code></pre></div>
+
+<h2>9. Pass-by-Object-Reference</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">modify</span><span class="p">(</span><span class="n">lst</span><span class="p">):</span>    <span class="n">lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span><span class="n">modify</span><span class="p">(</span><span class="n">items</span><span class="p">)</span><span class="nb">print</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>  <span class="c1"># modified</span>
+</code></pre></div>
+
+<h2>10. Shadowing Variables</h2>
+<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span><span class="k">def</span><span class="w"> </span><span class="nf">func_shadow</span><span class="p">():</span>    <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># shadows global x    print(&#39;inner&#39;, x)func_shadow()print(&#39;global&#39;, x)</span>
+</code></pre></div>
+
+<h2>11. Mutability Side Effects</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_item</span><span class="p">(</span><span class="n">container</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>    <span class="n">container</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span><span class="n">shared</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="n">add_item</span><span class="p">(</span><span class="n">shared</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="nb">print</span><span class="p">(</span><span class="n">shared</span><span class="p">)</span>  <span class="c1"># changed in placedef safe_add(container):    return container + [99]original = [1]new_list = safe_add(original)print(original, new_list)</span>
+</code></pre></div>
+
+<h2>12. Deep Copy vs Shallow Copy</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">copya</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">]]</span><span class="n">b</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>      <span class="c1"># shallowc = copy.deepcopy(a)  # deepa[0].append(2)print(&#39;a&#39;, a, &#39;b&#39;, b, &#39;c&#39;, c)</span>
+</code></pre></div>
+
+<h2>13. Scope and Mutability InteractionGlobal mutable objects can be modified without rebinding globals.</h2>
+<div class="highlight"><pre><span></span><code><span class="n">data</span> <span class="o">=</span> <span class="p">[]</span><span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">():</span>    <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># mutation, no global neededadd()print(data)</span>
+</code></pre></div>
+
+<h2>14. Mutation vs Rebinding</h2>
+<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># mutationprint(&#39;after mutation&#39;, x)x = [3]      # rebindingprint(&#39;after rebinding&#39;, x)</span>
+</code></pre></div>
+
+<h2>15. Memory Model VisualizationVariable -&gt; Reference -&gt; Object -&gt; State. Mutation changes the object; rebinding changes which object a reference points to.</h2>
+<h2>16. Common Bugs- Unexpected mutation from shared references.- Variable masking via shadowing.- LEGB misunderstandings.- Data corruption from improper copies.</h2>
+<h2>17. Best Practices- Avoid modifying shared mutable state.- Prefer immutable structures when possible.- Use copy/deepcopy intelligently.- Limit global mutable variables.- Apply nonlocal carefully.</h2>
+<h2>18. Enterprise Design Patterns- Immutable state architectures.- State isolation per module.- Defensive copying.- Functional programming patterns.</h2>
+<h2>19. Concurrency ImplicationsMutable shared state across threads can cause race conditions and inconsistency. Mitigate with locks, immutability, or copy-on-write.</h2>
+<h2>20. Encapsulation StrategyEncapsulate mutable state inside classes with controlled mutation methods.</h2>
+<h2>21. Testing StrategiesUse identity checks to ensure copies: <code>assert id(obj1) != id(obj2)</code>.</h2>
+<h2>22. Architectural ValueThese concepts enable predictable data control, memory correctness, and scalable system design across services, workflows, and high-performance systems.</h2>
+<hr>
+<p><strong>Score: 35</strong></p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
+
+</p>
+
+
+
+            </article>
+
+<div class="pagination-centered">
+<h6 class="subheader">Page 1 of 1</h6>
+
+<p>
+
+</p>
+</div>
+
+
+
+            <!-- /#posts-list -->
+
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+    <aside class="large-3 columns">
+        <h5 class="sidebar-title">Site</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/archives.html">Archives</a>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/tags.html">Tags</a>
+        </ul>
+
+		
+        <h5 class="sidebar-title">Categories</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/pandas-work.html">pandas-work</a></li>
+   
+        </ul>
+
+		
+        <h5 class="sidebar-title">Social</h5>
+        <ul class="side-nav">
+            <li><a href="https://github.com/accsaikiran-sys/">GitHub</a></li>
+            <li><a href="<linkedin handle>">LinkedIn</a></li>
+        </ul>
+
+    </aside> <!-- End Sidebar -->
+
+</div> <!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+              <!--                  <p>My Python Notes by Sai Kiran Reddy</p> -->
+            </div>
+            </div>
+    </div>
+</footer>
+</body>
+</html>
