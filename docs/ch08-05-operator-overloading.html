@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Ch08 05 Operator Overloading</title>
+
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/normalize.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/style.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/pygments.css" />	
+    <script src="https://accsaikiran-sys.github.io/pynotes/theme/js/modernizr.js"></script>
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<nav>
+<div class="top-bar">
+<div class="row">
+    <div class="large-9 large-centered columns">
+	    <h1><a href="https://accsaikiran-sys.github.io/pynotes">My Python Notes</a></h1>
+    </div>
+</div>
+</div>
+
+<!-- Show menu items and pages -->
+<div class="row">
+<div class="large-9 columns">
+    <ul class="button-group navigation">
+
+    </ul>
+</div>
+</div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns">
+<article>
+    <header>
+        <h3 class="article-title"><a href="https://accsaikiran-sys.github.io/pynotes/ch08-05-operator-overloading.html" rel="bookmark"
+        title="Permalink to Ch08 05 Operator Overloading">Ch08 05 Operator Overloading</a></h3>
+    </header>
+
+<h6 class="subheader" title="2025-12-10T00:00:00-05:00">Wed 10 December 2025
+</h6>
+
+
+    <h1>Chapter 8.5: Operator Overloading in Python</h1>
+<p>This notebook covers operator overloading concepts in Python, including arithmetic operators, comparison operators, and special methods (dunder methods).</p>
+<h2>1. What is Operator Overloading</h2>
+<p>Operator overloading allows custom classes to define how standard operators behave using special (dunder) methods.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Number</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">value</span>
+
+<span class="n">n1</span> <span class="o">=</span> <span class="n">Number</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">n2</span> <span class="o">=</span> <span class="n">Number</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">n1</span> <span class="o">+</span> <span class="n">n2</span><span class="p">)</span>  <span class="c1"># Output: 30</span>
+</code></pre></div>
+
+<p>The + operator is redefined for the Number class.</p>
+<h2>2. Overloading the Addition Operator (+)</h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Vector</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Vector</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">v1</span> <span class="o">=</span> <span class="n">Vector</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">v2</span> <span class="o">=</span> <span class="n">Vector</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">v3</span> <span class="o">=</span> <span class="n">v1</span> <span class="o">+</span> <span class="n">v2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">v3</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># Output: 12</span>
+</code></pre></div>
+
+<p>Implements vector addition logic.</p>
+<h2>3. Overloading the Subtraction Operator (-)</h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Balance</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">amount</span> <span class="o">=</span> <span class="n">amount</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Balance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">amount</span> <span class="o">-</span> <span class="n">other</span><span class="o">.</span><span class="n">amount</span><span class="p">)</span>
+
+<span class="n">b1</span> <span class="o">=</span> <span class="n">Balance</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">b2</span> <span class="o">=</span> <span class="n">Balance</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">b1</span> <span class="o">-</span> <span class="n">b2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">amount</span><span class="p">)</span>  <span class="c1"># Output: 60</span>
+</code></pre></div>
+
+<p>Custom logic for subtraction.</p>
+<h2>4. Overloading Multiplication Operator (*)</h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Repeater</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">text</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">times</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">text</span> <span class="o">*</span> <span class="n">times</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">Repeater</span><span class="p">(</span><span class="s2">&quot;AI &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">r</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># Output: AI AI AI </span>
+</code></pre></div>
+
+<p>Defines how objects behave with *.</p>
+<h2>5. Overloading Division Operator (/)</h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Calculator</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__truediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">/</span> <span class="n">other</span><span class="o">.</span><span class="n">value</span>
+
+<span class="n">c1</span> <span class="o">=</span> <span class="n">Calculator</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">c2</span> <span class="o">=</span> <span class="n">Calculator</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">c1</span> <span class="o">/</span> <span class="n">c2</span><span class="p">)</span>  <span class="c1"># Output: 25.0</span>
+</code></pre></div>
+
+<p>Implements custom division logic.</p>
+<h2>6. Overloading Equality Operator (==)</h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Point</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">x</span>
+
+<span class="n">p1</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">p1</span> <span class="o">==</span> <span class="n">p2</span><span class="p">)</span>  <span class="c1"># True</span>
+</code></pre></div>
+
+<p>Controls object comparison behavior.</p>
+<h2>7. Overloading Less Than and Greater Than</h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Score</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">marks</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">marks</span> <span class="o">=</span> <span class="n">marks</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__lt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">marks</span> <span class="o">&lt;</span> <span class="n">other</span><span class="o">.</span><span class="n">marks</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__gt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">marks</span> <span class="o">&gt;</span> <span class="n">other</span><span class="o">.</span><span class="n">marks</span>
+
+<span class="n">s1</span> <span class="o">=</span> <span class="n">Score</span><span class="p">(</span><span class="mi">85</span><span class="p">)</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="n">Score</span><span class="p">(</span><span class="mi">70</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">s1</span> <span class="o">&gt;</span> <span class="n">s2</span><span class="p">)</span>  <span class="c1"># True</span>
+</code></pre></div>
+
+<p>Supports sorting and ranking operations.</p>
+<h2>8. Overloading In-place Operators (+=)</h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Counter</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__iadd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">+=</span> <span class="n">other</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">+=</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>  <span class="c1"># Output: 15</span>
+</code></pre></div>
+
+<p>Modifies object in-place.</p>
+<h2>9. Overloading String Representation (str())</h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Product</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">price</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">price</span> <span class="o">=</span> <span class="n">price</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> costs $</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">price</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">Product</span><span class="p">(</span><span class="s2">&quot;Laptop&quot;</span><span class="p">,</span> <span class="mi">1200</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>  <span class="c1"># Laptop costs $1200</span>
+</code></pre></div>
+
+<p>Enhances readability of object display.</p>
+<h2>10. Comprehensive Operator Overloading Example</h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ComplexNumber</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">real</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">real</span> <span class="o">=</span> <span class="n">real</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">ComplexNumber</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">real</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">real</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">ComplexNumber</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">real</span> <span class="o">-</span> <span class="n">other</span><span class="o">.</span><span class="n">real</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">real</span><span class="p">)</span>
+
+<span class="n">c1</span> <span class="o">=</span> <span class="n">ComplexNumber</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">c2</span> <span class="o">=</span> <span class="n">ComplexNumber</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">c1</span> <span class="o">+</span> <span class="n">c2</span><span class="p">)</span>  <span class="c1"># 13</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c1</span> <span class="o">-</span> <span class="n">c2</span><span class="p">)</span>  <span class="c1"># 7</span>
+</code></pre></div>
+
+<p>Fully custom arithmetic for a domain-specific class.</p>
+<hr>
+<p><strong>Score: 30</strong></p>
+<p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+
+</article>
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+    <aside class="large-3 columns">
+        <h5 class="sidebar-title">Site</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/archives.html">Archives</a>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/tags.html">Tags</a>
+        </ul>
+
+		
+        <h5 class="sidebar-title">Categories</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/pandas-work.html">pandas-work</a></li>
+   
+        </ul>
+
+		
+        <h5 class="sidebar-title">Social</h5>
+        <ul class="side-nav">
+            <li><a href="https://github.com/accsaikiran-sys/">GitHub</a></li>
+            <li><a href="<linkedin handle>">LinkedIn</a></li>
+        </ul>
+
+    </aside> <!-- End Sidebar -->
+
+</div> <!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+              <!--                  <p>My Python Notes by Sai Kiran Reddy</p> -->
+            </div>
+            </div>
+    </div>
+</footer>
+</body>
+</html>
