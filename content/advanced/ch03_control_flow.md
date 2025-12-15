@@ -2,8 +2,8 @@
 title: Ch03 Control Flow
 date: 2025-12-14
 author: Your Name
-cell_count: 42
-score: 40
+cell_count: 80
+score: 80
 ---
 
 # Python Control Flow (if, loops, match)Control flow turns business intent into executable logic using conditionals, loops, and pattern matching.
@@ -129,6 +129,115 @@ for user in users:    if user.id == target_id:        found = user        breake
 
 else runs only if the loop completes without break—useful for search/retry loops; document behavior if team is unfamiliar.
 
+## 11. Structural Pattern Matching: match / case (Python 3.10+)
+
+match enables expressive branching based on structure and content of values, replacing long if/elif chains.
+
+
+```python
+def handle_event(event):    match event:        case {"type": "login", "user": user}:            handle_login(user)        case {"type": "logout", "user": user}:            handle_logout(user)        case _:            handle_unknown(event)
+```
+
+Key benefits: declarative branching on structure; works with literals, sequences, mappings, classes, and more.
+
+## 12. Pattern Types in match / case
+
+### 12.1 Literal patterns
+
+
+```python
+match status:    case "pending":        ...    case "approved":        ...    case "rejected":        ...
+```
+
+### 12.2 OR patterns
+
+
+```python
+match status:    case "pending" | "in_review":        queue_for_approval()
+```
+
+### 12.3 Wildcard pattern
+
+
+```python
+case _:    # default / fallback    ...
+```
+
+### 12.4 Sequence patterns
+
+
+```python
+match point:    case [x, y]:        handle_2d(x, y)    case [x, y, z]:        handle_3d(x, y, z)
+```
+
+### 12.5 Mapping patterns
+
+
+```python
+match msg:    case {"type": "error", "code": code}:        handle_error(code)
+```
+
+### 12.6 Class patterns
+
+
+```python
+class Event:    def __init__(self, kind, payload):        self.kind = kind        self.payload = payloadmatch event:    case Event(kind="login", payload=payload):        handle_login(payload)
+```
+
+### 12.7 Guard patterns (if within case)
+
+
+```python
+match user:    case {"age": age} if age >= 18:        allow_access()    case _:        deny_access()
+```
+
+## 13. When to Use match vs if / elif
+
+Use if/elif for simple, independent checks; use match for many branches on one value/structure. If you have 5–10+ structured branches, consider match.
+
+## 14. Control Flow and Error Handling
+
+Use if/match for expected variation; exceptions for unexpected errors. Avoid using exceptions for normal branching.
+
+
+```python
+# Anti-patterntry:    result = maybe_get_value()except ValueError:    result = default_value# Preferif has_value():    result = get_value()else:    result = default_value
+```
+
+## 15. Side-Effect Discipline in Control Flow
+
+
+```python
+# Less idealif user.is_active and send_email(user):    log('Email sent')# Betterif user.is_active:    email_sent = send_email(user)    if email_sent:        log('Email sent')
+```
+
+Separate decision logic from side effects for readability and testability.
+
+## 16. Refactoring Nested Control Flow
+
+
+```python
+# Deep nestingif condition_a:    if condition_b:        if condition_c:            do_something()# Guard clausesif not condition_a:    returnif not condition_b:    returnif not condition_c:    returndo_something()# Extract functionif can_process(order):    process(order)
+```
+
+Use match for complex structured branching; prefer guard clauses and extraction over deep nesting.
+
+## 17. Performance Considerations
+
+Control flow rarely the bottleneck: prefer clarity. Use for over manual indexing; avoid repeated condition checks in hot loops; optimize algorithm before micro-branches.
+
+## 18. Common Control Flow Anti-Patterns
+
+- Deeply nested if/else- Giant if chain on same variable (prefer match/dispatch)- Using exceptions as normal branches- Unreachable branches- Overuse of break/continue- Hidden mutations in condition checks
+
+## 19. Governance Model for Control Flow
+
+Business Rule → Control Structure Choice (if/loop/match) → Branch Clarity → Side-Effect Isolation → Branch Test Coverage → Observability for critical decisions.
+
+## 20. Summary
+
+Use if/elif for clear branching, for/while for iteration, break/continue/else for explicit loop behavior, match/case for structured branching, and prioritize clarity and testability over micro-optimizations.
+
 
 ---
-**Score: 40**
+**Score: 80**

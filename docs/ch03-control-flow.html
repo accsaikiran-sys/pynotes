@@ -122,8 +122,70 @@
 </code></pre></div>
 
 <p>else runs only if the loop completes without break—useful for search/retry loops; document behavior if team is unfamiliar.</p>
+<h2>11. Structural Pattern Matching: match / case (Python 3.10+)</h2>
+<p>match enables expressive branching based on structure and content of values, replacing long if/elif chains.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">handle_event</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>    <span class="n">match</span> <span class="n">event</span><span class="p">:</span>        <span class="n">case</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;login&quot;</span><span class="p">,</span> <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="n">user</span><span class="p">}:</span>            <span class="n">handle_login</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>        <span class="n">case</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;logout&quot;</span><span class="p">,</span> <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="n">user</span><span class="p">}:</span>            <span class="n">handle_logout</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>        <span class="n">case</span> <span class="n">_</span><span class="p">:</span>            <span class="n">handle_unknown</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Key benefits: declarative branching on structure; works with literals, sequences, mappings, classes, and more.</p>
+<h2>12. Pattern Types in match / case</h2>
+<h3>12.1 Literal patterns</h3>
+<div class="highlight"><pre><span></span><code><span class="k">match</span> <span class="n">status</span><span class="p">:</span>    <span class="n">case</span> <span class="s2">&quot;pending&quot;</span><span class="p">:</span>        <span class="o">...</span>    <span class="n">case</span> <span class="s2">&quot;approved&quot;</span><span class="p">:</span>        <span class="o">...</span>    <span class="n">case</span> <span class="s2">&quot;rejected&quot;</span><span class="p">:</span>        <span class="o">...</span>
+</code></pre></div>
+
+<h3>12.2 OR patterns</h3>
+<div class="highlight"><pre><span></span><code><span class="k">match</span> <span class="n">status</span><span class="p">:</span>    <span class="n">case</span> <span class="s2">&quot;pending&quot;</span> <span class="o">|</span> <span class="s2">&quot;in_review&quot;</span><span class="p">:</span>        <span class="n">queue_for_approval</span><span class="p">()</span>
+</code></pre></div>
+
+<h3>12.3 Wildcard pattern</h3>
+<div class="highlight"><pre><span></span><code><span class="k">case</span><span class="w"> </span><span class="k">_</span><span class="p">:</span>    <span class="c1"># default / fallback    ...</span>
+</code></pre></div>
+
+<h3>12.4 Sequence patterns</h3>
+<div class="highlight"><pre><span></span><code><span class="k">match</span> <span class="n">point</span><span class="p">:</span>    <span class="n">case</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]:</span>        <span class="n">handle_2d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>    <span class="n">case</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">]:</span>        <span class="n">handle_3d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>12.5 Mapping patterns</h3>
+<div class="highlight"><pre><span></span><code><span class="k">match</span> <span class="n">msg</span><span class="p">:</span>    <span class="n">case</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;error&quot;</span><span class="p">,</span> <span class="s2">&quot;code&quot;</span><span class="p">:</span> <span class="n">code</span><span class="p">}:</span>        <span class="n">handle_error</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>12.6 Class patterns</h3>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Event</span><span class="p">:</span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kind</span><span class="p">,</span> <span class="n">payload</span><span class="p">):</span>        <span class="bp">self</span><span class="o">.</span><span class="n">kind</span> <span class="o">=</span> <span class="n">kind</span>        <span class="bp">self</span><span class="o">.</span><span class="n">payload</span> <span class="o">=</span> <span class="n">payloadmatch</span> <span class="n">event</span><span class="p">:</span>    <span class="n">case</span> <span class="n">Event</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;login&quot;</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">payload</span><span class="p">):</span>        <span class="n">handle_login</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>12.7 Guard patterns (if within case)</h3>
+<div class="highlight"><pre><span></span><code><span class="k">match</span> <span class="n">user</span><span class="p">:</span>    <span class="n">case</span> <span class="p">{</span><span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="n">age</span><span class="p">}</span> <span class="k">if</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">:</span>        <span class="n">allow_access</span><span class="p">()</span>    <span class="n">case</span> <span class="n">_</span><span class="p">:</span>        <span class="n">deny_access</span><span class="p">()</span>
+</code></pre></div>
+
+<h2>13. When to Use match vs if / elif</h2>
+<p>Use if/elif for simple, independent checks; use match for many branches on one value/structure. If you have 5–10+ structured branches, consider match.</p>
+<h2>14. Control Flow and Error Handling</h2>
+<p>Use if/match for expected variation; exceptions for unexpected errors. Avoid using exceptions for normal branching.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Anti-patterntry:    result = maybe_get_value()except ValueError:    result = default_value# Preferif has_value():    result = get_value()else:    result = default_value</span>
+</code></pre></div>
+
+<h2>15. Side-Effect Discipline in Control Flow</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Less idealif user.is_active and send_email(user):    log(&#39;Email sent&#39;)# Betterif user.is_active:    email_sent = send_email(user)    if email_sent:        log(&#39;Email sent&#39;)</span>
+</code></pre></div>
+
+<p>Separate decision logic from side effects for readability and testability.</p>
+<h2>16. Refactoring Nested Control Flow</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Deep nestingif condition_a:    if condition_b:        if condition_c:            do_something()# Guard clausesif not condition_a:    returnif not condition_b:    returnif not condition_c:    returndo_something()# Extract functionif can_process(order):    process(order)</span>
+</code></pre></div>
+
+<p>Use match for complex structured branching; prefer guard clauses and extraction over deep nesting.</p>
+<h2>17. Performance Considerations</h2>
+<p>Control flow rarely the bottleneck: prefer clarity. Use for over manual indexing; avoid repeated condition checks in hot loops; optimize algorithm before micro-branches.</p>
+<h2>18. Common Control Flow Anti-Patterns</h2>
+<ul>
+<li>Deeply nested if/else- Giant if chain on same variable (prefer match/dispatch)- Using exceptions as normal branches- Unreachable branches- Overuse of break/continue- Hidden mutations in condition checks</li>
+</ul>
+<h2>19. Governance Model for Control Flow</h2>
+<p>Business Rule → Control Structure Choice (if/loop/match) → Branch Clarity → Side-Effect Isolation → Branch Test Coverage → Observability for critical decisions.</p>
+<h2>20. Summary</h2>
+<p>Use if/elif for clear branching, for/while for iteration, break/continue/else for explicit loop behavior, match/case for structured branching, and prioritize clarity and testability over micro-optimizations.</p>
 <hr>
-<p><strong>Score: 40</strong></p>
+<p><strong>Score: 80</strong></p>
 <p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
 
 </p>
