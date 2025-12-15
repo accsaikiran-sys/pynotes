@@ -1,6 +1,6 @@
 ---
 title: Ch04 06 Dictionary
-date: 2025-12-11
+date: 2025-12-14
 author: Your Name
 cell_count: 13
 score: 10

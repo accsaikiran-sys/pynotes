@@ -1,6 +1,6 @@
 ---
 title: Ch02 Adv Console Io
-date: 2025-12-11
+date: 2025-12-14
 author: Your Name
 cell_count: 56
 score: 55

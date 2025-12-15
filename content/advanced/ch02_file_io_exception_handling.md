@@ -1,6 +1,6 @@
 ---
 title: Ch02 File Io Exception Handling
-date: 2025-12-11
+date: 2025-12-14
 author: Your Name
 cell_count: 100
 score: 100

@@ -1,6 +1,6 @@
 ---
 title: Ch02 File Parsing Techniques
-date: 2025-12-11
+date: 2025-12-14
 author: Your Name
 cell_count: 78
 score: 75

@@ -1,6 +1,6 @@
 ---
 title: Ch01 Memory Management
-date: 2025-12-11
+date: 2025-12-14
 author: Your Name
 cell_count: 68
 score: 65
