@@ -1,6 +1,6 @@
 ---
 title: Ch05 01 Functions
-date: 2025-12-14
+date: 2025-12-17
 author: Your Name
 cell_count: 12
 score: 10

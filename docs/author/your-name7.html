@@ -47,209 +47,8 @@
 
 
             <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-3-list-index-access.html"><h3 class="article-title">Ch07 3 List Index Access</h3></a>
-<h6 class="subheader" title="2025-12-14T00:00:00-05:00">Sun 14 December 2025
-</h6>
-
-
-<h1>ch07_3_list_index_access</h1>
-<p>Created: 20251121</p>
-<div class="highlight"><pre><span></span><code><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;banana&quot;</span><span class="p">,</span> <span class="s2">&quot;cherry&quot;</span><span class="p">]</span>
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="n">index</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter an index to access: &quot;</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Item at index </span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">my_list</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Index out of range!&quot;</span><span class="p">)</span>
-<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Please enter a valid integer!&quot;</span><span class="p">)</span>
-</code></pre></div>
-
-<hr>
-<p><strong>Score: 0</strong></p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
-
-</p>
-
-
-
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-3-list-index-access.html">Read More</a>
-                <hr  class="gradient"/>
-            </article>
-
-        
-
-
-            <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-4-file-not-found-message.html"><h3 class="article-title">Ch07 4 File Not Found Message</h3></a>
-<h6 class="subheader" title="2025-12-14T00:00:00-05:00">Sun 14 December 2025
-</h6>
-
-
-<h1>ch07_4_file_not_found_message</h1>
-<p>Created: 20251121</p>
-<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;data.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
-        <span class="n">content</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
-
-<span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;File not found.&quot;</span><span class="p">)</span>
-</code></pre></div>
-
-<hr>
-<p><strong>Score: 0</strong></p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
-
-</p>
-
-
-
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-4-file-not-found-message.html">Read More</a>
-                <hr  class="gradient"/>
-            </article>
-
-        
-
-
-            <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-5-finally-block-usage.html"><h3 class="article-title">Ch07 5 Finally Block Usage</h3></a>
-<h6 class="subheader" title="2025-12-14T00:00:00-05:00">Sun 14 December 2025
-</h6>
-
-
-<h1>ch07_5_finally_block_usage</h1>
-<p>Created: 20251121</p>
-<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
-    <span class="n">num1</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter first number: &quot;</span><span class="p">))</span>
-    <span class="n">num2</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter second number: &quot;</span><span class="p">))</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">/</span> <span class="n">num2</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Result: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cannot divide by zero!&quot;</span><span class="p">)</span>
-<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Please enter valid numbers!&quot;</span><span class="p">)</span>
-
-<span class="k">finally</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This block always runs&quot;</span><span class="p">)</span>
-</code></pre></div>
-
-<hr>
-<p><strong>Score: 0</strong></p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
-
-</p>
-
-
-
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-5-finally-block-usage.html">Read More</a>
-                <hr  class="gradient"/>
-            </article>
-
-        
-
-
-            <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-6-try-except-else.html"><h3 class="article-title">Ch07 6 Try Except Else</h3></a>
-<h6 class="subheader" title="2025-12-14T00:00:00-05:00">Sun 14 December 2025
-</h6>
-
-
-<h1>ch07_6_try_except_else</h1>
-<p>Created: 20251121</p>
-<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
-    <span class="n">user_input</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter a number: &quot;</span><span class="p">)</span>
-    <span class="n">number</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">user_input</span><span class="p">)</span>
-
-<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Invalid input! Please enter a valid integer.&quot;</span><span class="p">)</span>
-
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Success!&quot;</span><span class="p">)</span>
-</code></pre></div>
-
-<hr>
-<p><strong>Score: 0</strong></p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
-
-</p>
-
-
-
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-6-try-except-else.html">Read More</a>
-                <hr  class="gradient"/>
-            </article>
-
-        
-
-
-            <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-7-keyerror-ex.html"><h3 class="article-title">Ch07 7 Keyerror Ex</h3></a>
-<h6 class="subheader" title="2025-12-14T00:00:00-05:00">Sun 14 December 2025
-</h6>
-
-
-<h1>ch07_7_keyerror_ex</h1>
-<p>Created: 20251121</p>
-<div class="highlight"><pre><span></span><code><span class="n">user</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;yourname&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">22</span><span class="p">}</span>
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="p">[</span><span class="s2">&quot;email&quot;</span><span class="p">])</span>
-
-<span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Email key not found&quot;</span><span class="p">)</span>
-</code></pre></div>
-
-<hr>
-<p><strong>Score: 0</strong></p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
-
-</p>
-
-
-
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-7-keyerror-ex.html">Read More</a>
-                <hr  class="gradient"/>
-            </article>
-
-        
-
-
-            <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-8-raising-your-own-exception.html"><h3 class="article-title">Ch07 8 Raising Your Own Exception</h3></a>
-<h6 class="subheader" title="2025-12-14T00:00:00-05:00">Sun 14 December 2025
-</h6>
-
-
-<h1>ch07_8_raising_your_own_exception</h1>
-<p>Created: 20251121</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">check_age</span><span class="p">(</span><span class="n">age</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">18</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Not eligible&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Eligible!&quot;</span><span class="p">)</span>
-
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="n">check_age</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
-
-<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</code></pre></div>
-
-<hr>
-<p><strong>Score: 0</strong></p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
-
-</p>
-
-
-
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-8-raising-your-own-exception.html">Read More</a>
-                <hr  class="gradient"/>
-            </article>
-
-        
-
-
-            <article>
                 <a href="https://accsaikiran-sys.github.io/pynotes/ch07-9-custom-exception-class.html"><h3 class="article-title">Ch07 9 Custom Exception Class</h3></a>
-<h6 class="subheader" title="2025-12-14T00:00:00-05:00">Sun 14 December 2025
+<h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
 </h6>
 
 
@@ -273,7 +72,7 @@
 
             <article>
                 <a href="https://accsaikiran-sys.github.io/pynotes/ch07-all-examples-combined.html"><h3 class="article-title">Ch07 All Examples Combined</h3></a>
-<h6 class="subheader" title="2025-12-14T00:00:00-05:00">Sun 14 December 2025
+<h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
 </h6>
 
 
@@ -305,7 +104,7 @@
 
             <article>
                 <a href="https://accsaikiran-sys.github.io/pynotes/ch08-01-objects-classes.html"><h3 class="article-title">Ch08 01 Objects Classes</h3></a>
-<h6 class="subheader" title="2025-12-14T00:00:00-05:00">Sun 14 December 2025
+<h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
 </h6>
 
 
@@ -328,7 +127,7 @@
 
             <article>
                 <a href="https://accsaikiran-sys.github.io/pynotes/ch08-02-inheritance.html"><h3 class="article-title">Ch08 02 Inheritance</h3></a>
-<h6 class="subheader" title="2025-12-14T00:00:00-05:00">Sun 14 December 2025
+<h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
 </h6>
 
 
@@ -348,9 +147,147 @@
                 <hr  class="gradient"/>
             </article>
 
+        
+
+
+            <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch08-03-multiple-inheritance.html"><h3 class="article-title">Ch08 03 Multiple Inheritance</h3></a>
+<h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
+</h6>
+
+
+<h1>Chapter 8.3: Multiple Inheritance in Python</h1>
+<p>This notebook covers multiple inheritance concepts in Python, including Method Resolution Order (MRO), the diamond problem, and real-world applications.</p>
+<h2>1. What is Multiple Inheritance</h2>
+<p>Multiple inheritance occurs when a class inherits from more than one parent class.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Father</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">skill1</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch08-03-multiple-inheritance.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch08-05-operator-overloading.html"><h3 class="article-title">Ch08 05 Operator Overloading</h3></a>
+<h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
+</h6>
+
+
+<h1>Chapter 8.5: Operator Overloading in Python</h1>
+<p>This notebook covers operator overloading concepts in Python, including arithmetic operators, comparison operators, and special methods (dunder methods).</p>
+<h2>1. What is Operator Overloading</h2>
+<p>Operator overloading allows custom classes to define how standard operators behave using special (dunder) methods.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Number</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch08-05-operator-overloading.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch09-01-list-comprehension.html"><h3 class="article-title">Ch09 01 List Comprehension</h3></a>
+<h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
+</h6>
+
+
+<h1>Chapter 9.1: List Comprehension in Python</h1>
+<p>This notebook covers Python list comprehensions - a powerful, concise way to create lists through declarative expressions.</p>
+<h2>1. Strategic Overview</h2>
+<p>Python List Comprehension is a high-performance, declarative construct for generating lists through compact expressions. It replaces verbose iterative patterns with expressive, memory-efficient, and semantically …</p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch09-01-list-comprehension.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch09-04-generators.html"><h3 class="article-title">Ch09 04 Generators</h3></a>
+<h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
+</h6>
+
+
+<h1>Chapter 9.4: Generators in Python</h1>
+<p>This notebook covers Python generators - special functions that return iterators and yield values one at a time, providing memory-efficient lazy evaluation.</p>
+<h2>1. What is a Generator</h2>
+<p>A generator is a special type of function that returns an iterator and yields values one at a …</p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch09-04-generators.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch09-05-namespace-scope.html"><h3 class="article-title">Ch09 05 Namespace Scope</h3></a>
+<h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
+</h6>
+
+
+<h1>Chapter 10.1: Namespace and Scope in Python</h1>
+<p>This notebook covers Python namespaces and scope - how Python organizes and resolves variable names in different contexts.</p>
+<h2>1. What is a Namespace</h2>
+<p>A namespace is a container that holds identifiers (variables, functions, objects) and maps them to their corresponding values.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Basic namespace …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch09-05-namespace-scope.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch09-06-closures.html"><h3 class="article-title">Ch09 06 Closures</h3></a>
+<h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
+</h6>
+
+
+<h1>Chapter 9.2: Closures in Python</h1>
+<p>This notebook covers Python closures - functions that remember and have access to variables from their enclosing scope even after the outer function has finished execution.</p>
+<h2>1. What is a Closure</h2>
+<p>A closure is a function that remembers and has access to variables from its …</p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch09-06-closures.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
             <!-- /#posts-list -->
 <div class="pagination-centered">
-<h6 class="subheader">Page 7 of 10</h6>
+<h6 class="subheader">Page 7 of 11</h6>
 
 <p>
             <a href="https://accsaikiran-sys.github.io/pynotes/author/your-name6.html">&laquo; Prev</a>

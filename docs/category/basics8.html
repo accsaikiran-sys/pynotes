@@ -47,31 +47,38 @@
 
 
             <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch10-04-current-datetime.html"><h3 class="article-title">Ch10 04 Current Datetime</h3></a>
-<h6 class="subheader" title="2025-12-14T00:00:00-05:00">Sun 14 December 2025
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch02-python-varibles-literals.html"><h3 class="article-title">Ch02 Python Varibles Literals</h3></a>
+<h6 class="subheader" title="2025-12-16T00:00:00-05:00">Tue 16 December 2025
 </h6>
 
 
-<h1>How to get current date and time in Python?</h1>
-<p>Examples for retrieving and formatting current date/time values.</p>
-<h2>1. Using <code>datetime.now()</code> (Most Common Method)</h2>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
-
-<span class="n">current_datetime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">current_datetime</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">Created</span><span class="p">:</span><span class="mi">20251128</span>
+<span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">csp</span><span class="o">.</span><span class="n">gitbook</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="n">learning</span><span class="o">/</span><span class="n">basics</span><span class="o">/</span><span class="n">ch02</span><span class="o">-</span><span class="n">python</span><span class="o">-</span><span class="n">fundamentals</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="n">variables</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">literals</span>
 </code></pre></div>
 
-<p>Returns date and time including microseconds.</p>
-<h2>2. Get Only Current Date</h2>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">date</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Variable assignment</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">price</span> <span class="o">=</span> <span class="mf">99.99</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Python&quot;</span>
 
-<span class="n">today …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+<span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>   <span class="c1"># Output: 10</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">price</span><span class="p">)</span>   <span class="c1"># Output: 99.99</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>    <span class="c1"># Output: Python </span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">10</span>
+<span class="mf">99.99</span>
+<span class="n">Python</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span><span class="n">c</span>  <span class="o">=</span> <span class="mi">1</span> <span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
 
 </p>
 
 
 
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch10-04-current-datetime.html">Read More</a>
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch02-python-varibles-literals.html">Read More</a>
                 <hr  class="gradient"/>
             </article>
 
@@ -79,27 +86,40 @@
 
 
             <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch10-05-timestamp-conversion.html"><h3 class="article-title">Ch10 05 Timestamp Conversion</h3></a>
-<h6 class="subheader" title="2025-12-14T00:00:00-05:00">Sun 14 December 2025
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch04-01-python-num-math.html"><h3 class="article-title">Ch04 01 Python Num Math</h3></a>
+<h6 class="subheader" title="2025-12-16T00:00:00-05:00">Tue 16 December 2025
 </h6>
 
 
-<h1>Python timestamp to datetime and vice-versa</h1>
-<p>Working with Unix timestamps (seconds since January 1, 1970) and converting to/from Python <code>datetime</code>.</p>
-<h2>1. What is a Timestamp</h2>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
-
-<span class="n">timestamp</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">timestamp</span><span class="p">)</span>  <span class="c1"># e.g. 1732452305.4829</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Created : 20251209</span>
 </code></pre></div>
 
-<p>A timestamp represents time as the number of seconds since January 1, 1970 …</p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+<div class="highlight"><pre><span></span><code><span class="n">integer_num</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">float_num</span> <span class="o">=</span> <span class="mf">3.14</span>
+<span class="n">complex_num</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">5</span><span class="n">j</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">integer_num</span><span class="p">))</span>  <span class="c1"># &lt;class &#39;int&#39;&gt;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">float_num</span><span class="p">))</span>    <span class="c1"># &lt;class &#39;float&#39;&gt;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">complex_num</span><span class="p">))</span>  <span class="c1"># &lt;class &#39;complex&#39;&gt;</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>&lt;class &#39;int&#39;&gt;
+&lt;class &#39;float&#39;&gt;
+&lt;class &#39;complex&#39;&gt;
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>   <span class="c1"># Addition → 17</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span>   <span class="c1"># Subtraction → 7</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span>   <span class="c1"># Multiplication …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
 
 </p>
 
 
 
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch10-05-timestamp-conversion.html">Read More</a>
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch04-01-python-num-math.html">Read More</a>
                 <hr  class="gradient"/>
             </article>
 
@@ -107,30 +127,41 @@
 
 
             <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch10-06-time-module.html"><h3 class="article-title">Ch10 06 Time Module</h3></a>
-<h6 class="subheader" title="2025-12-14T00:00:00-05:00">Sun 14 December 2025
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch04-03-tuple.html"><h3 class="article-title">Ch04 03 Tuple</h3></a>
+<h6 class="subheader" title="2025-12-16T00:00:00-05:00">Tue 16 December 2025
 </h6>
 
 
-<h1>Python <code>time</code> Module</h1>
-<p>The <code>time</code> module provides low-level time-related functions for timestamps, delays, performance measurement, and system clock interactions.</p>
-<h2>1. What is the <code>time</code> Module</h2>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
+<div class="highlight"><pre><span></span><code><span class="c1">#Created: 20251210</span>
+<span class="c1"># https://csp.gitbook.io/python-learning/basics/ch04-python-data-types/python-tuple</span>
 </code></pre></div>
 
-<p>Returns current time in seconds since the Unix Epoch.</p>
-<h2>2. Get Current Time as Readable String</h2>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<div class="highlight"><pre><span></span><code><span class="n">empty_tuple</span> <span class="o">=</span> <span class="p">()</span>
+<span class="n">single_element</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,)</span>   <span class="c1"># Comma required for single-element tuple</span>
+<span class="n">numbers</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">mixed</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
 
-<span class="n">current_time</span> <span class="o">=</span> <span class="n">time …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+<span class="nb">print</span><span class="p">(</span><span class="n">empty_tuple</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">single_element</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mixed</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>()
+(10,)
+(1, 2, 3, 4)
+(10, &#39;Python&#39;, True)
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">colors</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">colors</span><span class="p">[</span><span class="mi">0 …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
 
 </p>
 
 
 
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch10-06-time-module.html">Read More</a>
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch04-03-tuple.html">Read More</a>
                 <hr  class="gradient"/>
             </article>
 
@@ -138,31 +169,37 @@
 
 
             <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch10-07-get-current-time.html"><h3 class="article-title">Ch10 07 Get Current Time</h3></a>
-<h6 class="subheader" title="2025-12-14T00:00:00-05:00">Sun 14 December 2025
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch04-05-set.html"><h3 class="article-title">Ch04 05 Set</h3></a>
+<h6 class="subheader" title="2025-12-16T00:00:00-05:00">Tue 16 December 2025
 </h6>
 
 
-<h1>Python Get Current Time</h1>
-<p>Examples to retrieve and format the current time in Python.</p>
-<h2>1. Using <code>datetime.now().time()</code> (Standard Method)</h2>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
-
-<span class="n">current_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">current_time</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># CReated: 20251210</span>
+<span class="c1"># https://csp.gitbook.io/python-learning/basics/ch04-python-data-types/python-set</span>
 </code></pre></div>
 
-<p>Includes hours, minutes, seconds, and microseconds.</p>
-<h2>2. Using <code>strftime()</code> for Formatted Time</h2>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+<div class="highlight"><pre><span></span><code><span class="n">empty_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<span class="n">unique_numbers</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
+<span class="n">mixed_set</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="kc">True</span><span class="p">}</span>
 
-<span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+<span class="nb">print</span><span class="p">(</span><span class="n">empty_set</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">unique_numbers</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mixed_set</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>set()
+{1, 2, 3, 4}
+{3.5, 1, &#39;Python&#39;}
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">numbers</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>  <span class="c1"># Output: {1, 2 …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
 
 </p>
 
 
 
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch10-07-get-current-time.html">Read More</a>
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch04-05-set.html">Read More</a>
                 <hr  class="gradient"/>
             </article>
 
@@ -170,30 +207,56 @@
 
 
             <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch10-08-time-module.html"><h3 class="article-title">Ch10 08 Time Module</h3></a>
-<h6 class="subheader" title="2025-12-14T00:00:00-05:00">Sun 14 December 2025
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch05-04-global-keyword.html"><h3 class="article-title">Ch05 04 Global Keyword</h3></a>
+<h6 class="subheader" title="2025-12-16T00:00:00-05:00">Tue 16 December 2025
 </h6>
 
 
-<h1>Python <code>time</code> Module</h1>
-<p>The <code>time</code> module provides low-level time-related functions for timestamps, delays, performance measurement, and system clock interactions.</p>
-<h2>1. What is the <code>time</code> Module</h2>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
+<div class="highlight"><pre><span></span><code><span class="c1">#Created : 20251210</span>
+<span class="c1"># https://csp.gitbook.io/python-learning/basics/ch05-python-functions/python-global-keyword</span>
 </code></pre></div>
 
-<p>Returns current time in seconds since the Unix Epoch.</p>
-<h2>2. Get Current Time as Readable String</h2>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<div class="highlight"><pre><span></span><code><span class="n">count</span> <span class="o">=</span> <span class="mi">10</span>
 
-<span class="n">current_time</span> <span class="o">=</span> <span class="n">time …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">display</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+
+<span class="n">display</span><span class="p">()</span>  <span class="c1"># Output: 10</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">10</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">value</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">():</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">value</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># UnboundLocalError</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">increment</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">counter</span>
+    <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="n">increment</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">counter</span><span class="p">)</span>  <span class="c1"># Output: 1</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">1</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;inactive&quot;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">activate</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">status</span>
+    <span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;active …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
 
 </p>
 
 
 
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch10-08-time-module.html">Read More</a>
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch05-04-global-keyword.html">Read More</a>
                 <hr  class="gradient"/>
             </article>
 
@@ -201,29 +264,41 @@
 
 
             <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch10-09-sleep.html"><h3 class="article-title">Ch10 09 Sleep</h3></a>
-<h6 class="subheader" title="2025-12-14T00:00:00-05:00">Sun 14 December 2025
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch05-06-modules.html"><h3 class="article-title">Ch05 06 Modules</h3></a>
+<h6 class="subheader" title="2025-12-16T00:00:00-05:00">Tue 16 December 2025
 </h6>
 
 
-<h1>Python <code>sleep()</code></h1>
-<p>Examples showing how to pause execution using <code>time.sleep()</code> and the async alternative.</p>
-<h2>1. What is <code>sleep()</code></h2>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Start&quot;</span><span class="p">)</span>
-<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Resumed after 2 seconds&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="c1">#Created: 20251210</span>
+<span class="c1"># https://csp.gitbook.io/python-learning/basics/ch05-python-functions/python-modules</span>
 </code></pre></div>
 
-<p><code>sleep()</code> pauses execution for the specified number of seconds and halts the current thread.</p>
-<h2>2. Basic Delay in Seconds …</h2><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+<div class="highlight"><pre><span></span><code><span class="c1"># file: math_utils.py</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">25</span><span class="p">))</span>  <span class="c1"># Output: 5.0</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">5.0</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="nb">pow</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>     <span class="c1"># Output: 4.0</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>    <span class="c1"># Output: 8.0</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">4 …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
 
 </p>
 
 
 
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch10-09-sleep.html">Read More</a>
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch05-06-modules.html">Read More</a>
                 <hr  class="gradient"/>
             </article>
 
@@ -231,27 +306,39 @@
 
 
             <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch11-01-precedence-associativity-operators.html"><h3 class="article-title">Ch11 01 Precedence Associativity Operators</h3></a>
-<h6 class="subheader" title="2025-12-14T00:00:00-05:00">Sun 14 December 2025
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch05-07-package.html"><h3 class="article-title">Ch05 07 Package</h3></a>
+<h6 class="subheader" title="2025-12-16T00:00:00-05:00">Tue 16 December 2025
 </h6>
 
 
-<h1>Precedence and Associativity of Operators in Python</h1>
-<p>Understand how Python decides the order of evaluation in expressions and how associativity resolves ties.</p>
-<h2>1. What is Operator Precedence</h2>
-<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">+</span> <span class="mi">5</span> <span class="o">*</span> <span class="mi">2</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># 20, not 30</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Created:20251210</span>
+<span class="c1"># https://csp.gitbook.io/python-learning/basics/ch05-python-functions/python-package</span>
 </code></pre></div>
 
-<p>Multiplication (*) has higher precedence than addition (+).</p>
-<h2>2. What is Operator Associativity</h2>
-<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">/</span> <span class="mi">10 …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+<div class="highlight"><pre><span></span><code><span class="c1"># my_package/module1.py</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">greet</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;Hello from module1&quot;</span>
+
+    <span class="c1"># main.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">my_package.module1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">my_package</span><span class="o">.</span><span class="n">module1</span><span class="o">.</span><span class="n">greet</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="o">---------------------------------------------------------------------------</span>
+
+<span class="ne">ModuleNotFoundError</span>                       <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">)</span>
+
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">6</span>
+      <span class="mi">3</span>     <span class="k">return</span> <span class="s2">&quot;Hello from module1&quot;</span>
+      <span class="mi">5</span>     <span class="c1"># main.py</span>
+<span class="o">----&gt;</span> <span class="mi">6</span> <span class="kn">import</span><span class="w"> </span><span class="nn">my_package …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
 
 </p>
 
 
 
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch11-01-precedence-associativity-operators.html">Read More</a>
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch05-07-package.html">Read More</a>
                 <hr  class="gradient"/>
             </article>
 
@@ -259,27 +346,31 @@
 
 
             <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch11-02-keywords-identifiers.html"><h3 class="article-title">Ch11 02 Keywords Identifiers</h3></a>
-<h6 class="subheader" title="2025-12-14T00:00:00-05:00">Sun 14 December 2025
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-22-password-checker.html"><h3 class="article-title">Ch07 22 Password Checker</h3></a>
+<h6 class="subheader" title="2025-12-16T00:00:00-05:00">Tue 16 December 2025
 </h6>
 
 
-<h1>Python Keywords and Identifiers</h1>
-<p>Overview of reserved keywords and how to name identifiers in Python.</p>
-<h2>1. What are Python Keywords</h2>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">keyword</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">keyword</span><span class="o">.</span><span class="n">kwlist</span><span class="p">)</span>
+<h1>ch07_22_password_checker</h1>
+<p>Created:20251121</p>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+    <span class="n">password</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter password: &quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">password</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">6</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Password too short&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Password is valid&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
 </code></pre></div>
 
-<p>Keywords are reserved words that define Python syntax and cannot be used as identifiers.
-Examples: if, else, while, class, def, return, try, except, True, False …</p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+<hr>
+<p><strong>Score: 0</strong></p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
 
 </p>
 
 
 
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch11-02-keywords-identifiers.html">Read More</a>
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-22-password-checker.html">Read More</a>
                 <hr  class="gradient"/>
             </article>
 
@@ -287,29 +378,32 @@ Examples: if, else, while, class, def, return, try, except, True, False …</p><
 
 
             <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch11-03-asserts.html"><h3 class="article-title">Ch11 03 Asserts</h3></a>
-<h6 class="subheader" title="2025-12-14T00:00:00-05:00">Sun 14 December 2025
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-6-try-except-else.html"><h3 class="article-title">Ch07 6 Try Except Else</h3></a>
+<h6 class="subheader" title="2025-12-16T00:00:00-05:00">Tue 16 December 2025
 </h6>
 
 
-<h1>Python Asserts</h1>
-<p>Using assertions to validate internal logic and invariants during development and testing.</p>
-<h2>1. What is an Assertion</h2>
-<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="k">assert</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Assertion passed for x &gt; 0&#39;</span><span class="p">)</span>
+<h1>ch07_6_try_except_else</h1>
+<p>Created: 20251121</p>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+    <span class="n">user_input</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter a number: &quot;</span><span class="p">)</span>
+    <span class="n">number</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">user_input</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Invalid input! Please enter a valid integer.&quot;</span><span class="p">)</span>
+
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Success!&quot;</span><span class="p">)</span>
 </code></pre></div>
 
-<p>An assertion tests a condition and raises <code>AssertionError</code> if it is False.</p>
-<h2>2. Basic Assertion Syntax</h2>
-<div class="highlight"><pre><span></span><code><span class="n">age</span> <span class="o">=</span> <span class="mi">18</span>
-<span class="k">assert</span> <span class="n">age …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+<hr>
+<p><strong>Score: 0</strong></p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
 
 </p>
 
 
 
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch11-03-asserts.html">Read More</a>
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-6-try-except-else.html">Read More</a>
                 <hr  class="gradient"/>
             </article>
 
@@ -317,30 +411,22 @@ Examples: if, else, while, class, def, return, try, except, True, False …</p><
 
 
             <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch11-04-json.html"><h3 class="article-title">Ch11 04 Json</h3></a>
-<h6 class="subheader" title="2025-12-14T00:00:00-05:00">Sun 14 December 2025
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch08-04-polymorphism.html"><h3 class="article-title">Ch08 04 Polymorphism</h3></a>
+<h6 class="subheader" title="2025-12-16T00:00:00-05:00">Tue 16 December 2025
 </h6>
 
 
-<h1>Python JSON</h1>
-<p>Working with JSON for data interchange using Python's built-in <code>json</code> module.</p>
-<h2>1. What is JSON</h2>
-<div class="highlight"><pre><span></span><code><span class="n">example</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Alice&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;age&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
-    <span class="s1">&#39;active&#39;</span><span class="p">:</span> <span class="kc">True</span>
-<span class="p">}</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">example</span><span class="p">)</span>
-</code></pre></div>
-
-<p>JSON (JavaScript Object Notation) is a lightweight format for storing and exchanging structured data. In Python, use the built-in <code>json</code> module.</p>
-<h2>2. Importing the …</h2><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+<h1>Chapter 8.4: Polymorphism in Python</h1>
+<p>This notebook covers polymorphism concepts in Python, including method overriding, operator overloading, duck typing, and abstract base classes.</p>
+<h2>1. What is Polymorphism</h2>
+<p>Polymorphism allows the same interface (method or operator) to behave differently based on the object or context.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;Python&quot;</span><span class="p">))</span>   <span class="c1"># String length …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
 
 </p>
 
 
 
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch11-04-json.html">Read More</a>
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch08-04-polymorphism.html">Read More</a>
                 <hr  class="gradient"/>
             </article>
 

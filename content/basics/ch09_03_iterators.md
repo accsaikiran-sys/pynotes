@@ -1,6 +1,6 @@
 ---
 title: Ch09 03 Iterators
-date: 2025-12-14
+date: 2025-12-16
 author: Your Name
 cell_count: 36
 score: 35

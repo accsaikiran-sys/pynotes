@@ -1,6 +1,6 @@
 ---
 title: Ch06 01 Directory File Management
-date: 2025-12-14
+date: 2025-12-17
 author: Your Name
 cell_count: 11
 score: 10

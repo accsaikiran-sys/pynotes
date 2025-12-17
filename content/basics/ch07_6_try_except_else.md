@@ -1,6 +1,6 @@
 ---
 title: Ch07 6 Try Except Else
-date: 2025-12-14
+date: 2025-12-16
 author: Your Name
 cell_count: 2
 score: 0
