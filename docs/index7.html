@@ -47,6 +47,160 @@
 
 
             <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-17-square-root-calc.html"><h3 class="article-title">Ch07 17 Square Root Calc</h3></a>
+<h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
+</h6>
+
+
+<h1>ch07_17_square_root_calc</h1>
+<p>Created:20251121</p>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter a number: &quot;</span><span class="p">))</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">num</span> <span class="o">**</span> <span class="mf">0.5</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Square root of </span><span class="si">{</span><span class="n">num</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Please enter a valid decimal number.&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr>
+<p><strong>Score: 0</strong></p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-17-square-root-calc.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-18-safe-file-reading.html"><h3 class="article-title">Ch07 18 Safe File Reading</h3></a>
+<h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
+</h6>
+
+
+<h1>ch07_18_safe_file_reading</h1>
+<p>Created:20251121</p>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+    <span class="n">user_input</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter file name: &quot;</span><span class="p">)</span>
+    <span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">user_input</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unable to read file .&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr>
+<p><strong>Score: 0</strong></p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-18-safe-file-reading.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-19-integer-only-list.html"><h3 class="article-title">Ch07 19 Integer Only List</h3></a>
+<h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
+</h6>
+
+
+<h1>ch07_19_integer_only_list</h1>
+<p>Created:20251121</p>
+<div class="highlight"><pre><span></span><code><span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="s2">&quot;world&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Skipping non-number&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr>
+<p><strong>Score: 0</strong></p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-19-integer-only-list.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-2-convert-input-interger.html"><h3 class="article-title">Ch07 2 Convert Input Interger</h3></a>
+<h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
+</h6>
+
+
+<h1>ch07_2_convert_input_interger</h1>
+<p>Created: 20251121</p>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter a value:&quot;</span> <span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter a valid value&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr>
+<p><strong>Score: 0</strong></p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-2-convert-input-interger.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-20-no-internet-exception.html"><h3 class="article-title">Ch07 20 No Internet Exception</h3></a>
+<h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
+</h6>
+
+
+<h1>ch07_20_no_internet_exception</h1>
+<p>Created:20251121</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">connect_to_internet</span><span class="p">():</span>
+    <span class="k">raise</span> <span class="ne">ConnectionError</span><span class="p">(</span><span class="s2">&quot;No internet connection&quot;</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">connect_to_internet</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">ConnectionError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Please check your network&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr>
+<p><strong>Score: 0</strong></p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-20-no-internet-exception.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
                 <a href="https://accsaikiran-sys.github.io/pynotes/ch07-21-temp-validator.html"><h3 class="article-title">Ch07 21 Temp Validator</h3></a>
 <h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
 </h6>
@@ -199,172 +353,6 @@
 
 
                 <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-25-safee-dictionary-update.html">Read More</a>
-                <hr  class="gradient"/>
-            </article>
-
-        
-
-
-            <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-3-list-index-access.html"><h3 class="article-title">Ch07 3 List Index Access</h3></a>
-<h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
-</h6>
-
-
-<h1>ch07_3_list_index_access</h1>
-<p>Created: 20251121</p>
-<div class="highlight"><pre><span></span><code><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;banana&quot;</span><span class="p">,</span> <span class="s2">&quot;cherry&quot;</span><span class="p">]</span>
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="n">index</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter an index to access: &quot;</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Item at index </span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">my_list</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Index out of range!&quot;</span><span class="p">)</span>
-<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Please enter a valid integer!&quot;</span><span class="p">)</span>
-</code></pre></div>
-
-<hr>
-<p><strong>Score: 0</strong></p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
-
-</p>
-
-
-
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-3-list-index-access.html">Read More</a>
-                <hr  class="gradient"/>
-            </article>
-
-        
-
-
-            <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-4-file-not-found-message.html"><h3 class="article-title">Ch07 4 File Not Found Message</h3></a>
-<h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
-</h6>
-
-
-<h1>ch07_4_file_not_found_message</h1>
-<p>Created: 20251121</p>
-<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;data.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
-        <span class="n">content</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
-
-<span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;File not found.&quot;</span><span class="p">)</span>
-</code></pre></div>
-
-<hr>
-<p><strong>Score: 0</strong></p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
-
-</p>
-
-
-
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-4-file-not-found-message.html">Read More</a>
-                <hr  class="gradient"/>
-            </article>
-
-        
-
-
-            <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-5-finally-block-usage.html"><h3 class="article-title">Ch07 5 Finally Block Usage</h3></a>
-<h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
-</h6>
-
-
-<h1>ch07_5_finally_block_usage</h1>
-<p>Created: 20251121</p>
-<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
-    <span class="n">num1</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter first number: &quot;</span><span class="p">))</span>
-    <span class="n">num2</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter second number: &quot;</span><span class="p">))</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">/</span> <span class="n">num2</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Result: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cannot divide by zero!&quot;</span><span class="p">)</span>
-<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Please enter valid numbers!&quot;</span><span class="p">)</span>
-
-<span class="k">finally</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This block always runs&quot;</span><span class="p">)</span>
-</code></pre></div>
-
-<hr>
-<p><strong>Score: 0</strong></p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
-
-</p>
-
-
-
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-5-finally-block-usage.html">Read More</a>
-                <hr  class="gradient"/>
-            </article>
-
-        
-
-
-            <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-6-try-except-else.html"><h3 class="article-title">Ch07 6 Try Except Else</h3></a>
-<h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
-</h6>
-
-
-<h1>ch07_6_try_except_else</h1>
-<p>Created: 20251121</p>
-<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
-    <span class="n">user_input</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter a number: &quot;</span><span class="p">)</span>
-    <span class="n">number</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">user_input</span><span class="p">)</span>
-
-<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Invalid input! Please enter a valid integer.&quot;</span><span class="p">)</span>
-
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Success!&quot;</span><span class="p">)</span>
-</code></pre></div>
-
-<hr>
-<p><strong>Score: 0</strong></p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
-
-</p>
-
-
-
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-6-try-except-else.html">Read More</a>
-                <hr  class="gradient"/>
-            </article>
-
-        
-
-
-            <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-7-keyerror-ex.html"><h3 class="article-title">Ch07 7 Keyerror Ex</h3></a>
-<h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
-</h6>
-
-
-<h1>ch07_7_keyerror_ex</h1>
-<p>Created: 20251121</p>
-<div class="highlight"><pre><span></span><code><span class="n">user</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;yourname&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">22</span><span class="p">}</span>
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="p">[</span><span class="s2">&quot;email&quot;</span><span class="p">])</span>
-
-<span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Email key not found&quot;</span><span class="p">)</span>
-</code></pre></div>
-
-<hr>
-<p><strong>Score: 0</strong></p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
-
-</p>
-
-
-
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-7-keyerror-ex.html">Read More</a>
                 <hr  class="gradient"/>
             </article>
 

@@ -47,6 +47,153 @@
 
 
             <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch10-09-sleep.html"><h3 class="article-title">Ch10 09 Sleep</h3></a>
+<h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
+</h6>
+
+
+<h1>Python <code>sleep()</code></h1>
+<p>Examples showing how to pause execution using <code>time.sleep()</code> and the async alternative.</p>
+<h2>1. What is <code>sleep()</code></h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Start&quot;</span><span class="p">)</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Resumed after 2 seconds&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p><code>sleep()</code> pauses execution for the specified number of seconds and halts the current thread.</p>
+<h2>2. Basic Delay in Seconds …</h2><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch10-09-sleep.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch11-01-precedence-associativity-operators.html"><h3 class="article-title">Ch11 01 Precedence Associativity Operators</h3></a>
+<h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
+</h6>
+
+
+<h1>Precedence and Associativity of Operators in Python</h1>
+<p>Understand how Python decides the order of evaluation in expressions and how associativity resolves ties.</p>
+<h2>1. What is Operator Precedence</h2>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">+</span> <span class="mi">5</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># 20, not 30</span>
+</code></pre></div>
+
+<p>Multiplication (*) has higher precedence than addition (+).</p>
+<h2>2. What is Operator Associativity</h2>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">/</span> <span class="mi">10 …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch11-01-precedence-associativity-operators.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch11-02-keywords-identifiers.html"><h3 class="article-title">Ch11 02 Keywords Identifiers</h3></a>
+<h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
+</h6>
+
+
+<h1>Python Keywords and Identifiers</h1>
+<p>Overview of reserved keywords and how to name identifiers in Python.</p>
+<h2>1. What are Python Keywords</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">keyword</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">keyword</span><span class="o">.</span><span class="n">kwlist</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Keywords are reserved words that define Python syntax and cannot be used as identifiers.
+Examples: if, else, while, class, def, return, try, except, True, False …</p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch11-02-keywords-identifiers.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch11-03-asserts.html"><h3 class="article-title">Ch11 03 Asserts</h3></a>
+<h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
+</h6>
+
+
+<h1>Python Asserts</h1>
+<p>Using assertions to validate internal logic and invariants during development and testing.</p>
+<h2>1. What is an Assertion</h2>
+<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="k">assert</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Assertion passed for x &gt; 0&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>An assertion tests a condition and raises <code>AssertionError</code> if it is False.</p>
+<h2>2. Basic Assertion Syntax</h2>
+<div class="highlight"><pre><span></span><code><span class="n">age</span> <span class="o">=</span> <span class="mi">18</span>
+<span class="k">assert</span> <span class="n">age …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch11-03-asserts.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch11-04-json.html"><h3 class="article-title">Ch11 04 Json</h3></a>
+<h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
+</h6>
+
+
+<h1>Python JSON</h1>
+<p>Working with JSON for data interchange using Python's built-in <code>json</code> module.</p>
+<h2>1. What is JSON</h2>
+<div class="highlight"><pre><span></span><code><span class="n">example</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Alice&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;age&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+    <span class="s1">&#39;active&#39;</span><span class="p">:</span> <span class="kc">True</span>
+<span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">example</span><span class="p">)</span>
+</code></pre></div>
+
+<p>JSON (JavaScript Object Notation) is a lightweight format for storing and exchanging structured data. In Python, use the built-in <code>json</code> module.</p>
+<h2>2. Importing the …</h2><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch11-04-json.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
                 <a href="https://accsaikiran-sys.github.io/pynotes/ch11-05-pip.html"><h3 class="article-title">Ch11 05 Pip</h3></a>
 <h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
 </h6>
