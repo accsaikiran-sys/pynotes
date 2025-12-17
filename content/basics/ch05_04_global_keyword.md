@@ -1,6 +1,6 @@
 ---
 title: Ch05 04 Global Keyword
-date: 2025-12-16
+date: 2025-12-17
 author: Your Name
 cell_count: 12
 score: 10
