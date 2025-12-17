@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Ch04 Function Scope And Lifetime</title>
+
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/normalize.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/style.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/pygments.css" />	
+    <script src="https://accsaikiran-sys.github.io/pynotes/theme/js/modernizr.js"></script>
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<nav>
+<div class="top-bar">
+<div class="row">
+    <div class="large-9 large-centered columns">
+	    <h1><a href="https://accsaikiran-sys.github.io/pynotes">My Python Notes</a></h1>
+    </div>
+</div>
+</div>
+
+<!-- Show menu items and pages -->
+<div class="row">
+<div class="large-9 columns">
+    <ul class="button-group navigation">
+
+    </ul>
+</div>
+</div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns">
+<article>
+    <header>
+        <h3 class="article-title"><a href="https://accsaikiran-sys.github.io/pynotes/ch04-function-scope-and-lifetime.html" rel="bookmark"
+        title="Permalink to Ch04 Function Scope And Lifetime">Ch04 Function Scope And Lifetime</a></h3>
+    </header>
+
+<h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
+</h6>
+
+
+    <h1>Python Function Scope and Lifetime</h1>
+<h2>1. Concept Overview</h2>
+<p>Function scope and lifetime determine:
+- Where variables are accessible
+- How long variables exist in memory</p>
+<p>Python follows the LEGB Rule for scope resolution:
+- Local
+- Enclosing
+- Global
+- Built-in</p>
+<p>This defines how Python resolves variable names at runtime.</p>
+<h2>2. Local Scope</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">calculate</span><span class="p">():</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">50</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+<span class="n">calculate</span><span class="p">()</span>
+<span class="c1"># print(result)  # NameError</span>
+</code></pre></div>
+
+<p>Local variables exist only during function execution.</p>
+<h2>3. Global Scope</h2>
+<div class="highlight"><pre><span></span><code><span class="n">rate</span> <span class="o">=</span> <span class="mf">0.18</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_tax</span><span class="p">(</span><span class="n">amount</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">amount</span> <span class="o">*</span> <span class="n">rate</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">compute_tax</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Accessible throughout the module unless overridden.</p>
+<h2>4. Enclosing Scope (Nested Functions)</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">outer</span><span class="p">():</span>
+    <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;Outer Scope&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">inner</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+    <span class="n">inner</span><span class="p">()</span>
+
+<span class="n">outer</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Inner functions can access variables from their enclosing scope.</p>
+<h2>5. Built-in Scope</h2>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>  <span class="c1"># len is built-in</span>
+</code></pre></div>
+
+<p>Avoid overriding built-ins.</p>
+<h2>6. LEGB Resolution Demonstration</h2>
+<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;Global&quot;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">outer</span><span class="p">():</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;Enclosing&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">inner</span><span class="p">():</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;Local&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="n">inner</span><span class="p">()</span>
+
+<span class="n">outer</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Variable resolution order: Local → Enclosing → Global → Built-in.</p>
+<h2>7. Variable Lifetime</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">demo</span><span class="p">():</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="mi">25</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+
+<span class="n">demo</span><span class="p">()</span>
+<span class="c1"># temp is deallocated after function exit</span>
+</code></pre></div>
+
+<h2>8. Using global Keyword</h2>
+<div class="highlight"><pre><span></span><code><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">increment</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">count</span>
+    <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="n">increment</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Allows modifying global variables inside functions.</p>
+<h2>9. Using nonlocal Keyword</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">outer</span><span class="p">():</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="mi">10</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">inner</span><span class="p">():</span>
+        <span class="k">nonlocal</span> <span class="n">value</span>
+        <span class="n">value</span> <span class="o">+=</span> <span class="mi">5</span>
+    <span class="n">inner</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+<span class="n">outer</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Modifies variables in enclosing (non-global) scope.</p>
+<h2>10. Scope Isolation Examples</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">test</span><span class="p">():</span>
+    <span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">test</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Python does not have block scope; it has function scope.</p>
+<h2>Scope Types Summary</h2>
+<table>
+<thead>
+<tr>
+<th>Scope</th>
+<th>Accessibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Local</td>
+<td>Within function</td>
+</tr>
+<tr>
+<td>Enclosing</td>
+<td>Outer function</td>
+</tr>
+<tr>
+<td>Global</td>
+<td>Module-level</td>
+</tr>
+<tr>
+<td>Built-in</td>
+<td>Always available</td>
+</tr>
+</tbody>
+</table>
+<h2>Variable Lifetime Phases</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Initialization</td>
+<td>Variable created</td>
+</tr>
+<tr>
+<td>Active</td>
+<td>In use</td>
+</tr>
+<tr>
+<td>Termination</td>
+<td>Destroyed (garbage collected)</td>
+</tr>
+</tbody>
+</table>
+<h2>Common Pitfalls</h2>
+<ul>
+<li>Forgetting global when modifying globals</li>
+<li>Shadowing outer scope variables</li>
+<li>Misusing nonlocal</li>
+<li>Overlapping variable names</li>
+<li>Accidental redefinition of built-ins</li>
+</ul>
+<h2>Real-World Enterprise Example</h2>
+<div class="highlight"><pre><span></span><code><span class="n">config_value</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">service</span><span class="p">():</span>
+    <span class="n">multiplier</span> <span class="o">=</span> <span class="mi">2</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">process</span><span class="p">():</span>
+        <span class="k">nonlocal</span> <span class="n">multiplier</span>
+        <span class="n">multiplier</span> <span class="o">*=</span> <span class="n">config_value</span>
+        <span class="k">return</span> <span class="n">multiplier</span>
+
+    <span class="k">return</span> <span class="n">process</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">service</span><span class="p">())</span>
+</code></pre></div>
+
+<p>Used in configuration propagation, stateful closures, and session-based systems.</p>
+<h2>Performance Implications</h2>
+<ul>
+<li>Overuse of globals increases coupling</li>
+<li>Deeply nested scopes reduce readability</li>
+<li>Memory is not freed if references persist</li>
+</ul>
+<h2>Best Practices</h2>
+<ul>
+<li>Minimize global variable usage</li>
+<li>Use function parameters instead of globals</li>
+<li>Prefer nonlocal for closures</li>
+<li>Use scoped variables for clarity</li>
+<li>Avoid name shadowing</li>
+</ul>
+<h2>Enterprise Importance</h2>
+<p>Understanding scope and lifetime ensures:
+- Predictable variable behavior
+- Memory efficiency
+- Safer multithreading
+- Bug prevention
+- Maintainable architecture
+Critical for backend services, AI pipeline orchestration, multi-user systems, concurrent applications, and large-scale codebases.</p>
+<hr>
+<p><strong>Score: 35</strong></p>
+<p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
+
+</p>
+
+
+
+
+</article>
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+    <aside class="large-3 columns">
+        <h5 class="sidebar-title">Site</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/archives.html">Archives</a>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/tags.html">Tags</a>
+        </ul>
+
+		
+        <h5 class="sidebar-title">Categories</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/pandas-work.html">pandas-work</a></li>
+   
+        </ul>
+
+		
+        <h5 class="sidebar-title">Social</h5>
+        <ul class="side-nav">
+            <li><a href="https://github.com/accsaikiran-sys/">GitHub</a></li>
+            <li><a href="<linkedin handle>">LinkedIn</a></li>
+        </ul>
+
+    </aside> <!-- End Sidebar -->
+
+</div> <!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+              <!--                  <p>My Python Notes by Sai Kiran Reddy</p> -->
+            </div>
+            </div>
+    </div>
+</footer>
+</body>
+</html>

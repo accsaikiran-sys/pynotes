@@ -47,75 +47,34 @@
 
 
             <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch09-08-property-decorator.html"><h3 class="article-title">Ch09 08 Property Decorator</h3></a>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-8-raising-your-own-exception.html"><h3 class="article-title">Ch07 8 Raising Your Own Exception</h3></a>
 <h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
 </h6>
 
 
-<h1>Chapter 9.8: @property Decorator in Python</h1>
-<p>This notebook covers the @property decorator - a powerful tool for creating attribute-like access to methods with controlled logic, validation, and encapsulation.</p>
-<h2>1. What is @property</h2>
-<p>The @property decorator allows a method to be accessed like an attribute while still providing controlled logic behind …</p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
-
-</p>
-
-
-
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch09-08-property-decorator.html">Read More</a>
-                <hr  class="gradient"/>
-            </article>
-
-        
+<h1>ch07_8_raising_your_own_exception</h1>
+<p>Created: 20251121</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">check_age</span><span class="p">(</span><span class="n">age</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">18</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Not eligible&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Eligible!&quot;</span><span class="p">)</span>
 
 
-            <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch09-09-regex.html"><h3 class="article-title">Ch09 09 Regex</h3></a>
-<h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
-</h6>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">check_age</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
 
-
-<h1>Chapter 9.9: Python Regular Expressions (RegEx)</h1>
-<p>This notebook covers Regular Expressions - a powerful tool for searching, matching, and manipulating text patterns using the <code>re</code> module.</p>
-<h2>1. What is RegEx</h2>
-<p>Regular Expressions (RegEx) provide a powerful way to search, match, and manipulate text patterns.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
-
-<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Python is powerful …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
-
-</p>
-
-
-
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch09-09-regex.html">Read More</a>
-                <hr  class="gradient"/>
-            </article>
-
-        
-
-
-            <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch10-01-date-time.html"><h3 class="article-title">Ch10 01 Date Time</h3></a>
-<h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
-</h6>
-
-
-<h1>Chapter 10.1: Python datetime</h1>
-<p>The <code>datetime</code> module is used for handling date and time operations with high precision and reliability.</p>
-<h2>1. Overview of the datetime Module</h2>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div>
 
-<p>It supports full timestamping, scheduling, comparisons, and formatting.</p>
-<h2>2. Current Date and Time</h2>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+<hr>
+<p><strong>Score: 0</strong></p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
 
 </p>
 
 
 
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch10-01-date-time.html">Read More</a>
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-8-raising-your-own-exception.html">Read More</a>
                 <hr  class="gradient"/>
             </article>
 
@@ -123,28 +82,23 @@
 
 
             <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch10-02-strftime.html"><h3 class="article-title">Ch10 02 Strftime</h3></a>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-9-custom-exception-class.html"><h3 class="article-title">Ch07 9 Custom Exception Class</h3></a>
 <h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
 </h6>
 
 
-<h1>Python <code>strftime()</code></h1>
-<p><code>strftime()</code> converts a datetime object into a formatted string based on specified format codes.</p>
-<h2>1. What is <code>strftime()</code></h2>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
-
-<span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
-<span class="n">formatted</span> <span class="o">=</span> <span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">formatted</span><span class="p">)</span>  <span class="c1"># e.g., 2025-11-24</span>
+<h1>ch07_9_custom_exception_classCreated: 20251121</h1>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">InvalidNumber</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>    <span class="n">passdef</span> <span class="n">validate_number</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>    <span class="k">if</span> <span class="n">num</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>        <span class="k">raise</span> <span class="n">InvalidNumber</span><span class="p">(</span><span class="s2">&quot;Number cannot be negative!&quot;</span><span class="p">)</span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Valid number: </span><span class="si">{</span><span class="n">num</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span><span class="k">try</span><span class="p">:</span>    <span class="n">validate_number</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span><span class="k">except</span> <span class="n">InvalidNumber</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div>
 
-<p>It is essential for displaying dates in human-readable formats, logs, and reports …</p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+<hr>
+<p><strong>Score: 0</strong></p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
 
 </p>
 
 
 
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch10-02-strftime.html">Read More</a>
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-9-custom-exception-class.html">Read More</a>
                 <hr  class="gradient"/>
             </article>
 
@@ -152,29 +106,31 @@
 
 
             <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch10-03-strptime.html"><h3 class="article-title">Ch10 03 Strptime</h3></a>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-all-examples-combined.html"><h3 class="article-title">Ch07 All Examples Combined</h3></a>
 <h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
 </h6>
 
 
-<h1>Python <code>strptime()</code></h1>
-<p><code>strptime()</code> converts a date/time string into a datetime object using a specified format pattern.</p>
-<h2>1. What is <code>strptime()</code></h2>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+<h1>Chapter 7 - Exception Handling Examples</h1>
+<p>This notebook contains all 25 Python exception handling examples in separate cells.</p>
+<h2>Example 1: Divide Two Numbers Safely</h2>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+    <span class="n">num1</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;enter first number: &quot;</span><span class="p">))</span>
+    <span class="n">num2</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;enter second number: &quot;</span><span class="p">))</span>
 
-<span class="n">date_string</span> <span class="o">=</span> <span class="s2">&quot;2025-11-24&quot;</span>
-<span class="n">dt</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">date_string</span><span class="p">,</span> <span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dt</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Result: &quot;</span><span class="p">,</span> <span class="n">num1</span> <span class="o">/</span> <span class="n">num2</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cannot divide by zero!&quot;</span><span class="p">)</span>
 </code></pre></div>
 
-<p>It enables reliable parsing of user input, file data, and API responses.</p>
-<h2>2. Parsing …</h2><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+<h2>Example 2: Convert …</h2><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
 
 </p>
 
 
 
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch10-03-strptime.html">Read More</a>
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-all-examples-combined.html">Read More</a>
                 <hr  class="gradient"/>
             </article>
 
@@ -182,31 +138,22 @@
 
 
             <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch10-04-current-datetime.html"><h3 class="article-title">Ch10 04 Current Datetime</h3></a>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch08-01-objects-classes.html"><h3 class="article-title">Ch08 01 Objects Classes</h3></a>
 <h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
 </h6>
 
 
-<h1>How to get current date and time in Python?</h1>
-<p>Examples for retrieving and formatting current date/time values.</p>
-<h2>1. Using <code>datetime.now()</code> (Most Common Method)</h2>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
-
-<span class="n">current_datetime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">current_datetime</span><span class="p">)</span>
-</code></pre></div>
-
-<p>Returns date and time including microseconds.</p>
-<h2>2. Get Only Current Date</h2>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">date</span>
-
-<span class="n">today …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+<h1>Chapter 8.1: Objects and Classes in Python</h1>
+<p>This notebook covers the fundamentals of object-oriented programming in Python, including classes, objects, and their key concepts.</p>
+<h2>1. What is a Class and an Object</h2>
+<p>A class is a blueprint for creating objects. An object is an instance of a class.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
 
 </p>
 
 
 
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch10-04-current-datetime.html">Read More</a>
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch08-01-objects-classes.html">Read More</a>
                 <hr  class="gradient"/>
             </article>
 
@@ -214,27 +161,24 @@
 
 
             <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch10-05-timestamp-conversion.html"><h3 class="article-title">Ch10 05 Timestamp Conversion</h3></a>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch08-02-inheritance.html"><h3 class="article-title">Ch08 02 Inheritance</h3></a>
 <h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
 </h6>
 
 
-<h1>Python timestamp to datetime and vice-versa</h1>
-<p>Working with Unix timestamps (seconds since January 1, 1970) and converting to/from Python <code>datetime</code>.</p>
-<h2>1. What is a Timestamp</h2>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
-
-<span class="n">timestamp</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">timestamp</span><span class="p">)</span>  <span class="c1"># e.g. 1732452305.4829</span>
-</code></pre></div>
-
-<p>A timestamp represents time as the number of seconds since January 1, 1970 …</p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+<h1>Chapter 8.1: Inheritance in Python</h1>
+<p>This notebook covers inheritance concepts in Python object-oriented programming, including single inheritance, multiple inheritance, method overriding, and more.</p>
+<h2>1. What is Inheritance</h2>
+<p>Inheritance allows a class (child) to acquire properties and behaviors of another class (parent).</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Animal</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">eat</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Animal is …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
 
 </p>
 
 
 
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch10-05-timestamp-conversion.html">Read More</a>
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch08-02-inheritance.html">Read More</a>
                 <hr  class="gradient"/>
             </article>
 
@@ -242,30 +186,24 @@
 
 
             <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch10-06-time-module.html"><h3 class="article-title">Ch10 06 Time Module</h3></a>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch08-03-multiple-inheritance.html"><h3 class="article-title">Ch08 03 Multiple Inheritance</h3></a>
 <h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
 </h6>
 
 
-<h1>Python <code>time</code> Module</h1>
-<p>The <code>time</code> module provides low-level time-related functions for timestamps, delays, performance measurement, and system clock interactions.</p>
-<h2>1. What is the <code>time</code> Module</h2>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
-</code></pre></div>
-
-<p>Returns current time in seconds since the Unix Epoch.</p>
-<h2>2. Get Current Time as Readable String</h2>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
-
-<span class="n">current_time</span> <span class="o">=</span> <span class="n">time …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+<h1>Chapter 8.3: Multiple Inheritance in Python</h1>
+<p>This notebook covers multiple inheritance concepts in Python, including Method Resolution Order (MRO), the diamond problem, and real-world applications.</p>
+<h2>1. What is Multiple Inheritance</h2>
+<p>Multiple inheritance occurs when a class inherits from more than one parent class.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Father</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">skill1</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
 
 </p>
 
 
 
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch10-06-time-module.html">Read More</a>
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch08-03-multiple-inheritance.html">Read More</a>
                 <hr  class="gradient"/>
             </article>
 
@@ -273,31 +211,22 @@
 
 
             <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch10-07-get-current-time.html"><h3 class="article-title">Ch10 07 Get Current Time</h3></a>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch08-04-polymorphism.html"><h3 class="article-title">Ch08 04 Polymorphism</h3></a>
 <h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
 </h6>
 
 
-<h1>Python Get Current Time</h1>
-<p>Examples to retrieve and format the current time in Python.</p>
-<h2>1. Using <code>datetime.now().time()</code> (Standard Method)</h2>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
-
-<span class="n">current_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">current_time</span><span class="p">)</span>
-</code></pre></div>
-
-<p>Includes hours, minutes, seconds, and microseconds.</p>
-<h2>2. Using <code>strftime()</code> for Formatted Time</h2>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
-
-<span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+<h1>Chapter 8.4: Polymorphism in Python</h1>
+<p>This notebook covers polymorphism concepts in Python, including method overriding, operator overloading, duck typing, and abstract base classes.</p>
+<h2>1. What is Polymorphism</h2>
+<p>Polymorphism allows the same interface (method or operator) to behave differently based on the object or context.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;Python&quot;</span><span class="p">))</span>   <span class="c1"># String length …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
 
 </p>
 
 
 
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch10-07-get-current-time.html">Read More</a>
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch08-04-polymorphism.html">Read More</a>
                 <hr  class="gradient"/>
             </article>
 
@@ -305,36 +234,73 @@
 
 
             <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch10-08-time-module.html"><h3 class="article-title">Ch10 08 Time Module</h3></a>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch08-05-operator-overloading.html"><h3 class="article-title">Ch08 05 Operator Overloading</h3></a>
 <h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
 </h6>
 
 
-<h1>Python <code>time</code> Module</h1>
-<p>The <code>time</code> module provides low-level time-related functions for timestamps, delays, performance measurement, and system clock interactions.</p>
-<h2>1. What is the <code>time</code> Module</h2>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
-</code></pre></div>
-
-<p>Returns current time in seconds since the Unix Epoch.</p>
-<h2>2. Get Current Time as Readable String</h2>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
-
-<span class="n">current_time</span> <span class="o">=</span> <span class="n">time …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+<h1>Chapter 8.5: Operator Overloading in Python</h1>
+<p>This notebook covers operator overloading concepts in Python, including arithmetic operators, comparison operators, and special methods (dunder methods).</p>
+<h2>1. What is Operator Overloading</h2>
+<p>Operator overloading allows custom classes to define how standard operators behave using special (dunder) methods.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Number</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
 
 </p>
 
 
 
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch10-08-time-module.html">Read More</a>
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch08-05-operator-overloading.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch09-01-list-comprehension.html"><h3 class="article-title">Ch09 01 List Comprehension</h3></a>
+<h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
+</h6>
+
+
+<h1>Chapter 9.1: List Comprehension in Python</h1>
+<p>This notebook covers Python list comprehensions - a powerful, concise way to create lists through declarative expressions.</p>
+<h2>1. Strategic Overview</h2>
+<p>Python List Comprehension is a high-performance, declarative construct for generating lists through compact expressions. It replaces verbose iterative patterns with expressive, memory-efficient, and semantically …</p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch09-01-list-comprehension.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch09-02-lambda-functions.html"><h3 class="article-title">Ch09 02 Lambda Functions</h3></a>
+<h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
+</h6>
+
+
+<h1>Chapter 9.2: Lambda / Anonymous Functions in Python</h1>
+<p>This notebook covers Python lambda functions - small, anonymous functions that can be defined inline for concise operations.</p>
+<h2>1. What is a Lambda Function</h2>
+<p>A lambda function is a small anonymous function defined using the lambda keyword. It can have any number of …</p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch09-02-lambda-functions.html">Read More</a>
                 <hr  class="gradient"/>
             </article>
 
             <!-- /#posts-list -->
 <div class="pagination-centered">
-<h6 class="subheader">Page 10 of 11</h6>
+<h6 class="subheader">Page 10 of 13</h6>
 
 <p>
             <a href="https://accsaikiran-sys.github.io/pynotes/index9.html">&laquo; Prev</a>

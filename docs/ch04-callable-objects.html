@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Ch04 Callable Objects</title>
+
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/normalize.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/style.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/pygments.css" />	
+    <script src="https://accsaikiran-sys.github.io/pynotes/theme/js/modernizr.js"></script>
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<nav>
+<div class="top-bar">
+<div class="row">
+    <div class="large-9 large-centered columns">
+	    <h1><a href="https://accsaikiran-sys.github.io/pynotes">My Python Notes</a></h1>
+    </div>
+</div>
+</div>
+
+<!-- Show menu items and pages -->
+<div class="row">
+<div class="large-9 columns">
+    <ul class="button-group navigation">
+
+    </ul>
+</div>
+</div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns">
+<article>
+    <header>
+        <h3 class="article-title"><a href="https://accsaikiran-sys.github.io/pynotes/ch04-callable-objects.html" rel="bookmark"
+        title="Permalink to Ch04 Callable Objects">Ch04 Callable Objects</a></h3>
+    </header>
+
+<h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
+</h6>
+
+
+    <h1>Python Callable Objects</h1>
+<h2>1. Strategic Overview</h2>
+<p>Python Callable Objects are entities that can be invoked using parentheses (), behaving like functions. Beyond plain functions, Python allows classes, instances, and objects to become callable through specific protocols, enabling flexible execution models, polymorphic behavior, and dynamic command architectures.</p>
+<p>They enable uniform invocation interfaces, functional-object hybrid patterns, dependency injection architectures, dynamic execution strategies, and framework extensibility. Callable objects blur the boundary between data and behavior.</p>
+<h2>2. Enterprise Significance</h2>
+<p>Without callable object patterns: rigid execution models, limited abstraction, poor extensibility, reduced polymorphism, tight coupling. With callables: plug-and-play execution engines, strategy optimization, event-driven architecture, clean polymorphism, dynamic workflows.</p>
+<h2>3. Callable Object Architecture</h2>
+<p>Object Definition → <strong>call</strong>() Implementation → Invocation → Execution Pipeline. Any object implementing <strong>call</strong> becomes callable.</p>
+<h2>4. Functions as Callable Objects</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">process</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;Executed&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">callable</span><span class="p">(</span><span class="n">process</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">process</span><span class="p">())</span>
+</code></pre></div>
+
+<p>Functions are the basic callable type.</p>
+<h2>5. Classes as Callable Objects</h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Service</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Service Executed&quot;</span>
+
+<span class="n">service</span> <span class="o">=</span> <span class="n">Service</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">service</span><span class="p">())</span>
+</code></pre></div>
+
+<p>Instances behave like functions.</p>
+<h2>6. Understanding the <strong>call</strong> Method</h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Multiplier</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">factor</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">factor</span> <span class="o">=</span> <span class="n">factor</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">value</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">factor</span>
+
+<span class="n">double</span> <span class="o">=</span> <span class="n">Multiplier</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">double</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Encapsulates functional behavior with state.</p>
+<h2>7. callable() Built-in Function</h2>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">callable</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">callable</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Checks if an object supports invocation.</p>
+<h2>8. Callable Objects vs Functions</h2>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Function</th>
+<th>Callable Object</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>State retention</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>OOP integration</td>
+<td>Limited</td>
+<td>Full</td>
+</tr>
+<tr>
+<td>Custom behavior</td>
+<td>Static</td>
+<td>Dynamic</td>
+</tr>
+<tr>
+<td>Reusability</td>
+<td>Moderate</td>
+<td>High</td>
+</tr>
+</tbody>
+</table>
+<p>Callable objects offer greater control and state persistence.</p>
+<h2>9. Callable Pattern in Strategy Design</h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Add</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Multiply</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="n">op</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">op</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">execute</span><span class="p">(</span><span class="n">Add</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">execute</span><span class="p">(</span><span class="n">Multiply</span><span class="p">()))</span>
+</code></pre></div>
+
+<p>Implements interchangeable algorithms.</p>
+<h2>10. Dependency Injection Pattern</h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Processor</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">strategy</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">strategy</span> <span class="o">=</span> <span class="n">strategy</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">strategy</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Callables act as injectable behavior units.</p>
+<h2>11. Callable Objects for Middleware</h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Logger</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Logging request&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">request</span>
+</code></pre></div>
+
+<p>Common in request pipelines.</p>
+<h2>12. Callable in Event-Driven Systems</h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">EventHandler</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Handled </span><span class="si">{</span><span class="n">event</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Used in subscription-driven execution engines.</p>
+<h2>13. Callable Objects as Decorators</h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Timer</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">func</span> <span class="o">=</span> <span class="n">func</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span>
+</code></pre></div>
+
+<p>Class-based decorator architecture.</p>
+<h2>14. Callable Objects in Framework Design</h2>
+<p>Used extensively in Django view handling, FastAPI routing, task scheduling frameworks, and plugin systems.</p>
+<h2>15. Callable Generators</h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Counter</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">count</span>
+
+<span class="n">counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">counter</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">counter</span><span class="p">())</span>
+</code></pre></div>
+
+<p>Stateful execution mechanisms.</p>
+<h2>16. Callable for Lazy Evaluation</h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">LazyValue</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;heavy_computation_result&quot;</span>  <span class="c1"># placeholder</span>
+</code></pre></div>
+
+<p>Supports deferred execution systems.</p>
+<h2>17. Callable in Functional Pipelines</h2>
+<div class="highlight"><pre><span></span><code><span class="n">pipeline</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">,</span> <span class="nb">str</span><span class="o">.</span><span class="n">strip</span><span class="p">]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">apply_pipeline</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">func</span> <span class="ow">in</span> <span class="n">pipeline</span><span class="p">:</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">value</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">apply_pipeline</span><span class="p">(</span><span class="s2">&quot;  HELLO  &quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Executes callable chains dynamically.</p>
+<h2>18. Type Hinting Callable Objects</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">executor</span><span class="p">(</span><span class="n">fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">int</span><span class="p">],</span> <span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">fn</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">executor</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">5</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Ensures contract enforcement.</p>
+<h2>19. Callable Objects vs Lambda</h2>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Lambda</th>
+<th>Callable Object</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>State</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Structure</td>
+<td>Limited</td>
+<td>Rich</td>
+</tr>
+<tr>
+<td>Scalability</td>
+<td>Low</td>
+<td>High</td>
+</tr>
+<tr>
+<td>Testing</td>
+<td>Hard</td>
+<td>Easier</td>
+</tr>
+</tbody>
+</table>
+<p>Callable objects outperform lambdas for enterprise needs.</p>
+<h2>20. Multi-Callable Systems</h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">MultiTask</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Meta Action&quot;</span>
+</code></pre></div>
+
+<p>Complex execution control.</p>
+<h2>21. Calling Callables Internally</h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Engine</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">command</span><span class="p">()</span>
+
+<span class="n">eng</span> <span class="o">=</span> <span class="n">Engine</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">eng</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="s2">&quot;done&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Works with any callable.</p>
+<h2>22. Common Pitfalls</h2>
+<table>
+<thead>
+<tr>
+<th>Mistake</th>
+<th>Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Overuse of stateful callables</td>
+<td>Hard debugging</td>
+</tr>
+<tr>
+<td>Hidden side effects</td>
+<td>Unpredictable behavior</td>
+</tr>
+<tr>
+<td>No clear interface</td>
+<td>Poor maintainability</td>
+</tr>
+<tr>
+<td>Ignoring typing</td>
+<td>Runtime failures</td>
+</tr>
+</tbody>
+</table>
+<h2>23. Best Practices</h2>
+<ul>
+<li>Keep callable behavior deterministic</li>
+<li>Document callable contracts</li>
+<li>Avoid side-effect-heavy logic</li>
+<li>Combine with type hints</li>
+<li>Use in controlled architectural layers</li>
+</ul>
+<h2>24. Callable Governance Model</h2>
+<p>Callable Interface → Execution Policy → Validation → Monitoring. Ensures clean integration flow.</p>
+<h2>25. Enterprise Use Cases</h2>
+<p>AI inference engines, event processing pipelines, job schedulers, middleware design, workflow engines, policy execution systems.</p>
+<h2>26. Callable Objects &amp; Polymorphism</h2>
+<p>Callable-based polymorphism avoids heavy inheritance hierarchies and improves extensibility.</p>
+<h2>27. Testing Callable Objects</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">test_callable</span><span class="p">():</span>
+    <span class="n">obj</span> <span class="o">=</span> <span class="n">Multiplier</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">obj</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">==</span> <span class="mi">12</span>
+
+<span class="c1"># test_callable()  # example invocation</span>
+</code></pre></div>
+
+<hr>
+<p><strong>Score: 60</strong></p>
+<p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
+
+</p>
+
+
+
+
+</article>
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+    <aside class="large-3 columns">
+        <h5 class="sidebar-title">Site</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/archives.html">Archives</a>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/tags.html">Tags</a>
+        </ul>
+
+		
+        <h5 class="sidebar-title">Categories</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/pandas-work.html">pandas-work</a></li>
+   
+        </ul>
+
+		
+        <h5 class="sidebar-title">Social</h5>
+        <ul class="side-nav">
+            <li><a href="https://github.com/accsaikiran-sys/">GitHub</a></li>
+            <li><a href="<linkedin handle>">LinkedIn</a></li>
+        </ul>
+
+    </aside> <!-- End Sidebar -->
+
+</div> <!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+              <!--                  <p>My Python Notes by Sai Kiran Reddy</p> -->
+            </div>
+            </div>
+    </div>
+</footer>
+</body>
+</html>

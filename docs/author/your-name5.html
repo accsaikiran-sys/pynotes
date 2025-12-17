@@ -47,51 +47,23 @@
 
 
             <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch05-01-functions.html"><h3 class="article-title">Ch05 01 Functions</h3></a>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch04-argument-packing-vs-unpacking.html"><h3 class="article-title">Ch04 Argument Packing Vs Unpacking</h3></a>
 <h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
 </h6>
 
 
-<div class="highlight"><pre><span></span><code><span class="c1">#Created: 20251210</span>
-<span class="c1"># https://csp.gitbook.io/python-learning/basics/ch05-python-functions/python-functions</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">greet</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, Python!&quot;</span><span class="p">)</span>
-
-<span class="n">greet</span><span class="p">()</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code>Hello, Python!
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">greet_user</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">)</span>
-
-<span class="n">greet_user</span><span class="p">(</span><span class="s2">&quot;Alice&quot;</span><span class="p">)</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code>Hello, Alice!
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
-
-<span class="n">result</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># Output: 8</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="mf">8</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">greet</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Guest&quot;</span><span class="p">):</span>
-    <span class="nb">print …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+<h1>Python Argument Packing vs Unpacking</h1>
+<h2>1. Strategic Overview</h2>
+<p>Argument Packing and Unpacking in Python represent core mechanisms for flexible function interfaces, dynamic parameter forwarding, and scalable API design. They enable functions to accept variable-length arguments and relay data across layers without hard-coded parameter structures.</p>
+<p>They enable:
+- Dynamic function signatures
+- Flexible …</p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
 
 </p>
 
 
 
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch05-01-functions.html">Read More</a>
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch04-argument-packing-vs-unpacking.html">Read More</a>
                 <hr  class="gradient"/>
             </article>
 
@@ -99,43 +71,21 @@
 
 
             <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch05-02-functional-args.html"><h3 class="article-title">Ch05 02 Functional Args</h3></a>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch04-callable-objects.html"><h3 class="article-title">Ch04 Callable Objects</h3></a>
 <h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
 </h6>
 
 
-<div class="highlight"><pre><span></span><code><span class="c1"># Created:20251210</span>
-<span class="c1"># https://csp.gitbook.io/python-learning/basics/ch05-python-functions/python-function-arguments</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">display_info</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Name: </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">, Age: </span><span class="si">{</span><span class="n">age</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="n">display_info</span><span class="p">(</span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="n">Name</span><span class="o">:</span><span class="w"> </span><span class="n">Alice</span><span class="o">,</span><span class="w"> </span><span class="n">Age</span><span class="o">:</span><span class="w"> </span><span class="mi">25</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">greet</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Guest&quot;</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="n">greet</span><span class="p">()</span>
-<span class="n">greet</span><span class="p">(</span><span class="s2">&quot;Bob&quot;</span><span class="p">)</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code>Hello, Guest
-Hello, Bob
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">greet</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Guest&quot;</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello, </span><span class="si">{</span><span class="n">name …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+<h1>Python Callable Objects</h1>
+<h2>1. Strategic Overview</h2>
+<p>Python Callable Objects are entities that can be invoked using parentheses (), behaving like functions. Beyond plain functions, Python allows classes, instances, and objects to become callable through specific protocols, enabling flexible execution models, polymorphic behavior, and dynamic command architectures.</p>
+<p>They enable uniform invocation interfaces …</p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
 
 </p>
 
 
 
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch05-02-functional-args.html">Read More</a>
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch04-callable-objects.html">Read More</a>
                 <hr  class="gradient"/>
             </article>
 
@@ -143,49 +93,22 @@ Hello, Bob
 
 
             <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch05-03-variable-scope.html"><h3 class="article-title">Ch05 03 Variable Scope</h3></a>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch04-closures-and-nested-functions.html"><h3 class="article-title">Ch04 Closures And Nested Functions</h3></a>
 <h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
 </h6>
 
 
-<div class="highlight"><pre><span></span><code><span class="c1">#Created: 20251210</span>
-<span class="c1"># https://csp.gitbook.io/python-learning/basics/ch05-python-functions/python-variable-scope</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">show_value</span><span class="p">():</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># Local variable</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-
-<span class="n">show_value</span><span class="p">()</span>
-<span class="c1"># print(x)  # NameError: x is not defined</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="mf">10</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="mi">20</span>  <span class="c1"># Global variable</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">display</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-
-<span class="n">display</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="mf">20</span>
-<span class="mf">20</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="n">value</span> <span class="o">=</span> <span class="mi">50</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">():</span>
-    <span class="n">value</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># Local variable shadows global …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+<h1>Closures and Nested Functions</h1>
+<h2>1. Concept Overview</h2>
+<p>Nested Functions: functions defined inside another function.
+Closures: nested functions that remember and retain access to variables from their enclosing scope, even after the outer function has finished execution. This enables persistent state without using global variables or classes.</p>
+<h2>2. Defining a Nested …</h2><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
 
 </p>
 
 
 
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch05-03-variable-scope.html">Read More</a>
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch04-closures-and-nested-functions.html">Read More</a>
                 <hr  class="gradient"/>
             </article>
 
@@ -193,56 +116,23 @@ Hello, Bob
 
 
             <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch05-04-global-keyword.html"><h3 class="article-title">Ch05 04 Global Keyword</h3></a>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch04-closures-in-python.html"><h3 class="article-title">Ch04 Closures In Python</h3></a>
 <h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
 </h6>
 
 
-<div class="highlight"><pre><span></span><code><span class="c1">#Created : 20251210</span>
-<span class="c1"># https://csp.gitbook.io/python-learning/basics/ch05-python-functions/python-global-keyword</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="n">count</span> <span class="o">=</span> <span class="mi">10</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">display</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
-
-<span class="n">display</span><span class="p">()</span>  <span class="c1"># Output: 10</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="mf">10</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="n">value</span> <span class="o">=</span> <span class="mi">5</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">():</span>
-    <span class="n">value</span> <span class="o">=</span> <span class="n">value</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># UnboundLocalError</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">increment</span><span class="p">():</span>
-    <span class="k">global</span> <span class="n">counter</span>
-    <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
-
-<span class="n">increment</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">counter</span><span class="p">)</span>  <span class="c1"># Output: 1</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="mf">1</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;inactive&quot;</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">activate</span><span class="p">():</span>
-    <span class="k">global</span> <span class="n">status</span>
-    <span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;active …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+<h1>Closures in Python</h1>
+<h2>1. Concept Overview</h2>
+<p>A closure is a function object that remembers and has access to variables in its enclosing lexical scope, even when the outer function has finished execution.</p>
+<p>A closure “closes over” variables from its parent function and preserves them, enabling:
+- Persistent state without globals
+- Functional …</p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
 
 </p>
 
 
 
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch05-04-global-keyword.html">Read More</a>
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch04-closures-in-python.html">Read More</a>
                 <hr  class="gradient"/>
             </article>
 
@@ -250,49 +140,21 @@ Hello, Bob
 
 
             <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch05-05-recursion.html"><h3 class="article-title">Ch05 05 Recursion</h3></a>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch04-decorators-in-python.html"><h3 class="article-title">Ch04 Decorators In Python</h3></a>
 <h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
 </h6>
 
 
-<div class="highlight"><pre><span></span><code><span class="c1"># Created: 20251210</span>
-<span class="c1"># https://csp.gitbook.io/python-learning/basics/ch05-python-functions/python-recursion</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">print_numbers</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">return</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-    <span class="n">print_numbers</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
-
-<span class="n">print_numbers</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="mf">5</span>
-<span class="mf">4</span>
-<span class="mf">3</span>
-<span class="mf">2</span>
-<span class="mf">1</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">n</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mi">1</span>
-    <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">factorial</span> <span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">factorial</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="mf">120</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">sum_n</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="k">if …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+<h1>Decorators in Python</h1>
+<h2>1. Concept Overview</h2>
+<p>Decorators in Python are a meta-programming construct used to dynamically modify or extend the behavior of functions, methods, or classes without altering their original source code.</p>
+<p>They enable cross-cutting concern implementation, behavior enhancement without inheritance, cleaner separation of concerns, configurable execution control, and transparent …</p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
 
 </p>
 
 
 
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch05-05-recursion.html">Read More</a>
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch04-decorators-in-python.html">Read More</a>
                 <hr  class="gradient"/>
             </article>
 
@@ -300,41 +162,21 @@ Hello, Bob
 
 
             <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch05-06-modules.html"><h3 class="article-title">Ch05 06 Modules</h3></a>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch04-function-decorators-advanced.html"><h3 class="article-title">Ch04 Function Decorators Advanced</h3></a>
 <h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
 </h6>
 
 
-<div class="highlight"><pre><span></span><code><span class="c1">#Created: 20251210</span>
-<span class="c1"># https://csp.gitbook.io/python-learning/basics/ch05-python-functions/python-modules</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="c1"># file: math_utils.py</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">25</span><span class="p">))</span>  <span class="c1"># Output: 5.0</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="mf">5.0</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="nb">pow</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>     <span class="c1"># Output: 4.0</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>    <span class="c1"># Output: 8.0</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="mf">4 …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+<h1>Python Function Decorators (Advanced)</h1>
+<h2>1. Strategic Overview</h2>
+<p>Advanced Python Function Decorators enable dynamic modification of function behavior without altering source code. At an enterprise level, they enforce cross-cutting concerns like logging, authentication, caching, performance monitoring, circuit breaking, validation, and access control.</p>
+<p>They enable behavior injection without duplication, clean separation of …</p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
 
 </p>
 
 
 
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch05-06-modules.html">Read More</a>
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch04-function-decorators-advanced.html">Read More</a>
                 <hr  class="gradient"/>
             </article>
 
@@ -342,39 +184,31 @@ Hello, Bob
 
 
             <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch05-07-package.html"><h3 class="article-title">Ch05 07 Package</h3></a>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch04-function-scope-and-lifetime.html"><h3 class="article-title">Ch04 Function Scope And Lifetime</h3></a>
 <h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
 </h6>
 
 
-<div class="highlight"><pre><span></span><code><span class="c1"># Created:20251210</span>
-<span class="c1"># https://csp.gitbook.io/python-learning/basics/ch05-python-functions/python-package</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="c1"># my_package/module1.py</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">greet</span><span class="p">():</span>
-    <span class="k">return</span> <span class="s2">&quot;Hello from module1&quot;</span>
-
-    <span class="c1"># main.py</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">my_package.module1</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">my_package</span><span class="o">.</span><span class="n">module1</span><span class="o">.</span><span class="n">greet</span><span class="p">())</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="o">---------------------------------------------------------------------------</span>
-
-<span class="ne">ModuleNotFoundError</span>                       <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">)</span>
-
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">6</span>
-      <span class="mi">3</span>     <span class="k">return</span> <span class="s2">&quot;Hello from module1&quot;</span>
-      <span class="mi">5</span>     <span class="c1"># main.py</span>
-<span class="o">----&gt;</span> <span class="mi">6</span> <span class="kn">import</span><span class="w"> </span><span class="nn">my_package …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+<h1>Python Function Scope and Lifetime</h1>
+<h2>1. Concept Overview</h2>
+<p>Function scope and lifetime determine:
+- Where variables are accessible
+- How long variables exist in memory</p>
+<p>Python follows the LEGB Rule for scope resolution:
+- Local
+- Enclosing
+- Global
+- Built-in</p>
+<p>This defines how Python resolves variable names at runtime.</p>
+<h2>2. Local Scope</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">calculate</span><span class="p">():</span>
+    <span class="n">result …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
 
 </p>
 
 
 
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch05-07-package.html">Read More</a>
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch04-function-scope-and-lifetime.html">Read More</a>
                 <hr  class="gradient"/>
             </article>
 
@@ -382,57 +216,21 @@ Hello, Bob
 
 
             <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch05-08-main-function.html"><h3 class="article-title">Ch05 08 Main Function</h3></a>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch04-function-signature-inspection.html"><h3 class="article-title">Ch04 Function Signature Inspection</h3></a>
 <h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
 </h6>
 
 
-<div class="highlight"><pre><span></span><code><span class="c1">#Create: 20251210</span>
-<span class="c1"># https://csp.gitbook.io/python-learning/basics/ch05-python-functions/python-main-function</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Program started&quot;</span><span class="p">)</span>
-
-<span class="n">main</span><span class="p">()</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code>Program started
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Main function executed&quot;</span><span class="p">)</span>
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">main</span><span class="p">()</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code>Main function executed
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code>__main__
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Welcome, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">main</span><span class="p">(</span><span class="s2">&quot;Alice&quot;</span><span class="p">)</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code>Welcome, Alice
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">process_data …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+<h1>Python Function Signature Inspection</h1>
+<h2>1. Strategic Overview</h2>
+<p>Python Function Signature Inspection introspects function definitions at runtime—parameters, annotations, defaults, argument kinds, and call conventions. It powers dynamic frameworks, API gateways, validators, dependency injection systems, and orchestration engines.</p>
+<p>Enables runtime analysis of callable interfaces, automated parameter validation, dynamic argument binding, API …</p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
 
 </p>
 
 
 
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch05-08-main-function.html">Read More</a>
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch04-function-signature-inspection.html">Read More</a>
                 <hr  class="gradient"/>
             </article>
 
@@ -440,43 +238,28 @@ Hello, Bob
 
 
             <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch06-01-directory-file-management.html"><h3 class="article-title">Ch06 01 Directory File Management</h3></a>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch04-functional-programming-techniques.html"><h3 class="article-title">Ch04 Functional Programming Techniques</h3></a>
 <h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
 </h6>
 
 
-<div class="highlight"><pre><span></span><code><span class="c1">#Created : 20251210</span>
-<span class="c1">#https://csp.gitbook.io/python-learning/basics/ch06-python-files/python-directory-and-files-management</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-
-<span class="n">current_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">current_dir</span><span class="p">)</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code>/home/kiran/pynotes/notebooks/basics
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-
-<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s2">&quot;C:/Projects&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="o">---------------------------------------------------------------------------</span>
-
-<span class="ne">FileNotFoundError</span>                         <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">)</span>
-
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
-      <span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-<span class="o">----&gt;</span> <span class="mi">3</span> <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s2">&quot;C:/Projects …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+<h1>Python Functional Programming Techniques</h1>
+<h2>1. Concept Overview</h2>
+<p>Functional Programming (FP) in Python emphasizes computation through evaluation of functions, avoiding mutable state and side effects.</p>
+<p>Core principles:
+- Pure functions
+- Immutability
+- Higher-order functions
+- Function composition
+- Declarative data transformation</p>
+<p>FP focuses on what to compute rather than how to compute it.</p>
+<h2>2. Why …</h2><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
 
 </p>
 
 
 
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch06-01-directory-file-management.html">Read More</a>
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch04-functional-programming-techniques.html">Read More</a>
                 <hr  class="gradient"/>
             </article>
 
@@ -484,39 +267,34 @@ Hello, Bob
 
 
             <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch06-02-read-write-csv.html"><h3 class="article-title">Ch06 02 Read Write Csv</h3></a>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch04-functions.html"><h3 class="article-title">Ch04 Functions</h3></a>
 <h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
 </h6>
 
 
-<div class="highlight"><pre><span></span><code><span class="c1">#Created: 20251210</span>
-<span class="c1"># https://csp.gitbook.io/python-learning/basics/ch06-python-files/python-csv-read-and-write-csv-files</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">1. What is a CSV File</span>
-
-<span class="sd">A CSV (Comma-Separated Values) file stores tabular data in plain text, where each line represents a row and values are separated by commas.</span>
-
-<span class="sd">Example:</span>
-
-
-<span class="sd">Copy</span>
-<span class="sd">name,age,city</span>
-<span class="sd">Alice,25,New York</span>
-<span class="sd">Bob,30 …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+<h1>Python Functions</h1>
+<h2>1. Strategic Overview</h2>
+<p>Python functions are first-class executable units that define behavioral boundaries, encapsulate logic, and enable composability across systems. In enterprise-grade codebases, functions are not merely reusable blocks — they are architectural interfaces that determine:</p>
+<ul>
+<li>Code modularity</li>
+<li>System scalability</li>
+<li>Testability</li>
+<li>Maintainability</li>
+<li>Separation of concerns</li>
+</ul>
+<p>In production systems, a …</p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
 
 </p>
 
 
 
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch06-02-read-write-csv.html">Read More</a>
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch04-functions.html">Read More</a>
                 <hr  class="gradient"/>
             </article>
 
             <!-- /#posts-list -->
 <div class="pagination-centered">
-<h6 class="subheader">Page 5 of 11</h6>
+<h6 class="subheader">Page 5 of 13</h6>
 
 <p>
             <a href="https://accsaikiran-sys.github.io/pynotes/author/your-name4.html">&laquo; Prev</a>

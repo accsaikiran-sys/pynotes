@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Ch04 Nonlocal Keyword</title>
+
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/normalize.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/style.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/pygments.css" />	
+    <script src="https://accsaikiran-sys.github.io/pynotes/theme/js/modernizr.js"></script>
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<nav>
+<div class="top-bar">
+<div class="row">
+    <div class="large-9 large-centered columns">
+	    <h1><a href="https://accsaikiran-sys.github.io/pynotes">My Python Notes</a></h1>
+    </div>
+</div>
+</div>
+
+<!-- Show menu items and pages -->
+<div class="row">
+<div class="large-9 columns">
+    <ul class="button-group navigation">
+
+    </ul>
+</div>
+</div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns">
+<article>
+    <header>
+        <h3 class="article-title"><a href="https://accsaikiran-sys.github.io/pynotes/ch04-nonlocal-keyword.html" rel="bookmark"
+        title="Permalink to Ch04 Nonlocal Keyword">Ch04 Nonlocal Keyword</a></h3>
+    </header>
+
+<h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
+</h6>
+
+
+    <h1>Python Nonlocal Keyword</h1>
+<h2>1. Concept Overview</h2>
+<p>The nonlocal keyword is used within nested functions to modify variables defined in the enclosing (outer) function's scope.</p>
+<p>It applies to:
+- Variables in the immediate outer function
+- Not global variables
+- Not local variables of the inner function</p>
+<p>nonlocal bridges the scope between nested functions and their parent function.</p>
+<h2>2. Why nonlocal Exists</h2>
+<p>By default, Python treats any variable assigned inside a function as local to that function, leading to UnboundLocalError when trying to modify an outer variable without nonlocal.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">outer</span><span class="p">():</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">inner</span><span class="p">():</span>
+        <span class="k">nonlocal</span> <span class="n">count</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">count</span>
+
+    <span class="k">return</span> <span class="n">inner</span>
+
+<span class="n">counter</span> <span class="o">=</span> <span class="n">outer</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">counter</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">counter</span><span class="p">())</span>
+</code></pre></div>
+
+<p>nonlocal tells Python to bind count from the enclosing scope.</p>
+<h2>3. How nonlocal Works</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">parent</span><span class="p">():</span>
+    <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;Hello&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">child</span><span class="p">():</span>
+        <span class="k">nonlocal</span> <span class="n">message</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;Updated Message&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+
+    <span class="n">child</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+
+<span class="n">parent</span><span class="p">()</span>
+</code></pre></div>
+
+<p>child modifies message in the parent scope; change persists.</p>
+<h2>4. nonlocal vs Local vs Global</h2>
+<table>
+<thead>
+<tr>
+<th>Keyword</th>
+<th>Targets</th>
+<th>Scope Level</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>none</td>
+<td>Current function only</td>
+<td>Local</td>
+</tr>
+<tr>
+<td>nonlocal</td>
+<td>Enclosing function</td>
+<td>Nested</td>
+</tr>
+<tr>
+<td>global</td>
+<td>Module-level</td>
+<td>Global</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">outer</span><span class="p">():</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">50</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">inner</span><span class="p">():</span>
+        <span class="k">nonlocal</span> <span class="n">x</span>
+        <span class="n">x</span> <span class="o">+=</span> <span class="mi">10</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">inner</span><span class="p">()</span>
+
+<span class="n">outer</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># global x unchanged</span>
+</code></pre></div>
+
+<h2>5. Scoped State Maintenance Example</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">create_counter</span><span class="p">():</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">increment</span><span class="p">():</span>
+        <span class="k">nonlocal</span> <span class="n">count</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">count</span>
+
+    <span class="k">return</span> <span class="n">increment</span>
+
+<span class="n">counter</span> <span class="o">=</span> <span class="n">create_counter</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">counter</span><span class="p">())</span>  <span class="c1"># 1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">counter</span><span class="p">())</span>  <span class="c1"># 2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">counter</span><span class="p">())</span>  <span class="c1"># 3</span>
+</code></pre></div>
+
+<p>Creates private state that persists across calls.</p>
+<h2>6. Usage in Real-World Function Factories</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">tax_calculator</span><span class="p">(</span><span class="n">rate</span><span class="p">):</span>
+    <span class="n">tax</span> <span class="o">=</span> <span class="n">rate</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">calculate</span><span class="p">(</span><span class="n">amount</span><span class="p">):</span>
+        <span class="k">nonlocal</span> <span class="n">tax</span>
+        <span class="k">return</span> <span class="n">amount</span> <span class="o">*</span> <span class="n">tax</span>
+
+    <span class="k">return</span> <span class="n">calculate</span>
+
+<span class="n">gst</span> <span class="o">=</span> <span class="n">tax_calculator</span><span class="p">(</span><span class="mf">0.18</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">gst</span><span class="p">(</span><span class="mi">1000</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Closure + nonlocal enable dynamic configuration.</p>
+<h2>7. Nested Closure Control</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">outer</span><span class="p">():</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">middle</span><span class="p">():</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="mi">20</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">inner</span><span class="p">():</span>
+            <span class="k">nonlocal</span> <span class="n">b</span>
+            <span class="n">b</span> <span class="o">+=</span> <span class="n">a</span>
+            <span class="k">return</span> <span class="n">b</span>
+
+        <span class="k">return</span> <span class="n">inner</span>
+
+    <span class="k">return</span> <span class="n">middle</span><span class="p">()</span>
+
+<span class="n">func</span> <span class="o">=</span> <span class="n">outer</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">func</span><span class="p">())</span>
+</code></pre></div>
+
+<p>nonlocal modifies only direct enclosing variable (b), not a.</p>
+<h2>8. Error Without nonlocal</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">demo</span><span class="p">():</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">change</span><span class="p">():</span>
+        <span class="k">nonlocal</span> <span class="n">x</span>
+        <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">x</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">change</span><span class="p">())</span>
+
+<span class="n">demo</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Without nonlocal, x inside change would raise UnboundLocalError.</p>
+<h2>9. Enterprise Example: Session-Based Value Tracking</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">session_tracker</span><span class="p">(</span><span class="n">user</span><span class="p">):</span>
+    <span class="n">activity</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">track</span><span class="p">():</span>
+        <span class="k">nonlocal</span> <span class="n">activity</span>
+        <span class="n">activity</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">user</span><span class="si">}</span><span class="s2"> activity count: </span><span class="si">{</span><span class="n">activity</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="k">return</span> <span class="n">track</span>
+
+<span class="n">tracker</span> <span class="o">=</span> <span class="n">session_tracker</span><span class="p">(</span><span class="s2">&quot;CSP&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tracker</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tracker</span><span class="p">())</span>
+</code></pre></div>
+
+<p>Models session persistence/stateful services/user analytics handlers.</p>
+<h2>10. Common Use Cases</h2>
+<ul>
+<li>Counters</li>
+<li>Logging handlers</li>
+<li>State machines</li>
+<li>Configuration wrappers</li>
+<li>Event-driven triggers</li>
+</ul>
+<hr>
+<p><strong>Score: 25</strong></p>
+<p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
+
+</p>
+
+
+
+
+</article>
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+    <aside class="large-3 columns">
+        <h5 class="sidebar-title">Site</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/archives.html">Archives</a>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/tags.html">Tags</a>
+        </ul>
+
+		
+        <h5 class="sidebar-title">Categories</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/pandas-work.html">pandas-work</a></li>
+   
+        </ul>
+
+		
+        <h5 class="sidebar-title">Social</h5>
+        <ul class="side-nav">
+            <li><a href="https://github.com/accsaikiran-sys/">GitHub</a></li>
+            <li><a href="<linkedin handle>">LinkedIn</a></li>
+        </ul>
+
+    </aside> <!-- End Sidebar -->
+
+</div> <!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+              <!--                  <p>My Python Notes by Sai Kiran Reddy</p> -->
+            </div>
+            </div>
+    </div>
+</footer>
+</body>
+</html>

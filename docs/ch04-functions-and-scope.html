@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Ch04 Functions And Scope</title>
+
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/normalize.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/style.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/pygments.css" />	
+    <script src="https://accsaikiran-sys.github.io/pynotes/theme/js/modernizr.js"></script>
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<nav>
+<div class="top-bar">
+<div class="row">
+    <div class="large-9 large-centered columns">
+	    <h1><a href="https://accsaikiran-sys.github.io/pynotes">My Python Notes</a></h1>
+    </div>
+</div>
+</div>
+
+<!-- Show menu items and pages -->
+<div class="row">
+<div class="large-9 columns">
+    <ul class="button-group navigation">
+
+    </ul>
+</div>
+</div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns">
+<article>
+    <header>
+        <h3 class="article-title"><a href="https://accsaikiran-sys.github.io/pynotes/ch04-functions-and-scope.html" rel="bookmark"
+        title="Permalink to Ch04 Functions And Scope">Ch04 Functions And Scope</a></h3>
+    </header>
+
+<h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
+</h6>
+
+
+    <h1>Functions and Scope</h1>
+<h2>1. Strategic Overview</h2>
+<p>Functions and Scope define where names (variables, functions, constants) are visible and how they are resolved during execution. Together, they form the core of Python's execution model:</p>
+<ul>
+<li>Functions create scope boundaries</li>
+<li>Scope determines where a name can be read or written</li>
+<li>Name resolution follows a deterministic search order</li>
+</ul>
+<p>In production systems, misunderstanding scope leads to subtle bugs, leaky state, hard-to-debug side effects, and unexpected interactions between modules.</p>
+<p>Functions encapsulate behavior; scope encapsulates where names live and how they are resolved.</p>
+<h2>2. Enterprise Significance</h2>
+<p>Poor scope handling results in:
+- Accidental dependence on globals
+- Name collisions across modules
+- Hidden mutations and side effects
+- Non-deterministic behavior during refactors</p>
+<p>Disciplined use of functions and scope enables predictable behavior boundaries, safer refactoring of large codebases, clear ownership of state, easy reasoning about variable lifetimes, and clean API and module design.</p>
+<h2>3. The LEGB Rule: Name Resolution Order</h2>
+<p>Python resolves names according to the LEGB rule:
+- L – Local: Inside the current function (or comprehension)
+- E – Enclosing: In any enclosing function scopes (for nested functions)
+- G – Global: At module level
+- B – Built-in: Python's built-in namespace (len, print, etc.)</p>
+<p>When you reference a name, Python searches in that order.</p>
+<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;global&quot;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">outer</span><span class="p">():</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;enclosing&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">inner</span><span class="p">():</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;local&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="n">inner</span><span class="p">()</span>
+
+<span class="n">outer</span><span class="p">()</span>  <span class="c1"># prints &quot;local&quot;</span>
+</code></pre></div>
+
+<h2>4. Function Scope: Local Namespace</h2>
+<p>A function call creates a local scope.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">process_order</span><span class="p">(</span><span class="n">order_id</span><span class="p">):</span>
+    <span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;PENDING&quot;</span>  <span class="c1"># Local to process_order</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">order_id</span><span class="p">,</span> <span class="n">status</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Properties: names defined inside a function are not visible outside it; they live for the duration of the function call; different calls get independent local scopes.</p>
+<h2>5. Global Scope: Module Namespace</h2>
+<p>Names at the top level of a module live in the module's global scope.</p>
+<div class="highlight"><pre><span></span><code><span class="n">TIMEOUT_SECONDS</span> <span class="o">=</span> <span class="mi">30</span>  <span class="c1"># Global (module-level)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">connect</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">TIMEOUT_SECONDS</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Key points: "Global" means module-level, not entire program; each module has its own global namespace; other modules see globals via imports.</p>
+<h2>6. Built-in Scope</h2>
+<p>Provided by Python: core functions (len, print, sum, etc.) and exceptions (ValueError, TypeError, etc.).</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">builtins</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;len&#39;</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">builtins</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Best practice: avoid defining variables with the same names as built-ins to prevent shadowing.</p>
+<h2>7. Enclosing (Nonlocal) Scope and Nested Functions</h2>
+<p>Nested functions introduce enclosing scopes.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">outer</span><span class="p">():</span>
+    <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;outer&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">inner</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>  <span class="c1"># from enclosing scope</span>
+
+    <span class="n">inner</span><span class="p">()</span>
+
+<span class="n">outer</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Foundation for closures, decorators, factory functions, and function-based configuration.</p>
+<h2>8. Closures: Functions Capturing Scope</h2>
+<p>A closure "remembers" variables from its enclosing scope, even after that scope has finished executing.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">multiplier</span><span class="p">(</span><span class="n">factor</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">inner</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">factor</span>  <span class="c1"># captures factor</span>
+    <span class="k">return</span> <span class="n">inner</span>
+
+<span class="n">double</span> <span class="o">=</span> <span class="n">multiplier</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">double</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>  <span class="c1"># 20</span>
+</code></pre></div>
+
+<p>Captured variables are stored in <strong>closure</strong>; useful for configurable behavior and decorators.</p>
+<h2>9. Reading vs Writing Variables: Scope Rules</h2>
+<p>Reading follows LEGB. Writing inside a function creates/updates a local variable unless declared otherwise.</p>
+<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">func</span><span class="p">():</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">20</span>  <span class="c1"># local, does not change global x</span>
+
+<span class="n">func</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># 10</span>
+</code></pre></div>
+
+<p>To write to global or enclosing variables, explicitly declare intent.</p>
+<h2>10. global Keyword: Modifying Module-Level State</h2>
+<div class="highlight"><pre><span></span><code><span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># module-level</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">increment</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">counter</span>
+    <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="n">increment</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">counter</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Globals introduce coupling and testing challenges; use sparingly.</p>
+<h2>11. nonlocal Keyword: Modifying Enclosing Scope</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">outer</span><span class="p">():</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">inner</span><span class="p">():</span>
+        <span class="k">nonlocal</span> <span class="n">count</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">count</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">inner</span><span class="p">())</span>  <span class="c1"># 1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">inner</span><span class="p">())</span>  <span class="c1"># 2</span>
+
+<span class="n">outer</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Targets nearest enclosing function scope; useful for stateful closures and decorators, but can reduce clarity if overused.</p>
+<h2>12. Shadowing: Name Collisions Across Scopes</h2>
+<div class="highlight"><pre><span></span><code><span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;global&quot;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">func</span><span class="p">():</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;local&quot;</span>  <span class="c1"># shadows global</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+<span class="n">func</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Avoid unintentional shadowing; choose descriptive names and avoid reusing names from outer scopes unless intentional.</p>
+<h2>13. Scope and Default Parameter Values</h2>
+<p>Defaults are evaluated once at function definition time in the defining scope.</p>
+<div class="highlight"><pre><span></span><code><span class="n">DEFAULT_TIMEOUT</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">connect</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="n">DEFAULT_TIMEOUT</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">timeout</span>
+</code></pre></div>
+
+<p>Mutable default anti-pattern:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_item</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">items</span><span class="o">=</span><span class="p">[]):</span>  <span class="c1"># BAD</span>
+    <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">items</span>
+</code></pre></div>
+
+<p>Fix:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_item</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">items</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">items</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">items</span>
+</code></pre></div>
+
+<h2>14. Scope in Comprehensions (Python 3+)</h2>
+<p>Comprehension variables are local to the comprehension and do not leak into surrounding scope.</p>
+<div class="highlight"><pre><span></span><code><span class="n">squares</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x&#39;</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">())</span>  <span class="c1"># False in Python 3</span>
+</code></pre></div>
+
+<p>Generator expressions also have their own scope, reducing namespace pollution.</p>
+<h2>15. Scope and Lambdas</h2>
+<p>Lambdas close over variables, not values.</p>
+<div class="highlight"><pre><span></span><code><span class="n">funcs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">funcs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">i</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">([</span><span class="n">f</span><span class="p">()</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">funcs</span><span class="p">])</span>  <span class="c1"># [2, 2, 2]</span>
+
+<span class="c1"># Fix using default argument capture</span>
+<span class="n">funcs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">funcs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="k">lambda</span> <span class="n">i</span><span class="o">=</span><span class="n">i</span><span class="p">:</span> <span class="n">i</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">([</span><span class="n">f</span><span class="p">()</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">funcs</span><span class="p">])</span>  <span class="c1"># [0, 1, 2]</span>
+</code></pre></div>
+
+<p>Critical scope behavior in real systems.</p>
+<h2>16. Scope and Modules: Import Patterns</h2>
+<p>Modules are scopes; import style affects visibility and maintainability.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># a.py</span>
+<span class="n">VALUE</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="c1"># b.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">a</span><span class="w"> </span><span class="kn">import</span> <span class="n">VALUE</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">a</span>
+
+<span class="c1"># In b.py, VALUE is the imported name; a.VALUE refers to module attribute</span>
+</code></pre></div>
+
+<p>Prefer <code>import module</code> over <code>from module import *</code>; avoid star imports to reduce collisions and improve tooling.</p>
+<h2>17. Functions as Scope Boundaries for Refactoring</h2>
+<p>Use functions to introduce scopes and reduce globals.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="c1"># move script logic here to limit globals</span>
+    <span class="o">...</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Localizes variables, improves testability, and reduces state leakage on import.</p>
+<h2>18. Scope and Testing: Isolating State</h2>
+<p>Avoid test-dependent globals and singletons with module-level state; encapsulate state in functions/classes to prevent cross-test contamination.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">build_service</span><span class="p">(</span><span class="n">config</span><span class="p">):</span>
+    <span class="c1"># config is scoped to this function</span>
+    <span class="k">return</span> <span class="n">Service</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Test multiple configurations safely.</p>
+<h2>19. Scope-Aware API Design</h2>
+<p>Minimize reliance on module-level mutable state; prefer explicit parameters over hidden dependencies. If globals are used, encapsulate access.</p>
+<div class="highlight"><pre><span></span><code><span class="n">_config</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">set_config</span><span class="p">(</span><span class="n">cfg</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">_config</span>
+    <span class="n">_config</span> <span class="o">=</span> <span class="n">cfg</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_config</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">_config</span>
+</code></pre></div>
+
+<p>Better: pass config explicitly to functions and objects.</p>
+<h2>20. Scope in Decorators</h2>
+<p>Decorators rely on nested functions and closures.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">log_calls</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Calling </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">count_calls</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">nonlocal</span> <span class="n">count</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> called </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2"> times&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
+</code></pre></div>
+
+<p>Closures and nonlocal are essential for robust decorator design.</p>
+<h2>21. Common Scope Anti-Patterns</h2>
+<table>
+<thead>
+<tr>
+<th>Anti-Pattern</th>
+<th>Risk/Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Overuse of global for shared state</td>
+<td>Tight coupling, unpredictable behavior</td>
+</tr>
+<tr>
+<td>Hidden dependencies on module-level variables</td>
+<td>Hard-to-test, fragile refactors</td>
+</tr>
+<tr>
+<td>Name shadowing of built-ins (e.g., list)</td>
+<td>Confusing errors, broken expectations</td>
+</tr>
+<tr>
+<td>Complex nested closures with nonlocal webs</td>
+<td>Hard-to-reason-about state, maintenance hazards</td>
+</tr>
+<tr>
+<td>Relying on default scope leaks (Py2 habits)</td>
+<td>Wrong mental model, subtle bugs in Py3</td>
+</tr>
+</tbody>
+</table>
+<h2>22. Governance Model: Functions + Scope</h2>
+<p>Intent → Function Boundary → Scope Definition → Name Resolution (LEGB) → State Ownership (local/enclosing/global) → Mutation Rules (local/global/nonlocal) → Testability &amp; Refactorability.</p>
+<p>Decisions should be explicit about where state lives, intentional about where names are read/written, and designed for long-term maintainability.</p>
+<hr>
+<p><strong>Score: 60</strong></p>
+<p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
+
+</p>
+
+
+
+
+</article>
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+    <aside class="large-3 columns">
+        <h5 class="sidebar-title">Site</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/archives.html">Archives</a>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/tags.html">Tags</a>
+        </ul>
+
+		
+        <h5 class="sidebar-title">Categories</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/pandas-work.html">pandas-work</a></li>
+   
+        </ul>
+
+		
+        <h5 class="sidebar-title">Social</h5>
+        <ul class="side-nav">
+            <li><a href="https://github.com/accsaikiran-sys/">GitHub</a></li>
+            <li><a href="<linkedin handle>">LinkedIn</a></li>
+        </ul>
+
+    </aside> <!-- End Sidebar -->
+
+</div> <!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+              <!--                  <p>My Python Notes by Sai Kiran Reddy</p> -->
+            </div>
+            </div>
+    </div>
+</footer>
+</body>
+</html>

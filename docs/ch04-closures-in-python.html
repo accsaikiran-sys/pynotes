@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Ch04 Closures In Python</title>
+
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/normalize.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/style.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/pygments.css" />	
+    <script src="https://accsaikiran-sys.github.io/pynotes/theme/js/modernizr.js"></script>
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<nav>
+<div class="top-bar">
+<div class="row">
+    <div class="large-9 large-centered columns">
+	    <h1><a href="https://accsaikiran-sys.github.io/pynotes">My Python Notes</a></h1>
+    </div>
+</div>
+</div>
+
+<!-- Show menu items and pages -->
+<div class="row">
+<div class="large-9 columns">
+    <ul class="button-group navigation">
+
+    </ul>
+</div>
+</div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns">
+<article>
+    <header>
+        <h3 class="article-title"><a href="https://accsaikiran-sys.github.io/pynotes/ch04-closures-in-python.html" rel="bookmark"
+        title="Permalink to Ch04 Closures In Python">Ch04 Closures In Python</a></h3>
+    </header>
+
+<h6 class="subheader" title="2025-12-17T00:00:00-05:00">Wed 17 December 2025
+</h6>
+
+
+    <h1>Closures in Python</h1>
+<h2>1. Concept Overview</h2>
+<p>A closure is a function object that remembers and has access to variables in its enclosing lexical scope, even when the outer function has finished execution.</p>
+<p>A closure “closes over” variables from its parent function and preserves them, enabling:
+- Persistent state without globals
+- Functional programming patterns
+- Encapsulation of logic
+- Safer state management</p>
+<h2>2. Basic Closure Structure</h2>
+<p>A closure requires a nested function, a reference to an outer variable, and returning the inner function.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">outer</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">inner</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">inner</span>
+
+<span class="n">fn</span> <span class="o">=</span> <span class="n">outer</span><span class="p">(</span><span class="s2">&quot;Hello Closure&quot;</span><span class="p">)</span>
+<span class="n">fn</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Even after outer() finishes, message is still accessible.</p>
+<h2>3. How Closures Work Internally</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">outer</span><span class="p">():</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">inner</span><span class="p">():</span>
+        <span class="k">return</span> <span class="n">x</span>
+    <span class="k">return</span> <span class="n">inner</span>
+
+<span class="n">closure_func</span> <span class="o">=</span> <span class="n">outer</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">closure_func</span><span class="o">.</span><span class="vm">__closure__</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>closure</strong> stores references to closed-over variables; this is how Python preserves state.</p>
+<h2>4. State Persistence with Closure</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">counter</span><span class="p">():</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">increment</span><span class="p">():</span>
+        <span class="k">nonlocal</span> <span class="n">count</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">count</span>
+    <span class="k">return</span> <span class="n">increment</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="n">counter</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">())</span>  <span class="c1"># 1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">())</span>  <span class="c1"># 2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">())</span>  <span class="c1"># 3</span>
+</code></pre></div>
+
+<p>Behaves like a private variable with memory.</p>
+<h2>5. Independent Closure Instances</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">multiplier</span><span class="p">(</span><span class="n">factor</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">multiply</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">value</span> <span class="o">*</span> <span class="n">factor</span>
+    <span class="k">return</span> <span class="n">multiply</span>
+
+<span class="n">double</span> <span class="o">=</span> <span class="n">multiplier</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">triple</span> <span class="o">=</span> <span class="n">multiplier</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">double</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>  <span class="c1"># 20</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">triple</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>  <span class="c1"># 30</span>
+</code></pre></div>
+
+<p>Each closure has its own isolated environment.</p>
+<h2>6. Closure vs Global Variable</h2>
+<p>Closures encapsulate state and are safer, more testable, and less risky in concurrency than globals, which share state and increase coupling.</p>
+<h2>7. Closures with Multiple Variables</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">build_profile</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">profile_view</span><span class="p">():</span>
+        <span class="k">nonlocal</span> <span class="n">count</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> viewed </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2"> times&quot;</span>
+
+    <span class="k">return</span> <span class="n">profile_view</span>
+
+<span class="n">user</span> <span class="o">=</span> <span class="n">build_profile</span><span class="p">(</span><span class="s2">&quot;Alice&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="p">())</span>
+</code></pre></div>
+
+<p>Multiple values can be preserved and manipulated.</p>
+<h2>8. Closures as Function Factories</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">log_level</span><span class="p">(</span><span class="n">level</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">logger</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">level</span><span class="si">}</span><span class="s2">] </span><span class="si">{</span><span class="n">message</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">logger</span>
+
+<span class="n">info</span> <span class="o">=</span> <span class="n">log_level</span><span class="p">(</span><span class="s2">&quot;INFO&quot;</span><span class="p">)</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">log_level</span><span class="p">(</span><span class="s2">&quot;ERROR&quot;</span><span class="p">)</span>
+
+<span class="n">info</span><span class="p">(</span><span class="s2">&quot;Service started&quot;</span><span class="p">)</span>
+<span class="n">error</span><span class="p">(</span><span class="s2">&quot;Service failed&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Used extensively in logging and middleware.</p>
+<h2>9. Replacing Small Classes with Closures</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">bank_account</span><span class="p">(</span><span class="n">balance</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">withdraw</span><span class="p">(</span><span class="n">amount</span><span class="p">):</span>
+        <span class="k">nonlocal</span> <span class="n">balance</span>
+        <span class="k">if</span> <span class="n">amount</span> <span class="o">&lt;=</span> <span class="n">balance</span><span class="p">:</span>
+            <span class="n">balance</span> <span class="o">-=</span> <span class="n">amount</span>
+        <span class="k">return</span> <span class="n">balance</span>
+    <span class="k">return</span> <span class="n">withdraw</span>
+
+<span class="n">account</span> <span class="o">=</span> <span class="n">bank_account</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">account</span><span class="p">(</span><span class="mi">200</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">account</span><span class="p">(</span><span class="mi">300</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Closures can mimic class behavior with less boilerplate.</p>
+<h2>10. Enterprise Example: Configurable Service Wrapper</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">service_context</span><span class="p">(</span><span class="n">env</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="n">task</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Executing </span><span class="si">{</span><span class="n">task</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="n">env</span><span class="si">}</span><span class="s2"> environment&quot;</span>
+    <span class="k">return</span> <span class="n">execute</span>
+
+<span class="n">prod_service</span> <span class="o">=</span> <span class="n">service_context</span><span class="p">(</span><span class="s2">&quot;PROD&quot;</span><span class="p">)</span>
+<span class="n">dev_service</span> <span class="o">=</span> <span class="n">service_context</span><span class="p">(</span><span class="s2">&quot;DEV&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">prod_service</span><span class="p">(</span><span class="s2">&quot;DataSync&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dev_service</span><span class="p">(</span><span class="s2">&quot;DataSync&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Used in microservice orchestration, config binding, and environment-aware systems.</p>
+<h2>Closure Execution Lifecycle</h2>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Outer executed</td>
+<td>Initializes state</td>
+</tr>
+<tr>
+<td>Inner returned</td>
+<td>Captures state</td>
+</tr>
+<tr>
+<td>Outer ends</td>
+<td>State preserved</td>
+</tr>
+<tr>
+<td>Inner called</td>
+<td>Uses stored state</td>
+</tr>
+</tbody>
+</table>
+<h2>Common Closure Patterns</h2>
+<p>🔹 Memoization</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">memoize</span><span class="p">():</span>
+    <span class="n">cache</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">compute</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cache</span><span class="p">:</span>
+            <span class="n">cache</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
+        <span class="k">return</span> <span class="n">cache</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">compute</span>
+
+<span class="n">square</span> <span class="o">=</span> <span class="n">memoize</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">square</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">square</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>  <span class="c1"># cached</span>
+</code></pre></div>
+
+<p>🔹 Authorization Guard</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">authorize</span><span class="p">(</span><span class="n">role</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">access</span><span class="p">(</span><span class="n">action</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">role</span><span class="si">}</span><span class="s2"> allowed to perform </span><span class="si">{</span><span class="n">action</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">return</span> <span class="n">access</span>
+
+<span class="n">auth_admin</span> <span class="o">=</span> <span class="n">authorize</span><span class="p">(</span><span class="s2">&quot;admin&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">auth_admin</span><span class="p">(</span><span class="s2">&quot;delete&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<h2>Common Mistakes</h2>
+<ul>
+<li>Forgetting nonlocal when mutating enclosed variables</li>
+<li>Sharing unintended state</li>
+<li>Deeply nested closures</li>
+<li>Overusing closures when a class would be clearer</li>
+<li>Debugging complexity due to hidden state</li>
+</ul>
+<h2>Performance Considerations</h2>
+<p>Each closure maintains memory. Avoid excessive closures in large loops; prefer closures for scoped logic and use classes for complex lifecycles.</p>
+<h2>Best Practices</h2>
+<ul>
+<li>Use closures for lightweight state control</li>
+<li>Prefer clarity over clever nesting</li>
+<li>Keep closure logic minimal</li>
+<li>Document closure behavior explicitly</li>
+<li>Avoid deeply chained closures</li>
+</ul>
+<h2>Enterprise Importance</h2>
+<p>Closures are foundational to decorators, middleware pipelines, dependency injection, event-driven architectures, and functional data processing. They enable encapsulation without globals, predictable state retention, modular architecture, and thread-safe patterns.</p>
+<h2>Closures vs Nested Functions</h2>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Nested Function</th>
+<th>Closure</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scope</td>
+<td>Local execution</td>
+<td>Persistent storage</td>
+</tr>
+<tr>
+<td>Lifecycle</td>
+<td>Temporary</td>
+<td>Sustained</td>
+</tr>
+<tr>
+<td>Usage</td>
+<td>Encapsulation</td>
+<td>Stateful logic</td>
+</tr>
+</tbody>
+</table>
+<h2>Architectural Impact</h2>
+<p>Closures power decorators, strategy pattern, lazy evaluation, asynchronous workflows, and microservice configuration builders. Mastery is essential for framework engineering and high-performance functional systems.</p>
+<hr>
+<p><strong>Score: 35</strong></p>
+<p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
+
+</p>
+
+
+
+
+</article>
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+    <aside class="large-3 columns">
+        <h5 class="sidebar-title">Site</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/archives.html">Archives</a>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/tags.html">Tags</a>
+        </ul>
+
+		
+        <h5 class="sidebar-title">Categories</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/pandas-work.html">pandas-work</a></li>
+   
+        </ul>
+
+		
+        <h5 class="sidebar-title">Social</h5>
+        <ul class="side-nav">
+            <li><a href="https://github.com/accsaikiran-sys/">GitHub</a></li>
+            <li><a href="<linkedin handle>">LinkedIn</a></li>
+        </ul>
+
+    </aside> <!-- End Sidebar -->
+
+</div> <!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+              <!--                  <p>My Python Notes by Sai Kiran Reddy</p> -->
+            </div>
+            </div>
+    </div>
+</footer>
+</body>
+</html>
