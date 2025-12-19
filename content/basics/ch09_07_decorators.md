@@ -1,6 +1,6 @@
 ---
 title: Ch09 07 Decorators
-date: 2025-12-17
+date: 2025-12-18
 author: Your Name
 cell_count: 32
 score: 30

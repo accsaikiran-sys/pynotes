@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Ch05 Strings And Methods</title>
+
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/normalize.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/style.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/pygments.css" />	
+    <script src="https://accsaikiran-sys.github.io/pynotes/theme/js/modernizr.js"></script>
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<nav>
+<div class="top-bar">
+<div class="row">
+    <div class="large-9 large-centered columns">
+	    <h1><a href="https://accsaikiran-sys.github.io/pynotes">My Python Notes</a></h1>
+    </div>
+</div>
+</div>
+
+<!-- Show menu items and pages -->
+<div class="row">
+<div class="large-9 columns">
+    <ul class="button-group navigation">
+
+    </ul>
+</div>
+</div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns">
+<article>
+    <header>
+        <h3 class="article-title"><a href="https://accsaikiran-sys.github.io/pynotes/ch05-strings-and-methods.html" rel="bookmark"
+        title="Permalink to Ch05 Strings And Methods">Ch05 Strings And Methods</a></h3>
+    </header>
+
+<h6 class="subheader" title="2025-12-18T00:00:00-05:00">Thu 18 December 2025
+</h6>
+
+
+    <h1>Python Strings and String Methods</h1>
+<h2>1. Overview of Python String Methods</h2>
+<p>Python provides a rich set of built-in string methods for manipulating, validating, searching, and formatting text.</p>
+<div class="highlight"><pre><span></span><code><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Python Programming&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+</code></pre></div>
+
+<p>Strings are immutable; methods return new strings.</p>
+<h2>2. Case Conversion Methods</h2>
+<div class="highlight"><pre><span></span><code><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;PyThOn&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>      <span class="c1"># python</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>      <span class="c1"># PYTHON</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">title</span><span class="p">())</span>      <span class="c1"># Python</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">capitalize</span><span class="p">())</span> <span class="c1"># Python</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">swapcase</span><span class="p">())</span>   <span class="c1"># pYtHoN</span>
+</code></pre></div>
+
+<p>Used for normalization and consistent formatting.</p>
+<h2>3. Whitespace Removal Methods</h2>
+<div class="highlight"><pre><span></span><code><span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;   Hello World   &quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">lstrip</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">rstrip</span><span class="p">())</span>
+</code></pre></div>
+
+<p>Essential for sanitizing user input and API data.</p>
+<h2>4. Search &amp; Position Methods</h2>
+<div class="highlight"><pre><span></span><code><span class="n">sentence</span> <span class="o">=</span> <span class="s2">&quot;python is powerful&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">sentence</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;power&quot;</span><span class="p">))</span>   <span class="c1"># Returns index or -1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sentence</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;power&quot;</span><span class="p">))</span>  <span class="c1"># Raises error if not found</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sentence</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;o&quot;</span><span class="p">))</span>      <span class="c1"># Number of occurrences</span>
+</code></pre></div>
+
+<p>Used for content analysis and validation.</p>
+<h2>5. Validation Methods</h2>
+<div class="highlight"><pre><span></span><code><span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;Python123&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">isalpha</span><span class="p">())</span>   <span class="c1"># False</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">isdigit</span><span class="p">())</span>   <span class="c1"># False</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">isalnum</span><span class="p">())</span>   <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">isspace</span><span class="p">())</span>   <span class="c1"># False</span>
+</code></pre></div>
+
+<p>Critical for form validation and data filtering.</p>
+<h2>6. Replace &amp; Translate Methods</h2>
+<div class="highlight"><pre><span></span><code><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;I love Java&quot;</span>
+<span class="n">updated</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;Java&quot;</span><span class="p">,</span> <span class="s2">&quot;Python&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">updated</span><span class="p">)</span>
+
+<span class="n">table</span> <span class="o">=</span> <span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="s2">&quot;aeiou&quot;</span><span class="p">,</span> <span class="s2">&quot;12345&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">table</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Used for string encoding and sanitization.</p>
+<h2>7. Splitting and Joining Methods</h2>
+<div class="highlight"><pre><span></span><code><span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;apple,banana,orange&quot;</span>
+
+<span class="n">fruits</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+
+<span class="n">joined</span> <span class="o">=</span> <span class="s2">&quot; | &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">joined</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Fundamental for CSV parsing and structured data handling.</p>
+<h2>8. Alignment &amp; Padding Methods</h2>
+<div class="highlight"><pre><span></span><code><span class="n">word</span> <span class="o">=</span> <span class="s2">&quot;Python&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;*&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Useful in report generation and UI formatting.</p>
+<h2>9. String Formatting Methods</h2>
+<div class="highlight"><pre><span></span><code><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Alice&quot;</span>
+<span class="n">age</span> <span class="o">=</span> <span class="mi">30</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">age</span><span class="si">}</span><span class="s2"> years old&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> is </span><span class="si">{}</span><span class="s2"> years old&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Preferred approach: f-strings for performance and readability.</p>
+<h2>10. Enterprise Example: Input Normalization Pipeline</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">normalize_username</span><span class="p">(</span><span class="n">username</span><span class="p">):</span>
+    <span class="n">username</span> <span class="o">=</span> <span class="n">username</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">username</span> <span class="o">=</span> <span class="n">username</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">username</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">normalize_username</span><span class="p">(</span><span class="s2">&quot;  John Doe  &quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Standard for username processing, email sanitation, and data normalization layers.</p>
+<h2>Common String Methods Reference</h2>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lower()</td>
+<td>Convert to lowercase</td>
+</tr>
+<tr>
+<td>upper()</td>
+<td>Convert to uppercase</td>
+</tr>
+<tr>
+<td>strip()</td>
+<td>Remove surrounding spaces</td>
+</tr>
+<tr>
+<td>replace()</td>
+<td>Replace substring</td>
+</tr>
+<tr>
+<td>split()</td>
+<td>Convert string to list</td>
+</tr>
+<tr>
+<td>join()</td>
+<td>Combine list to string</td>
+</tr>
+<tr>
+<td>find()</td>
+<td>Locate substring</td>
+</tr>
+<tr>
+<td>count()</td>
+<td>Count occurrences</td>
+</tr>
+<tr>
+<td>isalpha()</td>
+<td>Alphabetic check</td>
+</tr>
+<tr>
+<td>isdigit()</td>
+<td>Numeric check</td>
+</tr>
+<tr>
+<td>startswith()</td>
+<td>Prefix validation</td>
+</tr>
+<tr>
+<td>endswith()</td>
+<td>Suffix validation</td>
+</tr>
+</tbody>
+</table>
+<h2>Method Categories</h2>
+<ul>
+<li>Transformation: lower(), upper(), capitalize(), title(), swapcase()</li>
+<li>Cleanup: strip(), lstrip(), rstrip(), replace()</li>
+<li>Validation: isalpha(), isdigit(), isalnum(), isnumeric()</li>
+<li>Formatting: center(), ljust(), rjust(), zfill()</li>
+<li>Parsing: split(), partition(), rsplit()</li>
+</ul>
+<hr>
+<p><strong>Score: 30</strong></p>
+<p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
+
+</p>
+
+
+
+
+</article>
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+    <aside class="large-3 columns">
+        <h5 class="sidebar-title">Site</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/archives.html">Archives</a>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/tags.html">Tags</a>
+        </ul>
+
+		
+        <h5 class="sidebar-title">Categories</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/pandas-work.html">pandas-work</a></li>
+   
+        </ul>
+
+		
+        <h5 class="sidebar-title">Social</h5>
+        <ul class="side-nav">
+            <li><a href="https://github.com/accsaikiran-sys/">GitHub</a></li>
+            <li><a href="<linkedin handle>">LinkedIn</a></li>
+        </ul>
+
+    </aside> <!-- End Sidebar -->
+
+</div> <!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+              <!--                  <p>My Python Notes by Sai Kiran Reddy</p> -->
+            </div>
+            </div>
+    </div>
+</footer>
+</body>
+</html>
