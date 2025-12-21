@@ -1,6 +1,6 @@
 ---
 title: Ch03 Control Flow Optimization
-date: 2025-12-18
+date: 2025-12-20
 author: Your Name
 cell_count: 78
 score: 75

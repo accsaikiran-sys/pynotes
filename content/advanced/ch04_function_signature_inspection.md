@@ -1,6 +1,6 @@
 ---
 title: Ch04 Function Signature Inspection
-date: 2025-12-18
+date: 2025-12-20
 author: Your Name
 cell_count: 61
 score: 60

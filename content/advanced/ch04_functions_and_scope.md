@@ -1,6 +1,6 @@
 ---
 title: Ch04 Functions And Scope
-date: 2025-12-18
+date: 2025-12-20
 author: Your Name
 cell_count: 62
 score: 60

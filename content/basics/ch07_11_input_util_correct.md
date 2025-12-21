@@ -1,6 +1,6 @@
 ---
 title: Ch07 11 Input Util Correct
-date: 2025-12-18
+date: 2025-12-20
 author: Your Name
 cell_count: 2
 score: 0

@@ -1,6 +1,6 @@
 ---
 title: Ch01 Scope References Mutability
-date: 2025-12-18
+date: 2025-12-20
 author: Your Name
 cell_count: 37
 score: 35

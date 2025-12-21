@@ -1,6 +1,6 @@
 ---
 title: Ch03 While Loop
-date: 2025-12-18
+date: 2025-12-20
 author: Your Name
 cell_count: 41
 score: 40

@@ -1,6 +1,6 @@
 ---
 title: Ch09 04 Generators
-date: 2025-12-18
+date: 2025-12-20
 author: Your Name
 cell_count: 36
 score: 35

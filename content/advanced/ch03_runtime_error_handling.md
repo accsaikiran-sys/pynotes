@@ -1,6 +1,6 @@
 ---
 title: Ch03 Runtime Error Handling
-date: 2025-12-18
+date: 2025-12-20
 author: Your Name
 cell_count: 66
 score: 65

@@ -1,6 +1,6 @@
 ---
 title: Ch04 Functions Deep Dive
-date: 2025-12-18
+date: 2025-12-20
 author: Your Name
 cell_count: 44
 score: 40

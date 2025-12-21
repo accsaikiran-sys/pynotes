@@ -47,8 +47,77 @@
 
 
             <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-15-safe-calculator.html"><h3 class="article-title">Ch07 15 Safe Calculator</h3></a>
+<h6 class="subheader" title="2025-12-20T00:00:00-05:00">Sat 20 December 2025
+</h6>
+
+
+<h1>ch07_15_safe_calculator</h1>
+<p>Created:20251121</p>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+    <span class="n">num1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter first number: &quot;</span><span class="p">))</span>
+    <span class="n">operator</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter operator (+, -, *, /): &quot;</span><span class="p">)</span>
+    <span class="n">num2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter second number: &quot;</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">operator</span> <span class="o">==</span> <span class="s1">&#39;+&#39;</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">+</span> <span class="n">num2</span>
+    <span class="k">elif</span> <span class="n">operator</span> <span class="o">==</span> <span class="s1">&#39;-&#39;</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">-</span> <span class="n">num2</span>
+    <span class="k">elif</span> <span class="n">operator</span> <span class="o">==</span> <span class="s1">&#39;*&#39;</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">*</span> <span class="n">num2</span>
+    <span class="k">elif</span> <span class="n">operator</span> <span class="o">==</span> <span class="s1">&#39;/&#39;</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">/</span> <span class="n">num2</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unsupported operator&quot;</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Result:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">ZeroDivisionError …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-15-safe-calculator.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-16-string-to-float-conversion.html"><h3 class="article-title">Ch07 16 String To Float Conversion</h3></a>
+<h6 class="subheader" title="2025-12-20T00:00:00-05:00">Sat 20 December 2025
+</h6>
+
+
+<h1>ch07_16_string_to_float_conversion</h1>
+<p>Created:20251121</p>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+    <span class="n">user_input</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter a number: &quot;</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">user_input</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Converted number: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Please enter a valid decimal number.&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr>
+<p><strong>Score: 0</strong></p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-16-string-to-float-conversion.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
                 <a href="https://accsaikiran-sys.github.io/pynotes/ch07-17-square-root-calc.html"><h3 class="article-title">Ch07 17 Square Root Calc</h3></a>
-<h6 class="subheader" title="2025-12-18T00:00:00-05:00">Thu 18 December 2025
+<h6 class="subheader" title="2025-12-20T00:00:00-05:00">Sat 20 December 2025
 </h6>
 
 
@@ -78,7 +147,7 @@
 
             <article>
                 <a href="https://accsaikiran-sys.github.io/pynotes/ch07-18-safe-file-reading.html"><h3 class="article-title">Ch07 18 Safe File Reading</h3></a>
-<h6 class="subheader" title="2025-12-18T00:00:00-05:00">Thu 18 December 2025
+<h6 class="subheader" title="2025-12-20T00:00:00-05:00">Sat 20 December 2025
 </h6>
 
 
@@ -109,7 +178,7 @@
 
             <article>
                 <a href="https://accsaikiran-sys.github.io/pynotes/ch07-19-integer-only-list.html"><h3 class="article-title">Ch07 19 Integer Only List</h3></a>
-<h6 class="subheader" title="2025-12-18T00:00:00-05:00">Thu 18 December 2025
+<h6 class="subheader" title="2025-12-20T00:00:00-05:00">Sat 20 December 2025
 </h6>
 
 
@@ -140,7 +209,7 @@
 
             <article>
                 <a href="https://accsaikiran-sys.github.io/pynotes/ch07-2-convert-input-interger.html"><h3 class="article-title">Ch07 2 Convert Input Interger</h3></a>
-<h6 class="subheader" title="2025-12-18T00:00:00-05:00">Thu 18 December 2025
+<h6 class="subheader" title="2025-12-20T00:00:00-05:00">Sat 20 December 2025
 </h6>
 
 
@@ -171,7 +240,7 @@
 
             <article>
                 <a href="https://accsaikiran-sys.github.io/pynotes/ch07-20-no-internet-exception.html"><h3 class="article-title">Ch07 20 No Internet Exception</h3></a>
-<h6 class="subheader" title="2025-12-18T00:00:00-05:00">Thu 18 December 2025
+<h6 class="subheader" title="2025-12-20T00:00:00-05:00">Sat 20 December 2025
 </h6>
 
 
@@ -202,7 +271,7 @@
 
             <article>
                 <a href="https://accsaikiran-sys.github.io/pynotes/ch07-21-temp-validator.html"><h3 class="article-title">Ch07 21 Temp Validator</h3></a>
-<h6 class="subheader" title="2025-12-18T00:00:00-05:00">Thu 18 December 2025
+<h6 class="subheader" title="2025-12-20T00:00:00-05:00">Sat 20 December 2025
 </h6>
 
 
@@ -232,7 +301,7 @@
 
             <article>
                 <a href="https://accsaikiran-sys.github.io/pynotes/ch07-22-password-checker.html"><h3 class="article-title">Ch07 22 Password Checker</h3></a>
-<h6 class="subheader" title="2025-12-18T00:00:00-05:00">Thu 18 December 2025
+<h6 class="subheader" title="2025-12-20T00:00:00-05:00">Sat 20 December 2025
 </h6>
 
 
@@ -264,7 +333,7 @@
 
             <article>
                 <a href="https://accsaikiran-sys.github.io/pynotes/ch07-23-calc-with-try-finally.html"><h3 class="article-title">Ch07 23 Calc With Try Finally</h3></a>
-<h6 class="subheader" title="2025-12-18T00:00:00-05:00">Thu 18 December 2025
+<h6 class="subheader" title="2025-12-20T00:00:00-05:00">Sat 20 December 2025
 </h6>
 
 
@@ -292,73 +361,9 @@
                 <hr  class="gradient"/>
             </article>
 
-        
-
-
-            <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-24-simple-age-group-checker.html"><h3 class="article-title">Ch07 24 Simple Age Group Checker</h3></a>
-<h6 class="subheader" title="2025-12-18T00:00:00-05:00">Thu 18 December 2025
-</h6>
-
-
-<h1>Ch07 24 Simple Age Group Checker</h1>
-<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
-    <span class="n">age</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span> <span class="p">(</span><span class="s2">&quot;Enter age: &quot;</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">age</span> <span class="o">&lt;</span><span class="mi">13</span><span class="p">:</span>
-        <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Child&quot;</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">age</span> <span class="o">&lt;</span><span class="mi">18</span><span class="p">:</span>
-        <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Teenager&quot;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Adult&quot;</span><span class="p">)</span>
-<span class="k">except</span> <span class="ne">ValueError</span> <span class="p">:</span>
-    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Invalid age&quot;</span><span class="p">)</span>
-</code></pre></div>
-
-<hr>
-<p><strong>Score: 0</strong></p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
-
-</p>
-
-
-
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-24-simple-age-group-checker.html">Read More</a>
-                <hr  class="gradient"/>
-            </article>
-
-        
-
-
-            <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-25-safee-dictionary-update.html"><h3 class="article-title">Ch07 25 Safee Dictionary Update</h3></a>
-<h6 class="subheader" title="2025-12-18T00:00:00-05:00">Thu 18 December 2025
-</h6>
-
-
-<h1>ch07_25_safee_dictionary_update</h1>
-<p>Created:20251122</p>
-<div class="highlight"><pre><span></span><code><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Jerin&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">22</span><span class="p">}</span>
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="n">key</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter key to update: &quot;</span><span class="p">)</span>
-    <span class="c1"># Accessing the key to trigger KeyError if it doesn&#39;t exist</span>
-    <span class="n">_</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
-
-    <span class="c1"># If key exists, update it (using 25 as per previous context)</span>
-    <span class="n">key_data</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter value to update: &quot;</span><span class="p">)</span>
-    <span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">key_data</span>
-    <span class="nb">print …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
-
-</p>
-
-
-
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-25-safee-dictionary-update.html">Read More</a>
-                <hr  class="gradient"/>
-            </article>
-
             <!-- /#posts-list -->
 <div class="pagination-centered">
-<h6 class="subheader">Page 9 of 13</h6>
+<h6 class="subheader">Page 9 of 14</h6>
 
 <p>
             <a href="https://accsaikiran-sys.github.io/pynotes/index8.html">&laquo; Prev</a>
