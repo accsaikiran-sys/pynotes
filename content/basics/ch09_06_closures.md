@@ -1,6 +1,6 @@
 ---
 title: Ch09 06 Closures
-date: 2025-12-20
+date: 2025-12-24
 author: Your Name
 cell_count: 32
 score: 30

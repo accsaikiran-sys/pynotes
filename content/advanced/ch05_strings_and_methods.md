@@ -1,6 +1,6 @@
 ---
 title: Ch05 Strings And Methods
-date: 2025-12-20
+date: 2025-12-24
 author: Your Name
 cell_count: 33
 score: 30

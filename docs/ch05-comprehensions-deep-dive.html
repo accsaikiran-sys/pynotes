@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Ch05 Comprehensions Deep Dive</title>
+
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/normalize.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/style.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/pygments.css" />	
+    <script src="https://accsaikiran-sys.github.io/pynotes/theme/js/modernizr.js"></script>
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<nav>
+<div class="top-bar">
+<div class="row">
+    <div class="large-9 large-centered columns">
+	    <h1><a href="https://accsaikiran-sys.github.io/pynotes">My Python Notes</a></h1>
+    </div>
+</div>
+</div>
+
+<!-- Show menu items and pages -->
+<div class="row">
+<div class="large-9 columns">
+    <ul class="button-group navigation">
+
+    </ul>
+</div>
+</div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns">
+<article>
+    <header>
+        <h3 class="article-title"><a href="https://accsaikiran-sys.github.io/pynotes/ch05-comprehensions-deep-dive.html" rel="bookmark"
+        title="Permalink to Ch05 Comprehensions Deep Dive">Ch05 Comprehensions Deep Dive</a></h3>
+    </header>
+
+<h6 class="subheader" title="2025-12-24T00:00:00-05:00">Wed 24 December 2025
+</h6>
+
+
+    <h1>Python Comprehensions Deep Dive</h1>
+<h2>1. Strategic Overview</h2>
+<p>Python comprehensions (list, set, dict comprehensions and generator expressions) are declarative constructs for building collections and streams from iterables in a concise, expressive way.</p>
+<p>They are not just syntactic sugar. In production systems, comprehensions shape:</p>
+<ul>
+<li>Data transformation pipelines</li>
+<li>Filtering and mapping logic</li>
+<li>Readability of complex workflows</li>
+<li>Performance characteristics of data-heavy code</li>
+</ul>
+<p>Comprehensions compress "loop + condition + accumulation" into a single, declarative expression.</p>
+<h2>2. Enterprise Significance</h2>
+<p>Used correctly, comprehensions provide:</p>
+<ul>
+<li>Highly readable transformation logic</li>
+<li>Fewer bugs via reduced boilerplate</li>
+<li>Clear expression of mapping/filtering intent</li>
+<li>Good performance with tight, optimized loops</li>
+</ul>
+<p>Used poorly, they cause:</p>
+<ul>
+<li>Dense, unreadable "one-liners"</li>
+<li>Hidden performance issues on huge datasets</li>
+<li>Complex nesting that is hard to debug</li>
+<li>Memory bloat when generator expressions were more appropriate</li>
+</ul>
+<p>Enterprise-grade usage focuses on clarity first, then performance.</p>
+<h2>3. Core Comprehension Types</h2>
+<p>Python offers four main comprehension styles:</p>
+<p>List Comprehensions</p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="n">expr</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">iterable</span> <span class="k">if</span> <span class="n">condition</span><span class="p">]</span>
+</code></pre></div>
+
+<p>Set Comprehensions</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="n">expr</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">iterable</span> <span class="k">if</span> <span class="n">condition</span><span class="p">}</span>
+</code></pre></div>
+
+<p>Dict Comprehensions</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="n">key_expr</span><span class="p">:</span> <span class="n">value_expr</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">iterable</span> <span class="k">if</span> <span class="n">condition</span><span class="p">}</span>
+</code></pre></div>
+
+<p>Generator Expressions</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">expr</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">iterable</span> <span class="k">if</span> <span class="n">condition</span><span class="p">)</span>
+</code></pre></div>
+
+<p>All share the same conceptual pattern:</p>
+<p>Iterate -&gt; filter (optional) -&gt; transform -&gt; collect</p>
+<h2>4. List Comprehensions</h2>
+<h3>4.1 Basic structure</h3>
+<div class="highlight"><pre><span></span><code><span class="n">squares</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+</code></pre></div>
+
+<p>Equivalent loop:</p>
+<div class="highlight"><pre><span></span><code><span class="n">squares</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">squares</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Benefits:</p>
+<ul>
+<li>More compact and expressive</li>
+<li>Localizes transformation logic in a single expression</li>
+</ul>
+<h3>4.2 With filtering</h3>
+<div class="highlight"><pre><span></span><code><span class="n">evens</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+</code></pre></div>
+
+<h3>4.3 Multiple for clauses (Cartesian products)</h3>
+<div class="highlight"><pre><span></span><code><span class="n">pairs</span> <span class="o">=</span> <span class="p">[(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
+</code></pre></div>
+
+<p>Equivalent to:</p>
+<div class="highlight"><pre><span></span><code><span class="n">pairs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+        <span class="n">pairs</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+</code></pre></div>
+
+<h2>5. Set Comprehensions</h2>
+<p>Set comprehensions create unique, unordered collections:</p>
+<div class="highlight"><pre><span></span><code><span class="n">unique_domains</span> <span class="o">=</span> <span class="p">{</span><span class="n">email</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;@&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">email</span> <span class="ow">in</span> <span class="n">emails</span><span class="p">}</span>
+</code></pre></div>
+
+<p>Characteristics:</p>
+<ul>
+<li>Deduplicates values automatically</li>
+<li>Ideal for "uniqueness" and membership use cases</li>
+</ul>
+<h2>6. Dict Comprehensions</h2>
+<p>Dict comprehensions build mappings:</p>
+<div class="highlight"><pre><span></span><code><span class="n">user_map</span> <span class="o">=</span> <span class="p">{</span><span class="n">user</span><span class="o">.</span><span class="n">id</span><span class="p">:</span> <span class="n">user</span> <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">users</span><span class="p">}</span>
+</code></pre></div>
+
+<p>With filtering:</p>
+<div class="highlight"><pre><span></span><code><span class="n">active_user_map</span> <span class="o">=</span> <span class="p">{</span><span class="n">u</span><span class="o">.</span><span class="n">id</span><span class="p">:</span> <span class="n">u</span> <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">users</span> <span class="k">if</span> <span class="n">u</span><span class="o">.</span><span class="n">is_active</span><span class="p">}</span>
+</code></pre></div>
+
+<p>Use cases:</p>
+<ul>
+<li>Indexing lists by ID or key</li>
+<li>Rebuilding config structures</li>
+<li>Grouping or remapping JSON-like data</li>
+</ul>
+<h2>7. Generator Expressions</h2>
+<p>Generator expressions create lazy sequences:</p>
+<div class="highlight"><pre><span></span><code><span class="n">squares</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Key properties:</p>
+<ul>
+<li>Do not build the full list in memory</li>
+<li>Values are produced on demand when iterated</li>
+<li>Excellent for large or streaming data</li>
+</ul>
+<p>Example consumption:</p>
+<div class="highlight"><pre><span></span><code><span class="n">total</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1_000_000</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Enterprise guidance:</p>
+<p>Use generator expressions when the full sequence is not needed at once.</p>
+<p>Use list/set/dict comprehensions when you actually need the materialized collection.</p>
+<h2>8. Comprehension Evaluation Order</h2>
+<p>Structure:</p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="n">expression</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">iterable</span> <span class="k">if</span> <span class="n">condition</span><span class="p">]</span>
+</code></pre></div>
+
+<p>Evaluation order:</p>
+<ul>
+<li>Iterate item over iterable</li>
+<li>For each item, evaluate condition (if present)</li>
+<li>If condition is true (or absent), evaluate expression</li>
+<li>Collect resulting value into target collection</li>
+</ul>
+<p>Understanding this order is key to avoiding subtle bugs in complex expressions.</p>
+<h2>9. Nested Comprehensions</h2>
+<p>Nested comprehensions allow multi-level transformations.</p>
+<p>Example: flatten a list of lists:</p>
+<div class="highlight"><pre><span></span><code><span class="n">matrix</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]]</span>
+<span class="n">flat</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">matrix</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">row</span><span class="p">]</span>
+</code></pre></div>
+
+<p>Read it as:</p>
+<div class="highlight"><pre><span></span><code><span class="n">flat</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">matrix</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
+        <span class="n">flat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Best practice:</p>
+<p>Max 2 levels of nesting.</p>
+<p>If you go beyond that, strongly consider refactoring to normal loops or helper functions.</p>
+<h2>10. Conditions in Comprehensions</h2>
+<p>You can use:</p>
+<ul>
+<li>Simple conditions after the for</li>
+<li>More complex logic inside the expression</li>
+</ul>
+<p>Filtering:</p>
+<div class="highlight"><pre><span></span><code><span class="n">active_ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">u</span><span class="o">.</span><span class="n">id</span> <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">users</span> <span class="k">if</span> <span class="n">u</span><span class="o">.</span><span class="n">is_active</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">u</span><span class="o">.</span><span class="n">is_banned</span><span class="p">]</span>
+</code></pre></div>
+
+<p>Inline conditional expression:</p>
+<div class="highlight"><pre><span></span><code><span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;even&quot;</span> <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">&quot;odd&quot;</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+</code></pre></div>
+
+<p>Rule of thumb:</p>
+<p>Keep the conditional part simple.</p>
+<p>Complex branching belongs in a function, not inline.</p>
+<h2>11. Comprehensions vs map() / filter()</h2>
+<p>Comprehensions are typically more Pythonic and readable.</p>
+<p>Example with map/filter:</p>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">numbers</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Comprehension form:</p>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">numbers</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Choose comprehensions when:</p>
+<ul>
+<li>Logic is simple and linear</li>
+<li>Readability is improved</li>
+</ul>
+<p>map/filter remain useful when:</p>
+<ul>
+<li>You already have named functions to apply</li>
+<li>You work in a more functional style or performance-tuned scenario</li>
+</ul>
+<h2>12. Performance Characteristics</h2>
+<p>Comprehensions are often faster than manual loops because:</p>
+<ul>
+<li>They are implemented in C-level loops under the hood</li>
+<li>They avoid repeated method lookups (e.g., list.append) in pure Python</li>
+</ul>
+<p>However:</p>
+<ul>
+<li>List/set/dict comprehensions still allocate the full collection in memory.</li>
+<li>Generator expressions avoid that by streaming.</li>
+</ul>
+<p>Guidance:</p>
+<p>Use comprehensions by default for small/medium collections.</p>
+<p>For very large datasets, prefer generator expressions or chunked processing.</p>
+<h2>13. Readability and Maintainability Guidelines</h2>
+<p>Control the temptation to "one-line everything".</p>
+<p>Good:</p>
+<div class="highlight"><pre><span></span><code><span class="n">active_users</span> <span class="o">=</span> <span class="p">[</span><span class="n">u</span> <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">users</span> <span class="k">if</span> <span class="n">u</span><span class="o">.</span><span class="n">is_active</span><span class="p">]</span>
+</code></pre></div>
+
+<p>Borderline:</p>
+<div class="highlight"><pre><span></span><code><span class="n">results</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">complex_transform</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">cache</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">users</span>
+    <span class="k">if</span> <span class="n">u</span><span class="o">.</span><span class="n">is_active</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">u</span><span class="o">.</span><span class="n">is_deleted</span> <span class="ow">and</span> <span class="n">has_required_role</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">roles</span><span class="p">)</span>
+<span class="p">]</span>
+</code></pre></div>
+
+<p>Bad:</p>
+<div class="highlight"><pre><span></span><code><span class="n">results</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">complex_transform</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">cache</span><span class="p">)</span> <span class="k">if</span> <span class="n">condition</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">cfg</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span> <span class="k">else</span> <span class="n">fallback</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">users</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">is_active</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">u</span><span class="o">.</span><span class="n">is_deleted</span> <span class="ow">and</span> <span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">region</span> <span class="ow">in</span> <span class="n">allowed_regions</span> <span class="ow">or</span> <span class="n">override</span><span class="p">(</span><span class="n">u</span><span class="p">)))</span>
+<span class="p">]</span>
+</code></pre></div>
+
+<p>When expressions become visually dense:</p>
+<ul>
+<li>Extract logic into named functions.</li>
+<li>Break the expression into intermediate steps.</li>
+<li>Consider plain loops for clarity.</li>
+</ul>
+<h2>14. Error Handling in Comprehensions</h2>
+<p>Comprehensions do not provide built-in try/except. You must handle exceptions in one of two ways:</p>
+<p>Inside the expression via helper function:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">safe_parse</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+<span class="n">parsed</span> <span class="o">=</span> <span class="p">[</span><span class="n">safe_parse</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">values</span><span class="p">]</span>
+</code></pre></div>
+
+<p>Or use explicit loops if error handling is complex:</p>
+<div class="highlight"><pre><span></span><code><span class="n">parsed</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">parsed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="n">log_invalid</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Rule: if error handling is non-trivial, use explicit loops.</p>
+<h2>15. Side Effects Inside Comprehensions</h2>
+<p>Technically possible, but discouraged:</p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="n">log</span><span class="p">(</span><span class="n">user</span><span class="p">)</span> <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">users</span><span class="p">]</span>  <span class="c1"># anti-pattern</span>
+</code></pre></div>
+
+<p>Comprehensions are for constructing data, not producing side effects.</p>
+<p>Best practice:</p>
+<p>Use comprehensions for creating collections.</p>
+<p>Use explicit loops when intent is side-effect (logging, I/O, external calls).</p>
+<h2>16. Comprehensions and Scope</h2>
+<p>Names defined inside comprehensions:</p>
+<p>In Python 3, loop variables in comprehensions are local to the comprehension and do not leak into the surrounding scope.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">s</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">]</span>
+<span class="c1"># x does not exist here (Python 3)</span>
+</code></pre></div>
+
+<p>This protects outer scope from accidental variable leakage.</p>
+<h2>17. Enterprise Patterns Using Comprehensions</h2>
+<p>Some common patterns:</p>
+<h3>17.1 Building indexes</h3>
+<div class="highlight"><pre><span></span><code><span class="n">user_by_id</span> <span class="o">=</span> <span class="p">{</span><span class="n">u</span><span class="o">.</span><span class="n">id</span><span class="p">:</span> <span class="n">u</span> <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">users</span><span class="p">}</span>
+</code></pre></div>
+
+<h3>17.2 Transforming API results</h3>
+<div class="highlight"><pre><span></span><code><span class="n">emails</span> <span class="o">=</span> <span class="p">[</span><span class="n">u</span><span class="p">[</span><span class="s2">&quot;email&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">api_response</span><span class="p">[</span><span class="s2">&quot;users&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="n">u</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;email&quot;</span><span class="p">)]</span>
+</code></pre></div>
+
+<h3>17.3 Feature flag / permissions filters</h3>
+<div class="highlight"><pre><span></span><code><span class="n">enabled_features</span> <span class="o">=</span> <span class="p">{</span><span class="n">f</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">features</span> <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">enabled</span><span class="p">}</span>
+</code></pre></div>
+
+<h3>17.4 Data pipeline stages</h3>
+<div class="highlight"><pre><span></span><code><span class="n">processed</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">normalize</span><span class="p">(</span><span class="n">clean</span><span class="p">(</span><span class="n">item</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">raw_items</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_corrupt</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+<span class="p">]</span>
+</code></pre></div>
+
+<h2>18. Common Anti-Patterns</h2>
+<table>
+<thead>
+<tr>
+<th>Anti-Pattern</th>
+<th>Problem</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Very long, nested comprehensions</td>
+<td>Hard to read, debug, and maintain</td>
+</tr>
+<tr>
+<td>Side-effect-only comprehensions</td>
+<td>Misuse of semantics; unclear intent</td>
+</tr>
+<tr>
+<td>Comprehensions on huge iterables (no streaming)</td>
+<td>Memory blow-ups, performance issues</td>
+</tr>
+<tr>
+<td>Hidden complex logic inside inline lambdas</td>
+<td>Reduce clarity, obscure business rules</td>
+</tr>
+<tr>
+<td>Overusing generator expressions where list needed multiple times</td>
+<td>Re-computation or subtle bugs</td>
+</tr>
+</tbody>
+</table>
+<h2>19. Governance Model for Comprehensions</h2>
+<p>You can think of comprehension usage as:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Intent</span> <span class="p">(</span><span class="n">transform</span><span class="o">/</span><span class="nb">filter</span><span class="p">)</span>
+<span class="o">-&gt;</span> <span class="n">Data</span> <span class="n">Size</span> <span class="p">(</span><span class="n">small</span><span class="o">/</span><span class="n">large</span><span class="o">/</span><span class="n">streaming</span><span class="p">)</span>
+<span class="o">-&gt;</span> <span class="n">Collection</span> <span class="n">Type</span> <span class="p">(</span><span class="nb">list</span><span class="o">/</span><span class="nb">set</span><span class="o">/</span><span class="nb">dict</span><span class="o">/</span><span class="n">generator</span><span class="p">)</span>
+<span class="o">-&gt;</span> <span class="n">Complexity</span> <span class="p">(</span><span class="n">simple</span> <span class="n">vs</span> <span class="nb">complex</span> <span class="n">logic</span><span class="p">)</span>
+<span class="o">-&gt;</span> <span class="n">Error</span> <span class="n">Handling</span> <span class="n">Needs</span>
+<span class="o">-&gt;</span> <span class="n">Readability</span> <span class="o">&amp;</span> <span class="n">Team</span> <span class="n">Standards</span>
+</code></pre></div>
+
+<p>Comprehensions should be:</p>
+<ul>
+<li>Chosen deliberately</li>
+<li>Kept simple and readable</li>
+<li>Aligned with your data size and lifetime constraints</li>
+</ul>
+<hr>
+<p><strong>Score: 85</strong></p>
+<p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
+
+</p>
+
+
+
+
+</article>
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+    <aside class="large-3 columns">
+        <h5 class="sidebar-title">Site</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/archives.html">Archives</a>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/tags.html">Tags</a>
+        </ul>
+
+		
+        <h5 class="sidebar-title">Categories</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/pandas-work.html">pandas-work</a></li>
+   
+        </ul>
+
+		
+        <h5 class="sidebar-title">Social</h5>
+        <ul class="side-nav">
+            <li><a href="https://github.com/accsaikiran-sys/">GitHub</a></li>
+            <li><a href="<linkedin handle>">LinkedIn</a></li>
+        </ul>
+
+    </aside> <!-- End Sidebar -->
+
+</div> <!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+              <!--                  <p>My Python Notes by Sai Kiran Reddy</p> -->
+            </div>
+            </div>
+    </div>
+</footer>
+</body>
+</html>

@@ -1,6 +1,6 @@
 ---
 title: Ch01 Variable Scope
-date: 2025-12-20
+date: 2025-12-24
 author: Your Name
 cell_count: 37
 score: 35

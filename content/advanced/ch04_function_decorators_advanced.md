@@ -1,6 +1,6 @@
 ---
 title: Ch04 Function Decorators Advanced
-date: 2025-12-20
+date: 2025-12-24
 author: Your Name
 cell_count: 66
 score: 65

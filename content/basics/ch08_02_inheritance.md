@@ -1,6 +1,6 @@
 ---
 title: Ch08 02 Inheritance
-date: 2025-12-20
+date: 2025-12-24
 author: Your Name
 cell_count: 31
 score: 30

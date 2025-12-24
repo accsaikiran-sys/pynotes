@@ -1,6 +1,6 @@
 ---
 title: Ch05 Lists And Operations
-date: 2025-12-20
+date: 2025-12-24
 author: Your Name
 cell_count: 30
 score: 30

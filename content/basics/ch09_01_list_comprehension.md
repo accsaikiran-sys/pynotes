@@ -1,6 +1,6 @@
 ---
 title: Ch09 01 List Comprehension
-date: 2025-12-20
+date: 2025-12-24
 author: Your Name
 cell_count: 44
 score: 40
