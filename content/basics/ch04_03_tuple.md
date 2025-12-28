@@ -1,6 +1,6 @@
 ---
 title: Ch04 03 Tuple
-date: 2025-12-24
+date: 2025-12-25
 author: Your Name
 cell_count: 12
 score: 10

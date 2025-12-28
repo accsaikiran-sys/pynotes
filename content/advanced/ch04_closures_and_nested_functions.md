@@ -1,6 +1,6 @@
 ---
 title: Ch04 Closures And Nested Functions
-date: 2025-12-24
+date: 2025-12-26
 author: Your Name
 cell_count: 30
 score: 30

@@ -1,6 +1,6 @@
 ---
 title: Ch02 Python Operators
-date: 2025-12-24
+date: 2025-12-26
 author: Your Name
 cell_count: 12
 score: 10

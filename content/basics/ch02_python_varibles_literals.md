@@ -1,6 +1,6 @@
 ---
 title: Ch02 Python Varibles Literals
-date: 2025-12-24
+date: 2025-12-25
 author: Your Name
 cell_count: 11
 score: 10

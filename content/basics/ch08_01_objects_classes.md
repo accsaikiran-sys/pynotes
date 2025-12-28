@@ -1,6 +1,6 @@
 ---
 title: Ch08 01 Objects Classes
-date: 2025-12-24
+date: 2025-12-26
 author: Your Name
 cell_count: 31
 score: 30

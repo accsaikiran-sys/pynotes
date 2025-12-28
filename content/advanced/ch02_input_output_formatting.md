@@ -1,6 +1,6 @@
 ---
 title: Ch02 Input Output Formatting
-date: 2025-12-24
+date: 2025-12-26
 author: Your Name
 cell_count: 72
 score: 70

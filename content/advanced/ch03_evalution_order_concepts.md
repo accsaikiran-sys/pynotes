@@ -1,6 +1,6 @@
 ---
 title: Ch03 Evalution Order Concepts
-date: 2025-12-24
+date: 2025-12-26
 author: Your Name
 cell_count: 52
 score: 50

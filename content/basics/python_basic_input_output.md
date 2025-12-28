@@ -1,6 +1,6 @@
 ---
 title: Python Basic Input Output
-date: 2025-12-24
+date: 2025-12-26
 author: Your Name
 cell_count: 15
 score: 15

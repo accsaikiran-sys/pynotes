@@ -1,6 +1,6 @@
 ---
 title: Ch09 05 Namespace Scope
-date: 2025-12-24
+date: 2025-12-26
 author: Your Name
 cell_count: 34
 score: 30

@@ -1,6 +1,6 @@
 ---
 title: Ch09 02 Lambda Functions
-date: 2025-12-24
+date: 2025-12-26
 author: Your Name
 cell_count: 36
 score: 35

@@ -1,6 +1,6 @@
 ---
 title: Ch07 17 Square Root Calc
-date: 2025-12-24
+date: 2025-12-26
 author: Your Name
 cell_count: 2
 score: 0
