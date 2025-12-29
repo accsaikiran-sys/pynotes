@@ -1,6 +1,6 @@
 ---
 title: Ch06 04 Write Cav Files
-date: 2025-12-26
+date: 2025-12-27
 author: Your Name
 cell_count: 11
 score: 10

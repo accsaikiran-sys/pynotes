@@ -1,6 +1,6 @@
 ---
 title: Ch06 02 Read Write Csv
-date: 2025-12-26
+date: 2025-12-27
 author: Your Name
 cell_count: 11
 score: 10

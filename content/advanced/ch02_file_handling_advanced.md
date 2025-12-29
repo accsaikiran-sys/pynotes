@@ -1,6 +1,6 @@
 ---
 title: Ch02 File Handling Advanced
-date: 2025-12-26
+date: 2025-12-27
 author: Your Name
 cell_count: 64
 score: 60

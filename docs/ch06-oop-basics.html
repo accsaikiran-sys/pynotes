@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Ch06 Oop Basics</title>
+
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/normalize.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/style.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/pygments.css" />	
+    <script src="https://accsaikiran-sys.github.io/pynotes/theme/js/modernizr.js"></script>
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<nav>
+<div class="top-bar">
+<div class="row">
+    <div class="large-9 large-centered columns">
+	    <h1><a href="https://accsaikiran-sys.github.io/pynotes">My Python Notes</a></h1>
+    </div>
+</div>
+</div>
+
+<!-- Show menu items and pages -->
+<div class="row">
+<div class="large-9 columns">
+    <ul class="button-group navigation">
+
+    </ul>
+</div>
+</div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns">
+<article>
+    <header>
+        <h3 class="article-title"><a href="https://accsaikiran-sys.github.io/pynotes/ch06-oop-basics.html" rel="bookmark"
+        title="Permalink to Ch06 Oop Basics">Ch06 Oop Basics</a></h3>
+    </header>
+
+<h6 class="subheader" title="2025-12-27T00:00:00-05:00">Sat 27 December 2025
+</h6>
+
+
+    <h1>Object-Oriented Programming Basics</h1>
+<h2>1. Strategic Overview</h2>
+<p>Object-Oriented Programming (OOP) is a programming paradigm centered around modeling software as interacting objects that encapsulate data (state) and behavior (methods). In Python, OOP provides structural foundations for building scalable, modular, and maintainable systems.</p>
+<p>In enterprise-grade systems, OOP is not merely about syntax — it is an architectural discipline for:</p>
+<ul>
+<li>Domain modeling</li>
+<li>Responsibility isolation</li>
+<li>System modularization</li>
+<li>Behavioral composition</li>
+<li>Long-term extensibility</li>
+</ul>
+<p>OOP translates real-world entities into software constructs with identity, behavior, and lifecycle.</p>
+<h2>2. Enterprise Significance</h2>
+<p>Weak object-oriented design leads to:</p>
+<ul>
+<li>God objects and tight coupling</li>
+<li>Fragile inheritance chains</li>
+<li>Poor separation of concerns</li>
+<li>Difficult testability</li>
+<li>Refactoring hazards</li>
+</ul>
+<p>Strong OOP discipline enables:</p>
+<ul>
+<li>Clean domain modeling</li>
+<li>Predictable system evolution</li>
+<li>Encapsulation of complexity</li>
+<li>Clear collaboration boundaries</li>
+<li>Scalable architecture patterns</li>
+</ul>
+<h2>3. Core OOP Concepts</h2>
+<p>The four foundational pillars of OOP:</p>
+<ul>
+<li>Encapsulation – Bundling data and methods together</li>
+<li>Abstraction – Exposing essential behavior while hiding implementation</li>
+<li>Inheritance – Reusing and extending existing class behavior</li>
+<li>Polymorphism – Unified interface, varied implementation</li>
+</ul>
+<p>These principles collectively govern structural and behavioral design.</p>
+<h2>4. Class and Object Fundamentals</h2>
+<p>Class
+A class is a blueprint for creating objects.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">User</span><span class="p">:</span>
+    <span class="k">pass</span>
+</code></pre></div>
+
+<p>Object (Instance)
+An object is a concrete realization of a class.</p>
+<div class="highlight"><pre><span></span><code><span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Classes define structure; objects represent runtime entities with state.</p>
+<h2>5. Attributes and Methods</h2>
+<p>Instance Attributes</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">User</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">role</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">role</span> <span class="o">=</span> <span class="n">role</span>
+</code></pre></div>
+
+<p>Methods</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">User</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">greet</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Hello, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span>  <span class="c1"># Access via self</span>
+</code></pre></div>
+
+<p>Attributes store state; methods define behavior.</p>
+<h2>6. The <strong>init</strong> Constructor</h2>
+<p>The <strong>init</strong> method initializes object state:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">User</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+</code></pre></div>
+
+<p>Key properties:</p>
+<ul>
+<li>Automatically called during object creation</li>
+<li>Establishes object invariants</li>
+<li>Validates and prepares initial data</li>
+</ul>
+<h2>7. Encapsulation and Data Hiding</h2>
+<p>Encapsulation restricts direct access to object internals:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Account</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">balance</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__balance</span> <span class="o">=</span> <span class="n">balance</span>
+</code></pre></div>
+
+<p>Using __ triggers name mangling, making attribute access internal to the class context.</p>
+<p>Guidelines:</p>
+<ul>
+<li>Use single underscore _ for protected access</li>
+<li>Use double underscore __ for stricter encapsulation</li>
+</ul>
+<h2>8. Abstraction</h2>
+<p>Abstraction exposes only necessary behavior:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">PaymentGateway</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">process_payment</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+</code></pre></div>
+
+<p>Often implemented using abstract base classes:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Shape</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+</code></pre></div>
+
+<p>Abstraction clarifies system intent and separates interface from implementation.</p>
+<h2>9. Inheritance</h2>
+<p>Inheritance allows one class to derive behavior from another:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Admin</span><span class="p">(</span><span class="n">User</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">access_admin_panel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">True</span>
+</code></pre></div>
+
+<p>Types:</p>
+<ul>
+<li>Single inheritance</li>
+<li>Multi-level inheritance</li>
+<li>Multiple inheritance (Python supports it but requires careful design)</li>
+</ul>
+<p>Use inheritance to model is-a relationships, not convenience reuse.</p>
+<h2>10. Method Overriding</h2>
+<p>Subclass modifies parent behavior:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Admin</span><span class="p">(</span><span class="n">User</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">greet</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Admin </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> logged in&quot;</span>
+</code></pre></div>
+
+<p>This behavior change is foundational to polymorphism.</p>
+<h2>11. Polymorphism</h2>
+<p>Polymorphism means different classes share the same interface but behave differently:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Dog</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">speak</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Bark&quot;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Cat</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">speak</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Meow&quot;</span>
+</code></pre></div>
+
+<p>Usage:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">make_sound</span><span class="p">(</span><span class="n">animal</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">animal</span><span class="o">.</span><span class="n">speak</span><span class="p">())</span>
+</code></pre></div>
+
+<p>This enables flexible, extensible system behavior.</p>
+<h2>12. Composition vs Inheritance</h2>
+<p>Composition (has-a)</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Engine</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Car</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">engine</span> <span class="o">=</span> <span class="n">Engine</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Inheritance (is-a)</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Car</span><span class="p">(</span><span class="n">Vehicle</span><span class="p">):</span>
+    <span class="k">pass</span>
+</code></pre></div>
+
+<p>Enterprise guidance:</p>
+<ul>
+<li>Prefer composition for flexibility</li>
+<li>Use inheritance for strong conceptual hierarchies</li>
+</ul>
+<h2>13. Class Variables vs Instance Variables</h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">User</span><span class="p">:</span>
+    <span class="n">role</span> <span class="o">=</span> <span class="s2">&quot;guest&quot;</span>  <span class="c1"># Class variable</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>  <span class="c1"># Instance variable</span>
+</code></pre></div>
+
+<p>Class variables are shared across instances; instance variables are unique per object.</p>
+<h2>14. Static Methods and Class Methods</h2>
+<p>Static Method</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">MathUtils</span><span class="p">:</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</code></pre></div>
+
+<p>Class Method</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Counter</span><span class="p">:</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">increment</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+</code></pre></div>
+
+<p>Use static for utility, class methods for class-state modifications.</p>
+<h2>15. Object Identity and Lifecycle</h2>
+<p>Objects have:</p>
+<ul>
+<li>Identity (id(obj))</li>
+<li>State (attributes)</li>
+<li>Behavior (methods)</li>
+<li>Lifecycle (created, modified, destroyed)</li>
+</ul>
+<p>Understanding lifecycle supports effective memory management and garbage collection awareness.</p>
+<h2>16. Dunder Methods (Magic Methods)</h2>
+<p>Special methods modify object behavior:</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>init</strong></td>
+<td>Constructor</td>
+</tr>
+<tr>
+<td><strong>str</strong></td>
+<td>String representation</td>
+</tr>
+<tr>
+<td><strong>repr</strong></td>
+<td>Developer representation</td>
+</tr>
+<tr>
+<td><strong>eq</strong></td>
+<td>Equality comparison</td>
+</tr>
+<tr>
+<td><strong>lt</strong></td>
+<td>Less-than comparison</td>
+</tr>
+</tbody>
+</table>
+<p>These allow objects to integrate naturally into Python’s built-in behaviors.</p>
+<h2>17. OOP in Real-World Systems</h2>
+<p>Use cases:</p>
+<ul>
+<li>E-commerce domain models</li>
+<li>Banking transactions</li>
+<li>User authentication systems</li>
+<li>Workflow orchestration engines</li>
+<li>Enterprise entities</li>
+</ul>
+<p>Objects represent business nouns; methods represent business verbs.</p>
+<h2>18. Common OOP Anti-Patterns</h2>
+<table>
+<thead>
+<tr>
+<th>Anti-pattern</th>
+<th>Risk</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>God Object</td>
+<td>Too many responsibilities</td>
+</tr>
+<tr>
+<td>Deep Inheritance Trees</td>
+<td>Fragile and hard to maintain</td>
+</tr>
+<tr>
+<td>Tight Coupling</td>
+<td>Difficult to refactor or test</td>
+</tr>
+<tr>
+<td>Anemic Models</td>
+<td>Data-only classes, logic elsewhere</td>
+</tr>
+<tr>
+<td>Excessive Mutability</td>
+<td>State instability</td>
+</tr>
+</tbody>
+</table>
+<h2>19. Governance Model for OOP</h2>
+<p>You can think of OOP governance as:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Intent</span> <span class="o">-&gt;</span> <span class="n">Class</span> <span class="n">Design</span> <span class="o">-&gt;</span> <span class="n">Responsibility</span> <span class="n">Isolation</span> <span class="o">-&gt;</span> <span class="n">Encapsulation</span> <span class="n">Strategy</span> <span class="o">-&gt;</span> <span class="n">Interface</span> <span class="n">Contract</span> <span class="o">-&gt;</span> <span class="n">Extension</span> <span class="n">Strategy</span>
+</code></pre></div>
+
+<p>Each class should satisfy:</p>
+<ul>
+<li>Single clear responsibility</li>
+<li>Explicit public interface</li>
+<li>Minimal external dependencies</li>
+</ul>
+<hr>
+<p><strong>Score: 55</strong></p>
+<p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
+
+</p>
+
+
+
+
+</article>
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+    <aside class="large-3 columns">
+        <h5 class="sidebar-title">Site</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/archives.html">Archives</a>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/tags.html">Tags</a>
+        </ul>
+
+		
+        <h5 class="sidebar-title">Categories</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/pandas-work.html">pandas-work</a></li>
+   
+        </ul>
+
+		
+        <h5 class="sidebar-title">Social</h5>
+        <ul class="side-nav">
+            <li><a href="https://github.com/accsaikiran-sys/">GitHub</a></li>
+            <li><a href="<linkedin handle>">LinkedIn</a></li>
+        </ul>
+
+    </aside> <!-- End Sidebar -->
+
+</div> <!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+              <!--                  <p>My Python Notes by Sai Kiran Reddy</p> -->
+            </div>
+            </div>
+    </div>
+</footer>
+</body>
+</html>

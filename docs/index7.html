@@ -47,8 +47,173 @@
 
 
             <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch05-06-modules.html"><h3 class="article-title">Ch05 06 Modules</h3></a>
+<h6 class="subheader" title="2025-12-27T00:00:00-05:00">Sat 27 December 2025
+</h6>
+
+
+<div class="highlight"><pre><span></span><code><span class="c1">#Created: 20251210</span>
+<span class="c1"># https://csp.gitbook.io/python-learning/basics/ch05-python-functions/python-modules</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># file: math_utils.py</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">25</span><span class="p">))</span>  <span class="c1"># Output: 5.0</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">5.0</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="nb">pow</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>     <span class="c1"># Output: 4.0</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>    <span class="c1"># Output: 8.0</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">4 …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch05-06-modules.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch05-07-package.html"><h3 class="article-title">Ch05 07 Package</h3></a>
+<h6 class="subheader" title="2025-12-27T00:00:00-05:00">Sat 27 December 2025
+</h6>
+
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Created:20251210</span>
+<span class="c1"># https://csp.gitbook.io/python-learning/basics/ch05-python-functions/python-package</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># my_package/module1.py</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">greet</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;Hello from module1&quot;</span>
+
+    <span class="c1"># main.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">my_package.module1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">my_package</span><span class="o">.</span><span class="n">module1</span><span class="o">.</span><span class="n">greet</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="o">---------------------------------------------------------------------------</span>
+
+<span class="ne">ModuleNotFoundError</span>                       <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">)</span>
+
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">6</span>
+      <span class="mi">3</span>     <span class="k">return</span> <span class="s2">&quot;Hello from module1&quot;</span>
+      <span class="mi">5</span>     <span class="c1"># main.py</span>
+<span class="o">----&gt;</span> <span class="mi">6</span> <span class="kn">import</span><span class="w"> </span><span class="nn">my_package …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch05-07-package.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch05-08-main-function.html"><h3 class="article-title">Ch05 08 Main Function</h3></a>
+<h6 class="subheader" title="2025-12-27T00:00:00-05:00">Sat 27 December 2025
+</h6>
+
+
+<div class="highlight"><pre><span></span><code><span class="c1">#Create: 20251210</span>
+<span class="c1"># https://csp.gitbook.io/python-learning/basics/ch05-python-functions/python-main-function</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Program started&quot;</span><span class="p">)</span>
+
+<span class="n">main</span><span class="p">()</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>Program started
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Main function executed&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>Main function executed
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>__main__
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Welcome, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">(</span><span class="s2">&quot;Alice&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>Welcome, Alice
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">process_data …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch05-08-main-function.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch05-casting-deep-dive.html"><h3 class="article-title">Ch05 Casting Deep Dive</h3></a>
+<h6 class="subheader" title="2025-12-27T00:00:00-05:00">Sat 27 December 2025
+</h6>
+
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Python Type Casting Deep Dive</span>
+<span class="c1"># 1. Strategic Overview</span>
+<span class="c1"># Python Type Casting is the controlled transformation of data from one type to another to satisfy correctness, interoperability, performance, and system contract requirements.</span>
+<span class="c1"># It is foundational for data pipelines, API serialization, user input processing, numerical computation, and schema enforcement.</span>
+<span class="c1">#</span>
+<span class="c1"># It enables:</span>
+<span class="c1"># - Data …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch05-casting-deep-dive.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
                 <a href="https://accsaikiran-sys.github.io/pynotes/ch05-comprehensions.html"><h3 class="article-title">Ch05 Comprehensions</h3></a>
-<h6 class="subheader" title="2025-12-26T00:00:00-05:00">Fri 26 December 2025
+<h6 class="subheader" title="2025-12-27T00:00:00-05:00">Sat 27 December 2025
 </h6>
 
 
@@ -78,7 +243,7 @@
 
             <article>
                 <a href="https://accsaikiran-sys.github.io/pynotes/ch05-comprehensions-deep-dive.html"><h3 class="article-title">Ch05 Comprehensions Deep Dive</h3></a>
-<h6 class="subheader" title="2025-12-26T00:00:00-05:00">Fri 26 December 2025
+<h6 class="subheader" title="2025-12-27T00:00:00-05:00">Sat 27 December 2025
 </h6>
 
 
@@ -104,7 +269,7 @@
 
             <article>
                 <a href="https://accsaikiran-sys.github.io/pynotes/ch05-data-structures-deep-dive.html"><h3 class="article-title">Ch05 Data Structures Deep Dive</h3></a>
-<h6 class="subheader" title="2025-12-26T00:00:00-05:00">Fri 26 December 2025
+<h6 class="subheader" title="2025-12-27T00:00:00-05:00">Sat 27 December 2025
 </h6>
 
 
@@ -132,7 +297,7 @@
 
             <article>
                 <a href="https://accsaikiran-sys.github.io/pynotes/ch05-list-comprehension.html"><h3 class="article-title">Ch05 List Comprehension</h3></a>
-<h6 class="subheader" title="2025-12-26T00:00:00-05:00">Fri 26 December 2025
+<h6 class="subheader" title="2025-12-27T00:00:00-05:00">Sat 27 December 2025
 </h6>
 
 
@@ -154,7 +319,7 @@
 
             <article>
                 <a href="https://accsaikiran-sys.github.io/pynotes/ch05-lists-and-operations.html"><h3 class="article-title">Ch05 Lists And Operations</h3></a>
-<h6 class="subheader" title="2025-12-26T00:00:00-05:00">Fri 26 December 2025
+<h6 class="subheader" title="2025-12-27T00:00:00-05:00">Sat 27 December 2025
 </h6>
 
 
@@ -178,7 +343,7 @@ Lists are one of the most frequently used data structures in Python.</p>
 
             <article>
                 <a href="https://accsaikiran-sys.github.io/pynotes/ch05-set.html"><h3 class="article-title">Ch05 Set</h3></a>
-<h6 class="subheader" title="2025-12-26T00:00:00-05:00">Fri 26 December 2025
+<h6 class="subheader" title="2025-12-27T00:00:00-05:00">Sat 27 December 2025
 </h6>
 
 
@@ -192,115 +357,6 @@ Lists are one of the most frequently used data structures in Python.</p>
 
 
                 <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch05-set.html">Read More</a>
-                <hr  class="gradient"/>
-            </article>
-
-        
-
-
-            <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch05-string-methods-deep-dive.html"><h3 class="article-title">Ch05 String Methods Deep Dive</h3></a>
-<h6 class="subheader" title="2025-12-26T00:00:00-05:00">Fri 26 December 2025
-</h6>
-
-
-<h1>Python String Methods Deep Dive</h1>
-<h2>1. What is a String in Python</h2>
-<p>A string is an immutable sequence of Unicode characters enclosed in single, double, or triple quotes.
-Strings are core to text processing, data transformation, and user interaction.</p>
-<div class="highlight"><pre><span></span><code><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Python&quot;</span>
-<span class="n">multiline</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;This is</span>
-<span class="s2"> a multi-line</span>
-<span class="s2"> string&quot;&quot;&quot;</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-</code></pre></div>
-
-<h2>2 …</h2><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
-
-</p>
-
-
-
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch05-string-methods-deep-dive.html">Read More</a>
-                <hr  class="gradient"/>
-            </article>
-
-        
-
-
-            <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch05-strings-and-methods.html"><h3 class="article-title">Ch05 Strings And Methods</h3></a>
-<h6 class="subheader" title="2025-12-26T00:00:00-05:00">Fri 26 December 2025
-</h6>
-
-
-<h1>Python Strings and String Methods</h1>
-<h2>1. Overview of Python String Methods</h2>
-<p>Python provides a rich set of built-in string methods for manipulating, validating, searching, and formatting text.</p>
-<div class="highlight"><pre><span></span><code><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Python Programming&quot;</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
-</code></pre></div>
-
-<p>Strings are immutable; methods return new strings.</p>
-<h2>2. Case Conversion Methods</h2>
-<div class="highlight"><pre><span></span><code><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;PyThOn&quot;</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>      <span class="c1"># python …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
-
-</p>
-
-
-
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch05-strings-and-methods.html">Read More</a>
-                <hr  class="gradient"/>
-            </article>
-
-        
-
-
-            <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch05-tuple.html"><h3 class="article-title">Ch05 Tuple</h3></a>
-<h6 class="subheader" title="2025-12-26T00:00:00-05:00">Fri 26 December 2025
-</h6>
-
-
-<h1>Python Tuple</h1>
-<h2>1. Strategic Overview</h2>
-<p>A Python tuple is an immutable, ordered collection used to group related data elements into a single composite structure. Unlike lists, tuples enforce immutability, making them a cornerstone for:</p>
-<ul>
-<li>Data integrity</li>
-<li>Predictable state representation</li>
-<li>Safe parameter grouping</li>
-<li>High-performance read-only data modeling</li>
-</ul>
-<p>In enterprise systems, tuples …</p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
-
-</p>
-
-
-
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch05-tuple.html">Read More</a>
-                <hr  class="gradient"/>
-            </article>
-
-        
-
-
-            <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch05-type-hinting-deep-dive.html"><h3 class="article-title">Ch05 Type Hinting Deep Dive</h3></a>
-<h6 class="subheader" title="2025-12-26T00:00:00-05:00">Fri 26 December 2025
-</h6>
-
-
-<h1>Python Type Hinting Deep Dive</h1>
-<h2>1. Strategic Overview</h2>
-<p>Python Type Hinting is a formal system for annotating variable types, function signatures, and object contracts to improve static analysis, IDE intelligence, documentation clarity, system reliability, and large-scale maintainability. In enterprise systems, type hints function as executable documentation and a contract governance …</p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
-
-</p>
-
-
-
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch05-type-hinting-deep-dive.html">Read More</a>
                 <hr  class="gradient"/>
             </article>
 

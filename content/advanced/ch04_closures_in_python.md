@@ -1,6 +1,6 @@
 ---
 title: Ch04 Closures In Python
-date: 2025-12-26
+date: 2025-12-27
 author: Your Name
 cell_count: 38
 score: 35
