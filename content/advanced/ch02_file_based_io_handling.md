@@ -1,6 +1,6 @@
 ---
 title: Ch02 File Based Io Handling
-date: 2025-12-27
+date: 2026-01-07
 author: Your Name
 cell_count: 63
 score: 60

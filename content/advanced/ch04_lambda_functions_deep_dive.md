@@ -1,6 +1,6 @@
 ---
 title: Ch04 Lambda Functions Deep Dive
-date: 2025-12-27
+date: 2026-01-07
 author: Your Name
 cell_count: 37
 score: 35

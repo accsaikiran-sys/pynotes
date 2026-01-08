@@ -1,6 +1,6 @@
 ---
 title: Ch04 Callable Objects
-date: 2025-12-27
+date: 2026-01-07
 author: Your Name
 cell_count: 61
 score: 60

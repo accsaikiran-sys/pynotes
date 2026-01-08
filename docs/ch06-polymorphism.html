@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Ch06 Polymorphism</title>
+
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/normalize.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/style.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/pygments.css" />	
+    <script src="https://accsaikiran-sys.github.io/pynotes/theme/js/modernizr.js"></script>
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<nav>
+<div class="top-bar">
+<div class="row">
+    <div class="large-9 large-centered columns">
+	    <h1><a href="https://accsaikiran-sys.github.io/pynotes">My Python Notes</a></h1>
+    </div>
+</div>
+</div>
+
+<!-- Show menu items and pages -->
+<div class="row">
+<div class="large-9 columns">
+    <ul class="button-group navigation">
+
+    </ul>
+</div>
+</div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns">
+<article>
+    <header>
+        <h3 class="article-title"><a href="https://accsaikiran-sys.github.io/pynotes/ch06-polymorphism.html" rel="bookmark"
+        title="Permalink to Ch06 Polymorphism">Ch06 Polymorphism</a></h3>
+    </header>
+
+<h6 class="subheader" title="2026-01-07T00:00:00-05:00">Wed 07 January 2026
+</h6>
+
+
+    <h1>Python Polymorphism</h1>
+<h2>1. Concept Overview</h2>
+<p>Polymorphism in Python refers to the ability of different objects to respond to the same method, operator, or interface in different ways.</p>
+<p>It enables:</p>
+<ul>
+<li>Flexible interface design</li>
+<li>Dynamic behavior substitution</li>
+<li>Decoupled architecture</li>
+<li>Runtime adaptability</li>
+<li>Scalable object models</li>
+</ul>
+<p>Polymorphism allows one interface to support multiple behaviors.</p>
+<h2>2. Why Polymorphism Matters in Enterprise Systems</h2>
+<p>When applied correctly, polymorphism provides:</p>
+<ul>
+<li>Pluggable system components</li>
+<li>Extensible service models</li>
+<li>Reduced conditional complexity</li>
+<li>Clean abstraction layers</li>
+<li>Scalable behavioral evolution</li>
+</ul>
+<p>When misused, it causes:</p>
+<ul>
+<li>Hidden behavior logic</li>
+<li>Runtime ambiguity</li>
+<li>Debugging complexity</li>
+<li>Performance unpredictability</li>
+</ul>
+<h2>3. Types of Polymorphism in Python</h2>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Compile-time</td>
+<td>Simulated via operator overloading</td>
+</tr>
+<tr>
+<td>Runtime</td>
+<td>Achieved via method overriding</td>
+</tr>
+<tr>
+<td>Duck Typing</td>
+<td>Behavior-based polymorphism</td>
+</tr>
+<tr>
+<td>Parametric</td>
+<td>Generic-like behavior</td>
+</tr>
+</tbody>
+</table>
+<p>Python primarily implements runtime polymorphism.</p>
+<h2>4. Basic Polymorphism Example</h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Dog</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">speak</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Bark&quot;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Cat</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">speak</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Meow&quot;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">animal_sound</span><span class="p">(</span><span class="n">animal</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">animal</span><span class="o">.</span><span class="n">speak</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">animal_sound</span><span class="p">(</span><span class="n">Dog</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">animal_sound</span><span class="p">(</span><span class="n">Cat</span><span class="p">()))</span>
+</code></pre></div>
+
+<p>Same function, different behavior.</p>
+<h2>5. Method Overriding (Runtime Polymorphism)</h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Vehicle</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">move</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Moving&quot;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Car</span><span class="p">(</span><span class="n">Vehicle</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">move</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Driving&quot;</span>
+
+<span class="n">v</span> <span class="o">=</span> <span class="n">Car</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">move</span><span class="p">())</span>
+</code></pre></div>
+
+<p>The method behavior is decided at runtime.</p>
+<h2>6. Operator Overloading (Compile-Time Behavior)</h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Vector</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Vector</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The + operator exhibits polymorphic behavior.</p>
+<h2>7. Duck Typing</h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">FileLogger</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Writing to file&quot;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">DBLogger</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Writing to database&quot;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">log</span><span class="p">(</span><span class="n">writer</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">writer</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Object type is irrelevant — behavior matters.</p>
+<h2>8. Function Polymorphism</h2>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]))</span>
+</code></pre></div>
+
+<p>The same function adapts to different data types.</p>
+<h2>9. Polymorphism with Inheritance</h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Shape</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Circle</span><span class="p">(</span><span class="n">Shape</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Drawing Circle&quot;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Square</span><span class="p">(</span><span class="n">Shape</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Drawing Square&quot;</span>
+</code></pre></div>
+
+<p>Each class implements its own behavior.</p>
+<h2>10. Abstract Base Class Polymorphism</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Payment</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">CreditCard</span><span class="p">(</span><span class="n">Payment</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Processing credit card payment&quot;</span>
+</code></pre></div>
+
+<p>Forces structured polymorphic behavior.</p>
+<h2>11. Polymorphism in Interface Design</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">process_item</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">item</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+</code></pre></div>
+
+<p>As long as the object implements execute(), it works.</p>
+<h2>12. Polymorphism vs Conditional Logic</h2>
+<p>❌ Bad:</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="o">==</span> <span class="n">A</span><span class="p">:</span>
+    <span class="n">obj</span><span class="o">.</span><span class="n">method_a</span><span class="p">()</span>
+<span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="o">==</span> <span class="n">B</span><span class="p">:</span>
+    <span class="n">obj</span><span class="o">.</span><span class="n">method_b</span><span class="p">()</span>
+</code></pre></div>
+
+<p>✅ Good:</p>
+<div class="highlight"><pre><span></span><code><span class="n">obj</span><span class="o">.</span><span class="n">process</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Reduces coupling and increases modularity.</p>
+<h2>13. Real-World Example: Payment Gateway</h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">PaymentGateway</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">pay</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">PayPal</span><span class="p">(</span><span class="n">PaymentGateway</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">pay</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Paying via PayPal&quot;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Stripe</span><span class="p">(</span><span class="n">PaymentGateway</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">pay</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Paying via Stripe&quot;</span>
+</code></pre></div>
+
+<p>Used in:</p>
+<ul>
+<li>E-commerce</li>
+<li>FinTech platforms</li>
+<li>SaaS billing systems</li>
+</ul>
+<h2>14. Dynamic Polymorphism</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">identify</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+    <span class="k">await</span> <span class="n">obj</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Runtime behavior changes dynamically.</p>
+<h2>15. Polymorphism in API Frameworks</h2>
+<p>Frameworks like Django and FastAPI rely on polymorphism to:</p>
+<ul>
+<li>Handle different request types</li>
+<li>Route data dynamically</li>
+<li>Abstract service interfaces</li>
+</ul>
+<hr>
+<p><strong>Score: 40</strong></p>
+<p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
+
+</p>
+
+
+
+
+</article>
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+    <aside class="large-3 columns">
+        <h5 class="sidebar-title">Site</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/archives.html">Archives</a>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/tags.html">Tags</a>
+        </ul>
+
+		
+        <h5 class="sidebar-title">Categories</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/pandas-work.html">pandas-work</a></li>
+   
+        </ul>
+
+		
+        <h5 class="sidebar-title">Social</h5>
+        <ul class="side-nav">
+            <li><a href="https://github.com/accsaikiran-sys/">GitHub</a></li>
+            <li><a href="<linkedin handle>">LinkedIn</a></li>
+        </ul>
+
+    </aside> <!-- End Sidebar -->
+
+</div> <!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+              <!--                  <p>My Python Notes by Sai Kiran Reddy</p> -->
+            </div>
+            </div>
+    </div>
+</footer>
+</body>
+</html>

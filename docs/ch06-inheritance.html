@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Ch06 Inheritance</title>
+
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/normalize.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/style.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/pygments.css" />	
+    <script src="https://accsaikiran-sys.github.io/pynotes/theme/js/modernizr.js"></script>
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<nav>
+<div class="top-bar">
+<div class="row">
+    <div class="large-9 large-centered columns">
+	    <h1><a href="https://accsaikiran-sys.github.io/pynotes">My Python Notes</a></h1>
+    </div>
+</div>
+</div>
+
+<!-- Show menu items and pages -->
+<div class="row">
+<div class="large-9 columns">
+    <ul class="button-group navigation">
+
+    </ul>
+</div>
+</div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns">
+<article>
+    <header>
+        <h3 class="article-title"><a href="https://accsaikiran-sys.github.io/pynotes/ch06-inheritance.html" rel="bookmark"
+        title="Permalink to Ch06 Inheritance">Ch06 Inheritance</a></h3>
+    </header>
+
+<h6 class="subheader" title="2026-01-07T00:00:00-05:00">Wed 07 January 2026
+</h6>
+
+
+    <h1>Python Inheritance</h1>
+<h2>1. Concept Overview</h2>
+<p>Inheritance in Python is an Object-Oriented Programming (OOP) mechanism that allows a class (child) to acquire attributes and behaviors from another class (parent).</p>
+<p>It enables:</p>
+<ul>
+<li>Code reuse</li>
+<li>Hierarchical classification</li>
+<li>Behavioral extensibility</li>
+<li>Polymorphic design</li>
+<li>Modular system architecture</li>
+</ul>
+<p>Inheritance establishes an “is-a” relationship between objects.</p>
+<h2>2. Why Inheritance Matters in Enterprise Systems</h2>
+<p>When used correctly, inheritance provides:</p>
+<ul>
+<li>Reduced code duplication</li>
+<li>Standardized interfaces</li>
+<li>Extensible architecture</li>
+<li>Maintainable domain models</li>
+<li>Predictable system evolution</li>
+</ul>
+<p>When misused, it creates:</p>
+<ul>
+<li>Rigid systems</li>
+<li>Tight coupling</li>
+<li>Fragile design</li>
+<li>Inheritance hell</li>
+</ul>
+<h2>3. Basic Inheritance Syntax</h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Animal</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">speak</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Some sound&quot;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Dog</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">speak</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Bark&quot;</span>
+
+<span class="n">dog</span> <span class="o">=</span> <span class="n">Dog</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dog</span><span class="o">.</span><span class="n">speak</span><span class="p">())</span>  <span class="c1"># Bark</span>
+</code></pre></div>
+
+<p>The Dog class inherits methods from Animal.</p>
+<h2>4. Parent-Child Relationship Model</h2>
+<p>Base Class (Parent) → Derived Class (Child)</p>
+<p>Children automatically gain access to the parent's:</p>
+<ul>
+<li>Methods</li>
+<li>Properties</li>
+<li>Class variables</li>
+</ul>
+<h2>5. Types of Inheritance in Python</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Single</strong></td>
+<td style="text-align: left;">One parent, one child</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Multiple</strong></td>
+<td style="text-align: left;">Multiple parents</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Multilevel</strong></td>
+<td style="text-align: left;">Chain hierarchy</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Hierarchical</strong></td>
+<td style="text-align: left;">Multiple children</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Hybrid</strong></td>
+<td style="text-align: left;">Combination</td>
+</tr>
+</tbody>
+</table>
+<p>Python supports all forms through its dynamic object model.</p>
+<h2>6. Method Overriding</h2>
+<p>Copy</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Vehicle</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">move</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Moving&quot;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Car</span><span class="p">(</span><span class="n">Vehicle</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">move</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Driving&quot;</span>
+</code></pre></div>
+
+<p>The child redefines parent behavior.</p>
+<h2>7. Using super()</h2>
+<p>Copy</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Employee</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Manager</span><span class="p">(</span><span class="n">Employee</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">level</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">level</span> <span class="o">=</span> <span class="n">level</span>
+</code></pre></div>
+
+<p>super() ensures parent logic execution.</p>
+<h2>8. Attribute Inheritance</h2>
+<p>Copy</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Base</span><span class="p">:</span>
+    <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;1.0&quot;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Derived</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">Derived</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
+</code></pre></div>
+
+<p>All child classes inherit static attributes.</p>
+<h2>9. Multilevel Inheritance Example</h2>
+<p>Copy</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Shape</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Drawing&quot;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Polygon</span><span class="p">(</span><span class="n">Shape</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Triangle</span><span class="p">(</span><span class="n">Polygon</span><span class="p">):</span>
+    <span class="k">pass</span>
+</code></pre></div>
+
+<p>Creates layered hierarchy.</p>
+<h2>10. Multiple Inheritance</h2>
+<p>Copy</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Flyer</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fly</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Flying&quot;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Swimmer</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">swim</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Swimming&quot;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Duck</span><span class="p">(</span><span class="n">Flyer</span><span class="p">,</span> <span class="n">Swimmer</span><span class="p">):</span>
+    <span class="k">pass</span>
+</code></pre></div>
+
+<p>Duck inherits behaviors from both.</p>
+<h2>11. Method Resolution Order (MRO)</h2>
+<p>Determines which method gets called first.</p>
+<p>Copy</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">Duck</span><span class="o">.</span><span class="vm">__mro__</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Python uses C3 Linearization algorithm.</p>
+<h2>12. Cooperative Multiple Inheritance</h2>
+<p>Copy</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">A</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">action</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">action</span><span class="p">()</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">B</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">action</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;B&quot;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">action</span><span class="p">()</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">C</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">action</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">action</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Supports graceful call chaining.</p>
+<h2>13. Protected vs Private Inheritance</h2>
+<p>Python conventions:</p>
+<p>_protected → Intended for subclass use</p>
+<p>__private → Name mangling</p>
+<h2>14. Abstract Base Classes (ABC)</h2>
+<p>Copy</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Shape</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+</code></pre></div>
+
+<p>Forces child implementation.</p>
+<h2>15. Inheritance vs Composition</h2>
+<p>Inheritance
+Composition
+"is-a" relationship</p>
+<p>"has-a" relationship</p>
+<p>Tight coupling</p>
+<p>Loose coupling</p>
+<p>Harder to refactor</p>
+<p>More flexible</p>
+<p>Enterprise systems often prefer composition.</p>
+<h2>16. Real-World Enterprise Example</h2>
+<p>Copy</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">User</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">login</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Admin</span><span class="p">(</span><span class="n">User</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">delete_user</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+</code></pre></div>
+
+<p>Creates hierarchical permission systems.</p>
+<h2>17. Liskov Substitution Principle (LSP)</h2>
+<p>A subclass must be usable wherever its parent is expected.</p>
+<p>Violation example:</p>
+<p>Copy</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Bird</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fly</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">pass</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Penguin</span><span class="p">(</span><span class="n">Bird</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fly</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">raise</span> <span class="ne">Exception</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Breaks system predictability.</p>
+<h2>18. Inheritance Design Patterns</h2>
+<p>Common patterns:</p>
+<p>Template Method</p>
+<p>Strategy (via inheritance)</p>
+<p>Factory</p>
+<p>Decorator</p>
+<p>Inheritance enables scalable design frameworks.</p>
+<h2>19. Anti-Patterns in Inheritance</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Anti-Pattern</th>
+<th style="text-align: left;">Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">God classes</td>
+<td style="text-align: left;">Unmanageable hierarchy</td>
+</tr>
+<tr>
+<td style="text-align: left;">Deep inheritance tree</td>
+<td style="text-align: left;">Complexity explosion</td>
+</tr>
+<tr>
+<td style="text-align: left;">Unnecessary inheritance</td>
+<td style="text-align: left;">Over-engineering</td>
+</tr>
+<tr>
+<td style="text-align: left;">Breaking LSP</td>
+<td style="text-align: left;">Logic inconsistency</td>
+</tr>
+</tbody>
+</table>
+<h2>20. Best Practices</h2>
+<p>Favor composition over inheritance</p>
+<p>Keep hierarchies shallow</p>
+<p>Use interfaces (ABC)</p>
+<p>Maintain clear parent responsibility</p>
+<p>Apply SOLID principles</p>
+<h2>21. Enterprise Architecture Role</h2>
+<p>Inheritance is foundational in:</p>
+<p>Domain modeling</p>
+<p>Framework architecture</p>
+<p>Plugin systems</p>
+<p>Object pipelines</p>
+<p>Enterprise APIs</p>
+<p>When applied correctly, it drives extensibility.</p>
+<h2>22. Inheritance Execution Flow</h2>
+<p>Copy</p>
+<p>Instantiate Child → Resolve MRO → Execute Overridden Methods → Delegate to Parent</p>
+<p>Ensures predictable method resolution.</p>
+<h2>23. Debugging Inherited Behavior</h2>
+<p>Use:</p>
+<p>Copy</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">ClassName</span><span class="o">.</span><span class="vm">__mro__</span><span class="p">)</span>
+</code></pre></div>
+
+<p>To track method resolution and debug conflicts.</p>
+<hr>
+<p><strong>Score: 25</strong></p>
+<p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
+
+</p>
+
+
+
+
+</article>
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+    <aside class="large-3 columns">
+        <h5 class="sidebar-title">Site</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/archives.html">Archives</a>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/tags.html">Tags</a>
+        </ul>
+
+		
+        <h5 class="sidebar-title">Categories</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/pandas-work.html">pandas-work</a></li>
+   
+        </ul>
+
+		
+        <h5 class="sidebar-title">Social</h5>
+        <ul class="side-nav">
+            <li><a href="https://github.com/accsaikiran-sys/">GitHub</a></li>
+            <li><a href="<linkedin handle>">LinkedIn</a></li>
+        </ul>
+
+    </aside> <!-- End Sidebar -->
+
+</div> <!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+              <!--                  <p>My Python Notes by Sai Kiran Reddy</p> -->
+            </div>
+            </div>
+    </div>
+</footer>
+</body>
+</html>

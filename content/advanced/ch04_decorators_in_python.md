@@ -1,6 +1,6 @@
 ---
 title: Ch04 Decorators In Python
-date: 2025-12-27
+date: 2026-01-07
 author: Your Name
 cell_count: 46
 score: 45

@@ -1,6 +1,6 @@
 ---
 title: Ch07 3 List Index Access
-date: 2025-12-27
+date: 2026-01-07
 author: Your Name
 cell_count: 2
 score: 0

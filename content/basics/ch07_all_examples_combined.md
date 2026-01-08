@@ -1,6 +1,6 @@
 ---
 title: Ch07 All Examples Combined
-date: 2025-12-27
+date: 2026-01-07
 author: Your Name
 cell_count: 51
 score: 50

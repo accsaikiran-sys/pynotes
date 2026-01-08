@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Ch06 Encapsulation</title>
+
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/normalize.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/style.css" />
+    <link rel="stylesheet" href="https://accsaikiran-sys.github.io/pynotes/theme/css/pygments.css" />	
+    <script src="https://accsaikiran-sys.github.io/pynotes/theme/js/modernizr.js"></script>
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<nav>
+<div class="top-bar">
+<div class="row">
+    <div class="large-9 large-centered columns">
+	    <h1><a href="https://accsaikiran-sys.github.io/pynotes">My Python Notes</a></h1>
+    </div>
+</div>
+</div>
+
+<!-- Show menu items and pages -->
+<div class="row">
+<div class="large-9 columns">
+    <ul class="button-group navigation">
+
+    </ul>
+</div>
+</div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns">
+<article>
+    <header>
+        <h3 class="article-title"><a href="https://accsaikiran-sys.github.io/pynotes/ch06-encapsulation.html" rel="bookmark"
+        title="Permalink to Ch06 Encapsulation">Ch06 Encapsulation</a></h3>
+    </header>
+
+<h6 class="subheader" title="2026-01-07T00:00:00-05:00">Wed 07 January 2026
+</h6>
+
+
+    <h1>Python Encapsulation</h1>
+<h2>1. Concept Overview</h2>
+<p>Encapsulation in Python is an Object-Oriented Programming (OOP) principle that restricts direct access to an object’s internal data and bundles the data with the methods that operate on it.</p>
+<p>It ensures:</p>
+<ul>
+<li>Controlled data access</li>
+<li>Internal state protection</li>
+<li>Reduced coupling</li>
+<li>Improved maintainability</li>
+<li>Predictable system behavior</li>
+</ul>
+<p>Encapsulation hides complexity and exposes only what is necessary.</p>
+<h2>2. Why Encapsulation Matters in Enterprise Systems</h2>
+<p>When implemented correctly, encapsulation provides:</p>
+<ul>
+<li>Strong data integrity</li>
+<li>Security enforcement boundaries</li>
+<li>Controlled mutation points</li>
+<li>Stable public APIs</li>
+<li>Safe refactoring capability</li>
+</ul>
+<p>When violated, it results in:</p>
+<ul>
+<li>Uncontrolled state mutation</li>
+<li>Hidden side effects</li>
+<li>Difficult debugging</li>
+<li>Increased defect rates</li>
+</ul>
+<h2>3. Encapsulation Structure</h2>
+<p>Encapsulation is achieved by combining:</p>
+<ul>
+<li>Private variables</li>
+<li>Protected variables</li>
+<li>Public methods</li>
+<li>Controlled interfaces</li>
+</ul>
+<div class="highlight"><pre><span></span><code>Data (State) + Methods (Behavior) = Encapsulated Object
+</code></pre></div>
+
+<h2>4. Basic Encapsulation Example</h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">User</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>  <span class="c1"># Public attribute</span>
+</code></pre></div>
+
+<p>Public attributes can be accessed and modified freely:</p>
+<div class="highlight"><pre><span></span><code><span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="s2">&quot;Alice&quot;</span><span class="p">)</span>
+<span class="n">user</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Bob&quot;</span>
+</code></pre></div>
+
+<p>This lacks protection.</p>
+<h2>5. Protected Members Convention</h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Account</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">balance</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_balance</span> <span class="o">=</span> <span class="n">balance</span>  <span class="c1"># Protected</span>
+</code></pre></div>
+
+<p>Conventionally:</p>
+<p>_variable → Intended for internal use</p>
+<p>External access discouraged, not prevented</p>
+<h2>6. Private Members (Name Mangling)</h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">SecureAccount</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">balance</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__balance</span> <span class="o">=</span> <span class="n">balance</span>  <span class="c1"># Private</span>
+</code></pre></div>
+
+<p>Accessing directly will fail:</p>
+<div class="highlight"><pre><span></span><code><span class="n">secure</span> <span class="o">=</span> <span class="n">SecureAccount</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">secure</span><span class="o">.</span><span class="n">__balance</span>  <span class="c1"># AttributeError</span>
+</code></pre></div>
+
+<p>Internally renamed to:</p>
+<div class="highlight"><pre><span></span><code><span class="n">_SecureAccount__balance</span>
+</code></pre></div>
+
+<h2>7. Getter and Setter Pattern</h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">BankAccount</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__balance</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_balance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__balance</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_balance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">amount</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__balance</span> <span class="o">=</span> <span class="n">amount</span>
+</code></pre></div>
+
+<p>Enforces controlled modification.</p>
+<h2>8. Encapsulation Using @property</h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Product</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">price</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__price</span> <span class="o">=</span> <span class="n">price</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">price</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__price</span>
+
+    <span class="nd">@price</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">price</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__price</span> <span class="o">=</span> <span class="n">value</span>
+</code></pre></div>
+
+<p>Preferred enterprise-grade pattern.</p>
+<h2>9. Encapsulation with Validation Logic</h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Employee</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__salary</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_salary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">amount</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Salary cannot be negative&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__salary</span> <span class="o">=</span> <span class="n">amount</span>
+</code></pre></div>
+
+<p>Prevents unauthorized state corruption.</p>
+<h2>10. Read-Only Encapsulation</h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Config</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">version</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__version</span> <span class="o">=</span> <span class="n">version</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">version</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__version</span>
+</code></pre></div>
+
+<p>Ensures immutable external access.</p>
+<h2>11. Encapsulation and Data Hiding</h2>
+<p>Python does not enforce strict privacy but encourages:</p>
+<ul>
+<li>Behavioral discipline</li>
+<li>Design-by-contract mechanisms</li>
+<li>Controlled state exposure</li>
+</ul>
+<p>Encapsulation is based on trust and convention.</p>
+<h2>12. Encapsulation vs Information Hiding</h2>
+<table>
+<thead>
+<tr>
+<th>Encapsulation</th>
+<th>Information Hiding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bundles data and behavior</td>
+<td>Restricts access to internal details</td>
+</tr>
+<tr>
+<td>Structural</td>
+<td>Security-driven</td>
+</tr>
+</tbody>
+</table>
+<p>Python supports both through conventions.</p>
+<h2>13. Enterprise Use Case Example</h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">PaymentProcessor</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__transaction_limit</span> <span class="o">=</span> <span class="mi">10000</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">process_payment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">amount</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">__transaction_limit</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Limit exceeded&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Used in:</p>
+<ul>
+<li>Financial services</li>
+<li>Secure APIs</li>
+<li>Transaction systems</li>
+</ul>
+<h2>14. Encapsulation and API Stability</h2>
+<p>Encapsulation allows:</p>
+<ul>
+<li>Internal changes without breaking API</li>
+<li>Evolution of implementation</li>
+<li>Stable client interaction</li>
+</ul>
+<p>Critical for long-term system maintenance.</p>
+<h2>15. Encapsulation with Business Rules</h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Order</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__status</span> <span class="o">=</span> <span class="s2">&quot;pending&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">mark_complete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__status</span> <span class="o">=</span> <span class="s2">&quot;completed&quot;</span>
+</code></pre></div>
+
+<p>Users cannot alter status directly.</p>
+<h2>16. Encapsulation in Layered Architecture</h2>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Encapsulation Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Domain</td>
+<td>Protect business rules</td>
+</tr>
+<tr>
+<td>Service</td>
+<td>Control workflows</td>
+</tr>
+<tr>
+<td>API</td>
+<td>Abstract logic</td>
+</tr>
+<tr>
+<td>Infrastructure</td>
+<td>Protect resources</td>
+</tr>
+</tbody>
+</table>
+<h2>17. Encapsulation Anti-Patterns</h2>
+<table>
+<thead>
+<tr>
+<th>Anti-Pattern</th>
+<th>Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Public data access</td>
+<td>Data corruption</td>
+</tr>
+<tr>
+<td>Bypassing setters</td>
+<td>Logic inconsistency</td>
+</tr>
+<tr>
+<td>Direct mutation</td>
+<td>Security risks</td>
+</tr>
+<tr>
+<td>Using globals</td>
+<td>Uncontrolled state</td>
+</tr>
+</tbody>
+</table>
+<h2>18. Encapsulation with Composition</h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Engine</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Engine started&quot;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Car</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__engine</span> <span class="o">=</span> <span class="n">Engine</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Car encapsulates engine mechanics.</p>
+<h2>19. Encapsulation and SOLID Principles</h2>
+<p>Supports:</p>
+<ul>
+<li>Single Responsibility Principle</li>
+<li>Encapsulation Principle</li>
+<li>Interface Segregation Principle</li>
+</ul>
+<p>Maintains architectural clarity.</p>
+<h2>20. Encapsulation for Security</h2>
+<p>Encapsulation restricts access points where:</p>
+<ul>
+<li>Data validation</li>
+<li>Authorization</li>
+<li>Audit controls</li>
+</ul>
+<p>can be enforced.</p>
+<p>Essential for:</p>
+<ul>
+<li>FinTech</li>
+<li>Healthcare</li>
+<li>AI governance systems</li>
+</ul>
+<h2>21. Encapsulation in Microservices</h2>
+<p>Each microservice encapsulates:</p>
+<ul>
+<li>Data</li>
+<li>Logic</li>
+<li>State</li>
+<li>Processing models</li>
+</ul>
+<p>Promotes independent scalability and resilience.</p>
+<h2>22. Testing Encapsulated Systems</h2>
+<div class="highlight"><pre><span></span><code><span class="n">account</span> <span class="o">=</span> <span class="n">BankAccount</span><span class="p">()</span>
+<span class="n">account</span><span class="o">.</span><span class="n">set_balance</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">account</span><span class="o">.</span><span class="n">get_balance</span><span class="p">()</span> <span class="o">==</span> <span class="mi">500</span>
+</code></pre></div>
+
+<p>Encapsulation enhances predictable test behavior.</p>
+<h2>23. Performance Considerations</h2>
+<p>Minor overhead for accessors</p>
+<p>Negligible performance impact</p>
+<p>Significant maintainability gain</p>
+<p>Best-practice tradeoff.</p>
+<h2>24. Encapsulation Lifecycle Model</h2>
+<div class="highlight"><pre><span></span><code>Define State → Protect State → Control Access → Enforce Rules → Monitor Mutations
+</code></pre></div>
+
+<p>This cycle ensures system integrity.</p>
+<hr>
+<p><strong>Score: 50</strong></p>
+<p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a>
+
+</p>
+
+
+
+
+</article>
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+    <aside class="large-3 columns">
+        <h5 class="sidebar-title">Site</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/archives.html">Archives</a>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/tags.html">Tags</a>
+        </ul>
+
+		
+        <h5 class="sidebar-title">Categories</h5>
+        <ul class="side-nav">
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/advanced.html">advanced</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a></li>
+            <li><a href="https://accsaikiran-sys.github.io/pynotes/category/pandas-work.html">pandas-work</a></li>
+   
+        </ul>
+
+		
+        <h5 class="sidebar-title">Social</h5>
+        <ul class="side-nav">
+            <li><a href="https://github.com/accsaikiran-sys/">GitHub</a></li>
+            <li><a href="<linkedin handle>">LinkedIn</a></li>
+        </ul>
+
+    </aside> <!-- End Sidebar -->
+
+</div> <!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+              <!--                  <p>My Python Notes by Sai Kiran Reddy</p> -->
+            </div>
+            </div>
+    </div>
+</footer>
+</body>
+</html>

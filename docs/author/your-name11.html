@@ -47,8 +47,104 @@
 
 
             <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-25-safee-dictionary-update.html"><h3 class="article-title">Ch07 25 Safee Dictionary Update</h3></a>
+<h6 class="subheader" title="2026-01-07T00:00:00-05:00">Wed 07 January 2026
+</h6>
+
+
+<h1>ch07_25_safee_dictionary_update</h1>
+<p>Created:20251122</p>
+<div class="highlight"><pre><span></span><code><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Jerin&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">22</span><span class="p">}</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">key</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter key to update: &quot;</span><span class="p">)</span>
+    <span class="c1"># Accessing the key to trigger KeyError if it doesn&#39;t exist</span>
+    <span class="n">_</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+
+    <span class="c1"># If key exists, update it (using 25 as per previous context)</span>
+    <span class="n">key_data</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter value to update: &quot;</span><span class="p">)</span>
+    <span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">key_data</span>
+    <span class="nb">print …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-25-safee-dictionary-update.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-3-list-index-access.html"><h3 class="article-title">Ch07 3 List Index Access</h3></a>
+<h6 class="subheader" title="2026-01-07T00:00:00-05:00">Wed 07 January 2026
+</h6>
+
+
+<h1>ch07_3_list_index_access</h1>
+<p>Created: 20251121</p>
+<div class="highlight"><pre><span></span><code><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;banana&quot;</span><span class="p">,</span> <span class="s2">&quot;cherry&quot;</span><span class="p">]</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter an index to access: &quot;</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Item at index </span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">my_list</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Index out of range!&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Please enter a valid integer!&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr>
+<p><strong>Score: 0</strong></p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-3-list-index-access.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
+                <a href="https://accsaikiran-sys.github.io/pynotes/ch07-4-file-not-found-message.html"><h3 class="article-title">Ch07 4 File Not Found Message</h3></a>
+<h6 class="subheader" title="2026-01-07T00:00:00-05:00">Wed 07 January 2026
+</h6>
+
+
+<h1>ch07_4_file_not_found_message</h1>
+<p>Created: 20251121</p>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;data.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;File not found.&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr>
+<p><strong>Score: 0</strong></p><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch07-4-file-not-found-message.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
                 <a href="https://accsaikiran-sys.github.io/pynotes/ch07-5-finally-block-usage.html"><h3 class="article-title">Ch07 5 Finally Block Usage</h3></a>
-<h6 class="subheader" title="2025-12-27T00:00:00-05:00">Sat 27 December 2025
+<h6 class="subheader" title="2026-01-07T00:00:00-05:00">Wed 07 January 2026
 </h6>
 
 
@@ -85,7 +181,7 @@
 
             <article>
                 <a href="https://accsaikiran-sys.github.io/pynotes/ch07-6-try-except-else.html"><h3 class="article-title">Ch07 6 Try Except Else</h3></a>
-<h6 class="subheader" title="2025-12-27T00:00:00-05:00">Sat 27 December 2025
+<h6 class="subheader" title="2026-01-07T00:00:00-05:00">Wed 07 January 2026
 </h6>
 
 
@@ -118,7 +214,7 @@
 
             <article>
                 <a href="https://accsaikiran-sys.github.io/pynotes/ch07-7-keyerror-ex.html"><h3 class="article-title">Ch07 7 Keyerror Ex</h3></a>
-<h6 class="subheader" title="2025-12-27T00:00:00-05:00">Sat 27 December 2025
+<h6 class="subheader" title="2026-01-07T00:00:00-05:00">Wed 07 January 2026
 </h6>
 
 
@@ -149,7 +245,7 @@
 
             <article>
                 <a href="https://accsaikiran-sys.github.io/pynotes/ch07-8-raising-your-own-exception.html"><h3 class="article-title">Ch07 8 Raising Your Own Exception</h3></a>
-<h6 class="subheader" title="2025-12-27T00:00:00-05:00">Sat 27 December 2025
+<h6 class="subheader" title="2026-01-07T00:00:00-05:00">Wed 07 January 2026
 </h6>
 
 
@@ -184,7 +280,7 @@
 
             <article>
                 <a href="https://accsaikiran-sys.github.io/pynotes/ch07-9-custom-exception-class.html"><h3 class="article-title">Ch07 9 Custom Exception Class</h3></a>
-<h6 class="subheader" title="2025-12-27T00:00:00-05:00">Sat 27 December 2025
+<h6 class="subheader" title="2026-01-07T00:00:00-05:00">Wed 07 January 2026
 </h6>
 
 
@@ -208,7 +304,7 @@
 
             <article>
                 <a href="https://accsaikiran-sys.github.io/pynotes/ch07-all-examples-combined.html"><h3 class="article-title">Ch07 All Examples Combined</h3></a>
-<h6 class="subheader" title="2025-12-27T00:00:00-05:00">Sat 27 December 2025
+<h6 class="subheader" title="2026-01-07T00:00:00-05:00">Wed 07 January 2026
 </h6>
 
 
@@ -240,7 +336,7 @@
 
             <article>
                 <a href="https://accsaikiran-sys.github.io/pynotes/ch08-01-objects-classes.html"><h3 class="article-title">Ch08 01 Objects Classes</h3></a>
-<h6 class="subheader" title="2025-12-27T00:00:00-05:00">Sat 27 December 2025
+<h6 class="subheader" title="2026-01-07T00:00:00-05:00">Wed 07 January 2026
 </h6>
 
 
@@ -258,82 +354,9 @@
                 <hr  class="gradient"/>
             </article>
 
-        
-
-
-            <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch08-02-inheritance.html"><h3 class="article-title">Ch08 02 Inheritance</h3></a>
-<h6 class="subheader" title="2025-12-27T00:00:00-05:00">Sat 27 December 2025
-</h6>
-
-
-<h1>Chapter 8.1: Inheritance in Python</h1>
-<p>This notebook covers inheritance concepts in Python object-oriented programming, including single inheritance, multiple inheritance, method overriding, and more.</p>
-<h2>1. What is Inheritance</h2>
-<p>Inheritance allows a class (child) to acquire properties and behaviors of another class (parent).</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Animal</span><span class="p">:</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">eat</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Animal is …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
-
-</p>
-
-
-
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch08-02-inheritance.html">Read More</a>
-                <hr  class="gradient"/>
-            </article>
-
-        
-
-
-            <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch08-03-multiple-inheritance.html"><h3 class="article-title">Ch08 03 Multiple Inheritance</h3></a>
-<h6 class="subheader" title="2025-12-27T00:00:00-05:00">Sat 27 December 2025
-</h6>
-
-
-<h1>Chapter 8.3: Multiple Inheritance in Python</h1>
-<p>This notebook covers multiple inheritance concepts in Python, including Method Resolution Order (MRO), the diamond problem, and real-world applications.</p>
-<h2>1. What is Multiple Inheritance</h2>
-<p>Multiple inheritance occurs when a class inherits from more than one parent class.</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Father</span><span class="p">:</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">skill1</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
-
-</p>
-
-
-
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch08-03-multiple-inheritance.html">Read More</a>
-                <hr  class="gradient"/>
-            </article>
-
-        
-
-
-            <article>
-                <a href="https://accsaikiran-sys.github.io/pynotes/ch08-04-polymorphism.html"><h3 class="article-title">Ch08 04 Polymorphism</h3></a>
-<h6 class="subheader" title="2025-12-27T00:00:00-05:00">Sat 27 December 2025
-</h6>
-
-
-<h1>Chapter 8.4: Polymorphism in Python</h1>
-<p>This notebook covers polymorphism concepts in Python, including method overriding, operator overloading, duck typing, and abstract base classes.</p>
-<h2>1. What is Polymorphism</h2>
-<p>Polymorphism allows the same interface (method or operator) to behave differently based on the object or context.</p>
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;Python&quot;</span><span class="p">))</span>   <span class="c1"># String length …</span></code></pre></div><p class="subheader">Category: <a href="https://accsaikiran-sys.github.io/pynotes/category/basics.html">basics</a>
-
-</p>
-
-
-
-                <a class="button radius secondary small right" href="https://accsaikiran-sys.github.io/pynotes/ch08-04-polymorphism.html">Read More</a>
-                <hr  class="gradient"/>
-            </article>
-
             <!-- /#posts-list -->
 <div class="pagination-centered">
-<h6 class="subheader">Page 11 of 14</h6>
+<h6 class="subheader">Page 11 of 15</h6>
 
 <p>
             <a href="https://accsaikiran-sys.github.io/pynotes/author/your-name10.html">&laquo; Prev</a>

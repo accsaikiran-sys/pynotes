@@ -1,6 +1,6 @@
 ---
 title: Ch01 Scope Lifetime
-date: 2025-12-27
+date: 2026-01-07
 author: Your Name
 cell_count: 39
 score: 35

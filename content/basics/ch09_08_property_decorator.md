@@ -1,6 +1,6 @@
 ---
 title: Ch09 08 Property Decorator
-date: 2025-12-27
+date: 2026-01-07
 author: Your Name
 cell_count: 21
 score: 20
